@@ -1,1 +1,1 @@
-# uni-FYP
+# James' Final Year Project
