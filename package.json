@@ -1,0 +1,11 @@
+{
+  "name": "ku-project-manager",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/jameskbecker/ku-project-manager.git",
+  "author": "James Becker <48602730+jameskbecker@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": ""
+  }
+}
