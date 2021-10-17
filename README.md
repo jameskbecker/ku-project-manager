@@ -4,4 +4,4 @@ Navigate to the project folder in terminal/command prompt and run the following 
 
 > node start
 
-### Note: make sure you have Node.JS installed
+### Note: make sure you have NodeJS installed
