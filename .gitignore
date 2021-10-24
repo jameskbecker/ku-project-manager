@@ -1,1 +1,3 @@
 node_modules
+# Temporary while developing in npm environment
+package-lock.json
