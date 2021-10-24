@@ -2,6 +2,8 @@
 ## To run:
 Navigate to the project folder in terminal/command prompt and run the following comand:
 
-> node start
+> npm run start
+Or
+> yarn start
 
 ### Note: make sure you have NodeJS installed
