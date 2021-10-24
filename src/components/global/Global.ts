@@ -15,7 +15,7 @@ const Global = createGlobalStyle`
     font-family: sans-serif;
   }
 
-  h1 {
+  h1, h2 {
     margin: 1em;
   }
 

@@ -43,7 +43,7 @@ const NavBar = () => {
       </Menu>
 
       <TitleBar>
-        <div>KUPM</div>
+        <h1>KUPM</h1>
       </TitleBar>
     </NavBarWrapper>
   );
