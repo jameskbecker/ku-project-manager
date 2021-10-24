@@ -15,6 +15,10 @@ const Global = createGlobalStyle`
     font-family: sans-serif;
   }
 
+  h1 {
+    margin: 1em;
+  }
+
 
   ul {
     list-style-position: inside;

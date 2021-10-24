@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import theme from '../../theme';
 
 const Panel = styled.div`
-  width: 100;
   height: 35vh;
 
   margin: 1em;
