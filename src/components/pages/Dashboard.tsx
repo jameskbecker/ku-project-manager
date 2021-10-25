@@ -12,11 +12,15 @@ import users from '../../mock-data/person';
 const Layout = () => {
   /** @todo consider react-window to support large amounts or data */
   const getNotifications = comments.map((c) => {
-    const [sender] =  users.filter((u) => u.id === c.senderId);
+    const [sender] = users.filter((u) => u.id === c.senderId);
     return (
       <div key={c.id}>
-        <h4>New Comment from {sender.lastName}, {sender.firstName}</h4>
-        <div>{c.details.length >= 50 ? `${c.details.slice(0, 50)}...` : c.details}</div>
+        <h4>
+          New Comment from {sender.lastName}, {sender.firstName}
+        </h4>
+        <div>
+          {c.details.length >= 50 ? `${c.details.slice(0, 50)}...` : c.details}
+        </div>
       </div>
     );
   });
@@ -37,7 +41,6 @@ const Layout = () => {
       </div>
     );
   });
-  
 
   return (
     <>

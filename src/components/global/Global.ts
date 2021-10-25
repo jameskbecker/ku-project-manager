@@ -7,6 +7,7 @@ const Global = createGlobalStyle`
     margin: 0;
     padding: 0;
     min-width: 0;
+    overflow: hidden;
   }
 
   body {
@@ -20,14 +21,15 @@ const Global = createGlobalStyle`
   #root {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    overflow: hidden;
-  
+    height: 100vh;
   }
-
 
   h1, h2 {
     margin: 1em;
+  }
+
+  h2 {
+    grid-area: header;
   }
 
 

@@ -6,7 +6,7 @@ import theme from '../../theme';
 
 const NavBarWrapper = styled.div`
   position: relative;
-  flex: 0 0 5vh;
+  flex: 0 1 10%;
 
   font-size: 1.5rem;
   text-align: center;
