@@ -12,7 +12,7 @@ const Global = createGlobalStyle`
   body {
     background-color: ${theme.bg};
     height: 100%;
-    font-family: sans-serif;
+    font-family: Maven Pro, Poppins, sans-serif;
   }
 
   h1, h2 {
