@@ -9,10 +9,10 @@ import todo from '../../mock-data/todo';
 const Layout = () => {
   /** @todo consider react-window to support large amounts or data */
   const getUpcoming = assignments.map((a) => (
-    <li key={a.id}>
+    <div key={a.id}>
       <h4>{a.name}</h4>
       <div>{new Date(a.dueDate).toLocaleString()}</div>
-    </li>
+    </div>
   ));
 
   const getTodo = todo.map((t) => {

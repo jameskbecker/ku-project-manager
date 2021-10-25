@@ -11,19 +11,11 @@ const PanelWrapper = styled.div`
   height: 35vh;
 
   margin: 1em;
+  padding: 0.5em;
   border-radius: 0.5em;
   background-color: ${theme.primary};
 
   overflow: auto;
-
-  & > :first-child {
-    font-weight: 600;
-    padding: 0.5em;
-  }
-
-  li {
-    padding: 0.5em;
-  }
 `;
 
 const Panel = (props: PanelProps) => {
