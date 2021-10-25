@@ -16,6 +16,10 @@ const PanelWrapper = styled.div`
   background-color: ${theme.primary};
 
   overflow: auto;
+
+  & > * {
+    margin: 0.5em 0;
+  }
 `;
 
 const Panel = (props: PanelProps) => {

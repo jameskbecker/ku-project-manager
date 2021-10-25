@@ -5,9 +5,22 @@ import Footer from '../layout/Footer';
 import NavBar from '../layout/NavBar';
 import assignments from '../../mock-data/assignment';
 import todo from '../../mock-data/todo';
+import comments from '../../mock-data/comment';
+
+import users from '../../mock-data/person';
 
 const Layout = () => {
   /** @todo consider react-window to support large amounts or data */
+  const getNotifications = comments.map((c) => {
+    const [sender] =  users.filter((u) => u.id === c.senderId);
+    return (
+      <div key={c.id}>
+        <h4>New Comment from {sender.lastName}, {sender.firstName}</h4>
+        <div>{c.details.length >= 50 ? `${c.details.slice(0, 50)}...` : c.details}</div>
+      </div>
+    );
+  });
+
   const getUpcoming = assignments.map((a) => (
     <div key={a.id}>
       <h4>{a.name}</h4>
@@ -24,13 +37,14 @@ const Layout = () => {
       </div>
     );
   });
+  
 
   return (
     <>
       <NavBar />
       <h2>Dashboard</h2>
       <Content>
-        <Panel heading="Recent Notifications">f</Panel>
+        <Panel heading="Recent Notifications">{getNotifications}</Panel>
         <Panel heading="Upcoming assignments">{getUpcoming}</Panel>
         <Panel heading="Todo">{getTodo}</Panel>
         {/* Consider making calendar its own page to prevent long mobile page */}
