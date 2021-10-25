@@ -3,7 +3,7 @@ import Content from '../global/Content';
 import Panel from '../global/Panel';
 import Footer from '../layout/Footer';
 import NavBar from '../layout/NavBar';
-import assignments from '../../mock-data/assignments';
+import assignments from '../../mock-data/assignment';
 import todo from '../../mock-data/todo';
 
 const Layout = () => {
