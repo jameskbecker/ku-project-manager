@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import theme from '../../theme';
 
 const FooterWrapper = styled.footer`
+  grid-area: footer;
   flex: 0 0 1rem;
   font-size: 0.75rem;
   color: white;

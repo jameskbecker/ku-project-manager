@@ -29,7 +29,7 @@ const Global = createGlobalStyle`
   }
 
   h2 {
-    grid-area: header;
+    grid-area: title;
   }
 
 

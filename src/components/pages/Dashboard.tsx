@@ -1,15 +1,16 @@
 import React from 'react';
+import assignments from '../../mock-data/assignment';
+import comments from '../../mock-data/comment';
+import users from '../../mock-data/person';
+import todo from '../../mock-data/todo';
 import Content from '../global/Content';
 import Panel from '../global/Panel';
 import Footer from '../layout/Footer';
+import Layout from '../layout/Layout';
 import NavBar from '../layout/NavBar';
-import assignments from '../../mock-data/assignment';
-import todo from '../../mock-data/todo';
-import comments from '../../mock-data/comment';
+import SideBar from '../layout/SideBar';
 
-import users from '../../mock-data/person';
-
-const Layout = () => {
+const Dashboard = () => {
   /** @todo consider react-window to support large amounts or data */
   const getNotifications = comments.map((c) => {
     const [sender] = users.filter((u) => u.id === c.senderId);
@@ -43,7 +44,8 @@ const Layout = () => {
   });
 
   return (
-    <>
+    <Layout>
+      <SideBar />
       <NavBar />
       <h2>Dashboard</h2>
       <Content>
@@ -54,8 +56,8 @@ const Layout = () => {
         {/* <Panel heading="Calendar">_</Panel> */}
       </Content>
       <Footer />
-    </>
+    </Layout>
   );
 };
 
-export default Layout;
+export default Dashboard;

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import theme from '../../theme';
 
 const NavBarWrapper = styled.div`
+  grid-area: navbar;
   position: relative;
   flex: 0 1 10%;
 
