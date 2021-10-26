@@ -45,8 +45,8 @@ const Layout = () => {
   return (
     <>
       <NavBar />
+      <h2>Dashboard</h2>
       <Content>
-        <h2>Dashboard</h2>
         <Panel heading="Recent Notifications">{getNotifications}</Panel>
         <Panel heading="Upcoming assignments">{getUpcoming}</Panel>
         <Panel heading="Todo">{getTodo}</Panel>

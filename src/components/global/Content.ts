@@ -3,26 +3,19 @@ import styled from 'styled-components';
 /** @todo optimise large scale displays */
 const Content = styled.div`
   flex: 1 1;
-  grid-area: content;
-
+  margin: 0.5em 0.25em;
   overflow: scroll;
 
   /** Tablet  */
   @media screen and (min-width: 600px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-areas:
-      'header header'
-      'content content';
   }
 
   /** Desktop  */
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 992px) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-areas:
-      'header header header'
-      'content content header';
   }
 `;
 
