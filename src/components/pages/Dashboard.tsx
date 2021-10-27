@@ -50,7 +50,7 @@ const Dashboard = () => {
       <h2>Dashboard</h2>
       <Content>
         <Panel heading="Recent Notifications">{getNotifications}</Panel>
-        <Panel heading="Upcoming assignments">{getUpcoming}</Panel>
+        <Panel heading="Upcoming Projects">{getUpcoming}</Panel>
         <Panel heading="Todo">{getTodo}</Panel>
         {/* Consider making calendar its own page to prevent long mobile page */}
         {/* <Panel heading="Calendar">_</Panel> */}
