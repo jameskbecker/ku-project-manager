@@ -12,7 +12,7 @@ const NavBarWrapper = styled.div`
   font-size: 1.5rem;
   text-align: center;
   color: black;
-  background-color: ${theme.secondary};
+  background-color: ${theme.secondaryB};
 `;
 
 const Menu = styled.div`

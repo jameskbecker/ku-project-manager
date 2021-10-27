@@ -13,7 +13,11 @@ const PanelWrapper = styled.div`
   margin: 1em;
   padding: 0.5em;
   border-radius: 0.5em;
-  background-color: ${theme.primary};
+  background: linear-gradient(
+    45deg,
+    ${theme.primaryA} 0%,
+    ${theme.primaryB} 100%
+  );
 
   overflow: auto;
 

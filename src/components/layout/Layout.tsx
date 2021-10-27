@@ -13,7 +13,7 @@ const Layout = styled.div`
   /** Desktop  */
   @media screen and (min-width: 992px) {
     grid-template-areas:
-      'sidebar navbar'
+      'navbar navbar'
       'sidebar title'
       'sidebar content'
       'footer footer';

@@ -6,11 +6,12 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import styled from 'styled-components';
+import theme from '../../theme';
 
 const SideBarWrapper = styled.div`
   display: none;
   grid-area: sidebar;
-  background-color: #6666d3;
+  background-color: ${theme.secondaryA};
 
   /** Desktop  */
   @media screen and (min-width: 992px) {
