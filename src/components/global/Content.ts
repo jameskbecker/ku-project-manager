@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Content = styled.div`
   flex: 1 1;
   grid-area: content;
-  margin: 0.5em 0.25em;
+  padding: 0.5em 0.25em;
   overflow: scroll;
 
   /** Tablet  */

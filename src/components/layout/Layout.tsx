@@ -2,24 +2,22 @@ import styled from 'styled-components';
 
 const Layout = styled.div`
   display: grid;
-  grid-template-columns: 1fr 4fr;
-  grid-template-rows: 2fr 7fr 1fr;
-
+  grid-template-columns: 1fr 9fr;
+  grid-template-rows: 1fr 1fr 8fr;
   grid-template-areas:
-    'sidebar navbar'
-    'sidebar title'
-    'sidebar content'
+    'navbar navbar'
+    'title title'
+    'content content'
     'footer footer';
 
-  /** Tablet  */
-  @media screen and (min-width: 600px) {
-  }
-
   /** Desktop  */
-  /* @media screen and (min-width: 992px) {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  } */
+  @media screen and (min-width: 992px) {
+    grid-template-areas:
+      'sidebar navbar'
+      'sidebar title'
+      'sidebar content'
+      'footer footer';
+  }
 `;
 
 export default Layout;

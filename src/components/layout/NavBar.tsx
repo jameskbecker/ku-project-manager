@@ -21,6 +21,11 @@ const Menu = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+
+  /** Desktop  */
+  @media screen and (min-width: 992px) {
+    display: none;
+  }
 `;
 
 const TitleBar = styled.div`
