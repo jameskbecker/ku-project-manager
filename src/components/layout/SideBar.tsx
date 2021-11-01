@@ -20,24 +20,25 @@ const SideBarWrapper = styled.div`
 `;
 
 const SideBarButton = styled.div`
-  text-align: center;
-  padding: 1em 0.5em;
+  padding: 1em 0.75em;
 
   opacity: 0.65;
   cursor: pointer;
 
   &:hover {
+    transition: 0.25s ease-in-out;
     opacity: 1;
   }
 
   & > :first-child {
-    padding: 0 0.25em 0 0;
+    padding: 0 0.75em 0 0;
   }
 `;
 
 const SideBar = () => {
   return (
     <SideBarWrapper>
+      <h1>KUPM</h1>
       <SideBarButton>
         <FontAwesomeIcon icon={faTachometerAlt} />
         <a>Dashboard</a>

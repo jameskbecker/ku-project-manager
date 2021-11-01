@@ -1,6 +1,6 @@
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import theme from '../../theme';
 
@@ -8,9 +8,7 @@ const NavBarWrapper = styled.div`
   grid-area: navbar;
   position: relative;
   flex: 0 1 10%;
-
-  font-size: 1.5rem;
-  text-align: center;
+  display: flex;
   color: black;
   background-color: ${theme.secondaryB};
 `;
@@ -29,11 +27,9 @@ const Menu = styled.div`
 `;
 
 const TitleBar = styled.div`
-  width: 100%;
   height: 100%;
 
   display: flex;
-  justify-content: center;
   align-items: center;
 
   & > * {
@@ -41,7 +37,73 @@ const TitleBar = styled.div`
   }
 `;
 
-const NavBar = () => {
+/** @todo propably better solution than absolute positioning */
+const UserWrapper = styled.div`
+  display: none;
+  position: absolute;
+  top: calc(50% - 1rem);
+  right: 0.5em;
+  height: 100%;
+
+  font-size: 1rem;
+  text-align: right;
+  padding: 0.5em;
+
+  opacity: 0.75;
+  cursor: pointer;
+
+  &:hover {
+    transition: 0.2 5s ease-in-out;
+    opacity: 1;
+  }
+
+  & > :first-child {
+    margin: 0 0.25em 0 0;
+  }
+
+  /** Tablet  */
+  @media screen and (min-width: 600px) {
+    display: block;
+  }
+`;
+
+const UserModalWrapper = styled.div`
+  position: absolute;
+  top: 10%;
+  right: 0;
+  height: 100px;
+  width: 200px;
+
+  font-size: 1rem;
+  text-align: right;
+  border-radius: 0 0 0.5em 0.5em;
+  background-color: grey;
+
+  cursor: pointer;
+  z-index: 1;
+
+  a {
+    width: 100%;
+    padding: 0.5em;
+    &:hover {
+      background-color: white;
+    }
+  }
+`;
+
+export const UserModal = () => {
+  return (
+    <UserModalWrapper>
+      <a>Sign Out</a>
+    </UserModalWrapper>
+  );
+};
+
+type NavBarProps = {
+  toggleUserModal: () => void;
+};
+
+const NavBar = ({ toggleUserModal }: NavBarProps) => {
   return (
     <NavBarWrapper>
       <Menu>
@@ -49,8 +111,13 @@ const NavBar = () => {
       </Menu>
 
       <TitleBar>
-        <h1>KUPM</h1>
+        <h2>Dashboard</h2>
       </TitleBar>
+
+      <UserWrapper onClick={toggleUserModal}>
+        <span>Welcome back, John!</span>
+        <FontAwesomeIcon icon={faCaretDown} />
+      </UserWrapper>
     </NavBarWrapper>
   );
 };

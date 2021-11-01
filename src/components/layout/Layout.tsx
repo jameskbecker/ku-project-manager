@@ -1,20 +1,22 @@
 import styled from 'styled-components';
 
 const Layout = styled.div`
+  position: relative;
   display: grid;
-  grid-template-columns: 1fr 9fr;
+  height: 100%;
+  grid-template-columns: 150px 9fr;
   grid-template-rows: 1fr 1fr 8fr;
   grid-template-areas:
     'navbar navbar'
-    'title title'
+    'content content'
     'content content'
     'footer footer';
 
   /** Desktop  */
   @media screen and (min-width: 992px) {
     grid-template-areas:
-      'navbar navbar'
-      'sidebar title'
+      'sidebar navbar'
+      'sidebar content'
       'sidebar content'
       'footer footer';
   }

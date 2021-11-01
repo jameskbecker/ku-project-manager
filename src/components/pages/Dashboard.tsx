@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import assignments from '../../mock-data/assignment';
 import comments from '../../mock-data/comment';
 import users from '../../mock-data/person';
@@ -7,10 +7,16 @@ import Content from '../global/Content';
 import Panel from '../global/Panel';
 import Footer from '../layout/Footer';
 import Layout from '../layout/Layout';
-import NavBar from '../layout/NavBar';
+import NavBar, { UserModal } from '../layout/NavBar';
 import SideBar from '../layout/SideBar';
 
 const Dashboard = () => {
+  const [showUserModal, setShowUserModal] = useState(false);
+
+  const toggleUserModal = () => {
+    setShowUserModal(!showUserModal);
+  };
+
   /** @todo consider react-window to support large amounts or data */
   const getNotifications = comments.map((c) => {
     const [sender] = users.filter((u) => u.id === c.senderId);
@@ -19,6 +25,7 @@ const Dashboard = () => {
         <h4>
           New Comment from {sender.lastName}, {sender.firstName}
         </h4>
+        <div>{new Date(c.sendTime).toLocaleDateString()}</div>
         <div>
           {c.details.length >= 50 ? `${c.details.slice(0, 50)}...` : c.details}
         </div>
@@ -46,9 +53,9 @@ const Dashboard = () => {
   return (
     <Layout>
       <SideBar />
-      <NavBar />
-      <h2>Dashboard</h2>
-      <Content>
+      {/**@todo replace with context */}
+      <NavBar toggleUserModal={toggleUserModal} />
+      <Content onClick={() => setShowUserModal(false)}>
         <Panel heading="Recent Notifications">{getNotifications}</Panel>
         <Panel heading="Upcoming Projects">{getUpcoming}</Panel>
         <Panel heading="Todo">{getTodo}</Panel>
@@ -56,6 +63,7 @@ const Dashboard = () => {
         {/* <Panel heading="Calendar">_</Panel> */}
       </Content>
       <Footer />
+      {showUserModal && <UserModal />}
     </Layout>
   );
 };
