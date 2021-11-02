@@ -37,6 +37,11 @@ const Global = createGlobalStyle`
     list-style-position: inside;
   }
 
+  a, a:visited, a:hover, a:active {
+  color: inherit;
+  text-decoration: none;
+}
+
  
 `;
 

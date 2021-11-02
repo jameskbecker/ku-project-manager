@@ -16,13 +16,16 @@ const SideBarWrapper = styled.div`
 
   /** Desktop  */
   @media screen and (min-width: 992px) {
-    display: initial;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
-const SideBarButton = styled.div`
-  padding: 1em 0.75em;
+const SideBarButton = styled(Link)`
+  width: 100%;
 
+  margin: 0.25em 0;
+  padding: 1em 0.75em;
   opacity: 0.65;
   cursor: pointer;
 
@@ -32,7 +35,7 @@ const SideBarButton = styled.div`
   }
 
   & > :first-child {
-    padding: 0 0.75em 0 0;
+    padding: 0 0.5em 0 0;
   }
 `;
 
@@ -40,17 +43,17 @@ const SideBar = () => {
   return (
     <SideBarWrapper>
       <h1>KUPM</h1>
-      <SideBarButton>
+      <SideBarButton to="/">
         <FontAwesomeIcon icon={faTachometerAlt} />
-        <Link to="/">Dashboard</Link>
+        Dashboard
       </SideBarButton>
-      <SideBarButton>
+      <SideBarButton to="/projects">
         <FontAwesomeIcon icon={faList} />
-        <Link to="/projects">Projects</Link>
+        Projects
       </SideBarButton>
-      <SideBarButton>
+      <SideBarButton to="/settings">
         <FontAwesomeIcon icon={faCogs} />
-        <a>Settings</a>
+        Settings
       </SideBarButton>
     </SideBarWrapper>
   );
