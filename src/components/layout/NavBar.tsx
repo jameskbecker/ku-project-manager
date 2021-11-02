@@ -2,6 +2,7 @@ import { faBars, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { ProgressPlugin } from 'webpack';
 import theme from '../../theme';
 
 const NavBarWrapper = styled.div`
@@ -100,10 +101,11 @@ export const UserModal = () => {
 };
 
 type NavBarProps = {
+  pageName: string;
   toggleUserModal: () => void;
 };
 
-const NavBar = ({ toggleUserModal }: NavBarProps) => {
+const NavBar = ({ pageName, toggleUserModal }: NavBarProps) => {
   return (
     <NavBarWrapper>
       <Menu>
@@ -111,7 +113,7 @@ const NavBar = ({ toggleUserModal }: NavBarProps) => {
       </Menu>
 
       <TitleBar>
-        <h2>Dashboard</h2>
+        <h2>{pageName}</h2>
       </TitleBar>
 
       <UserWrapper onClick={toggleUserModal}>

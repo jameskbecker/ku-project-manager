@@ -54,7 +54,7 @@ const Dashboard = () => {
     <Layout>
       <SideBar />
       {/**@todo replace with context */}
-      <NavBar toggleUserModal={toggleUserModal} />
+      <NavBar pageName="Dashboard" toggleUserModal={toggleUserModal} />
       <Content onClick={() => setShowUserModal(false)}>
         <Panel heading="Recent Notifications">{getNotifications}</Panel>
         <Panel heading="Upcoming Projects">{getUpcoming}</Panel>

@@ -14,10 +14,6 @@ const Content = styled.div`
   }
 
   /** Desktop  */
-  @media screen and (min-width: 992px) {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
 `;
 
 export default Content;

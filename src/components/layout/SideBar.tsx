@@ -5,6 +5,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import theme from '../../theme';
 
@@ -41,11 +42,11 @@ const SideBar = () => {
       <h1>KUPM</h1>
       <SideBarButton>
         <FontAwesomeIcon icon={faTachometerAlt} />
-        <a>Dashboard</a>
+        <Link to="/">Dashboard</Link>
       </SideBarButton>
       <SideBarButton>
         <FontAwesomeIcon icon={faList} />
-        <a>Projects</a>
+        <Link to="/projects">Projects</Link>
       </SideBarButton>
       <SideBarButton>
         <FontAwesomeIcon icon={faCogs} />
