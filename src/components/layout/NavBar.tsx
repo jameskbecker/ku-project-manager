@@ -33,8 +33,13 @@ const TitleBar = styled.div`
   display: flex;
   align-items: center;
 
-  & > * {
+  margin: 0 0.25em;
+
+  h2 {
     flex: 1 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 `;
 
@@ -77,6 +82,7 @@ const UserModalWrapper = styled.div`
 
   font-size: 1rem;
   text-align: right;
+
   border-radius: 0 0 0.5em 0.5em;
   background-color: grey;
 

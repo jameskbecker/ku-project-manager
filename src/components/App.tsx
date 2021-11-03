@@ -1,8 +1,9 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Global from './global/Global';
 import Dashboard from './pages/Dashboard';
-import Projects from './pages/Projects';
+import Project from './pages/Project';
+import ProjectOverview from './pages/ProjectOverview';
 import Settings from './pages/Settings';
 
 const App = () => {
@@ -10,9 +11,12 @@ const App = () => {
     <>
       <Global />
       <BrowserRouter>
-        <Route exact path="/" component={Dashboard} />
-        <Route exact path="/projects" component={Projects} />
-        <Route exact path="/settings" component={Settings} />
+        <Switch>
+          <Route exact path="/" component={Dashboard} />
+          <Route exact path="/projects" component={ProjectOverview} />
+          <Route exact path="/projects/:id" component={Project} />
+          <Route exact path="/settings" component={Settings} />
+        </Switch>
       </BrowserRouter>
     </>
   );

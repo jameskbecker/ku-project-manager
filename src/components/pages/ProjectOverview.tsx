@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import Content from '../global/Content';
 import Panel from '../global/Panel';
 import Footer from '../layout/Footer';
@@ -16,9 +17,10 @@ type Project = {
   memberGroupId: string;
 };
 
-const Projects = () => {
+const ProjectOverview = () => {
   const [showUserModal, setShowUserModal] = useState(false);
   const [projects, setProjects] = useState<Project[]>([]);
+  const history = useHistory();
 
   useEffect(() => {
     loadProjectData();
@@ -38,8 +40,17 @@ const Projects = () => {
     setShowUserModal(!showUserModal);
   };
 
+  const selectProjectHandler = (id: string) => {
+    console.log('hi', id);
+    history.push(`/projects/${id}`);
+  };
+
   const getProjects = projects.map((p) => (
-    <Panel heading={p.name} key={p.id}>
+    <Panel
+      heading={p.name}
+      key={p.id}
+      onClick={() => selectProjectHandler(p.id)}
+    >
       <div>A project about my life...</div>
       <div>Status: {p.isComplete ? 'Complete!' : 'Incomplete'}</div>
       <div>Created: {new Date(p.timeCreated).toLocaleString()}</div>
@@ -57,4 +68,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default ProjectOverview;
