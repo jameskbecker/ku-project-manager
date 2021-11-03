@@ -102,7 +102,7 @@ export const UserModal = () => {
 
 type NavBarProps = {
   pageName: string;
-  toggleUserModal: () => void;
+  toggleUserModal?: () => void;
 };
 
 const NavBar = ({ pageName, toggleUserModal }: NavBarProps) => {
