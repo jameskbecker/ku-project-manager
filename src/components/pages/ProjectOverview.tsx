@@ -27,11 +27,14 @@ const ProjectOverview = () => {
   }, []);
 
   const loadProjectData = async () => {
-    const resp = await window.fetch('/api/project', {
-      headers: {
-        accept: 'application/json',
-      },
-    });
+    const resp = await window.fetch(
+      'https://my.api.mockaroo.com/projects?key=954b8130',
+      {
+        headers: {
+          accept: 'application/json',
+        },
+      }
+    );
     const body = await resp.json();
     setProjects(body);
   };
