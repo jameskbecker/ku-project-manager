@@ -12,6 +12,7 @@ import SideBar from '../layout/SideBar';
 type Project = {
   id: string;
   name: string;
+  description: string;
   isComplete: boolean;
   priority: number;
   timeCreated: number;
@@ -48,7 +49,6 @@ const ProjectOverview = () => {
   };
 
   const selectProjectHandler = (id: string) => {
-    console.log('hi', id);
     history.push(`/projects/${id}`);
   };
 
@@ -58,7 +58,7 @@ const ProjectOverview = () => {
       key={p.id}
       onClick={() => selectProjectHandler(p.id)}
     >
-      <div>A project about my life...</div>
+      <div>{p.description}</div>
       <div>Status: {p.isComplete ? 'Complete!' : 'Incomplete'}</div>
       <div>Created: {new Date(p.timeCreated).toLocaleString()}</div>
     </Panel>
