@@ -7,9 +7,37 @@ import Layout from '../layout/Layout';
 import NavBar, { UserModal } from '../layout/NavBar';
 import SideBar from '../layout/SideBar';
 
+type Project = {
+  id: string;
+  name: string;
+  isComplete: boolean;
+  priority: number;
+  timeCreated: number;
+  timeCompleted: number | null;
+  memberGroupId: string;
+};
+
 const Project = () => {
   const [showUserModal, setShowUserModal] = useState(false);
   const { id } = useParams<any>();
+  const [project, setProject] = useState<Project>();
+
+  useEffect(() => {
+    loadProjectData();
+  }, []);
+
+  const loadProjectData = async () => {
+    const resp = await window.fetch(
+      `https://my.api.mockaroo.com/projects/${id}?key=954b8130`,
+      {
+        headers: {
+          accept: 'application/json',
+        },
+      }
+    );
+    const body = await resp.json();
+    setProject(body);
+  };
 
   const toggleUserModal = () => {
     setShowUserModal(!showUserModal);
@@ -23,7 +51,15 @@ const Project = () => {
         pageName={'Project ' + id}
         toggleUserModal={toggleUserModal}
       />
-      <Content onClick={() => setShowUserModal(false)}></Content>
+      <Content onClick={() => setShowUserModal(false)}>
+        {project && (
+          <Panel heading={project.name}>
+            <div>A project about my life...</div>
+            <div>Status: {project.isComplete ? 'Complete!' : 'Incomplete'}</div>
+            <div>Created: {new Date(project.timeCreated).toLocaleString()}</div>
+          </Panel>
+        )}
+      </Content>
       <Footer />
       {showUserModal && <UserModal />}
     </Layout>
