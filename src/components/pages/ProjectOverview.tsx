@@ -1,3 +1,5 @@
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import Content from '../global/Content';
@@ -19,6 +21,7 @@ type Project = {
 
 const ProjectOverview = () => {
   const [showUserModal, setShowUserModal] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [projects, setProjects] = useState<Project[]>([]);
   const history = useHistory();
 
@@ -37,6 +40,7 @@ const ProjectOverview = () => {
     );
     const body = await resp.json();
     setProjects(body);
+    setIsLoaded(true);
   };
 
   const toggleUserModal = () => {
@@ -64,7 +68,9 @@ const ProjectOverview = () => {
     <Layout>
       <SideBar />
       <NavBar pageName="Projects" toggleUserModal={toggleUserModal} />
-      <Content onClick={() => setShowUserModal(false)}>{getProjects}</Content>
+      <Content onClick={() => setShowUserModal(false)}>
+        {isLoaded ? getProjects : <FontAwesomeIcon icon={faSpinner} spin />}
+      </Content>
       <Footer />
       {showUserModal && <UserModal />}
     </Layout>
