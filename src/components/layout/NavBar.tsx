@@ -1,6 +1,11 @@
-import { faBars, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowLeft,
+  faBars,
+  faCaretDown,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import { ProgressPlugin } from 'webpack';
 import theme from '../../theme';
@@ -112,6 +117,8 @@ type NavBarProps = {
 };
 
 const NavBar = ({ pageName, toggleUserModal }: NavBarProps) => {
+  const history = useHistory();
+
   return (
     <NavBarWrapper>
       <Menu>
@@ -119,6 +126,7 @@ const NavBar = ({ pageName, toggleUserModal }: NavBarProps) => {
       </Menu>
 
       <TitleBar>
+        <FontAwesomeIcon icon={faArrowLeft} onClick={history.goBack} />
         <h2>{pageName}</h2>
       </TitleBar>
 
