@@ -21,32 +21,31 @@ const Dashboard = () => {
   const getNotifications = comments.map((c) => {
     const [sender] = users.filter((u) => u.id === c.senderId);
     return (
-      <div key={c.id}>
-        <h4>
-          New Comment from {sender.lastName}, {sender.firstName}
-        </h4>
+      <Panel
+        secondary
+        heading={`New Comment from ${sender.lastName}, ${sender.firstName}`}
+        key={c.id}
+      >
         <div>{new Date(c.sendTime).toLocaleDateString()}</div>
         <div>
           {c.details.length >= 50 ? `${c.details.slice(0, 50)}...` : c.details}
         </div>
-      </div>
+      </Panel>
     );
   });
 
   const getUpcoming = assignments.map((a) => (
-    <div key={a.id}>
-      <h4>{a.name}</h4>
+    <Panel secondary heading={a.name} key={a.id}>
       <div>{new Date(a.dueDate).toLocaleString()}</div>
-    </div>
+    </Panel>
   ));
 
   const getTodo = todo.map((t) => {
     const [assignment] = assignments.filter((a) => a.id === t.id);
     return (
-      <div key={t.id}>
-        <h4>{t.name}</h4>
+      <Panel secondary heading={t.name} key={t.id}>
         <div>{assignment.name}</div>
-      </div>
+      </Panel>
     );
   });
 

@@ -5,19 +5,18 @@ import theme from '../../theme';
 type PanelProps = {
   heading: String;
   children: React.ReactNode;
+  secondary?: boolean;
   onClick?: React.MouseEventHandler<HTMLDivElement> | undefined;
 };
 
-const PanelWrapper = styled.div`
-  height: 35vh;
-
+const PanelWrapper = styled.div<PanelProps>`
   margin: 1em;
-  padding: 0.5em;
+  padding: 1em;
   border-radius: 0.5em;
   background: linear-gradient(
     45deg,
-    ${theme.primaryA} 0%,
-    ${theme.primaryB} 100%
+    ${({ secondary }) => (secondary ? theme.secondaryA : theme.primaryA)} 0%,
+    ${({ secondary }) => (secondary ? theme.secondaryB : theme.primaryB)} 100%
   );
 
   cursor: ${({ onClick }) => (onClick ? 'pointer' : 'default')};
@@ -35,11 +34,15 @@ const PanelWrapper = styled.div`
   & > * {
     margin: 0.5em 0;
   }
+
+  h3 {
+    margin: 0;
+  }
 `;
 
 const Panel = (props: PanelProps) => {
   return (
-    <PanelWrapper onClick={props.onClick}>
+    <PanelWrapper {...props}>
       <h3>{props.heading}</h3>
       {props.children}
     </PanelWrapper>
