@@ -56,8 +56,11 @@ const Dashboard = () => {
       <NavBar pageName="Dashboard" toggleUserModal={toggleUserModal} />
       <Content onClick={() => setShowUserModal(false)}>
         <Panel heading="Recent Notifications">{getNotifications}</Panel>
+        {/**@todo replace style attribute */}
+        <Panel heading="Todo" style={{ gridRow: 'span 2' }}>
+          {getTodo}
+        </Panel>
         <Panel heading="Upcoming Projects">{getUpcoming}</Panel>
-        <Panel heading="Todo">{getTodo}</Panel>
         {/* Consider making calendar its own page to prevent long mobile page */}
         {/* <Panel heading="Calendar">_</Panel> */}
       </Content>

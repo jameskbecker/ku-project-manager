@@ -6,6 +6,7 @@ type PanelProps = {
   heading: String;
   children: React.ReactNode;
   secondary?: boolean;
+  style?: React.CSSProperties;
   onClick?: React.MouseEventHandler<HTMLDivElement> | undefined;
 };
 
