@@ -18,7 +18,11 @@ const Project = () => {
   return (
     <Layout>
       <SideBar />
-      <NavBar pageName={'Project ' + id} toggleUserModal={toggleUserModal} />
+      <NavBar
+        back
+        pageName={'Project ' + id}
+        toggleUserModal={toggleUserModal}
+      />
       <Content onClick={() => setShowUserModal(false)}></Content>
       <Footer />
       {showUserModal && <UserModal />}

@@ -113,10 +113,11 @@ export const UserModal = () => {
 
 type NavBarProps = {
   pageName: string;
+  back?: boolean;
   toggleUserModal?: () => void;
 };
 
-const NavBar = ({ pageName, toggleUserModal }: NavBarProps) => {
+const NavBar = ({ back, pageName, toggleUserModal }: NavBarProps) => {
   const history = useHistory();
 
   return (
@@ -126,7 +127,9 @@ const NavBar = ({ pageName, toggleUserModal }: NavBarProps) => {
       </Menu>
 
       <TitleBar>
-        <FontAwesomeIcon icon={faArrowLeft} onClick={history.goBack} />
+        {back && (
+          <FontAwesomeIcon icon={faArrowLeft} onClick={history.goBack} />
+        )}
         <h2>{pageName}</h2>
       </TitleBar>
 
