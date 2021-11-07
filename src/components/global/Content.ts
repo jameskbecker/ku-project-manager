@@ -5,7 +5,6 @@ const Content = styled.div`
   flex: 1 1;
   grid-area: content;
   padding: 0.5em 0.25em;
-  overflow: scroll;
 
   /** Tablet  */
   @media screen and (min-width: 600px) {
