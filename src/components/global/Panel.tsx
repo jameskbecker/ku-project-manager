@@ -36,6 +36,10 @@ const PanelWrapper = styled.div<PanelProps>`
     margin: 0.5em 0;
   }
 
+  div {
+    font-size: 0.8rem;
+  }
+
   h3 {
     margin: 0;
   }

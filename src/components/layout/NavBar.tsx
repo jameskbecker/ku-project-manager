@@ -13,10 +13,8 @@ import theme from '../../theme';
 const NavBarWrapper = styled.div`
   grid-area: navbar;
   position: relative;
-  flex: 0 1 10%;
   display: flex;
-  color: black;
-  background-color: ${theme.secondaryB};
+  background-color: ${theme.primary};
 `;
 
 const Menu = styled.div`
@@ -42,6 +40,8 @@ const TitleBar = styled.div`
 
   h2 {
     flex: 1 1;
+    color: ${theme.bg};
+
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -70,6 +70,10 @@ const UserWrapper = styled.div`
 
   & > :first-child {
     margin: 0 0.25em 0 0;
+  }
+
+  & > * {
+    color: ${theme.bg};
   }
 
   /** Tablet  */
@@ -135,7 +139,7 @@ const NavBar = ({ back, pageName, toggleUserModal }: NavBarProps) => {
 
       <UserWrapper onClick={toggleUserModal}>
         <span>Welcome back, John!</span>
-        <FontAwesomeIcon icon={faCaretDown} />
+        <FontAwesomeIcon icon={faCaretDown} color={theme.bg} />
       </UserWrapper>
     </NavBarWrapper>
   );

@@ -3,12 +3,11 @@ import styled from 'styled-components';
 const Layout = styled.div`
   position: relative;
   display: grid;
-  height: 100%;
+  height: 100vh;
   grid-template-columns: 150px 9fr;
-  grid-template-rows: 1fr 1fr 8fr;
+  grid-template-rows: 10vh 89fr 1fr;
   grid-template-areas:
     'navbar navbar'
-    'content content'
     'content content'
     'footer footer';
 
@@ -16,7 +15,6 @@ const Layout = styled.div`
   @media screen and (min-width: 992px) {
     grid-template-areas:
       'sidebar navbar'
-      'sidebar content'
       'sidebar content'
       'footer footer';
   }

@@ -1,12 +1,14 @@
 export default {
-  primary: '#e3d0d8ff',
-  bg: '#ffdab9',
-  secondary: '#c6d2edff',
+  bg: '#292927',
   dark: '#201c21',
 
-  secondaryA: '#f08080',
-  secondaryB: '#f4978e',
-  primaryA: '#f8ad9d',
-  primaryB: '#fbc4ab',
-  'Peach Puff': '#ffdab9',
+  primary: '#D9CB36',
+
+  primaryA: '#484848',
+  primaryB: '#484848',
+  secondaryA: '#595959',
+  secondaryB: '#595959',
+
+  heading: '#B2B2AA',
+  text: '#E5E4DA',
 };

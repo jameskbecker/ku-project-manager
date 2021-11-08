@@ -8,6 +8,24 @@ const Global = createGlobalStyle`
     padding: 0;
     min-width: 0;
     overflow: hidden;
+    color: ${theme.text};
+
+
+    /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: ${theme.dark};
+  border-radius: 5px;
+}
   }
 
   body {
@@ -18,10 +36,8 @@ const Global = createGlobalStyle`
 
   }
 
-  #root {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+  h1, h2, h3, h4, h5 {
+    color: ${theme.heading};
   }
 
   h1, h2 {
@@ -30,6 +46,10 @@ const Global = createGlobalStyle`
 
   h2 {
     grid-area: title;
+  }
+
+  h3 {
+    color: ${theme.text};
   }
 
 

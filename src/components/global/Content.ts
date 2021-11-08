@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 /** @todo optimise large scale displays */
 const Content = styled.div`
-  flex: 1 1;
   grid-area: content;
+
   padding: 0.5em 0.25em;
 
   /** Tablet  */

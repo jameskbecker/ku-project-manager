@@ -12,12 +12,26 @@ import theme from '../../theme';
 const SideBarWrapper = styled.div`
   display: none;
   grid-area: sidebar;
-  background-color: ${theme.secondaryA};
+  background-color: ${theme.primaryA};
 
   /** Desktop  */
   @media screen and (min-width: 992px) {
     display: flex;
     flex-direction: column;
+  }
+`;
+
+const LogoWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  background-color: ${theme.secondaryA};
+  box-sizing: border-box;
+
+  h1 {
+    padding: 0;
+    margin: 0;
   }
 `;
 
@@ -42,7 +56,9 @@ const SideBarButton = styled(Link)`
 const SideBar = () => {
   return (
     <SideBarWrapper>
-      <h1>KUPM</h1>
+      <LogoWrapper>
+        <h1>KUPM</h1>
+      </LogoWrapper>
       <SideBarButton to="/">
         <FontAwesomeIcon icon={faTachometerAlt} />
         Dashboard
