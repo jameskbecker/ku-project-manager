@@ -73,6 +73,10 @@ const UserWrapper = styled.div`
     }
   }
 
+  & > :last-child {
+    padding: 0 0.5em;
+  }
+
   /** Tablet  */
   @media screen and (min-width: 600px) {
     display: block;
@@ -82,24 +86,28 @@ const UserWrapper = styled.div`
 const UserModalWrapper = styled.div`
   position: absolute;
   top: 10%;
-  right: 0;
-  height: 100px;
-  width: 200px;
+  right: 1.5rem;
+  height: 200px;
+  width: 300px;
 
   font-size: 1rem;
-  text-align: right;
+  text-align: center;
 
   border-radius: 0 0 0.5em 0.5em;
-  background-color: grey;
+  background-color: ${theme.sidebar};
 
   cursor: pointer;
   z-index: 1;
 
-  a {
-    width: 100%;
-    padding: 0.5em;
+  box-shadow: 0 0 5px 1.5px black;
+  div {
+    opacity: 0.8;
+    width: 300px;
+    padding: 0.5em 0;
     &:hover {
-      background-color: white;
+      opacity: 1;
+      color: ${theme.bg};
+      background-color: ${theme.primary};
     }
   }
 `;
@@ -107,7 +115,7 @@ const UserModalWrapper = styled.div`
 export const UserModal = () => {
   return (
     <UserModalWrapper>
-      <a>Sign Out</a>
+      <div>Sign Out</div>
     </UserModalWrapper>
   );
 };

@@ -8,7 +8,6 @@ const Global = createGlobalStyle`
     padding: 0;
     min-width: 0;
     overflow: hidden;
-    color: ${theme.text};
 
 
     /* width */
@@ -36,7 +35,7 @@ const Global = createGlobalStyle`
     background-color: ${theme.bg};
     height: 100%;
     font-family: Maven Pro, Poppins, sans-serif;
-
+    color: ${theme.text};
 
   }
 

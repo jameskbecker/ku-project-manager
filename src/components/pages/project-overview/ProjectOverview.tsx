@@ -9,6 +9,7 @@ import Footer from '../../layout/Footer';
 import Layout from '../../layout/Layout';
 import NavBar, { UserModal } from '../../layout/NavBar';
 import SideBar from '../../layout/SideBar';
+import ControlBar from './ControlBar';
 
 type Project = {
   id: string;
@@ -32,12 +33,15 @@ const ProjectOverview = () => {
   }, []);
 
   const loadProjectData = async () => {
-    const resp = await window.fetch(
-      'https://my.api.mockaroo.com/projects?key=954b8130'
-    );
-    const body = await resp.json();
-    setProjects(body);
-    setIsLoaded(true);
+    try {
+      const resp = await window.fetch(
+        'https://my.api.mockaroo.com/projects?key=954b8130'
+      );
+      const body = await resp.json();
+      if (body.error) return;
+      setProjects(body);
+      setIsLoaded(true);
+    } catch (e) {}
   };
 
   const toggleUserModal = () => {
@@ -72,6 +76,7 @@ const ProjectOverview = () => {
     <Layout>
       <SideBar />
       <NavBar pageName="Projects" toggleUserModal={toggleUserModal} />
+      <ControlBar />
       <Content
         onClick={() => setShowUserModal(false)}
         style={{ display: 'block', overflow: 'auto' }}

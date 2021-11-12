@@ -40,7 +40,7 @@ const LogoWrapper = styled.div`
 const SideBarButton = styled(Link)`
   width: 100%;
 
-  font-size: 1rem;
+  font-size: 0.875rem;
   margin: 0.25em 0.5em;
   padding: 1em 0.75em;
   opacity: 0.65;

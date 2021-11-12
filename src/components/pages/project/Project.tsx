@@ -28,11 +28,14 @@ const Project = () => {
   }, []);
 
   const loadProjectData = async () => {
-    const resp = await window.fetch(
-      `https://my.api.mockaroo.com/projects/${id}?key=954b8130`
-    );
-    const body = await resp.json();
-    setProject(body);
+    try {
+      const resp = await window.fetch(
+        `https://my.api.mockaroo.com/projects/${id}?key=954b8130`
+      );
+      const body = await resp.json();
+      if (body.error) return;
+      setProject(body);
+    } catch (e) {}
   };
 
   const toggleUserModal = () => {
