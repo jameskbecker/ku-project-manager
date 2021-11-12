@@ -1,13 +1,15 @@
 export default {
-  bg: '#292927',
+  bg: '#333129',
   dark: '#201c21',
 
-  primary: '#D9CB36',
+  primary: '#DDCB2A',
 
   primaryA: '#484848',
   primaryB: '#484848',
-  secondaryA: '#595959',
-  secondaryB: '#595959',
+  secondaryA: '#525252',
+  secondaryB: '#525252',
+
+  sidebar: '#3B3B3B',
 
   heading: '#B2B2AA',
   text: '#E5E4DA',

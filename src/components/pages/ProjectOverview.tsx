@@ -2,6 +2,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
+import styled from 'styled-components';
 import Content from '../global/Content';
 import Panel from '../global/Panel';
 import Footer from '../layout/Footer';
@@ -59,12 +60,27 @@ const ProjectOverview = () => {
     </Panel>
   ));
 
+  const GridWrapper = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-auto-rows: 25vh;
+    height: auto;
+    overflow: auto;
+  `;
+
   return (
     <Layout>
       <SideBar />
       <NavBar pageName="Projects" toggleUserModal={toggleUserModal} />
-      <Content onClick={() => setShowUserModal(false)}>
-        {isLoaded ? getProjects : <FontAwesomeIcon icon={faSpinner} spin />}
+      <Content
+        onClick={() => setShowUserModal(false)}
+        style={{ display: 'block', overflow: 'auto' }}
+      >
+        {isLoaded ? (
+          <GridWrapper>{getProjects}</GridWrapper>
+        ) : (
+          <FontAwesomeIcon icon={faSpinner} spin />
+        )}
       </Content>
       <Footer />
       {showUserModal && <UserModal />}

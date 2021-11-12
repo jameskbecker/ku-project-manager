@@ -13,18 +13,22 @@ const Global = createGlobalStyle`
 
     /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
   border-radius: 5px;
+  box-shadow: inset 0 0 10px 10px green;
+  border: solid 3px transparent;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: ${theme.dark};
-  border-radius: 5px;
+  /* background: ${theme.dark}; */
+  /* border-radius: 5px; */
+  box-shadow: inset 0 0 10px 10px red;
+  border: solid 3px transparent;
 }
   }
 

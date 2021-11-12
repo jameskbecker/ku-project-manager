@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CSSObject } from 'styled-components';
 import assignments from '../../mock-data/assignment';
 import comments from '../../mock-data/comment';
 import users from '../../mock-data/person';

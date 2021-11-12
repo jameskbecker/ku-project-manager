@@ -1,20 +1,20 @@
 import {
   faArrowLeft,
   faBars,
-  faCaretDown,
+  faChevronDown,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
-import { ProgressPlugin } from 'webpack';
 import theme from '../../theme';
 
 const NavBarWrapper = styled.div`
   grid-area: navbar;
   position: relative;
   display: flex;
-  background-color: ${theme.primary};
+  background-color: ${theme.bg};
+  color: ${theme.text};
 `;
 
 const Menu = styled.div`
@@ -40,7 +40,7 @@ const TitleBar = styled.div`
 
   h2 {
     flex: 1 1;
-    color: ${theme.bg};
+    color: ${theme.text};
 
     text-overflow: ellipsis;
     overflow: hidden;
@@ -57,23 +57,20 @@ const UserWrapper = styled.div`
   height: 100%;
 
   font-size: 1rem;
+  color: ${theme.text};
   text-align: right;
-  padding: 0.5em;
+  padding: 0.5em 1em;
 
-  opacity: 0.75;
   cursor: pointer;
 
-  &:hover {
-    transition: 0.2 5s ease-in-out;
-    opacity: 1;
-  }
-
   & > :first-child {
+    opacity: 0.5;
     margin: 0 0.25em 0 0;
-  }
 
-  & > * {
-    color: ${theme.bg};
+    &:hover {
+      transition: 0.25s ease-in-out;
+      opacity: 1;
+    }
   }
 
   /** Tablet  */
@@ -139,7 +136,7 @@ const NavBar = ({ back, pageName, toggleUserModal }: NavBarProps) => {
 
       <UserWrapper onClick={toggleUserModal}>
         <span>Welcome back, John!</span>
-        <FontAwesomeIcon icon={faCaretDown} color={theme.bg} />
+        <FontAwesomeIcon icon={faChevronDown} color={theme.primary} />
       </UserWrapper>
     </NavBarWrapper>
   );

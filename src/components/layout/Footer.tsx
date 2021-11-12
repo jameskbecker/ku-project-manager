@@ -10,7 +10,7 @@ const FooterWrapper = styled.footer`
   min-height: 1rem;
   color: white;
   text-align: center;
-  background-color: ${theme.dark};
+  background-color: ${theme.sidebar};
 `;
 
 const Footer = () => {
