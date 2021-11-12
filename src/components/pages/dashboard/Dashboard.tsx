@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { CSSObject } from 'styled-components';
-import assignments from '../../mock-data/assignment';
-import comments from '../../mock-data/comment';
-import users from '../../mock-data/person';
-import todo from '../../mock-data/todo';
-import Content from '../global/Content';
-import Panel from '../global/Panel';
-import Footer from '../layout/Footer';
-import Layout from '../layout/Layout';
-import NavBar, { UserModal } from '../layout/NavBar';
-import SideBar from '../layout/SideBar';
+import assignments from '../../../mock-data/assignment';
+import comments from '../../../mock-data/comment';
+import users from '../../../mock-data/person';
+import todo from '../../../mock-data/todo';
+import Content from '../../global/Content';
+import Panel from '../../global/Panel';
+import Footer from '../../layout/Footer';
+import Layout from '../../layout/Layout';
+import NavBar, { UserModal } from '../../layout/NavBar';
+import SideBar from '../../layout/SideBar';
 
 const Dashboard = () => {
   const [showUserModal, setShowUserModal] = useState(false);

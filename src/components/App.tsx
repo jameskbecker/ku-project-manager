@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Global from './global/Global';
-import Dashboard from './pages/Dashboard';
-import Project from './pages/Project';
-import ProjectOverview from './pages/ProjectOverview';
-import Settings from './pages/Settings';
+import Dashboard from './pages/dashboard/Dashboard';
+import Project from './pages/project/Project';
+import ProjectOverview from './pages/project-overview/ProjectOverview';
+import Settings from './pages/settings/Settings';
 
 const App = () => {
   return (

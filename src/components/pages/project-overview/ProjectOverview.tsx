@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
-import Content from '../global/Content';
-import Panel from '../global/Panel';
-import Footer from '../layout/Footer';
-import Layout from '../layout/Layout';
-import NavBar, { UserModal } from '../layout/NavBar';
-import SideBar from '../layout/SideBar';
+import Content from '../../global/Content';
+import Panel from '../../global/Panel';
+import Footer from '../../layout/Footer';
+import Layout from '../../layout/Layout';
+import NavBar, { UserModal } from '../../layout/NavBar';
+import SideBar from '../../layout/SideBar';
 
 type Project = {
   id: string;
