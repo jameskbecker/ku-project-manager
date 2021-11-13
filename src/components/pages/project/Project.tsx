@@ -6,6 +6,7 @@ import Footer from '../../layout/Footer';
 import Layout from '../../layout/Layout';
 import NavBar, { UserModal } from '../../layout/NavBar';
 import SideBar from '../../layout/SideBar';
+import ControlBar from './ControlBar';
 
 type Project = {
   id: string;
@@ -43,6 +44,7 @@ const Project = () => {
   return (
     <Layout>
       <SideBar activePage="projects" />
+      <ControlBar />
       <NavBar
         back
         pageName={project ? project.name : ''}
