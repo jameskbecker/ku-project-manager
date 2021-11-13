@@ -74,7 +74,7 @@ const ProjectOverview = () => {
 
   return (
     <Layout>
-      <SideBar />
+      <SideBar activePage="projects" />
       <NavBar pageName="Projects" toggleUserModal={toggleUserModal} />
       <ControlBar />
       <Content

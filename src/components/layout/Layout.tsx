@@ -10,7 +10,7 @@ const Layout = styled.div`
     'navbar navbar'
     'control control'
     'content content'
-    'footer content';
+    'footer footer';
 
   /** Desktop  */
   @media screen and (min-width: 992px) {

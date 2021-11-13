@@ -1,4 +1,4 @@
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import styled from 'styled-components';
@@ -16,12 +16,10 @@ const ControlBar = () => {
   return (
     <ControlBarWrapper>
       <div>
-        <Button>
-          <FontAwesomeIcon icon={faPlus} color={theme.bg} />
-        </Button>
+        <Button icon={faPlus} color={theme.primary} />
       </div>
       <div>
-        <Button color={theme.error}>Clear Projects</Button>
+        <Button text="Delete All" color={theme.error} icon={faTimes} />
       </div>
     </ControlBarWrapper>
   );

@@ -11,33 +11,33 @@ import theme from '../../theme';
 
 const NavBarWrapper = styled.div`
   grid-area: navbar;
-  position: relative;
-  display: flex;
-  background-color: ${theme.bg};
-  color: ${theme.text};
-`;
-
-const Menu = styled.div`
-  position: absolute;
-  left: 0.5em;
-  height: 100%;
   display: flex;
   align-items: center;
+  background-color: ${theme.bg};
+  color: ${theme.text};
 
-  /** Desktop  */
-  @media screen and (min-width: 992px) {
-    display: none;
+  & > * {
+    margin: 0 1em;
   }
 `;
 
-const TitleBar = styled.div`
+const Menu = styled.div`
   height: 100%;
-
   display: flex;
   align-items: center;
+  font-size: 1.5rem;
 
-  margin: 0 0.25em;
+  /* * Desktop 
+  @media screen and (min-width: 992px) {
+    display: none;
+  } */
+`;
 
+const TitleBar = styled.div`
+  flex: 1 1;
+  display: flex;
+  align-items: center;
+  padding: 1em 0;
   h2 {
     flex: 1 1;
     color: ${theme.text};
@@ -45,21 +45,19 @@ const TitleBar = styled.div`
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    padding: 0;
   }
 `;
 
 /** @todo propably better solution than absolute positioning */
 const UserWrapper = styled.div`
   display: none;
-  position: absolute;
-  top: calc(50% - 1rem);
-  right: 0.5em;
-  height: 100%;
 
   font-size: 1rem;
   color: ${theme.text};
+
   text-align: right;
-  padding: 0.5em 1em;
+  padding: 1em 0;
 
   cursor: pointer;
 
@@ -131,14 +129,17 @@ const NavBar = ({ back, pageName, toggleUserModal }: NavBarProps) => {
 
   return (
     <NavBarWrapper>
-      <Menu>
-        <FontAwesomeIcon icon={faBars} />
-      </Menu>
+      {back && (
+        <Menu>
+          <FontAwesomeIcon
+            icon={faArrowLeft}
+            onClick={history.goBack}
+            color={theme.primary}
+          />
+        </Menu>
+      )}
 
       <TitleBar>
-        {back && (
-          <FontAwesomeIcon icon={faArrowLeft} onClick={history.goBack} />
-        )}
         <h2>{pageName}</h2>
       </TitleBar>
 
@@ -146,6 +147,10 @@ const NavBar = ({ back, pageName, toggleUserModal }: NavBarProps) => {
         <span>Welcome back, John!</span>
         <FontAwesomeIcon icon={faChevronDown} color={theme.primary} />
       </UserWrapper>
+
+      <Menu>
+        <FontAwesomeIcon icon={faBars} color={theme.primary} />
+      </Menu>
     </NavBarWrapper>
   );
 };

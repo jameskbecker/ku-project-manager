@@ -14,4 +14,5 @@ export default {
   heading: '#B2B2AA',
   text: '#E5E4DA',
   error: '#EB4E4E',
+  success: '#5CCC52',
 };

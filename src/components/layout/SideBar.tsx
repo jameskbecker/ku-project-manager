@@ -37,7 +37,7 @@ const LogoWrapper = styled.div`
   }
 `;
 
-const SideBarButton = styled(Link)`
+const SideBarButton = styled(Link)<any>`
   width: 100%;
 
   font-size: 0.875rem;
@@ -45,6 +45,8 @@ const SideBarButton = styled(Link)`
   padding: 1em 0.75em;
   opacity: 0.65;
   cursor: pointer;
+
+  font-weight: ${({ active }) => (active ? '600' : 'normal')};
 
   &:hover {
     transition: 0.25s ease-in-out;
@@ -56,21 +58,25 @@ const SideBarButton = styled(Link)`
   }
 `;
 
-const SideBar = () => {
+type SideBarProps = {
+  activePage: string;
+};
+
+const SideBar = ({ activePage }: SideBarProps) => {
   return (
     <SideBarWrapper>
       <LogoWrapper>
         <h1>KUPM</h1>
       </LogoWrapper>
-      <SideBarButton to="/">
+      <SideBarButton to="/" active={activePage === 'dashboard'}>
         <FontAwesomeIcon icon={faTachometerAlt} />
         Dashboard
       </SideBarButton>
-      <SideBarButton to="/projects">
+      <SideBarButton to="/projects" active={activePage === 'projects'}>
         <FontAwesomeIcon icon={faList} />
         Projects
       </SideBarButton>
-      <SideBarButton to="/settings">
+      <SideBarButton to="/settings" active={activePage === 'settings'}>
         <FontAwesomeIcon icon={faCogs} />
         Settings
       </SideBarButton>

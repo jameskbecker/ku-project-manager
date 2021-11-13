@@ -44,7 +44,7 @@ const Project = () => {
 
   return (
     <Layout>
-      <SideBar />
+      <SideBar activePage="projects" />
       <NavBar
         back
         pageName={'Project ' + id}

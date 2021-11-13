@@ -52,7 +52,7 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <SideBar />
+      <SideBar activePage="dashboard" />
       {/**@todo replace with context */}
       <NavBar pageName="Dashboard" toggleUserModal={toggleUserModal} />
       <Content onClick={() => setShowUserModal(false)}>

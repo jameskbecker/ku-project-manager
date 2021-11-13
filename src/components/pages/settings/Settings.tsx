@@ -14,7 +14,7 @@ const Settings = () => {
 
   return (
     <Layout>
-      <SideBar />
+      <SideBar activePage="settings" />
       {/**@todo replace with context */}
       <NavBar pageName="Settings" toggleUserModal={toggleUserModal} />
       <Content onClick={() => setShowUserModal(false)}>
