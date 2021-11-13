@@ -29,9 +29,7 @@ const Project = () => {
 
   const loadProjectData = async () => {
     try {
-      const resp = await window.fetch(
-        `https://my.api.mockaroo.com/projects/${id}?key=954b8130`
-      );
+      const resp = await window.fetch(`/api/projects/${id}`);
       const body = await resp.json();
       if (body.error) return;
       setProject(body);
@@ -47,7 +45,7 @@ const Project = () => {
       <SideBar activePage="projects" />
       <NavBar
         back
-        pageName={'Project ' + id}
+        pageName={project ? project.name : ''}
         toggleUserModal={toggleUserModal}
       />
       <Content onClick={() => setShowUserModal(false)}>

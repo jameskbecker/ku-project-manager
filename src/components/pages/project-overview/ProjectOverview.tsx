@@ -34,9 +34,7 @@ const ProjectOverview = () => {
 
   const loadProjectData = async () => {
     try {
-      const resp = await window.fetch(
-        'https://my.api.mockaroo.com/projects?key=954b8130'
-      );
+      const resp = await window.fetch('/api/projects');
       const body = await resp.json();
       if (body.error) return;
       setProjects(body);
