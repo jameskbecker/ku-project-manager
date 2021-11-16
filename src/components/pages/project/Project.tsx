@@ -55,7 +55,9 @@ const Project = () => {
           <Panel heading={project.name}>
             <div>{project.description}</div>
             <div>Status: {project.isComplete ? 'Complete!' : 'Incomplete'}</div>
-            <div>Created: {new Date(project.timeCreated).toLocaleString()}</div>
+            <div>
+              Created: {new Date(project.timeCreated * 1000).toLocaleString()}
+            </div>
           </Panel>
         )}
       </Content>

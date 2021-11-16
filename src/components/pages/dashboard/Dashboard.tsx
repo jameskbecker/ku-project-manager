@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import { CSSObject } from 'styled-components';
 import assignments from '../../../mock-data/assignment';
 import comments from '../../../mock-data/comment';
@@ -10,12 +13,31 @@ import Footer from '../../layout/Footer';
 import Layout from '../../layout/Layout';
 import NavBar, { UserModal } from '../../layout/NavBar';
 import SideBar from '../../layout/SideBar';
+import Project from '../project/Project';
 
 const Dashboard = () => {
+  const history = useHistory();
   const [showUserModal, setShowUserModal] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const toggleUserModal = () => {
     setShowUserModal(!showUserModal);
+  };
+
+  const [projects, setProjects] = useState<Project[]>();
+
+  useEffect(() => {
+    loadProjectData();
+  }, []);
+
+  const loadProjectData = async () => {
+    try {
+      const resp = await window.fetch('/api/projects');
+      const body = await resp.json();
+      if (body.error) return;
+      setProjects(body);
+      setIsLoaded(true);
+    } catch (e) {}
   };
 
   /** @todo consider react-window to support large amounts or data */
@@ -35,9 +57,18 @@ const Dashboard = () => {
     );
   });
 
-  const getUpcoming = assignments.map((a) => (
-    <Panel secondary heading={a.name} key={a.id}>
-      <div>{new Date(a.dueDate).toLocaleString()}</div>
+  const selectProjectHandler = (id: string) => {
+    history.push(`/projects/${id}`);
+  };
+
+  const getUpcoming = projects?.map((p) => (
+    <Panel
+      secondary
+      heading={p.name}
+      key={p.id}
+      onClick={() => selectProjectHandler(p.id)}
+    >
+      <div>{new Date(p.timeCreated).toLocaleString()}</div>
     </Panel>
   ));
 
@@ -61,7 +92,10 @@ const Dashboard = () => {
         <Panel heading="Todo" style={{ gridRow: 'span 2' }}>
           {getTodo}
         </Panel>
-        <Panel heading="Upcoming Projects">{getUpcoming}</Panel>
+
+        <Panel heading="Upcoming Projects">
+          {isLoaded ? getUpcoming : <FontAwesomeIcon icon={faSpinner} spin />}
+        </Panel>
         {/* Consider making calendar its own page to prevent long mobile page */}
         {/* <Panel heading="Calendar">_</Panel> */}
       </Content>

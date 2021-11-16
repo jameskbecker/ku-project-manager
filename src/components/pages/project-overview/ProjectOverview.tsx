@@ -58,7 +58,7 @@ const ProjectOverview = () => {
     >
       <div>{p.description}</div>
       <div>Status: {p.isComplete ? 'Complete!' : 'Incomplete'}</div>
-      <div>Created: {new Date(p.timeCreated).toLocaleString()}</div>
+      <div>Created: {new Date(p.timeCreated * 1000).toLocaleString()}</div>
     </Panel>
   ));
 
