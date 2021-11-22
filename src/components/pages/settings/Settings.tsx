@@ -17,10 +17,7 @@ const Settings = () => {
       <SideBar activePage="settings" />
       {/**@todo replace with context */}
       <NavBar pageName="Settings" toggleUserModal={toggleUserModal} />
-      <Content onClick={() => setShowUserModal(false)}>
-        {/* Consider making calendar its own page to prevent long mobile page */}
-        {/* <Panel heading="Calendar">_</Panel> */}
-      </Content>
+      <Content onClick={() => setShowUserModal(false)}></Content>
       <Footer />
       {showUserModal && <UserModal />}
     </Layout>

@@ -1,10 +1,4 @@
-type Comment = {
-  id: string;
-  details: string;
-  senderId: string;
-  receiverId: string;
-  sendTime: number;
-};
+import { Comment } from '../types';
 
 const data: Comment[] = [
   {

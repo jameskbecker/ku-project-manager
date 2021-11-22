@@ -1,10 +1,6 @@
-type Todo = {
-  id: string;
-  name: string;
-  assignmentId: string;
-};
+import { Task } from '../types';
 
-const data: Todo[] = [
+const data: Task[] = [
   {
     id: '0',
     name: 'Finish Proposal Draft',

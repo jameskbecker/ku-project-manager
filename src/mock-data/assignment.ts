@@ -1,10 +1,6 @@
-type Deadline = {
-  id: string;
-  name: string;
-  dueDate: number;
-};
+import { Assignment } from '../types';
 
-const data: Deadline[] = [
+const data: Assignment[] = [
   {
     id: '0',
     name: 'SDP Epic 1 Report',

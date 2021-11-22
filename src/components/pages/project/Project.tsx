@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { Project } from '../../../types';
 import Content from '../../global/Content';
 import Panel from '../../global/Panel';
 import Footer from '../../layout/Footer';
@@ -7,17 +8,7 @@ import Layout from '../../layout/Layout';
 import NavBar, { UserModal } from '../../layout/NavBar';
 import SideBar from '../../layout/SideBar';
 import ControlBar from './ControlBar';
-
-type Project = {
-  id: string;
-  name: string;
-  description: string;
-  isComplete: boolean;
-  priority: number;
-  timeCreated: number;
-  timeCompleted: number | null;
-  memberGroupId: string;
-};
+import ProjectPanel from './ProjectPanel';
 
 const Project = () => {
   const { id } = useParams<any>();
@@ -51,15 +42,7 @@ const Project = () => {
         toggleUserModal={toggleUserModal}
       />
       <Content onClick={() => setShowUserModal(false)}>
-        {project && (
-          <Panel heading={project.name}>
-            <div>{project.description}</div>
-            <div>Status: {project.isComplete ? 'Complete!' : 'Incomplete'}</div>
-            <div>
-              Created: {new Date(project.timeCreated * 1000).toLocaleString()}
-            </div>
-          </Panel>
-        )}
+        {project && ProjectPanel}
       </Content>
       <Footer />
       {showUserModal && <UserModal />}
