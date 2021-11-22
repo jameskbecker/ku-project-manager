@@ -1,10 +1,10 @@
 import React from 'react';
 import assignments from '../../../mock-data/assignment';
-import { Todo } from '../../../types';
+import { Task } from '../../../types';
 import Panel from '../../global/Panel';
 
 type TodoPanelProps = {
-  todo: Todo;
+  todo: Task;
 };
 
 const TodoPanel = ({ todo }: TodoPanelProps) => {

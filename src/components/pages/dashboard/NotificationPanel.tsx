@@ -1,6 +1,6 @@
 import React from 'react';
-import users from '../../../mock-data/person';
-import { Comment } from '../../../types';
+import users from '../../../mock-data/user';
+import { Comment, User } from '../../../types';
 import Panel from '../../global/Panel';
 
 type NotificationPanelProps = {
@@ -8,7 +8,7 @@ type NotificationPanelProps = {
 };
 
 const NotificationPanel = ({ comment }: NotificationPanelProps) => {
-  const [sender] = users.filter((u) => u.id === comment.senderId);
+  const [sender] = users.filter((u: User) => u.id === comment.senderId);
   return (
     <Panel
       secondary
