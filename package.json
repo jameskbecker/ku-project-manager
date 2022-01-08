@@ -6,7 +6,7 @@
   "author": "James Becker <48602730+jameskbecker@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "start": "npx webpack serve"
+    "start": "npx webpack serve --env=dev"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",

@@ -16,6 +16,8 @@ const NavBarWrapper = styled.div`
   background-color: ${theme.bg};
   color: ${theme.text};
 
+  border-bottom: 1px solid ${theme.sidebar};
+
   & > * {
     margin: 0 1em;
   }
@@ -27,10 +29,10 @@ const Menu = styled.div`
   align-items: center;
   font-size: 1.5rem;
 
-  /* * Desktop 
+  /* Desktop  */
   @media screen and (min-width: 992px) {
     display: none;
-  } */
+  }
 `;
 
 const TitleBar = styled.div`
@@ -38,6 +40,8 @@ const TitleBar = styled.div`
   display: flex;
   align-items: center;
   padding: 1em 0;
+
+  box-sizing: border-box;
   h2 {
     flex: 1 1;
     color: ${theme.text};
@@ -62,7 +66,7 @@ const UserWrapper = styled.div`
   cursor: pointer;
 
   & > :first-child {
-    opacity: 0.5;
+    opacity: 0.8;
     margin: 0 0.25em 0 0;
 
     &:hover {
@@ -85,7 +89,7 @@ const UserModalWrapper = styled.div`
   position: absolute;
   top: 10%;
   right: 1.5rem;
-  height: 200px;
+  height: auto;
   width: 300px;
 
   font-size: 1rem;
@@ -99,7 +103,7 @@ const UserModalWrapper = styled.div`
 
   box-shadow: 0 0 5px 1.5px black;
   div {
-    opacity: 0.8;
+    opacity: 0.9;
     width: 300px;
     padding: 0.5em 0;
     &:hover {
@@ -145,11 +149,11 @@ const NavBar = ({ back, pageName, toggleUserModal }: NavBarProps) => {
 
       <UserWrapper onClick={toggleUserModal}>
         <span>Welcome back, John!</span>
-        <FontAwesomeIcon icon={faChevronDown} color={theme.primary} />
+        <FontAwesomeIcon icon={faChevronDown} color={theme.text} />
       </UserWrapper>
 
       <Menu>
-        <FontAwesomeIcon icon={faBars} color={theme.primary} />
+        <FontAwesomeIcon icon={faBars} color={theme.text} />
       </Menu>
     </NavBarWrapper>
   );

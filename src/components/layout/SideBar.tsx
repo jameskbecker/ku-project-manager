@@ -32,22 +32,23 @@ const LogoWrapper = styled.div`
   margin: 1.75em;
   border-radius: 0.25em;
   h1 {
-    color: ${theme.bg};
+    color: ${theme.text};
     padding: 0;
   }
 `;
 
 const SideBarButton = styled(Link)<any>`
-  width: 100%;
-
   font-size: 0.875rem;
-  margin: 0.25em 0.5em;
-  padding: 1em 0.75em;
-  opacity: 0.65;
+  margin: 0.75em 0 0.75rem 1em;
+  padding: 0.75em 0.75em;
+  opacity: ${({ active }) => (active ? 1 : 0.65)};
   cursor: pointer;
 
   font-weight: ${({ active }) => (active ? '600' : 'normal')};
+  color: ${theme.bg} !important;
+  background-color: ${({ active }) => (active ? 'grey' : 'transparent')};
 
+  border-radius: 5px 0 0 5px;
   &:hover {
     transition: 0.25s ease-in-out;
     opacity: 1;

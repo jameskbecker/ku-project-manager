@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Global from './global/Global';
 import Dashboard from './pages/dashboard/Dashboard';
-import Project from './pages/project/Project';
 import ProjectOverview from './pages/project-overview/ProjectOverview';
+import Project from './pages/project/Project';
 import Settings from './pages/settings/Settings';
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Dashboard} />
-          <Route exact path="/projects" component={ProjectOverview} />
+          <Route exact path="/projects" component={ProjectOverview}></Route>
           <Route exact path="/projects/:id" component={Project} />
           <Route exact path="/settings" component={Settings} />
         </Switch>

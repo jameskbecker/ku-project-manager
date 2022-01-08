@@ -1,40 +1,33 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import theme from '../../theme';
+import { FlexColumn } from './Flex';
 
 type PanelProps = {
-  heading: String;
+  heading?: String;
   children: React.ReactNode;
   secondary?: boolean;
   style?: React.CSSProperties;
   onClick?: React.MouseEventHandler<HTMLDivElement> | undefined;
 };
 
-const PanelWrapper = styled.div<PanelProps>`
-  margin: 1em;
+const PanelWrapper = styled(FlexColumn)<PanelProps>`
   padding: 1em;
   border-radius: 0.5em;
-  background: linear-gradient(
-    45deg,
-    ${({ secondary }) => (secondary ? theme.secondaryA : theme.primaryA)} 0%,
-    ${({ secondary }) => (secondary ? theme.secondaryB : theme.primaryB)} 100%
-  );
+  background-color: ${({ secondary }) =>
+    secondary ? theme.secondaryA : theme.primaryA};
 
   cursor: ${({ onClick }) => (onClick ? 'pointer' : 'default')};
   overflow: auto;
 
-  ${({ onClick }) =>
+  ${({ onClick, secondary }) =>
     onClick &&
-    `
-    :hover {
-      transform: scale(1.02);
-      transition: 0.25s ease-in-out;
-    }
-  `}
-
-  & > * {
-    margin: 0.5em 0;
-  }
+    css`
+      :hover {
+        background-color: ${!secondary ? theme.secondaryA : theme.primaryA};
+        transition: 0.5s ease-in-out;
+      }
+    `}
 
   div {
     font-size: 0.8rem;
@@ -48,7 +41,7 @@ const PanelWrapper = styled.div<PanelProps>`
 const Panel = (props: PanelProps) => {
   return (
     <PanelWrapper {...props}>
-      <h3>{props.heading}</h3>
+      {props.heading && <h3>{props.heading}</h3>}
       {props.children}
     </PanelWrapper>
   );

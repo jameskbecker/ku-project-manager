@@ -21,7 +21,9 @@ const Project = () => {
 
   const loadProjectData = async () => {
     try {
-      const resp = await window.fetch(`/api/projects/${id}`);
+      const resp = await window.fetch(
+        `https://kupm-api.herokuapp.com/api/projects/${id}`
+      );
       const body = await resp.json();
       if (body.error) return;
       setProject(body);

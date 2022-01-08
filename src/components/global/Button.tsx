@@ -4,26 +4,33 @@ import {
   FontAwesomeIconProps,
 } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import theme from '../../theme';
 
 type ButtonProps = {
   color?: string;
   text?: string;
+  light?: boolean;
   icon?: IconProp;
+  onClick?: any;
+  round?: boolean;
 };
 
 const ButtonWrapper = styled.button<ButtonProps>`
-  color: ${theme.bg};
-  background-color: ${({ color }) => (color ? color : theme.primary)};
-  padding: 1em 1.25em;
-  margin: 0.25em 0.5em;
-  border-radius: 10em;
+  min-width: 100px;
   height: auto;
+
   font-weight: 600;
+  color: ${theme.text};
+  background-color: ${({ color }) => (color ? color : theme.primary)};
+  padding: 0.75em 1.25em;
+  margin: 0.25em 0.5em;
+  border: 1.5px solid ${({ color }) => (color ? color : theme.primary)};
+  border-radius: ${({ round }) => (round ? '10rem' : '0.5rem')};
+  box-shadow: 1px 1px 3px 0 #00000030;
+
   cursor: pointer;
   -webkit-appearance: none;
-  border: none;
   opacity: 0.8;
 
   :hover {
@@ -34,12 +41,20 @@ const ButtonWrapper = styled.button<ButtonProps>`
   & > :nth-child(2) {
     margin: 0 0 0 0.5em;
   }
+
+  ${({ light }) =>
+    light &&
+    css`
+      background-color: transparent;
+      border-color: ${({ color }: any) => (color ? color : theme.primary)};
+      /* color: ${({ color }: any) => (color ? color : theme.primary)}; */
+    `}
 `;
 
 const Button = (props: ButtonProps) => {
   return (
     <ButtonWrapper {...props}>
-      {props.icon && <FontAwesomeIcon icon={props.icon} color={theme.bg} />}
+      {props.icon && <FontAwesomeIcon icon={props.icon} />}
       {props.text && <span>{props.text}</span>}
     </ButtonWrapper>
   );

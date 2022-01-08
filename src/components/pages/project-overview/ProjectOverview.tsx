@@ -1,8 +1,15 @@
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBox,
+  faPencilAlt,
+  faSpinner,
+  faSquare,
+  faTrash,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from 'react';
+import React, { MouseEventHandler, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
+import { FlexColumn, FlexRow } from '../../global/Flex';
 import Panel from '../../global/Panel';
 import Footer from '../../layout/Footer';
 import Layout from '../../layout/Layout';
@@ -10,6 +17,8 @@ import NavBar, { UserModal } from '../../layout/NavBar';
 import SideBar from '../../layout/SideBar';
 import Content from './Content';
 import ControlBar from './ControlBar';
+import NewProjectModal from './NewProjectModal';
+import ProjectTableRow from './ProjectTableRow';
 
 type Project = {
   id: string;
@@ -24,9 +33,9 @@ type Project = {
 
 const ProjectOverview = () => {
   const [showUserModal, setShowUserModal] = useState(false);
+  const [showNewProjectModal, setShowNewProjectModal] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [projects, setProjects] = useState<Project[]>([]);
-  const history = useHistory();
 
   useEffect(() => {
     loadProjectData();
@@ -34,59 +43,71 @@ const ProjectOverview = () => {
 
   const loadProjectData = async () => {
     try {
-      const resp = await window.fetch('/api/projects');
+      const resp = await window.fetch(
+        '/local/api/projects'
+        // 'https://kupm-api.herokuapp.com/api/projects'
+      );
       const body = await resp.json();
-      if (body.error) return;
       setProjects(body);
       setIsLoaded(true);
-    } catch (e) {}
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const toggleUserModal = () => {
     setShowUserModal(!showUserModal);
   };
 
-  const selectProjectHandler = (id: string) => {
-    history.push(`/projects/${id}`);
+  const toggleNewProjectModal = (e: MouseEvent) => {
+    setShowNewProjectModal(!showNewProjectModal);
   };
 
-  const getProjects = projects.map((p) => (
-    <Panel
-      heading={p.name}
-      key={p.id}
-      onClick={() => selectProjectHandler(p.id)}
-    >
-      <div>{p.description}</div>
-      <div>Status: {p.isComplete ? 'Complete!' : 'Incomplete'}</div>
-      <div>Created: {new Date(p.timeCreated * 1000).toLocaleString()}</div>
-    </Panel>
+  const getProjects = projects.map((p, i) => (
+    <ProjectTableRow key={i} project={p} loadProjectData={loadProjectData} />
   ));
-
-  const GridWrapper = styled.div`
-    display: grid;
-    grid-template-columns: repeat(2, 50%);
-    grid-auto-rows: 25vh;
-    height: auto;
-    overflow: auto;
-  `;
 
   return (
     <Layout>
       <SideBar activePage="projects" />
       <NavBar pageName="Projects" toggleUserModal={toggleUserModal} />
-      <ControlBar />
+      <ControlBar toggleModal={toggleNewProjectModal} />
       <Content
         onClick={() => setShowUserModal(false)}
-        style={{ display: 'block', overflow: 'auto' }}
+        style={{ margin: '0 1rem' }}
       >
-        {isLoaded ? (
-          <GridWrapper>{getProjects}</GridWrapper>
-        ) : (
-          <FontAwesomeIcon icon={faSpinner} spin />
-        )}
+        <FlexColumn style={{ justifyContent: 'flex-start' }}>
+          <FlexRow
+            style={{
+              flex: '0 1 auto',
+              padding: '1rem',
+              justifyContent: 'flex-start',
+            }}
+          >
+            <div>
+              <FontAwesomeIcon icon={faSquare} />
+            </div>
+            <div>Name</div>
+            <div>Description</div>
+            <div>Status</div>
+            <div>Date Created</div>
+            <div>Actions</div>
+          </FlexRow>
+          {isLoaded ? (
+            <FlexColumn>{getProjects}</FlexColumn>
+          ) : (
+            <FontAwesomeIcon style={{ flex: '1 1' }} icon={faSpinner} spin />
+          )}
+        </FlexColumn>
       </Content>
       <Footer />
       {showUserModal && <UserModal />}
+      {showNewProjectModal && (
+        <NewProjectModal
+          toggleModal={toggleNewProjectModal}
+          loadProjectData={loadProjectData}
+        />
+      )}
     </Layout>
   );
 };
