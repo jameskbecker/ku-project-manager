@@ -9,9 +9,9 @@ export const FlexRow = styled(Flex)`
   flex-direction: row;
   align-items: center;
 
-  & > * {
+  /* & > * {
     flex: 1 1;
-  }
+  } */
 `;
 
 export const FlexColumn = styled(Flex)`

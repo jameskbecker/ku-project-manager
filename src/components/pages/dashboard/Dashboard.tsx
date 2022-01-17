@@ -28,7 +28,8 @@ const Dashboard = () => {
   const loadProjectData = async () => {
     try {
       const resp = await window.fetch(
-        'https://kupm-api.herokuapp.com/api/projects'
+        '/local/api/projects'
+        //'https://kupm-api.herokuapp.com/api/projects'
       );
       const body = await resp.json();
       if (body.error) return;

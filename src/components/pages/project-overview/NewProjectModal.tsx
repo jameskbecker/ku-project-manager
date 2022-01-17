@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { toggleNewProject } from '../../../store/projects';
 import theme from '../../../theme';
 import Button from '../../global/Button';
 import Input from '../../global/Input';
@@ -18,10 +20,15 @@ const Wrapper = styled.div`
   z-index: 10;
 `;
 
-const NewProjectModal = ({ toggleModal, loadProjectData }: any) => {
+const NewProjectModal = ({ loadProjectData }: any) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [priority, setPriority] = useState('0');
+  const dispatch = useDispatch();
+
+  const handleCancel = () => {
+    dispatch(toggleNewProject());
+  };
 
   const handleSave = async () => {
     try {
@@ -38,7 +45,7 @@ const NewProjectModal = ({ toggleModal, loadProjectData }: any) => {
       );
       const body = await resp.json();
       loadProjectData();
-      toggleModal();
+      dispatch(toggleNewProject());
     } catch (e) {
       console.error(e);
     }
@@ -64,7 +71,7 @@ const NewProjectModal = ({ toggleModal, loadProjectData }: any) => {
           value={priority}
           onChange={(e: any) => setPriority(e.target.value)}
         />
-        <Button light text="Cancel" onClick={toggleModal}></Button>
+        <Button light text="Cancel" onClick={handleCancel}></Button>
         <Button round text="Save" onClick={handleSave} />
       </Panel>
     </Wrapper>

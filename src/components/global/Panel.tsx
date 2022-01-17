@@ -12,6 +12,8 @@ type PanelProps = {
 };
 
 const PanelWrapper = styled(FlexColumn)<PanelProps>`
+  flex: 1 0 auto !important;
+
   padding: 1em;
   border-radius: 0.5em;
   background-color: ${({ secondary }) =>

@@ -42,12 +42,17 @@ const ButtonWrapper = styled.button<ButtonProps>`
     margin: 0 0 0 0.5em;
   }
 
-  ${({ light }) =>
+  ${({ light, color }) =>
     light &&
     css`
       background-color: transparent;
-      border-color: ${({ color }: any) => (color ? color : theme.primary)};
-      /* color: ${({ color }: any) => (color ? color : theme.primary)}; */
+      border-color: ${color ? color : theme.primary};
+      color: ${color ? color : theme.primary};
+
+      :hover {
+        background-color: ${color ? color : theme.primary};
+        color: white;
+      }
     `}
 `;
 

@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { MouseEventHandler, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import { FlexColumn, FlexRow } from '../../global/Flex';
@@ -31,11 +32,29 @@ type Project = {
   memberGroupId: string;
 };
 
+const TableHeader = styled(FlexRow)`
+  display: none;
+  flex: 0 1 auto;
+  padding: 1rem;
+  font-weight: 600;
+  justify-content: flex-start;
+
+  & > * {
+    flex: 1 1;
+  }
+
+  @media screen and (min-width: 600px) {
+    display: flex;
+  }
+`;
+
 const ProjectOverview = () => {
   const [showUserModal, setShowUserModal] = useState(false);
   const [showNewProjectModal, setShowNewProjectModal] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [projects, setProjects] = useState<Project[]>([]);
+  const { showNewProject } = useSelector((state: any) => state.projects);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     loadProjectData();
@@ -64,35 +83,35 @@ const ProjectOverview = () => {
   };
 
   const getProjects = projects.map((p, i) => (
-    <ProjectTableRow key={i} project={p} loadProjectData={loadProjectData} />
+    <ProjectTableRow
+      key={i}
+      project={p}
+      loadProjectData={loadProjectData}
+      toggleNewProjectModal={toggleNewProjectModal}
+    />
   ));
 
   return (
     <Layout>
       <SideBar activePage="projects" />
       <NavBar pageName="Projects" toggleUserModal={toggleUserModal} />
-      <ControlBar toggleModal={toggleNewProjectModal} />
+      <ControlBar />
       <Content
         onClick={() => setShowUserModal(false)}
         style={{ margin: '0 1rem' }}
       >
         <FlexColumn style={{ justifyContent: 'flex-start' }}>
-          <FlexRow
-            style={{
-              flex: '0 1 auto',
-              padding: '1rem',
-              justifyContent: 'flex-start',
-            }}
-          >
-            <div>
+          <TableHeader>
+            {/* <div>
               <FontAwesomeIcon icon={faSquare} />
-            </div>
+            </div> */}
+            <div>Priority</div>
             <div>Name</div>
             <div>Description</div>
             <div>Status</div>
             <div>Date Created</div>
             <div>Actions</div>
-          </FlexRow>
+          </TableHeader>
           {isLoaded ? (
             <FlexColumn>{getProjects}</FlexColumn>
           ) : (
@@ -102,12 +121,7 @@ const ProjectOverview = () => {
       </Content>
       <Footer />
       {showUserModal && <UserModal />}
-      {showNewProjectModal && (
-        <NewProjectModal
-          toggleModal={toggleNewProjectModal}
-          loadProjectData={loadProjectData}
-        />
-      )}
+      {showNewProject && <NewProjectModal loadProjectData={loadProjectData} />}
     </Layout>
   );
 };
