@@ -12,14 +12,20 @@ import Panel from '../../global/Panel';
 
 const Wrapper = styled.div`
   position: absolute;
+
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
+
   background-color: #000000c5;
   z-index: 10;
+
+  & > * {
+    flex: 0 1 auto;
+  }
 `;
 
 const NewProjectModal = () => {
@@ -56,7 +62,7 @@ const NewProjectModal = () => {
 
   return (
     <Wrapper>
-      <Panel secondary style={{ zIndex: 11, opacity: 1, width: '300px' }}>
+      <Panel secondary style={{ flex: '0 1 auto', opacity: 1, width: '300px' }}>
         <h2>{selectedData ? 'Edit' : 'New'} Project</h2>
         <TextInput
           label="Name"

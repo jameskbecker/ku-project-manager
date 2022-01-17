@@ -12,7 +12,7 @@ type PanelProps = {
 };
 
 const PanelWrapper = styled(FlexColumn)<PanelProps>`
-  flex: 1 0 auto !important;
+  flex: 1 0 auto;
 
   padding: 1em;
   border-radius: 0.5em;
