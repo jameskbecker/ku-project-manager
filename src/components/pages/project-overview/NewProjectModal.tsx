@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { toggleNewProject } from '../../../store/projects';
-import theme from '../../../theme';
+import {
+  fetchAllProjects,
+  saveProject,
+  toggleNewProject,
+} from '../../../store/projects';
 import Button from '../../global/Button';
-import Input from '../../global/Input';
 import TextInput from '../../global/input/TextInput';
 import Panel from '../../global/Panel';
 
@@ -20,10 +22,17 @@ const Wrapper = styled.div`
   z-index: 10;
 `;
 
-const NewProjectModal = ({ loadProjectData }: any) => {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [priority, setPriority] = useState('0');
+const NewProjectModal = () => {
+  const { data, selectedProject } = useSelector((state: any) => state.projects);
+  const selectedData = data.find((d: any) => d.id === selectedProject);
+
+  const [name, setName] = useState(selectedData?.name || '');
+  const [description, setDescription] = useState(
+    selectedData?.description || ''
+  );
+
+  const [priority, setPriority] = useState(selectedData?.priority || '0');
+
   const dispatch = useDispatch();
 
   const handleCancel = () => {
@@ -32,19 +41,13 @@ const NewProjectModal = ({ loadProjectData }: any) => {
 
   const handleSave = async () => {
     try {
-      const payload = { name, description, priority };
-      console.log(payload);
-      const resp = await window.fetch(
-        '/local/api/projects',
-        // 'https://kupm-api.herokuapp.com/api/projects',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        }
-      );
-      const body = await resp.json();
-      loadProjectData();
+      const payload: any = { name, description, priority };
+      if (selectedProject) {
+        payload.id = selectedProject;
+      }
+      dispatch(saveProject(payload));
+
+      dispatch(fetchAllProjects());
       dispatch(toggleNewProject());
     } catch (e) {
       console.error(e);
@@ -54,7 +57,7 @@ const NewProjectModal = ({ loadProjectData }: any) => {
   return (
     <Wrapper>
       <Panel secondary style={{ zIndex: 11, opacity: 1, width: '300px' }}>
-        <h2>New Project</h2>
+        <h2>{selectedData ? 'Edit' : 'New'} Project</h2>
         <TextInput
           label="Name"
           value={name}

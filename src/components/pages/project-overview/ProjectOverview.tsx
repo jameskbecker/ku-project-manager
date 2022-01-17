@@ -1,17 +1,10 @@
-import {
-  faBox,
-  faPencilAlt,
-  faSpinner,
-  faSquare,
-  faTrash,
-} from '@fortawesome/free-solid-svg-icons';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { MouseEventHandler, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
 import styled from 'styled-components';
+import { fetchAllProjects } from '../../../store/projects';
 import { FlexColumn, FlexRow } from '../../global/Flex';
-import Panel from '../../global/Panel';
 import Footer from '../../layout/Footer';
 import Layout from '../../layout/Layout';
 import NavBar, { UserModal } from '../../layout/NavBar';
@@ -51,28 +44,16 @@ const TableHeader = styled(FlexRow)`
 const ProjectOverview = () => {
   const [showUserModal, setShowUserModal] = useState(false);
   const [showNewProjectModal, setShowNewProjectModal] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
+  // const [isLoaded, setIsLoaded] = useState(false);
   const [projects, setProjects] = useState<Project[]>([]);
-  const { showNewProject } = useSelector((state: any) => state.projects);
+  const { showNewProject, isLoading, data } = useSelector(
+    (state: any) => state.projects
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
-    loadProjectData();
+    dispatch(fetchAllProjects());
   }, []);
-
-  const loadProjectData = async () => {
-    try {
-      const resp = await window.fetch(
-        '/local/api/projects'
-        // 'https://kupm-api.herokuapp.com/api/projects'
-      );
-      const body = await resp.json();
-      setProjects(body);
-      setIsLoaded(true);
-    } catch (e) {
-      console.error(e);
-    }
-  };
 
   const toggleUserModal = () => {
     setShowUserModal(!showUserModal);
@@ -82,11 +63,10 @@ const ProjectOverview = () => {
     setShowNewProjectModal(!showNewProjectModal);
   };
 
-  const getProjects = projects.map((p, i) => (
+  const getProjects = data.map((p: any, i: number) => (
     <ProjectTableRow
       key={i}
       project={p}
-      loadProjectData={loadProjectData}
       toggleNewProjectModal={toggleNewProjectModal}
     />
   ));
@@ -112,7 +92,7 @@ const ProjectOverview = () => {
             <div>Date Created</div>
             <div>Actions</div>
           </TableHeader>
-          {isLoaded ? (
+          {isLoading === false ? (
             <FlexColumn>{getProjects}</FlexColumn>
           ) : (
             <FontAwesomeIcon style={{ flex: '1 1' }} icon={faSpinner} spin />
@@ -121,7 +101,7 @@ const ProjectOverview = () => {
       </Content>
       <Footer />
       {showUserModal && <UserModal />}
-      {showNewProject && <NewProjectModal loadProjectData={loadProjectData} />}
+      {showNewProject && <NewProjectModal />}
     </Layout>
   );
 };

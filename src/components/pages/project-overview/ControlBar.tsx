@@ -1,9 +1,8 @@
 import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { toggleNewProject } from '../../../store/projects';
+import { selectProject, toggleNewProject } from '../../../store/projects';
 import theme from '../../../theme';
 import Button from '../../global/Button';
 
@@ -22,6 +21,7 @@ const ControlBar = () => {
   const dispatch = useDispatch();
 
   const handleNewProject = () => {
+    dispatch(selectProject(''));
     dispatch(toggleNewProject());
   };
 

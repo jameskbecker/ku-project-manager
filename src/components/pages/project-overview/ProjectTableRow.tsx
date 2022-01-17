@@ -8,7 +8,12 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { toggleNewProject } from '../../../store/projects';
+import {
+  deleteProject,
+  fetchAllProjects,
+  selectProject,
+  toggleNewProject,
+} from '../../../store/projects';
 import { FlexRow } from '../../global/Flex';
 import Panel from '../../global/Panel';
 
@@ -22,7 +27,7 @@ const Wrapper = styled(Panel)`
   }
 `;
 
-const ProjectTableRow = ({ project, loadProjectData }: any) => {
+const ProjectTableRow = ({ project }: any) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -32,23 +37,15 @@ const ProjectTableRow = ({ project, loadProjectData }: any) => {
 
   const handleEdit = (e: any) => {
     e.stopPropagation();
+    dispatch(selectProject(project.id));
     dispatch(toggleNewProject());
   };
 
   const handleDelete = async (e: any) => {
     e.stopPropagation();
-
-    try {
-      const resp = await window.fetch(
-        `/local/api/projects/${project.id}`,
-        // 'https://kupm-api.herokuapp.com/api/projects'
-        { method: 'DELETE' }
-      );
-      const body = await resp.json();
-      loadProjectData();
-    } catch (e) {
-      console.error(e);
-    }
+    console.log(project.id);
+    dispatch(deleteProject({ id: project.id }));
+    dispatch(fetchAllProjects());
   };
 
   return (
