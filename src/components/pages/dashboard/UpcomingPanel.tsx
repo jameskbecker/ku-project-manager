@@ -17,7 +17,7 @@ const UpcomingPanel = ({
     key={project.id}
     onClick={() => selectProjectHandler(project.id)}
   >
-    <div>{new Date(project.timeCreated * 1000).toLocaleString()}</div>
+    <div>{new Date(project.createdAt * 1000).toLocaleString()}</div>
   </Panel>
 );
 

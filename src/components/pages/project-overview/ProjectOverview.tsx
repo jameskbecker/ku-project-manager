@@ -20,8 +20,8 @@ type Project = {
   description: string;
   isComplete: boolean;
   priority: number;
-  timeCreated: number;
-  timeCompleted: number | null;
+  createdAt: number;
+  completedAt: number | null;
   memberGroupId: string;
 };
 

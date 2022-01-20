@@ -57,7 +57,7 @@ const ProjectTableRow = ({ project }: any) => {
       <div>{project.name}</div>
       <div>{project.description}</div>
       <div>{project.isComplete ? 'Complete!' : 'Incomplete'}</div>
-      <div>{new Date(project.timeCreated * 1000).toLocaleString()}</div>
+      <div>{new Date(project.createdAt * 1000).toLocaleString()}</div>
       <FlexRow style={{ justifyContent: 'flex-start' }}>
         <FontAwesomeIcon icon={faPencilAlt} onClick={handleEdit} />
         <FontAwesomeIcon icon={faTrash} onClick={handleDelete} />

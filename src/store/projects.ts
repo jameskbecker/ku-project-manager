@@ -69,9 +69,9 @@ export const projectsSlice = createSlice({
       console.log('Fetched Projects!', payload);
 
       // Avoid unneccesary rerenders
-      if (state.data === payload) return;
+      if (state.data === payload.data) return;
 
-      state.data = payload;
+      state.data = payload.data;
       state.isLoading = false;
     });
 
