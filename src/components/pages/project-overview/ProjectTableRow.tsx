@@ -14,6 +14,7 @@ import {
   selectProject,
   toggleNewProject,
 } from '../../../store/projects';
+import theme from '../../../theme';
 import { FlexRow } from '../../global/Flex';
 import Panel from '../../global/Panel';
 
@@ -21,6 +22,8 @@ const Wrapper = styled(Panel)`
   & > * {
     flex: 1 1;
   }
+
+  color: ${theme.textBody};
 
   @media screen and (min-width: 600px) {
     flex-direction: row;

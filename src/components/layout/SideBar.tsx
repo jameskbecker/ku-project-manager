@@ -27,12 +27,12 @@ const LogoWrapper = styled.div`
   align-items: center;
   height: 10vh;
 
-  background-color: ${theme.primary};
+  background-color: ${theme.brand};
 
   margin: 1.75em;
   border-radius: 0.25em;
   h1 {
-    color: ${theme.text};
+    color: ${theme.textBrand};
     padding: 0;
   }
 `;
@@ -45,7 +45,7 @@ const SideBarButton = styled(Link)<any>`
   cursor: pointer;
 
   font-weight: ${({ active }) => (active ? '600' : 'normal')};
-  color: ${theme.bg} !important;
+  color: ${theme.text} !important;
   background-color: ${({ active }) => (active ? 'grey' : 'transparent')};
 
   border-radius: 5px 0 0 5px;

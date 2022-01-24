@@ -12,9 +12,11 @@ const ControlBarWrapper = styled.div`
 
   align-items: center;
   grid-area: control;
+
+  background-color: ${theme.control};
   padding: 1em;
 
-  border-bottom: 1px solid ${theme.sidebar};
+  /* border-bottom: 1px solid ${theme.sidebar}; */
 `;
 
 const ControlBar = () => {
@@ -31,13 +33,17 @@ const ControlBar = () => {
         <Button
           icon={faPlus}
           text="New Project"
-          color={theme.primary}
           onClick={handleNewProject}
           round
         />
       </div>
       <div>
-        <Button light text="Delete All" color={theme.error} icon={faTimes} />
+        <Button
+          light
+          text="Delete All Projects"
+          color={theme.error}
+          icon={faTimes}
+        />
       </div>
     </ControlBarWrapper>
   );

@@ -21,11 +21,11 @@ const ButtonWrapper = styled.button<ButtonProps>`
   height: auto;
 
   font-weight: 600;
-  color: ${theme.text};
-  background-color: ${({ color }) => (color ? color : theme.primary)};
+  color: ${theme.textButton};
+  background-color: ${({ color }) => (color ? color : theme.accent)};
   padding: 0.75em 1.25em;
-  margin: 0.25em 0.5em;
-  border: 1.5px solid ${({ color }) => (color ? color : theme.primary)};
+  /* margin: 0.25em 0.5em; */
+  border: 1.5px solid ${({ color }) => (color ? color : theme.accent)};
   border-radius: ${({ round }) => (round ? '10rem' : '0.5rem')};
   box-shadow: 1px 1px 3px 0 #00000030;
 
@@ -46,12 +46,12 @@ const ButtonWrapper = styled.button<ButtonProps>`
     light &&
     css`
       background-color: transparent;
-      border-color: ${color ? color : theme.primary};
-      color: ${color ? color : theme.primary};
+      border-color: ${color ? color : theme.accent};
+      color: ${color ? color : theme.accent};
 
       :hover {
-        background-color: ${color ? color : theme.primary};
-        color: white;
+        background-color: ${color ? color : theme.accent};
+        color: ${theme.textButton};
       }
     `}
 `;

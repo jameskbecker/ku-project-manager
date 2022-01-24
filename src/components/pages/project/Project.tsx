@@ -22,12 +22,16 @@ const Project = () => {
   const loadProjectData = async () => {
     try {
       const resp = await window.fetch(
-        `https://kupm-api.herokuapp.com/api/projects/${id}`
+        `/local/api/projects/${id}`
+        //`https://kupm-api.herokuapp.com/api/projects/${id}`
       );
       const body = await resp.json();
+      console.log(body);
       if (body.error) return;
-      setProject(body);
-    } catch (e) {}
+      setProject(body.data);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const toggleUserModal = () => {
@@ -44,7 +48,7 @@ const Project = () => {
         toggleUserModal={toggleUserModal}
       />
       <Content onClick={() => setShowUserModal(false)}>
-        {project && ProjectPanel}
+        {/* {project && ProjectPanel} */}
       </Content>
       <Footer />
       {showUserModal && <UserModal />}

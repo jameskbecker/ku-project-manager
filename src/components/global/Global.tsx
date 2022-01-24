@@ -34,7 +34,7 @@ const Global = createGlobalStyle`
   body {
     background-color: ${theme.bg};
     height: 100%;
-    font-family:  sans-serif;
+    font-family: "poppins", sans-serif;
     color: ${theme.text};
 
   }

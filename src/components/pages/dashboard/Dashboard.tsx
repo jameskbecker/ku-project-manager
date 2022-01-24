@@ -33,7 +33,7 @@ const Dashboard = () => {
       );
       const body = await resp.json();
       if (body.error) return;
-      setProjects(body);
+      setProjects(body.data);
       setIsLoaded(true);
     } catch (e) {}
   };

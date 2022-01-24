@@ -40,10 +40,7 @@ const ProjectOverview = () => {
       <SideBar activePage="projects" />
       <NavBar pageName="Projects" toggleUserModal={toggleUserModal} />
       <ControlBar />
-      <Content
-        onClick={() => setShowUserModal(false)}
-        style={{ margin: '0 1rem' }}
-      >
+      <Content onClick={() => setShowUserModal(false)}>
         <ProjectTable />
       </Content>
       <Footer />

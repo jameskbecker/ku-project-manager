@@ -13,10 +13,11 @@ const NavBarWrapper = styled.div`
   grid-area: navbar;
   display: flex;
   align-items: center;
-  background-color: ${theme.bg};
+
+  background-color: ${theme.titlebar};
   color: ${theme.text};
 
-  border-bottom: 1px solid ${theme.sidebar};
+  /* border-bottom: 1px solid ${theme.sidebar}; */
 
   & > * {
     margin: 0 1em;
@@ -44,6 +45,7 @@ const TitleBar = styled.div`
   box-sizing: border-box;
   h2 {
     flex: 1 1;
+    font-weight: 600;
     color: ${theme.text};
 
     text-overflow: ellipsis;
