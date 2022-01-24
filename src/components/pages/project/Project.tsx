@@ -4,7 +4,7 @@ import { Project } from '../../../types';
 import Panel from '../../global/Panel';
 import Footer from '../../layout/Footer';
 import Layout from '../../layout/Layout';
-import NavBar, { UserModal } from '../../layout/NavBar';
+import NavBar, { UserModal } from '../../layout/HeaderBar';
 import SideBar from '../../layout/SideBar';
 import Content from './Content';
 import ControlBar from './ControlBar';

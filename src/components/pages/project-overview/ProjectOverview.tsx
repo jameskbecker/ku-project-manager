@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllProjects } from '../../../store/projects';
 import Footer from '../../layout/Footer';
 import Layout from '../../layout/Layout';
-import NavBar, { UserModal } from '../../layout/NavBar';
+import NavBar, { UserModal } from '../../layout/HeaderBar';
 import SideBar from '../../layout/SideBar';
 import Content from './Content';
 import ControlBar from './ControlBar';
