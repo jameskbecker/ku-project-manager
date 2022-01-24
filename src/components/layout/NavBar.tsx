@@ -2,6 +2,7 @@ import {
   faArrowLeft,
   faBars,
   faChevronDown,
+  faChevronLeft,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
@@ -136,13 +137,12 @@ const NavBar = ({ back, pageName, toggleUserModal }: NavBarProps) => {
   return (
     <NavBarWrapper>
       {back && (
-        <Menu>
-          <FontAwesomeIcon
-            icon={faArrowLeft}
-            onClick={history.goBack}
-            color={theme.primary}
-          />
-        </Menu>
+        <FontAwesomeIcon
+          icon={faChevronLeft}
+          onClick={history.goBack}
+          color={theme.text}
+          style={{ cursor: 'pointer' }}
+        />
       )}
 
       <TitleBar>

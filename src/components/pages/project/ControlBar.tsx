@@ -4,6 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import theme from '../../../theme';
 import Button from '../../global/Button';
+import { FlexRow } from '../../global/Flex';
 
 const ControlBarWrapper = styled.div`
   display: flex;
@@ -19,18 +20,24 @@ const ControlBarWrapper = styled.div`
 const ControlBar = () => {
   return (
     <ControlBarWrapper>
-      <div>
+      <FlexRow>
+        <Button icon={faPlus} text="Add Task" onClick={null} round />
         <Button
           icon={faPlus}
-          text="Add Task"
-          color={theme.primary}
+          text="Invite Members"
           onClick={null}
           round
+          light
         />
-      </div>
-      <div>
-        <Button light text="Delete All" color={theme.error} icon={faTimes} />
-      </div>
+      </FlexRow>
+      <FlexRow>
+        <Button
+          light
+          text="Delete All Tasks"
+          color={theme.error}
+          icon={faTimes}
+        />
+      </FlexRow>
     </ControlBarWrapper>
   );
 };
