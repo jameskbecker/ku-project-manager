@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import configureStore from '../store/configureStore';
 import Global from './global/Global';
 import Dashboard from './pages/dashboard/Dashboard';
-import ProjectOverview from './pages/projects/ProjectOverview';
+import ProjectOverview from './pages/projects/Projects';
 import Project from './pages/tasks/Tasks';
 import Settings from './pages/settings/Settings';
 
