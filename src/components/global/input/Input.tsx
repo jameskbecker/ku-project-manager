@@ -2,6 +2,7 @@ import { FlexColumn } from '../Flex';
 import React from 'react';
 import styled from 'styled-components';
 import TextInput from './TextInput';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import NumberInput from './NumberInput';
 // import SelectInput from './SelectInput';
 // import TextArea from './TextArea';
@@ -14,9 +15,13 @@ export const Field = styled(FlexColumn)`
 
   position: relative;
   gap: 0.1875rem;
+
+  label {
+    font-size: 0.875rem;
+  }
 `;
 
-export const InputIcon = styled.div`
+export const InputIcon = styled(FontAwesomeIcon)`
   position: absolute;
   bottom: 0;
   left: 0;
@@ -41,7 +46,7 @@ type Option = {
 export type InputProps = {
   type?: 'text' | 'number' | 'select' | 'toggle' | 'textarea';
   label?: string;
-  icon?: string;
+  icon?: any;
   placeholder?: string | JSX.Element;
   value?: string | Option | Option[];
   onChange?: any;

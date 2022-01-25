@@ -32,9 +32,9 @@ const Global = createGlobalStyle`
   }
 
   body {
-    background-color: ${theme.bg};
+    background: ${theme.bg};
     height: 100%;
-    font-family: "poppins", sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: ${theme.text};
 
   }

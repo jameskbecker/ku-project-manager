@@ -20,21 +20,20 @@ const ButtonWrapper = styled.button<ButtonProps>`
   min-width: 100px;
   height: auto;
 
-  font-weight: 600;
+  font-weight: 500;
   color: ${theme.textButton};
-  background-color: ${({ color }) => (color ? color : theme.accent)};
+  background: ${({ color }) => (color ? color : theme.accent)};
   padding: 0.75em 1.25em;
   /* margin: 0.25em 0.5em; */
   border: 1.5px solid ${({ color }) => (color ? color : theme.accent)};
-  border-radius: ${({ round }) => (round ? '10rem' : '0.5rem')};
-  box-shadow: 1px 1px 3px 0 #00000030;
+  border-radius: ${({ round }) => (round ? '20px' : '5px')};
+  /* box-shadow: 1px 1px 3px 0 #00000030; */
 
   cursor: pointer;
   -webkit-appearance: none;
-  opacity: 0.8;
 
   :hover {
-    opacity: 1;
+    background: ${({ color }) => (color ? color : theme.accentB)};
     transition: 0.5s ease-in-out;
   }
 
@@ -45,15 +44,22 @@ const ButtonWrapper = styled.button<ButtonProps>`
   ${({ light, color }) =>
     light &&
     css`
-      background-color: transparent;
+      background: transparent;
       border-color: ${color ? color : theme.accent};
       color: ${color ? color : theme.accent};
 
       :hover {
-        background-color: ${color ? color : theme.accent};
+        background: ${color ? color : theme.accent};
         color: ${theme.textButton};
       }
     `}
+
+  /** Tablet  */
+  @media screen and (max-width: 992px) {
+    & > :nth-child(2) {
+      display: none;
+    }
+  }
 `;
 
 const Button = (props: ButtonProps) => {

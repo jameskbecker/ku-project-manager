@@ -21,7 +21,7 @@
 //   height: auto;
 
 //   color: grey;
-//   background-color: white;
+//   background: white;
 //   border-radius: 2px;
 //   padding: 0rem 0.5rem;
 //   margin: 0.25rem 0;
@@ -29,7 +29,7 @@
 //   cursor: pointer;
 
 //   :hover {
-//     background-color: blue;
+//     background: blue;
 //     color: ${theme.text};
 //     transition: 0.5s ease-in-out;
 //   }

@@ -16,7 +16,7 @@ const PanelWrapper = styled(FlexColumn)<PanelProps>`
 
   padding: 1em;
   border-radius: 0.5em;
-  background-color: ${({ secondary }) =>
+  background: ${({ secondary }) =>
     secondary ? theme.secondaryA : theme.primaryA};
 
   cursor: ${({ onClick }) => (onClick ? 'pointer' : 'default')};
@@ -26,8 +26,8 @@ const PanelWrapper = styled(FlexColumn)<PanelProps>`
     onClick &&
     css`
       :hover {
-        background-color: ${theme.highlight};
-        transition: 0.25s ease-in-out;
+        background: ${theme.highlight};
+        transition: 0.5s ease-in-out;
       }
     `}
 

@@ -1,10 +1,11 @@
-import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { selectProject, toggleNewProject } from '../../../store/projects';
 import theme from '../../../theme';
 import Button from '../../global/Button';
+import TextInput from '../../global/input/TextInput';
 
 const ControlBarWrapper = styled.div`
   display: flex;
@@ -13,7 +14,7 @@ const ControlBarWrapper = styled.div`
   align-items: center;
   grid-area: control;
 
-  background-color: ${theme.control};
+  background: ${theme.control};
   padding: 1em;
 
   /* border-bottom: 1px solid ${theme.sidebar}; */

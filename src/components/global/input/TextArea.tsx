@@ -14,7 +14,7 @@
 //   font-family: inherit;
 //   font-size: 0.75rem;
 //   color: ${theme.subtext};
-//   background-color: ${theme.secondary};
+//   background: ${theme.secondary};
 //   border: 1px solid ${theme.highlight};
 //   border-radius: 3px;
 //   box-sizing: border-box;
@@ -27,7 +27,7 @@
 //   }
 
 //   :disabled {
-//     background-color: ${theme.disabled};
+//     background: ${theme.disabled};
 //   }
 // `;
 

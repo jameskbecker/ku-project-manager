@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
 
-  background-color: #000000c5;
+  background: #000000c5;
   z-index: 10;
 
   & > * {

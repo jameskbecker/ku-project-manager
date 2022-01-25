@@ -1,4 +1,4 @@
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner, faSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -34,10 +34,10 @@ const ProjectTable = () => {
       }}
     >
       <TableHeader>
-        {/* <div>
-              <FontAwesomeIcon icon={faSquare} />
-            </div> */}
-        <div>Priority</div>
+        <div>
+          <FontAwesomeIcon icon={faSquare} />
+        </div>
+        {/* <div>Priority</div> */}
         <div>Name</div>
         <div>Description</div>
         <div>Status</div>

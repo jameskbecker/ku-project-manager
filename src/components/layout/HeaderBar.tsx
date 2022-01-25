@@ -15,7 +15,7 @@ const NavBarWrapper = styled.div`
   display: flex;
   align-items: center;
 
-  background-color: ${theme.titlebar};
+  background: ${theme.titlebar};
   color: ${theme.text};
 
   /* border-bottom: 1px solid ${theme.sidebar}; */
@@ -99,7 +99,7 @@ const UserModalWrapper = styled.div`
   text-align: center;
 
   border-radius: 0 0 0.5em 0.5em;
-  background-color: ${theme.sidebar};
+  background: ${theme.sidebar};
 
   cursor: pointer;
   z-index: 1;
@@ -112,7 +112,7 @@ const UserModalWrapper = styled.div`
     &:hover {
       opacity: 1;
       color: ${theme.bg};
-      background-color: ${theme.primary};
+      background: ${theme.primary};
     }
   }
 `;

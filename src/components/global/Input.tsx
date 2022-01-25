@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 
 const InputElement = styled.input`
   padding: 0.5em;
-  background-color: ${theme.secondaryA};
+  background: ${theme.secondaryA};
   -webkit-appearance: none;
   border: 0;
 `;

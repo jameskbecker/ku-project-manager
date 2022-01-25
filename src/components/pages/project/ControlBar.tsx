@@ -1,4 +1,4 @@
-import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTimes, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import styled from 'styled-components';
@@ -11,7 +11,7 @@ const ControlBarWrapper = styled.div`
   justify-content: space-between;
   grid-area: control;
 
-  background-color: ${theme.control};
+  background: ${theme.control};
   padding: 1rem;
 
   //border-bottom: 1px solid ${theme.sidebar};
@@ -23,7 +23,7 @@ const ControlBar = () => {
       <FlexRow>
         <Button icon={faPlus} text="Add Task" onClick={null} round />
         <Button
-          icon={faPlus}
+          icon={faUserPlus}
           text="Invite Members"
           onClick={null}
           round

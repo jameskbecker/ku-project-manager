@@ -13,7 +13,7 @@ export const StyledInput = styled.input<any>`
   text-indent: ${({ icon }) => (icon ? '1rem' : 'none')};
   font-size: 0.75rem;
   color: grey;
-  background-color: ${theme.primaryA};
+  background: ${theme.primaryA};
   border: 1px solid transparent;
   border-radius: 3px;
   box-sizing: border-box;
@@ -27,7 +27,7 @@ export const StyledInput = styled.input<any>`
   }
 
   :disabled {
-    background-color: ${theme.sidebar};
+    background: ${theme.sidebar};
     cursor: not-allowed;
   }
 
@@ -39,11 +39,7 @@ export const StyledInput = styled.input<any>`
 const TextInput = (props: InputProps) => {
   return (
     <Field>
-      {props.icon && (
-        <InputIcon>
-          <props.icon />
-        </InputIcon>
-      )}
+      {props.icon && <InputIcon icon={props.icon} />}
       {props.label && <label>{props.label}</label>}
       <StyledInput {...props} />
     </Field>

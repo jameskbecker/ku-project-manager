@@ -18,13 +18,13 @@
 
 //     box-shadow: none;
 
-//     background-color: ${({ isDisabled }) =>
+//     background: ${({ isDisabled }) =>
 //       isDisabled ? theme.disabled : theme.secondary};
 //     cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
 //   }
 
 //   .Select__menu {
-//     background-color: ${theme.secondary};
+//     background: ${theme.secondary};
 //   }
 
 //   .Select__control,
@@ -79,7 +79,7 @@
 //   }
 
 //   .Select__option--is-focused {
-//     background-color: ${theme.info};
+//     background: ${theme.info};
 //     color: ${theme.text};
 //   }
 
@@ -102,13 +102,13 @@
 //   }
 
 //   .Select__multi-value {
-//     background-color: ${theme.highlight};
+//     background: ${theme.highlight};
 //   }
 
 //   .Select__option--is-selected,
 //   .Select__multi-value__remove:hover {
 //     color: ${theme.text};
-//     background-color: ${theme.info};
+//     background: ${theme.info};
 //     cursor: pointer;
 //   }
 

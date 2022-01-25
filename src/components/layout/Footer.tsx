@@ -11,7 +11,7 @@ const FooterWrapper = styled.footer`
   min-height: 1rem;
   color: white;
   text-align: center;
-  background-color: ${theme.sidebar};
+  background: ${theme.sidebar};
 `;
 
 const Footer = () => {

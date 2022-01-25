@@ -53,10 +53,10 @@ const ProjectTableRow = ({ project }: any) => {
 
   return (
     <Wrapper key={project.id} onClick={handleSelect}>
-      {/* <div>
+      <div>
         <FontAwesomeIcon icon={faSquare} />
-      </div> */}
-      <div>{project.priority}</div>
+      </div>
+      {/* <div>{project.priority}</div> */}
       <div>{project.name}</div>
       <div>{project.description}</div>
       <div>{project.isComplete ? 'Complete!' : 'Incomplete'}</div>

@@ -12,7 +12,7 @@ import theme from '../../theme';
 const SideBarWrapper = styled.div`
   display: none;
   grid-area: sidebar;
-  background-color: ${theme.sidebar};
+  background: ${theme.sidebar};
 
   /** Desktop  */
   @media screen and (min-width: 992px) {
@@ -27,7 +27,7 @@ const LogoWrapper = styled.div`
   align-items: center;
   height: 10vh;
 
-  background-color: ${theme.brand};
+  background: ${theme.brand};
 
   margin: 1.75em;
   border-radius: 0.25em;
@@ -46,7 +46,7 @@ const SideBarButton = styled(Link)<any>`
 
   font-weight: ${({ active }) => (active ? '600' : 'normal')};
   color: ${theme.text} !important;
-  background-color: ${({ active }) => (active ? 'grey' : 'transparent')};
+  background: ${({ active }) => (active ? 'grey' : 'transparent')};
 
   border-radius: 5px 0 0 5px;
   &:hover {

@@ -52,6 +52,7 @@ export default {
   secondaryB: '#3D3D3D',
 
   accent: '#E5E5E5',
+  accentB: '#F2F2F2',
   highlight: '#696969',
 
   sidebar: '#292929',
