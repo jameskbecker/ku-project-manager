@@ -4,6 +4,7 @@ const initialState: any = {
   showNewProject: false,
   isLoading: null,
   selectedProject: '',
+  filter: '',
   data: [],
 };
 
@@ -36,7 +37,6 @@ export const saveProject = createAsyncThunk(
 export const deleteProject = createAsyncThunk(
   'projects/deleteProject',
   async (payload: any) => {
-    console.log(payload);
     // 'https://kupm-api.herokuapp.com/api/projects'
     const resp = await fetch(`/local/api/projects/${payload.id}`, {
       method: 'DELETE',
@@ -56,6 +56,10 @@ export const projectsSlice = createSlice({
 
     selectProject: (state, { payload }) => {
       state.selectedProject = payload;
+    },
+
+    applyFilter: (state, { payload }) => {
+      state.filter = payload.text;
     },
   },
   extraReducers: (builder) => {
@@ -91,5 +95,6 @@ export const projectsSlice = createSlice({
   },
 });
 
-export const { toggleNewProject, selectProject } = projectsSlice.actions;
+export const { toggleNewProject, selectProject, applyFilter } =
+  projectsSlice.actions;
 export default projectsSlice.reducer;

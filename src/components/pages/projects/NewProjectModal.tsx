@@ -6,6 +6,7 @@ import {
   saveProject,
   toggleNewProject,
 } from '../../../store/projects';
+import theme from '../../../theme';
 import Button from '../../global/Button';
 import TextInput from '../../global/input/TextInput';
 import Panel from '../../global/Panel';
@@ -17,6 +18,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 0.5rem;
   width: 100%;
   height: 100%;
 
@@ -25,6 +27,19 @@ const Wrapper = styled.div`
 
   & > * {
     flex: 0 1 auto;
+  }
+
+  h2 {
+    font-weight: 600;
+    color: ${theme.text};
+
+    text-overflow: ellipsis;
+    text-indent: 0;
+    padding: 0.5rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+
+    user-select: none;
   }
 `;
 

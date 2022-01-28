@@ -19,11 +19,29 @@ import { FlexRow } from '../../global/Flex';
 import Panel from '../../global/Panel';
 
 const Wrapper = styled(Panel)`
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
   & > * {
+    text-align: left;
     flex: 1 1;
   }
 
+  svg {
+    opacity: 0.8;
+  }
+
+  svg:hover {
+    opacity: 1;
+    transition: 0.25s ease-in-out;
+  }
+
   color: ${theme.textBody};
+
+  :hover {
+    color: ${theme.text};
+    transition: 0.25s ease-in-out;
+  }
 
   @media screen and (min-width: 600px) {
     flex-direction: row;
@@ -52,15 +70,15 @@ const ProjectTableRow = ({ project }: any) => {
   };
 
   return (
-    <Wrapper key={project.id} onClick={handleSelect}>
-      <div>
+    <Wrapper onClick={handleSelect}>
+      {/* <div>
         <FontAwesomeIcon icon={faSquare} />
-      </div>
+      </div> */}
       {/* <div>{project.priority}</div> */}
       <div>{project.name}</div>
       <div>{project.description}</div>
-      <div>{project.isComplete ? 'Complete!' : 'Incomplete'}</div>
       <div>{new Date(project.createdAt * 1000).toLocaleString()}</div>
+      <div>{project.isComplete ? 'Complete!' : 'Incomplete'}</div>
       <FlexRow style={{ justifyContent: 'flex-start' }}>
         <FontAwesomeIcon icon={faPencilAlt} onClick={handleEdit} />
         <FontAwesomeIcon icon={faTrash} onClick={handleDelete} />

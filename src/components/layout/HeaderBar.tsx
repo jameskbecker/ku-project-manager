@@ -5,12 +5,13 @@ import {
   faChevronLeft,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import theme from '../../theme';
+import ContextMenu from '../global/ContextMenu';
 
-const NavBarWrapper = styled.div`
+const StyledHeaderBar = styled.div`
   grid-area: navbar;
   display: flex;
   align-items: center;
@@ -19,6 +20,8 @@ const NavBarWrapper = styled.div`
   color: ${theme.text};
 
   /* border-bottom: 1px solid ${theme.sidebar}; */
+
+  overflow-y: visible;
 
   & > * {
     margin: 0 1em;
@@ -53,20 +56,26 @@ const TitleBar = styled.div`
     overflow: hidden;
     white-space: nowrap;
     padding: 0;
+
+    user-select: none;
   }
 `;
 
 /** @todo propably better solution than absolute positioning */
 const UserWrapper = styled.div`
-  display: none;
+  /* display: none; */
 
-  font-size: 1rem;
+  position: relative;
+  z-index: 20;
+
+  font-size: 0.875rem;
   color: ${theme.text};
 
   text-align: right;
   padding: 1em 0;
 
   cursor: pointer;
+  overflow-y: visible;
 
   & > :first-child {
     opacity: 0.8;
@@ -83,9 +92,9 @@ const UserWrapper = styled.div`
   }
 
   /** Tablet  */
-  @media screen and (min-width: 600px) {
+  /* @media screen and (min-width: 600px) {
     display: block;
-  }
+  } */
 `;
 
 const UserModalWrapper = styled.div`
@@ -117,11 +126,11 @@ const UserModalWrapper = styled.div`
   }
 `;
 
-export const UserModal = () => {
+export const UserMenu = () => {
   return (
-    <UserModalWrapper>
+    <ContextMenu>
       <div>Sign Out</div>
-    </UserModalWrapper>
+    </ContextMenu>
   );
 };
 
@@ -131,11 +140,16 @@ type NavBarProps = {
   toggleUserModal?: () => void;
 };
 
-const NavBar = ({ back, pageName, toggleUserModal }: NavBarProps) => {
+const NavBar = ({ back, pageName }: NavBarProps) => {
+  const [showUserModal, setShowUserModal] = useState(false);
   const history = useHistory();
 
+  const toggleUserModal = () => {
+    setShowUserModal(!showUserModal);
+  };
+
   return (
-    <NavBarWrapper>
+    <StyledHeaderBar>
       {back && (
         <FontAwesomeIcon
           icon={faChevronLeft}
@@ -150,14 +164,18 @@ const NavBar = ({ back, pageName, toggleUserModal }: NavBarProps) => {
       </TitleBar>
 
       <UserWrapper onClick={toggleUserModal}>
-        <span>Welcome back, John!</span>
-        <FontAwesomeIcon icon={faChevronDown} color={theme.text} />
+        <div>
+          <span>Welcome back, John!</span>
+          <FontAwesomeIcon icon={faChevronDown} color={theme.text} />
+        </div>
+
+        {showUserModal && <UserMenu />}
       </UserWrapper>
 
       <Menu>
         <FontAwesomeIcon icon={faBars} color={theme.text} />
       </Menu>
-    </NavBarWrapper>
+    </StyledHeaderBar>
   );
 };
 

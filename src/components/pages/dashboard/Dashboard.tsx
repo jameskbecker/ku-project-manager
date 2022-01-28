@@ -7,8 +7,8 @@ import todo from '../../../mock-data/task';
 import { Project } from '../../../types';
 import Panel from '../../global/Panel';
 import Footer from '../../layout/Footer';
+import NavBar from '../../layout/HeaderBar';
 import Layout from '../../layout/Layout';
-import NavBar, { UserModal } from '../../layout/HeaderBar';
 import SideBar from '../../layout/SideBar';
 import Content from './Content';
 import NotificationPanel from './NotificationPanel';
@@ -17,7 +17,6 @@ import UpcomingPanel from './UpcomingPanel';
 
 const Dashboard = () => {
   const history = useHistory();
-  const [showUserModal, setShowUserModal] = useState(false);
   const [projects, setProjects] = useState<Project[]>();
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -36,10 +35,6 @@ const Dashboard = () => {
       setProjects(body.data);
       setIsLoaded(true);
     } catch (e) {}
-  };
-
-  const toggleUserModal = () => {
-    setShowUserModal(!showUserModal);
   };
 
   const selectProjectHandler = (id: string) => {
@@ -61,8 +56,8 @@ const Dashboard = () => {
     <Layout>
       <SideBar activePage="dashboard" />
       {/**@todo replace with context */}
-      <NavBar pageName="Dashboard" toggleUserModal={toggleUserModal} />
-      <Content onClick={() => setShowUserModal(false)}>
+      <NavBar pageName="Dashboard" />
+      <Content>
         <Panel heading="Recent Notifications">{getNotifications}</Panel>
         {/**@todo replace style attribute */}
         <Panel heading="Todo" style={{ gridRow: 'span 2' }}>
@@ -74,7 +69,6 @@ const Dashboard = () => {
         </Panel>
       </Content>
       <Footer />
-      {showUserModal && <UserModal />}
     </Layout>
   );
 };

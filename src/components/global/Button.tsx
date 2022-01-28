@@ -20,17 +20,22 @@ const ButtonWrapper = styled.button<ButtonProps>`
   min-width: 100px;
   height: auto;
 
+  font-size: 0.875rem;
   font-weight: 500;
   color: ${theme.textButton};
   background: ${({ color }) => (color ? color : theme.accent)};
-  padding: 0.75em 1.25em;
+  padding: 0.5rem 0.75rem;
   /* margin: 0.25em 0.5em; */
   border: 1.5px solid ${({ color }) => (color ? color : theme.accent)};
+  box-sizing: border-box;
   border-radius: ${({ round }) => (round ? '20px' : '5px')};
   /* box-shadow: 1px 1px 3px 0 #00000030; */
 
   cursor: pointer;
   -webkit-appearance: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  user-select: none;
 
   :hover {
     background: ${({ color }) => (color ? color : theme.accentB)};

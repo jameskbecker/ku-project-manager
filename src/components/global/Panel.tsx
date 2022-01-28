@@ -7,27 +7,36 @@ type PanelProps = {
   heading?: String;
   children: React.ReactNode;
   secondary?: boolean;
+  light?: boolean;
   style?: React.CSSProperties;
   onClick?: React.MouseEventHandler<HTMLDivElement> | undefined;
 };
 
 const PanelWrapper = styled(FlexColumn)<PanelProps>`
   flex: 1 0 auto;
-
-  padding: 1em;
+  padding: 0.75rem;
+  border: 2px solid transparent;
+  box-sizing: border-box;
   border-radius: 0.5em;
+
   background: ${({ secondary }) =>
     secondary ? theme.secondaryA : theme.primaryA};
 
   cursor: ${({ onClick }) => (onClick ? 'pointer' : 'default')};
   overflow: auto;
 
-  ${({ onClick, secondary }) =>
+  ${({ onClick, light }) =>
     onClick &&
     css`
       :hover {
-        background: ${theme.highlight};
-        transition: 0.5s ease-in-out;
+        ${!light
+          ? css`
+              background: ${theme.highlight};
+            `
+          : css`
+              border-color: ${theme.highlight};
+            `}
+        transition: 0.5s ease-out;
       }
     `}
 

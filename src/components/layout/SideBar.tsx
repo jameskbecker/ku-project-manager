@@ -25,22 +25,22 @@ const LogoWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 10vh;
+  height: 19vh;
 
-  background: ${theme.brand};
-
-  margin: 1.75em;
-  border-radius: 0.25em;
   h1 {
+    background: ${theme.brand};
     color: ${theme.textBrand};
-    padding: 0;
+
+    box-sizing: border-box;
+    border-radius: 0.25em;
+    padding: 1.75rem;
   }
 `;
 
 const SideBarButton = styled(Link)<any>`
   font-size: 0.875rem;
-  margin: 0.75em 0 0.75rem 1em;
-  padding: 0.75em 0.75em;
+  margin: 0.5rem 0 0.5rem 1.75rem;
+  padding: 0.75em;
   opacity: ${({ active }) => (active ? 1 : 0.65)};
   cursor: pointer;
 

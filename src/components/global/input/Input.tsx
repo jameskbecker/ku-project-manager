@@ -1,8 +1,9 @@
 import { FlexColumn } from '../Flex';
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import styled from 'styled-components';
 import TextInput from './TextInput';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import theme from '../../../theme';
 // import NumberInput from './NumberInput';
 // import SelectInput from './SelectInput';
 // import TextArea from './TextArea';
@@ -16,24 +17,28 @@ export const Field = styled(FlexColumn)`
   position: relative;
   gap: 0.1875rem;
 
+  overflow: hidden;
+
   label {
     font-size: 0.875rem;
+  }
+
+  :focus-within {
+    svg {
+      color: ${theme.text};
+      transition: 0.25s ease-in-out;
+    }
   }
 `;
 
 export const InputIcon = styled(FontAwesomeIcon)`
   position: absolute;
-  bottom: 0;
-  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
 
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  align-self: center;
-  height: 36px;
+  font-size: 0.875rem;
 
   padding-left: 0.5rem;
-  box-sizing: border-box;
 
   z-index: 2;
 `;
@@ -58,6 +63,7 @@ export type InputProps = {
   autoFocus?: boolean;
   step?: number;
   name?: string;
+  style?: CSSProperties;
 };
 
 export const getInput = (type: string) => {

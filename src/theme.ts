@@ -39,7 +39,7 @@
 export default {
   text: '#E5E5E5',
   textBrand: '#333129',
-  textBody: '#BFBFBF',
+  textBody: '#999999',
   textButton: '#292929',
   dark: '#201c21',
   brand: '#E5E5E5',

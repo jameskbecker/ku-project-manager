@@ -1,57 +1,36 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
+import { fetchAllTasks } from '../../../store/tasks';
 import { Project } from '../../../types';
-import Panel from '../../global/Panel';
 import Footer from '../../layout/Footer';
+import NavBar from '../../layout/HeaderBar';
 import Layout from '../../layout/Layout';
-import NavBar, { UserModal } from '../../layout/HeaderBar';
 import SideBar from '../../layout/SideBar';
 import Content from './Content';
 import ControlBar from './ControlBar';
-import ProjectPanel from './ProjectPanel';
+import TaskGrid from './TaskGrid';
 
 const Project = () => {
-  const { id } = useParams<any>();
-  const [showUserModal, setShowUserModal] = useState(false);
+  const { id, taskId } = useParams<any>();
   const [project, setProject] = useState<Project>();
+  const { pageName } = useSelector((state: any) => state.tasks);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    loadProjectData();
+    console.log(id, taskId);
+    dispatch(fetchAllTasks({ projectId: id }));
   }, []);
-
-  const loadProjectData = async () => {
-    try {
-      const resp = await window.fetch(
-        `/local/api/projects/${id}`
-        //`https://kupm-api.herokuapp.com/api/projects/${id}`
-      );
-      const body = await resp.json();
-      console.log(body);
-      if (body.error) return;
-      setProject(body.data);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const toggleUserModal = () => {
-    setShowUserModal(!showUserModal);
-  };
 
   return (
     <Layout>
       <SideBar activePage="projects" />
       <ControlBar />
-      <NavBar
-        back
-        pageName={project ? project.name : ''}
-        toggleUserModal={toggleUserModal}
-      />
-      <Content onClick={() => setShowUserModal(false)}>
-        {/* {project && ProjectPanel} */}
+      <NavBar back pageName={pageName} />
+      <Content>
+        <TaskGrid />
       </Content>
       <Footer />
-      {showUserModal && <UserModal />}
     </Layout>
   );
 };

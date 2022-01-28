@@ -4,18 +4,22 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { FlexColumn, FlexRow } from '../../global/Flex';
-import ProjectTableRow from './ProjectTableRow';
+import TaskGridCard from './TaskGridCard';
+import ProjectTableRow from './TaskGridCard';
+
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 200px;
+  gap: 0.5rem;
+`;
 
 const TableHeader = styled(FlexRow)`
   display: none;
-  justify-content: flex-start;
   flex: 0 1 auto;
-
-  font-size: 0.8rem;
+  padding: 1rem;
   font-weight: 600;
-  padding: 0.75rem;
-
-  user-select: none;
+  justify-content: flex-start;
 
   & > * {
     flex: 1 1;
@@ -25,10 +29,8 @@ const TableHeader = styled(FlexRow)`
     display: flex;
   }
 `;
-const ProjectTable = () => {
-  const { isLoading, data, filter } = useSelector(
-    (state: any) => state.projects
-  );
+const TaskGrid = () => {
+  const { isLoading, data, filter } = useSelector((state: any) => state.tasks);
 
   const filteredData = data.filter(
     (t: any) =>
@@ -37,8 +39,8 @@ const ProjectTable = () => {
       t.description?.toLowerCase().includes(filter.toLowerCase())
   );
 
-  const getProjects = filteredData.map((p: any, i: number) => (
-    <ProjectTableRow key={i} project={p} />
+  const getTasks = filteredData.map((p: any, i: number) => (
+    <TaskGridCard key={i} task={p} />
   ));
 
   return (
@@ -47,25 +49,14 @@ const ProjectTable = () => {
         justifyContent: 'flex-start',
       }}
     >
-      <TableHeader>
-        {/* <div>
-          <FontAwesomeIcon icon={faSquare} />
-        </div> */}
-        {/* <div>Priority</div> */}
-        <div>Name</div>
-        <div>Description</div>
-        <div>Date Created</div>
-        <div>Status</div>
-        <div>Actions</div>
-      </TableHeader>
       {isLoading === false ? (
-        <FlexColumn
+        <Wrapper
           style={{
             overflow: 'auto',
           }}
         >
-          {getProjects}
-        </FlexColumn>
+          {getTasks}
+        </Wrapper>
       ) : (
         <FontAwesomeIcon style={{ flex: '1 1' }} icon={faSpinner} spin />
       )}
@@ -73,4 +64,4 @@ const ProjectTable = () => {
   );
 };
 
-export default ProjectTable;
+export default TaskGrid;

@@ -34,7 +34,7 @@ const Global = createGlobalStyle`
   body {
     background: ${theme.bg};
     height: 100%;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: sans-serif;
     color: ${theme.text};
 
   }
