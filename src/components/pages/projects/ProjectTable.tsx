@@ -1,30 +1,24 @@
-import { faSpinner, faSquare } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCircle,
+  faSpinner,
+  faSquare,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { FlexColumn, FlexRow } from '../../global/Flex';
+import { TableHeader } from '../../global/Table';
 import ProjectTableRow from './ProjectTableRow';
 
-const TableHeader = styled(FlexRow)`
-  display: none;
-  justify-content: flex-start;
-  flex: 0 1 auto;
+const columns: any[] = [
+  { name: '', size: 5 },
+  { name: 'Name', size: 20 },
+  { name: 'Description', size: 42.5 },
+  { name: 'Date Created', size: 20 },
+  { name: 'Actions', size: 7.5 },
+];
 
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0.75rem;
-
-  user-select: none;
-
-  & > * {
-    flex: 1 1;
-  }
-
-  @media screen and (min-width: 600px) {
-    display: flex;
-  }
-`;
 const ProjectTable = () => {
   const { isLoading, data, filter } = useSelector(
     (state: any) => state.projects
@@ -47,17 +41,7 @@ const ProjectTable = () => {
         justifyContent: 'flex-start',
       }}
     >
-      <TableHeader>
-        {/* <div>
-          <FontAwesomeIcon icon={faSquare} />
-        </div> */}
-        {/* <div>Priority</div> */}
-        <div>Name</div>
-        <div>Description</div>
-        <div>Date Created</div>
-        <div>Status</div>
-        <div>Actions</div>
-      </TableHeader>
+      <TableHeader columns={columns} />
       {isLoading === false ? (
         <FlexColumn
           style={{

@@ -1,8 +1,10 @@
 import {
+  faCheckCircle,
   faPencilAlt,
   faSquare,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
+import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useDispatch } from 'react-redux';
@@ -17,14 +19,15 @@ import {
 import theme from '../../../theme';
 import { FlexRow } from '../../global/Flex';
 import Panel from '../../global/Panel';
+import { TableCell } from '../../global/Table';
 
 const Wrapper = styled(Panel)`
   white-space: nowrap;
   text-overflow: ellipsis;
+  gap: 0.75rem;
 
   & > * {
     text-align: left;
-    flex: 1 1;
   }
 
   svg {
@@ -62,27 +65,28 @@ const ProjectTableRow = ({ project }: any) => {
     dispatch(toggleNewProject());
   };
 
-  const handleDelete = async (e: any) => {
+  const handleDelete = (e: any) => {
     e.stopPropagation();
-    console.log(project.id);
     dispatch(deleteProject({ id: project.id }));
     dispatch(fetchAllProjects());
   };
 
   return (
     <Wrapper onClick={handleSelect}>
-      {/* <div>
-        <FontAwesomeIcon icon={faSquare} />
-      </div> */}
+      <TableCell size={5}>
+        <FontAwesomeIcon icon={project.isComplete ? faCheckCircle : faCircle} />
+      </TableCell>
       {/* <div>{project.priority}</div> */}
-      <div>{project.name}</div>
-      <div>{project.description}</div>
-      <div>{new Date(project.createdAt * 1000).toLocaleString()}</div>
-      <div>{project.isComplete ? 'Complete!' : 'Incomplete'}</div>
-      <FlexRow style={{ justifyContent: 'flex-start' }}>
+      <TableCell size={20}>{project.name}</TableCell>
+      <TableCell size={42.5}>{project.description}</TableCell>
+      <TableCell size={20}>
+        {new Date(project.createdAt * 1000).toLocaleString()}
+      </TableCell>
+      {/* <div>{project.isComplete ? 'Complete!' : 'Incomplete'}</div> */}
+      <TableCell size={7.5}>
         <FontAwesomeIcon icon={faPencilAlt} onClick={handleEdit} />
         <FontAwesomeIcon icon={faTrash} onClick={handleDelete} />
-      </FlexRow>
+      </TableCell>
     </Wrapper>
   );
 };

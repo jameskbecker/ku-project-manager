@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Content = styled.div`
   grid-area: content;
   grid-row: 2 / span 2;
-  gap: 0.5rem;
+  gap: 0.75rem;
   margin: 0.5rem;
 
   padding: 0.5em 0.25em;

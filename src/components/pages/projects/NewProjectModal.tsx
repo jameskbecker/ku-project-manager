@@ -18,12 +18,12 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
   width: 100%;
   height: 100%;
 
   background: #000000c5;
-  z-index: 10;
+  z-index: 100;
 
   & > * {
     flex: 0 1 auto;
@@ -46,7 +46,7 @@ const Wrapper = styled.div`
 const NewProjectModal = () => {
   const { data, selectedProject } = useSelector((state: any) => state.projects);
   const selectedData = data.find((d: any) => d.id === selectedProject);
-
+  console.log(data);
   const [name, setName] = useState(selectedData?.name || '');
   const [description, setDescription] = useState(
     selectedData?.description || ''
@@ -56,7 +56,7 @@ const NewProjectModal = () => {
 
   const dispatch = useDispatch();
 
-  const handleCancel = () => {
+  const handleCancel = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     dispatch(toggleNewProject());
   };
 
@@ -76,8 +76,12 @@ const NewProjectModal = () => {
   };
 
   return (
-    <Wrapper>
-      <Panel secondary style={{ flex: '0 1 auto', opacity: 1, width: '300px' }}>
+    <Wrapper onClick={handleCancel}>
+      <Panel
+        onClick={(e) => e.stopPropagation()}
+        secondary
+        style={{ flex: '0 1 auto', opacity: 1, width: '300px' }}
+      >
         <h2>{selectedData ? 'Edit' : 'New'} Project</h2>
         <TextInput
           label="Name"

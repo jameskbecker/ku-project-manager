@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 200px;
-  gap: 0.5rem;
+  gap: 0.75rem;
 `;
 
 const TableHeader = styled(FlexRow)`

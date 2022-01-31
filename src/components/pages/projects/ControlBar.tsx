@@ -1,4 +1,9 @@
-import { faPlus, faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCheck,
+  faPlus,
+  faSearch,
+  faTimes,
+} from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -19,7 +24,7 @@ const ControlBarWrapper = styled.div`
   grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
   grid-area: control;
-  gap: 0.5rem;
+  gap: 0.75rem;
 
   background: ${theme.control};
   padding: 1rem;
@@ -58,6 +63,12 @@ const ControlBar = () => {
         value={filter}
       />
       <FlexRow style={{ justifyContent: 'flex-end' }}>
+        {/* <Button
+          light
+          text="Mark as Completed (0)"
+          color={theme.error}
+          icon={faCheck}
+        /> */}
         <Button
           light
           text="Delete All Projects"

@@ -8,7 +8,7 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  gap: 0.5rem;
+  gap: 0.75rem;
 
   padding: 1rem;
 

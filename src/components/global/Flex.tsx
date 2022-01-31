@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Flex = styled.div`
   display: flex;
-  gap: 0.5rem;
+  gap: 0.75rem;
 `;
 
 export const FlexRow = styled(Flex)`

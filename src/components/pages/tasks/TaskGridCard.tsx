@@ -3,11 +3,10 @@ import {
   faPencilAlt,
   faTrash,
   faCheckSquare,
-  faSquare,
 } from '@fortawesome/free-solid-svg-icons';
-import {} from '@fortawesome/free-regular-svg-icons';
+import { faSquare } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React, { MouseEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
@@ -21,8 +20,9 @@ import theme from '../../../theme';
 import { FlexRow } from '../../global/Flex';
 import Panel from '../../global/Panel';
 import ContextMenu from '../../global/ContextMenu';
+import { toggleNewTask } from '../../../store/tasks';
 
-const Wrapper = styled(Panel)`
+const Wrapper = styled(Panel)<any>`
   flex-direction: column;
   gap: 0.25rem;
 
@@ -79,6 +79,11 @@ const TaskGridCard = ({ task }: any) => {
     history.push(`/projects/${task.projectId}/${task.id}`);
   };
 
+  const handleEdit = (e: MouseEvent<SVGSVGElement, any>) => {
+    e.stopPropagation();
+    dispatch(toggleNewTask());
+  };
+
   const handleMore = (e: any) => {
     e.stopPropagation();
     setShowMore(!showMore);
@@ -91,8 +96,32 @@ const TaskGridCard = ({ task }: any) => {
     setIsDone(!isDone);
   };
 
+  const handleDrag = (e: any) => {
+    console.log('hi');
+
+    e.target.style.display = 'none';
+    const switchElement = document.elementFromPoint(e.clientX, e.clientY);
+    //@ts-ignore
+    switchElement && (switchElement.style.backgroundColor = 'red');
+    e.target.style.display = 'flex';
+  };
+
+  const handleDragEnd = (e: React.DragEvent<HTMLDivElement>) => {
+    console.log('bye');
+
+    //@ts-ignore
+    e.target.style.display = 'flex';
+  };
+
   return (
-    <Wrapper key={task.id} onClick={handleSelect} light>
+    <Wrapper
+      key={task.id}
+      draggable="true"
+      onClick={handleSelect}
+      onDrag={handleDrag}
+      onDragEnd={handleDragEnd}
+      light
+    >
       {/* <div>{project.priority}</div> */}
       <FlexRow style={{ overflow: 'visible' }}>
         <h3>{task.name}</h3>
@@ -101,12 +130,23 @@ const TaskGridCard = ({ task }: any) => {
           color={'#cccccc'}
           onClick={toggleIsDone}
         />
-        <MoreButton icon={faEllipsisV} onClick={handleMore} />
+        <FontAwesomeIcon
+          icon={faPencilAlt}
+          color={'#cccccc'}
+          onClick={handleEdit}
+        />
 
-        {/* <ContextMenu isOpen={true}>
+        <FontAwesomeIcon
+          icon={faTrash}
+          color={'#cccccc'}
+          onClick={handleMore}
+        />
+        {/* <MoreButton icon={faEllipsisV} onClick={handleMore} /> */}
+
+        <ContextMenu isOpen={true}>
           <MoreButton icon={faEllipsisV} onClick={handleMore} />
           <div>Test</div>
-        </ContextMenu> */}
+        </ContextMenu>
       </FlexRow>
 
       <h4>{new Date(task.dueAt * 1000).toLocaleString()}</h4>

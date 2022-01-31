@@ -7,13 +7,14 @@ import Footer from '../../layout/Footer';
 import NavBar from '../../layout/HeaderBar';
 import Layout from '../../layout/Layout';
 import SideBar from '../../layout/SideBar';
+import NewProjectModal from '../projects/NewProjectModal';
 import Content from './Content';
 import ControlBar from './ControlBar';
 import TaskGrid from './TaskGrid';
 
 const Project = () => {
   const { id, taskId } = useParams<any>();
-  const [project, setProject] = useState<Project>();
+  const { showNewProject } = useSelector((state: any) => state.projects);
   const { pageName } = useSelector((state: any) => state.tasks);
   const dispatch = useDispatch();
 
@@ -31,6 +32,7 @@ const Project = () => {
         <TaskGrid />
       </Content>
       <Footer />
+      {showNewProject && <NewProjectModal />}
     </Layout>
   );
 };

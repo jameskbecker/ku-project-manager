@@ -6,10 +6,11 @@ import {
   faUserPlus,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { selectProject, toggleNewProject } from '../../../store/projects';
 import { applyFilter } from '../../../store/tasks';
 import theme from '../../../theme';
 import Button from '../../global/Button';
@@ -23,7 +24,7 @@ const ControlBarWrapper = styled.div`
   grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
   grid-area: control;
-  gap: 0.5rem;
+  gap: 0.75rem;
 
   background: ${theme.control};
   padding: 1rem;
@@ -36,9 +37,17 @@ const ControlBar = () => {
   const { filter } = useSelector((state: any) => state.tasks);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(selectProject(id));
+  }, []);
+
   const handleSearch = (e: any) => {
     const { value } = e.target;
     dispatch(applyFilter({ text: value }));
+  };
+
+  const handleEdit = () => {
+    dispatch(toggleNewProject());
   };
 
   return (
@@ -65,7 +74,12 @@ const ControlBar = () => {
 
       <FlexRow style={{ justifyContent: 'flex-end' }}>
         {!taskId && (
-          <Button icon={faPencilAlt} text="Edit Project" onClick={null} light />
+          <Button
+            icon={faPencilAlt}
+            text="Edit Project"
+            onClick={handleEdit}
+            light
+          />
         )}
         <Button
           light

@@ -51,6 +51,7 @@ export const projectsSlice = createSlice({
   initialState,
   reducers: {
     toggleNewProject: (state) => {
+      console.log(JSON.parse(JSON.stringify(state)));
       state.showNewProject = !state.showNewProject;
     },
 
