@@ -17,14 +17,21 @@ import {
   toggleNewProject,
 } from '../../../store/projects';
 import theme from '../../../theme';
-import { FlexRow } from '../../global/Flex';
+import { FlexColumn, FlexRow } from '../../global/Flex';
 import Panel from '../../global/Panel';
 import ContextMenu from '../../global/ContextMenu';
-import { toggleNewTask } from '../../../store/tasks';
+import {
+  deleteTask,
+  fetchProjectTasks,
+  selectTask,
+  toggleNewTask,
+} from '../../../store/tasks';
 
 const Wrapper = styled(Panel)<any>`
-  flex-direction: column;
-  gap: 0.25rem;
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+  grid-auto-rows: auto auto minmax(0, 1fr);
+  align-items: flex-start;
 
   & > :last-child {
     flex: 1 1;
@@ -81,7 +88,14 @@ const TaskGridCard = ({ task }: any) => {
 
   const handleEdit = (e: MouseEvent<SVGSVGElement, any>) => {
     e.stopPropagation();
+    dispatch(selectTask(task.id));
     dispatch(toggleNewTask());
+  };
+
+  const handleDelete = (e: any) => {
+    e.stopPropagation();
+    dispatch(deleteTask({ id: task.id }));
+    dispatch(fetchProjectTasks({ projectId: task.projectId }));
   };
 
   const handleMore = (e: any) => {
@@ -123,8 +137,9 @@ const TaskGridCard = ({ task }: any) => {
       light
     >
       {/* <div>{project.priority}</div> */}
-      <FlexRow style={{ overflow: 'visible' }}>
-        <h3>{task.name}</h3>
+
+      <h3>{task.name}</h3>
+      <FlexColumn style={{ gridRow: 'span 3' }}>
         <FontAwesomeIcon
           icon={isDone ? faCheckSquare : faSquare}
           color={'#cccccc'}
@@ -139,17 +154,16 @@ const TaskGridCard = ({ task }: any) => {
         <FontAwesomeIcon
           icon={faTrash}
           color={'#cccccc'}
-          onClick={handleMore}
+          onClick={handleDelete}
         />
         {/* <MoreButton icon={faEllipsisV} onClick={handleMore} /> */}
-
-        <ContextMenu isOpen={true}>
+      </FlexColumn>
+      {/* <ContextMenu isOpen={true}>
           <MoreButton icon={faEllipsisV} onClick={handleMore} />
           <div>Test</div>
-        </ContextMenu>
-      </FlexRow>
+        </ContextMenu> */}
 
-      <h4>{new Date(task.dueAt * 1000).toLocaleString()}</h4>
+      <h4>{new Date(task.createdAt * 1000).toLocaleString()}</h4>
 
       <p>{task.description}</p>
       {/* <div>{project.isComplete ? 'Complete!' : 'Incomplete'}</div>

@@ -51,6 +51,9 @@ export default {
   secondaryA: '#3D3D3D',
   secondaryB: '#3D3D3D',
 
+  disabled: '#212121',
+  disabledB: '#303030',
+
   accent: '#E5E5E5',
   accentB: '#F2F2F2',
   highlight: '#696969',

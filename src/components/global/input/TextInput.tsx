@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import theme from '../../../theme';
 import { Field, InputIcon, InputProps } from './Input';
 
 export const StyledInput = styled.input<any>`
-  flex: 1 1 auto;
+  flex: 0 0 auto;
 
   position: relative;
   min-width: 0;
@@ -26,11 +26,6 @@ export const StyledInput = styled.input<any>`
     opacity: 1;
   }
 
-  :disabled {
-    background: ${theme.sidebar};
-    cursor: not-allowed;
-  }
-
   label {
     font-size: 1rem;
   }
@@ -43,8 +38,12 @@ export const StyledInput = styled.input<any>`
 `;
 
 const TextInput = (props: InputProps) => {
+  if (props.type === 'hidden') {
+    return <StyledInput {...props} />;
+  }
+
   return (
-    <Field>
+    <Field {...props}>
       {props.icon && <InputIcon icon={props.icon} color="grey" />}
       {props.label && <label>{props.label}</label>}
       <StyledInput {...props} />

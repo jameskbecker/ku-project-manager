@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { selectProject, toggleNewProject } from '../../../store/projects';
-import { applyFilter } from '../../../store/tasks';
+import { applyFilter, toggleNewTask } from '../../../store/tasks';
 import theme from '../../../theme';
 import Button from '../../global/Button';
 import { FlexRow } from '../../global/Flex';
@@ -41,6 +41,10 @@ const ControlBar = () => {
     dispatch(selectProject(id));
   }, []);
 
+  const handleNewTask = () => dispatch(toggleNewTask());
+
+  const handleInvite = () => {};
+
   const handleSearch = (e: any) => {
     const { value } = e.target;
     dispatch(applyFilter({ text: value }));
@@ -53,7 +57,7 @@ const ControlBar = () => {
   return (
     <ControlBarWrapper>
       <FlexRow>
-        <Button icon={faPlus} text="Add Task" onClick={null} round />
+        <Button icon={faPlus} text="New Task" onClick={handleNewTask} round />
         {!taskId && (
           <Button
             icon={faUserPlus}

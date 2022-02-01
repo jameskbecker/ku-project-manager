@@ -69,15 +69,15 @@ const SideBar = ({ activePage }: SideBarProps) => {
       <LogoWrapper>
         <h1>KUPM</h1>
       </LogoWrapper>
-      <SideBarButton to="/" active={activePage === 'dashboard'}>
+      <SideBarButton to="/" $active={activePage === 'dashboard'}>
         <FontAwesomeIcon icon={faTachometerAlt} />
         Dashboard
       </SideBarButton>
-      <SideBarButton to="/projects" active={activePage === 'projects'}>
+      <SideBarButton to="/projects" $active={activePage === 'projects'}>
         <FontAwesomeIcon icon={faList} />
         Projects
       </SideBarButton>
-      <SideBarButton to="/settings" active={activePage === 'settings'}>
+      <SideBarButton to="/settings" $active={activePage === 'settings'}>
         <FontAwesomeIcon icon={faCogs} />
         Settings
       </SideBarButton>

@@ -9,11 +9,22 @@ const initialState: any = {
   filter: '',
 };
 
-export const fetchAllTasks = createAsyncThunk(
+export const fetchProjectTasks = createAsyncThunk(
   'tasks/getTasks',
   async ({ projectId }: any) => {
+    console.log('[STORE]', 'fetchProjectTasks');
     // 'https://kupm-api.herokuapp.com/api/tasks'
     const res = await fetch(`/local/api/projects/${projectId}/tasks`);
+    return await res.json();
+  }
+);
+
+export const fetchSubTasks = createAsyncThunk(
+  'tasks/getSubTasks',
+  async ({ taskId }: any) => {
+    console.log('[STORE]', 'fetchSubTasks');
+    // 'https://kupm-api.herokuapp.com/api/subtasks'
+    const res = await fetch(`/local/api/tasks/${taskId}/subtasks`);
     return await res.json();
   }
 );
@@ -66,12 +77,12 @@ export const tasksSlice = createSlice({
   },
   extraReducers: (builder) => {
     // CRUDL: GET actions
-    builder.addCase(fetchAllTasks.pending, (state) => {
+    builder.addCase(fetchProjectTasks.pending, (state) => {
       console.log('Fetching Tasks');
       state.isLoading = true;
     });
 
-    builder.addCase(fetchAllTasks.fulfilled, (state, { payload }) => {
+    builder.addCase(fetchProjectTasks.fulfilled, (state, { payload }) => {
       console.log('Fetched Tasks!', payload);
 
       // Avoid unneccesary rerenders
@@ -82,7 +93,26 @@ export const tasksSlice = createSlice({
       state.isLoading = false;
     });
 
-    builder.addCase(fetchAllTasks.rejected, () => {});
+    builder.addCase(fetchProjectTasks.rejected, () => {});
+
+    // ---------------------------------------------------------------
+    builder.addCase(fetchSubTasks.pending, (state) => {
+      console.log('Fetching Sub Tasks');
+      state.isLoading = true;
+    });
+
+    builder.addCase(fetchSubTasks.fulfilled, (state, { payload }) => {
+      console.log('Fetched Tasks!', payload);
+
+      // Avoid unneccesary rerenders
+      if (state.data === payload.data.subtasks) return;
+      state.data = payload.data.subtasks;
+      console.log(payload);
+      state.pageName = payload.data.parentName;
+      state.isLoading = false;
+    });
+
+    builder.addCase(fetchSubTasks.rejected, () => {});
 
     // CRUDL: POST actions
     builder.addCase(saveTask.pending, () => {

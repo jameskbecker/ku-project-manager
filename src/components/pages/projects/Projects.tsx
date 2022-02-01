@@ -7,7 +7,7 @@ import Layout from '../../layout/Layout';
 import SideBar from '../../layout/SideBar';
 import Content from './Content';
 import ControlBar from './ControlBar';
-import NewProjectModal from './NewProjectModal';
+import NewProjectModal from '../../modals/NewProjectModal';
 import ProjectTable from './ProjectTable';
 
 type Project = {

@@ -1,6 +1,6 @@
 import { FlexColumn } from '../Flex';
 import React, { CSSProperties } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import TextInput from './TextInput';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import theme from '../../../theme';
@@ -10,17 +10,18 @@ import theme from '../../../theme';
 // import TextInput from './TextInput';
 // import Toggle from './ToggleInput';
 
-export const Field = styled(FlexColumn)`
-  flex: 1 1;
+export const Field = styled(FlexColumn)<any>`
+  flex: 1 1 auto;
   width: 100%;
 
   position: relative;
   gap: 0.1875rem;
 
-  overflow: hidden;
+  overflow: visible;
 
   label {
     font-size: 0.875rem;
+    flex: 1 0 auto;
   }
 
   :focus-within {
@@ -29,6 +30,19 @@ export const Field = styled(FlexColumn)`
       transition: 0.25s ease-in-out;
     }
   }
+
+  ${({ disabled }: any) =>
+    disabled &&
+    css`
+      label {
+        color: ${theme.textBody};
+      }
+
+      & :last-child {
+        background: ${theme.disabled};
+        cursor: not-allowed;
+      }
+    `}
 `;
 
 export const InputIcon = styled(FontAwesomeIcon)`
@@ -49,7 +63,7 @@ type Option = {
 };
 
 export type InputProps = {
-  type?: 'text' | 'number' | 'select' | 'toggle' | 'textarea';
+  type?: 'text' | 'number' | 'select' | 'toggle' | 'textarea' | 'hidden';
   label?: string;
   icon?: any;
   placeholder?: string | JSX.Element;
