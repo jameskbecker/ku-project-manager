@@ -41,12 +41,12 @@ const SideBarButton = styled(Link)<any>`
   font-size: 0.875rem;
   margin: 0.5rem 0 0.5rem 1.75rem;
   padding: 0.75em;
-  opacity: ${({ active }) => (active ? 1 : 0.65)};
+  opacity: ${({ $active }) => ($active ? 1 : 0.65)};
   cursor: pointer;
 
-  font-weight: ${({ active }) => (active ? '600' : 'normal')};
+  font-weight: ${({ $active }) => ($active ? '600' : 'normal')};
   color: ${theme.text} !important;
-  background: ${({ active }) => (active ? 'grey' : 'transparent')};
+  background: ${({ $active }) => ($active ? 'grey' : 'transparent')};
 
   border-radius: 5px 0 0 5px;
   &:hover {
