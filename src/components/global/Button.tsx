@@ -1,8 +1,5 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import {
-  FontAwesomeIcon,
-  FontAwesomeIconProps,
-} from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import styled, { css } from 'styled-components';
 import theme from '../../theme';
@@ -11,12 +8,17 @@ type ButtonProps = {
   color?: string;
   text?: string;
   light?: boolean;
+  highlightColor?: string;
   icon?: IconProp;
   onClick?: any;
   round?: boolean;
 };
 
 const ButtonWrapper = styled.button<ButtonProps>`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
   min-width: 100px;
   height: auto;
 
@@ -24,10 +26,10 @@ const ButtonWrapper = styled.button<ButtonProps>`
   font-weight: 500;
   color: ${theme.textButton};
   background: ${({ color }) => (color ? color : theme.accent)};
-  padding: 0.5rem 0.75rem;
-  /* margin: 0.25em 0.5em; */
+  padding: 0.5rem 1.25rem;
+
   border: 1.5px solid ${({ color }) => (color ? color : theme.accent)};
-  box-sizing: border-box;
+  box-sizing: content-box;
   border-radius: ${({ round }) => (round ? '20px' : '5px')};
   /* box-shadow: 1px 1px 3px 0 #00000030; */
 
@@ -38,12 +40,13 @@ const ButtonWrapper = styled.button<ButtonProps>`
   user-select: none;
 
   :hover {
-    background: ${({ color }) => (color ? color : theme.accentB)};
+    background: ${({ highlightColor }) =>
+      highlightColor ? highlightColor : theme.accentB};
     transition: 0.5s ease-in-out;
   }
 
-  & > :nth-child(2) {
-    margin: 0 0 0 0.5em;
+  :focus-visible {
+    outline: 3px solid ${theme.brand};
   }
 
   ${({ light, color }) =>
@@ -58,20 +61,26 @@ const ButtonWrapper = styled.button<ButtonProps>`
         color: ${theme.textButton};
       }
     `}
+`;
+
+const ButtonIcon = styled(FontAwesomeIcon)``;
+
+const ButtonText = styled.span`
+  flex: 1 1;
+  font-family: Inter, sans-serif;
+  font-weight: 500;
 
   /** Tablet  */
   @media screen and (max-width: 992px) {
-    & > :nth-child(2) {
-      display: none;
-    }
+    display: none;
   }
 `;
 
 const Button = (props: ButtonProps) => {
   return (
     <ButtonWrapper {...props}>
-      {props.icon && <FontAwesomeIcon icon={props.icon} />}
-      {props.text && <span>{props.text}</span>}
+      {props.icon && <ButtonIcon icon={props.icon} />}
+      {props.text && <ButtonText>{props.text}</ButtonText>}
     </ButtonWrapper>
   );
 };

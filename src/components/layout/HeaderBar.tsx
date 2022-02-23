@@ -10,22 +10,23 @@ import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import theme from '../../theme';
 import ContextMenu from '../global/ContextMenu';
+import { FlexRow } from '../global/Flex';
+import TextInput from '../global/input/TextInput';
 
 const StyledHeaderBar = styled.div`
   grid-area: navbar;
   display: flex;
+  gap: 0.75rem;
   align-items: center;
 
   background: ${theme.titlebar};
-  color: ${theme.text};
+  padding: 0 1rem;
 
   /* border-bottom: 1px solid ${theme.sidebar}; */
 
-  overflow-y: visible;
+  border-bottom: 1px solid ${theme.secondary};
 
-  & > * {
-    margin: 0 1em;
-  }
+  overflow-y: visible;
 `;
 
 const Menu = styled.div`
@@ -44,57 +45,82 @@ const TitleBar = styled.div`
   flex: 1 1;
   display: flex;
   align-items: center;
-  padding: 1em 0;
 
   box-sizing: border-box;
+
   h2 {
     flex: 1 1;
-    font-weight: 600;
-    color: ${theme.text};
-
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    padding: 0;
-
-    user-select: none;
   }
 `;
 
+type NavBarProps = {
+  pageName: string;
+  back?: boolean;
+  toggleUserModal?: () => void;
+};
+
+const NavBar = ({ back, pageName }: NavBarProps) => {
+  const [showUserModal, setShowUserModal] = useState(false);
+  const history = useHistory();
+
+  const toggleUserModal = () => {
+    setShowUserModal(!showUserModal);
+  };
+
+  const handleAccount = () => {
+    history.push('/settings');
+  };
+
+  const UserMenu = () => {
+    return (
+      <UserWrapper
+        items={[
+          { label: 'Account', onClick: handleAccount },
+          { label: 'Sign Out', onClick: () => {} },
+        ]}
+      >
+        <span>Welcome back, John!</span>
+        <FontAwesomeIcon icon={faChevronDown} color={theme.brand} />
+      </UserWrapper>
+    );
+  };
+
+  return (
+    <StyledHeaderBar style={{ overflow: 'visible' }}>
+      {back && (
+        <FontAwesomeIcon
+          icon={faChevronLeft}
+          onClick={history.goBack}
+          color={theme.brand}
+          style={{ cursor: 'pointer', fontSize: '1.25rem' }}
+        />
+      )}
+
+      <TitleBar>
+        <h2>{pageName}</h2>
+      </TitleBar>
+
+      <UserMenu />
+      <Menu>
+        <FontAwesomeIcon icon={faBars} color={theme.brand} />
+      </Menu>
+    </StyledHeaderBar>
+  );
+};
+
+export default NavBar;
+
 /** @todo propably better solution than absolute positioning */
-const UserWrapper = styled.div`
-  /* display: none; */
-
-  position: relative;
-  z-index: 20;
-
-  font-size: 0.875rem;
-  color: ${theme.text};
-
-  text-align: right;
-  padding: 1em 0;
-
-  cursor: pointer;
-  overflow-y: visible;
-
-  & > :first-child {
-    opacity: 0.8;
-    margin: 0 0.25em 0 0;
-
-    &:hover {
-      transition: 0.25s ease-in-out;
-      opacity: 1;
-    }
+const UserWrapper = styled(ContextMenu)`
+  & > *,
+  & > * > * {
+    user-select: none;
   }
 
-  & > :last-child {
-    padding: 0 0.5em;
+  span {
+    cursor: pointer;
+    color: ${theme.textBody};
   }
-
-  /** Tablet  */
-  /* @media screen and (min-width: 600px) {
-    display: block;
-  } */
 `;
 
 const UserModalWrapper = styled.div`
@@ -121,62 +147,6 @@ const UserModalWrapper = styled.div`
     &:hover {
       opacity: 1;
       color: ${theme.bg};
-      background: ${theme.primary};
     }
   }
 `;
-
-export const UserMenu = () => {
-  return (
-    <ContextMenu>
-      <div>Sign Out</div>
-    </ContextMenu>
-  );
-};
-
-type NavBarProps = {
-  pageName: string;
-  back?: boolean;
-  toggleUserModal?: () => void;
-};
-
-const NavBar = ({ back, pageName }: NavBarProps) => {
-  const [showUserModal, setShowUserModal] = useState(false);
-  const history = useHistory();
-
-  const toggleUserModal = () => {
-    setShowUserModal(!showUserModal);
-  };
-
-  return (
-    <StyledHeaderBar>
-      {back && (
-        <FontAwesomeIcon
-          icon={faChevronLeft}
-          onClick={history.goBack}
-          color={theme.text}
-          style={{ cursor: 'pointer' }}
-        />
-      )}
-
-      <TitleBar>
-        <h2>{pageName}</h2>
-      </TitleBar>
-
-      <UserWrapper onClick={toggleUserModal}>
-        <div>
-          <span>Welcome back, John!</span>
-          <FontAwesomeIcon icon={faChevronDown} color={theme.text} />
-        </div>
-
-        {showUserModal && <UserMenu />}
-      </UserWrapper>
-
-      <Menu>
-        <FontAwesomeIcon icon={faBars} color={theme.text} />
-      </Menu>
-    </StyledHeaderBar>
-  );
-};
-
-export default NavBar;

@@ -14,14 +14,30 @@ import Content from './Content';
 import NotificationPanel from './NotificationPanel';
 import TodoPanel from './TodoPanel';
 import UpcomingPanel from './UpcomingPanel';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllProjects } from '../../../store/projects';
 
 const Dashboard = () => {
   const history = useHistory();
-  const [projects, setProjects] = useState<Project[]>();
-  const [isLoaded, setIsLoaded] = useState(false);
 
+  const [isLoaded, setIsLoaded] = useState(false);
+  const dispatch = useDispatch();
+  const { isLoading, data, filter } = useSelector(
+    (state: any) => state.projects
+  );
+
+  const filteredData = data.filter(
+    (t: any) =>
+      t.name?.toLowerCase().includes(filter.toLowerCase()) ||
+      // t.dueAt ?.toLowerCase().includes(filter.toLowerCase()) ||
+      t.description?.toLowerCase().includes(filter.toLowerCase())
+  );
+
+  const getProjects = filteredData.map((p: any, i: number) => (
+    <UpcomingPanel key={i} project={p} />
+  ));
   useEffect(() => {
-    loadProjectData();
+    dispatch(fetchAllProjects());
   }, []);
 
   const loadProjectData = async () => {
@@ -32,7 +48,7 @@ const Dashboard = () => {
       );
       const body = await resp.json();
       if (body.error) return;
-      setProjects(body.data);
+      // setProjects(body.data);
       setIsLoaded(true);
     } catch (e) {}
   };
@@ -44,10 +60,6 @@ const Dashboard = () => {
   /** @todo consider react-window to support large amounts or data */
   const getNotifications = comments.map((comment) =>
     NotificationPanel({ comment })
-  );
-
-  const getUpcoming = projects?.map((project) =>
-    UpcomingPanel({ project, selectProjectHandler })
   );
 
   const getTodo = todo.map((todo) => TodoPanel({ todo }));
@@ -64,11 +76,8 @@ const Dashboard = () => {
           {getTodo}
         </Panel>
 
-        <Panel heading="Upcoming Projects">
-          {isLoaded ? getUpcoming : <FontAwesomeIcon icon={faSpinner} spin />}
-        </Panel>
+        <Panel heading="Upcoming Projects">{getProjects}</Panel>
       </Content>
-      <Footer />
     </Layout>
   );
 };

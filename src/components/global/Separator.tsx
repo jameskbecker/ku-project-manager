@@ -6,7 +6,6 @@ const Separator = styled.div`
   max-height: 1px;
 
   background-color: ${theme.highlight};
-  margin: 0.5rem 0;
 `;
 
 export default Separator;

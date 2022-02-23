@@ -12,11 +12,12 @@ import { TableHeader } from '../../global/Table';
 import ProjectTableRow from './ProjectTableRow';
 
 const columns: any[] = [
-  { name: '', size: 5 },
-  { name: 'Name', size: 20 },
-  { name: 'Description', size: 42.5 },
-  { name: 'Date Created', size: 20 },
-  { name: 'Actions', size: 7.5 },
+  { name: '', size: '5%' },
+  { name: 'Name', size: '20%' },
+  { name: 'Description', size: '32.5%' },
+  { name: 'Created', size: '15%' },
+  { name: 'Due Date', size: '15%' },
+  { name: 'Actions', size: '5%' },
 ];
 
 const ProjectTable = () => {
@@ -46,6 +47,7 @@ const ProjectTable = () => {
         <FlexColumn
           style={{
             overflow: 'auto',
+            gap: '0.5rem',
           }}
         >
           {getProjects}

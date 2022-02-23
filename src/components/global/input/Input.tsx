@@ -1,4 +1,4 @@
-import { FlexColumn } from '../Flex';
+import { FlexColumn, FlexRow } from '../Flex';
 import React, { CSSProperties } from 'react';
 import styled, { css } from 'styled-components';
 import TextInput from './TextInput';
@@ -10,7 +10,7 @@ import theme from '../../../theme';
 // import TextInput from './TextInput';
 // import Toggle from './ToggleInput';
 
-export const Field = styled(FlexColumn)<any>`
+export const InputWrapper = styled(FlexColumn)<any>`
   flex: 1 1 auto;
   width: 100%;
 
@@ -45,16 +45,31 @@ export const Field = styled(FlexColumn)<any>`
     `}
 `;
 
+export const InputField = styled(FlexRow)`
+  background: ${theme.secondary};
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  gap: 0.5rem;
+  box-sizing: border-box;
+
+  padding: 0 0.5rem;
+
+  opacity: 0.8;
+
+  :focus-within {
+    opacity: 1;
+    transition: 0.25s ease-in-out;
+  }
+`;
+
 export const InputIcon = styled(FontAwesomeIcon)`
-  position: absolute;
+  /* position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%); */
 
-  font-size: 0.875rem;
+  font-size: 1rem;
 
-  padding-left: 0.5rem;
-
-  z-index: 2;
+  /* z-index: 2; */
 `;
 
 type Option = {
@@ -104,7 +119,7 @@ export const getInput = (type: string) => {
   // }
 
   // return (
-  //   <Field>
+  //   <InputWrapper>
   //     {props.icon && (
   //       <InputIcon>
   //         <props.icon />
@@ -112,6 +127,6 @@ export const getInput = (type: string) => {
   //     )}
   //     {props.label && <label>{props.label}</label>}
   //     <GetInput />
-  //   </Field>
+  //   </InputWrapper>
   // );
 };

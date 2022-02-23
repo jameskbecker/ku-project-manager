@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import theme from '../../theme';
 import { FlexColumn } from './Flex';
+import Separator from './Separator';
 
 type PanelProps = {
   heading?: String;
@@ -12,15 +13,16 @@ type PanelProps = {
   onClick?: React.MouseEventHandler<HTMLDivElement> | undefined;
 };
 
-const PanelWrapper = styled(FlexColumn)<PanelProps>`
+const StyledPanel = styled(FlexColumn)<PanelProps>`
   flex: 1 0 auto;
   padding: 0.75rem;
-  border: 2px solid transparent;
+  border: 2px solid #ffffff00;
   box-sizing: border-box;
-  border-radius: 0.5em;
+  border-radius: 0.5rem;
+  font-weight: 400;
 
   background: ${({ secondary }) =>
-    secondary ? theme.secondaryA : theme.primaryA};
+    secondary ? theme.secondary : theme.primary};
 
   cursor: ${({ onClick }) => (onClick ? 'pointer' : 'default')};
   overflow: auto;
@@ -29,32 +31,18 @@ const PanelWrapper = styled(FlexColumn)<PanelProps>`
     onClick &&
     css`
       :hover {
-        ${!light
-          ? css`
-              background: ${theme.highlight};
-            `
-          : css`
-              border-color: ${theme.highlight};
-            `}
+        background: ${theme.highlight};
         transition: 0.5s ease-out;
       }
     `}
-
-  div {
-    font-size: 0.8rem;
-  }
-
-  h3 {
-    margin: 0;
-  }
 `;
 
 const Panel = (props: PanelProps) => {
   return (
-    <PanelWrapper {...props}>
-      {props.heading && <h3>{props.heading}</h3>}
+    <StyledPanel {...props}>
+      {props.heading && <h3 style={{ flex: '0 0 auto' }}>{props.heading}</h3>}
       {props.children}
-    </PanelWrapper>
+    </StyledPanel>
   );
 };
 

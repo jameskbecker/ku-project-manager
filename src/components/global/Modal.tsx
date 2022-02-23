@@ -22,32 +22,19 @@ export const ModalBackdrop = styled.div`
   & > * {
     flex: 0 1 auto;
   }
-
-  h2 {
-    font-weight: 600;
-    color: ${theme.text};
-
-    text-overflow: ellipsis;
-    text-indent: 0;
-    padding: 0.5rem 0;
-    overflow: hidden;
-    white-space: nowrap;
-
-    user-select: none;
-  }
 `;
 
 export const ModalContent = styled(Panel)`
   flex: 0 1 auto;
-  min-width: 300px;
+  min-width: 400px;
 
-  background: ${theme.secondaryA};
+  background: ${theme.primary};
 
   opacity: 1;
   cursor: default;
 
   :hover {
-    background: ${theme.secondaryA};
+    background: ${theme.primary};
   }
 `;
 

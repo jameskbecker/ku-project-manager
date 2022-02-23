@@ -1,21 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 import theme from '../../theme';
+import Separator from '../global/Separator';
 
 const FooterWrapper = styled.footer`
   grid-area: footer;
 
-  font-size: 0.75rem;
-  padding: 0.25em 0;
+  font-size: 0.625rem;
+  font-weight: 600;
   width: 100%;
-  min-height: 1rem;
-  color: white;
+
+  color: ${theme.text};
   text-align: center;
-  background: ${theme.sidebar};
+  background: ${theme.bg};
+  padding: 0.25rem 0;
+  box-sizing: border-box;
+  border-right: 1px solid ${theme.secondary};
 `;
 
 const Footer = () => {
-  return <FooterWrapper>Built by James Becker</FooterWrapper>;
+  return (
+    <FooterWrapper>
+      <span>Built by James K. Becker</span>
+    </FooterWrapper>
+  );
 };
 
 export default Footer;

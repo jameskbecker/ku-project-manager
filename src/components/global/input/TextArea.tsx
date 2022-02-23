@@ -1,21 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 import theme from '../../../theme';
-import { Field } from './Input';
+import { InputWrapper } from './Input';
 
 export const StyledTextArea = styled.textarea<any>`
   flex: 0 1 auto;
 
   position: relative;
-  min-height: 5rem;
+  min-height: 6rem;
   min-width: 0;
 
   text-indent: ${({ icon }) => (icon ? '1rem' : 'none')};
 
   font-family: inherit;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: ${theme.text};
-  background: ${theme.primaryA};
+  background: ${theme.secondary};
   border: none;
   border-radius: 5px;
   box-sizing: border-box;
@@ -30,6 +30,8 @@ export const StyledTextArea = styled.textarea<any>`
 
   :focus {
     outline: 0;
+    opacity: 1;
+    transition: 0.25s ease-in-out;
   }
 
   :disabled {
@@ -39,10 +41,10 @@ export const StyledTextArea = styled.textarea<any>`
 
 const TextArea = (props: any) => {
   return (
-    <Field {...props}>
+    <InputWrapper {...props}>
       {props.label && <label>{props.label}</label>}
       <StyledTextArea {...props} />
-    </Field>
+    </InputWrapper>
   );
 };
 

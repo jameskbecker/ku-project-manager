@@ -3,7 +3,7 @@ import { User } from '../types';
 const data: User[] = [
   {
     id: '0',
-    firstName: 'Lydia',
+    firstName: 'Jack',
     lastName: 'Hartley',
     courseId: '1',
   },

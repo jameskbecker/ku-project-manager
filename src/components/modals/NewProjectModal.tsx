@@ -6,6 +6,7 @@ import {
   toggleNewProject,
 } from '../../store/projects';
 import Button from '../global/Button';
+import TextArea from '../global/input/TextArea';
 import TextInput from '../global/input/TextInput';
 import { ModalBackdrop, ModalContent } from '../global/Modal';
 import Separator from '../global/Separator';
@@ -47,7 +48,7 @@ const NewProjectModal = () => {
         <Separator />
 
         <TextInput label="Name" value={name} onChange={handleNameChange} />
-        <TextInput
+        <TextArea
           label="Description"
           value={description}
           onChange={handleDescriptionChange}

@@ -9,6 +9,7 @@ import Content from './Content';
 import ControlBar from './ControlBar';
 import NewProjectModal from '../../modals/NewProjectModal';
 import ProjectTable from './ProjectTable';
+import DeleteAllModal from '../../modals/DeleteAllModal';
 
 type Project = {
   id: string;
@@ -22,7 +23,9 @@ type Project = {
 };
 
 const ProjectOverview = () => {
-  const { showNewProject } = useSelector((state: any) => state.projects);
+  const { showDeleteAll, showNewProject } = useSelector(
+    (state: any) => state.projects
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -37,9 +40,9 @@ const ProjectOverview = () => {
       <Content>
         <ProjectTable />
       </Content>
-      <Footer />
 
       {showNewProject && <NewProjectModal />}
+      {showDeleteAll && <DeleteAllModal />}
     </Layout>
   );
 };

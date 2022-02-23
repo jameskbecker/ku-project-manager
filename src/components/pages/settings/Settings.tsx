@@ -12,7 +12,6 @@ const Settings = () => {
       {/**@todo replace with context */}
       <NavBar pageName="Settings" />
       <Content></Content>
-      <Footer />
     </Layout>
   );
 };

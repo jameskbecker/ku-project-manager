@@ -1,24 +1,37 @@
+import { format } from 'date-fns';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 import { Project } from '../../../types';
 import Panel from '../../global/Panel';
 
 type UpcomingPanelProps = {
   project: Project;
-  selectProjectHandler: (id: string) => void;
 };
 
-const UpcomingPanel = ({
-  project,
-  selectProjectHandler,
-}: UpcomingPanelProps) => (
-  <Panel
-    secondary
-    heading={project.name}
-    key={project.id}
-    onClick={() => selectProjectHandler(project.id)}
-  >
-    <div>{new Date(project.createdAt * 1000).toLocaleString()}</div>
-  </Panel>
-);
+const StyledUpcomingPanel = styled(Panel)`
+  flex: 0 0 auto;
+  gap: 0.5rem;
+`;
+
+const UpcomingPanel = ({ project }: UpcomingPanelProps) => {
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push(`/projects/${project.id}`);
+  };
+
+  return (
+    <StyledUpcomingPanel key={project.id} secondary onClick={handleClick}>
+      <h4>{project.name}</h4>
+      <h5>
+        {format(
+          new Date(project.createdAt * 1000),
+          "'Due' do LLL y 'at' hh:mm aa"
+        )}
+      </h5>
+    </StyledUpcomingPanel>
+  );
+};
 
 export default UpcomingPanel;

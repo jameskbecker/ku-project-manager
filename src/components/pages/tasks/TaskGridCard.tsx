@@ -1,36 +1,26 @@
-import {
-  faEllipsisV,
-  faPencilAlt,
-  faTrash,
-  faCheckSquare,
-} from '@fortawesome/free-solid-svg-icons';
 import { faSquare } from '@fortawesome/free-regular-svg-icons';
+import { faCheckSquare, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { MouseEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import {
-  deleteProject,
-  fetchAllProjects,
-  selectProject,
-  toggleNewProject,
-} from '../../../store/projects';
-import theme from '../../../theme';
-import { FlexColumn, FlexRow } from '../../global/Flex';
-import Panel from '../../global/Panel';
-import ContextMenu from '../../global/ContextMenu';
-import {
   deleteTask,
   fetchProjectTasks,
   selectTask,
   toggleNewTask,
 } from '../../../store/tasks';
+import theme from '../../../theme';
+import ContextMenu from '../../global/ContextMenu';
+import { FlexRow } from '../../global/Flex';
+import Panel from '../../global/Panel';
 
 const Wrapper = styled(Panel)<any>`
-  display: grid;
-  grid-template-columns: 9fr 1fr;
-  grid-auto-rows: auto auto minmax(0, 1fr);
+  /* display: grid;
+  grid-template-columns: auto repeat(2, min-content);
+  grid-auto-rows: auto auto minmax(0, 1fr); */
+  gap: 0.5rem;
   align-items: flex-start;
 
   & > :last-child {
@@ -44,31 +34,8 @@ const Wrapper = styled(Panel)<any>`
     font-size: 1.125rem;
   }
 
-  h4 {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #b2b2b2;
-  }
-
   svg {
     flex: 0 0 auto;
-  }
-
-  h3 {
-    flex: 1 1 auto;
-
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-
-  p {
-    font-size: 0.75rem;
-    overflow: hidden;
-    font-weight: 400;
-    word-break: break-word;
-    white-space: normal;
-    text-overflow: ellipsis;
-    color: ${theme.textBody};
   }
 `;
 
@@ -127,6 +94,19 @@ const TaskGridCard = ({ task }: any) => {
     e.target.style.display = 'flex';
   };
 
+  const OptionMenu = () => {
+    return (
+      <ContextMenu
+        items={[
+          { label: 'Edit', onClick: handleEdit },
+          { label: 'Delete', onClick: handleDelete },
+        ]}
+      >
+        <MoreButton icon={faEllipsisV} />
+      </ContextMenu>
+    );
+  };
+
   return (
     <Wrapper
       key={task.id}
@@ -134,38 +114,53 @@ const TaskGridCard = ({ task }: any) => {
       onClick={handleSelect}
       onDrag={handleDrag}
       onDragEnd={handleDragEnd}
-      light
+      style={{ overflow: 'visible' }}
     >
       {/* <div>{project.priority}</div> */}
+      <FlexRow
+        style={{
+          width: '100%',
+          justifyContent: 'spread-evenly',
+          overflow: 'visible',
+        }}
+      >
+        <h4 style={{ flex: '1 0' }}>{task.name}</h4>
+        <FlexRow style={{ overflow: 'visible' }}>
+          <FontAwesomeIcon
+            icon={isDone ? faCheckSquare : faSquare}
+            color={theme.brand}
+            onClick={toggleIsDone}
+          />
+          <OptionMenu />
+        </FlexRow>
+      </FlexRow>
 
-      <h3>{task.name}</h3>
-      <FlexColumn style={{ gridRow: 'span 3' }}>
-        <FontAwesomeIcon
-          icon={isDone ? faCheckSquare : faSquare}
-          color={'#cccccc'}
-          onClick={toggleIsDone}
-        />
-        <FontAwesomeIcon
-          icon={faPencilAlt}
-          color={'#cccccc'}
-          onClick={handleEdit}
-        />
+      {/* <FontAwesomeIcon
+        icon={faPencilAlt}
+        color={theme.textBody}
+        onClick={handleEdit}
+      />
 
-        <FontAwesomeIcon
-          icon={faTrash}
-          color={'#cccccc'}
-          onClick={handleDelete}
-        />
-        {/* <MoreButton icon={faEllipsisV} onClick={handleMore} /> */}
-      </FlexColumn>
+      <FontAwesomeIcon
+        icon={faTrash}
+        color={theme.textBody}
+        onClick={handleDelete}
+      /> */}
+
+      {/* <FlexRow style={{ gridRow: 'span 3' }}>
+       
+        
+      </FlexRow> */}
       {/* <ContextMenu isOpen={true}>
           <MoreButton icon={faEllipsisV} onClick={handleMore} />
           <div>Test</div>
         </ContextMenu> */}
 
-      <h4>{new Date(task.createdAt * 1000).toLocaleString()}</h4>
+      <h5 style={{ gridColumn: 'span 2' }}>
+        {new Date(task.createdAt * 1000).toLocaleString()}
+      </h5>
 
-      <p>{task.description}</p>
+      <p style={{ gridColumn: 'span 2' }}>{task.description}</p>
       {/* <div>{project.isComplete ? 'Complete!' : 'Incomplete'}</div>
       <div>{new Date(project.createdAt * 1000).toLocaleString()}</div>
       <FlexRow style={{ justifyContent: 'flex-start' }}>

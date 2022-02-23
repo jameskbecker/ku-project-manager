@@ -48,7 +48,7 @@ const Project = () => {
       <Content>
         <TaskGrid />
       </Content>
-      <Footer />
+
       {showNewProject && <NewProjectModal />}
       {showNewTask && <NewTaskModal />}
     </Layout>

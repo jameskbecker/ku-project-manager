@@ -116,7 +116,7 @@ const NewTaskModal = () => {
           <Button light text="Cancel" onClick={handleCancel}></Button>
           <Button
             round
-            text={`Save${selectedTask && ' Changes'}`}
+            text={`Save${selectedTask ? ' Changes' : ''}`}
             onClick={handleSave}
           />
         </ModalFooter>

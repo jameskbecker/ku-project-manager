@@ -21,7 +21,7 @@ const ControlBarWrapper = styled.div`
   /* display: flex;
   justify-content: space-between; */
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 350px 2fr 350px;
   align-items: center;
   grid-area: control;
   gap: 0.75rem;
@@ -30,6 +30,7 @@ const ControlBarWrapper = styled.div`
   padding: 1rem;
 
   //border-bottom: 1px solid ${theme.sidebar};
+  border-bottom: 1px solid ${theme.secondary};
 `;
 
 const ControlBar = () => {
@@ -81,6 +82,7 @@ const ControlBar = () => {
           <Button
             icon={faPencilAlt}
             text="Edit Project"
+            color={theme.warn}
             onClick={handleEdit}
             light
           />

@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import {
   applyFilter,
   selectProject,
+  toggleDeleteAll,
   toggleNewProject,
 } from '../../../store/projects';
 import theme from '../../../theme';
@@ -21,15 +22,19 @@ const ControlBarWrapper = styled.div`
   /* display: flex;
   justify-content: space-between; */
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 350px 2fr 350px;
   align-items: center;
   grid-area: control;
   gap: 0.75rem;
 
   background: ${theme.control};
-  padding: 1rem;
+  padding: 0 1rem;
 
-  /* border-bottom: 1px solid ${theme.sidebar}; */
+  & > * {
+    overflow: visible;
+  }
+
+  border-bottom: 1px solid ${theme.secondary};
 `;
 
 const ControlBar = () => {
@@ -46,9 +51,13 @@ const ControlBar = () => {
     dispatch(applyFilter({ text: value }));
   };
 
+  const handleDeleteAll = (e: any) => {
+    dispatch(toggleDeleteAll());
+  };
+
   return (
     <ControlBarWrapper>
-      <FlexRow>
+      <FlexRow style={{ height: '100%' }}>
         <Button
           icon={faPlus}
           text="New Project"
@@ -74,6 +83,7 @@ const ControlBar = () => {
           text="Delete All Projects"
           color={theme.error}
           icon={faTimes}
+          onClick={handleDeleteAll}
         />
       </FlexRow>
     </ControlBarWrapper>

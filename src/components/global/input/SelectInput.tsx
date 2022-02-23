@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactSelect, { components } from 'react-select';
 import styled from 'styled-components';
 import theme from '../../../theme';
-import { Field, InputProps } from './Input';
+import { InputWrapper, InputProps } from './Input';
 
 export const StyledReactSelect = styled(ReactSelect)`
   overflow: visible;
@@ -12,7 +12,7 @@ export const StyledReactSelect = styled(ReactSelect)`
     flex-wrap: nowrap;
     min-height: 0;
 
-    font-size: 0.875rem;
+    font-size: 1rem;
 
     border: 1px solid transparent;
     border-radius: 5px !important;
@@ -23,7 +23,7 @@ export const StyledReactSelect = styled(ReactSelect)`
     overflow: visible;
 
     background: ${({ isDisabled }) =>
-      isDisabled ? theme.disabled : theme.primaryA};
+      isDisabled ? theme.disabled : theme.secondary};
     cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
   }
 
@@ -73,7 +73,7 @@ export const StyledReactSelect = styled(ReactSelect)`
   .Select__multi-value__label,
   .Select__single-value,
   .Select__placeholder {
-    font-size: 0.875rem;
+    font-size: 1rem;
     /* color: ${theme.text}; */
   }
 
@@ -150,7 +150,7 @@ const SelectInput = (props: InputProps) => {
   };
 
   return (
-    <Field ff={props}>
+    <InputWrapper ff={props}>
       {props.label && <label>{props.label}</label>}
       <StyledReactSelect
         {...props}
@@ -159,7 +159,7 @@ const SelectInput = (props: InputProps) => {
         isDisabled={props.disabled}
         classNamePrefix="Select"
       />
-    </Field>
+    </InputWrapper>
   );
 };
 

@@ -2,7 +2,7 @@
 // import React, { useState } from 'react';
 // import styled from 'styled-components';
 // import theme from '../../../theme';
-// import { Field, InputProps } from './Input';
+// import { InputWrapper, InputProps } from './Input';
 // import { StyledInput } from './TextInput';
 
 // const NumberControlWrapper = styled(FlexRow)`
@@ -59,7 +59,7 @@
 //   };
 
 //   return (
-//     <Field>
+//     <InputWrapper>
 //       {props.label && <label>{props.label}</label>}
 //       <StyledInput
 //         {...props}
@@ -72,7 +72,7 @@
 //         <NumberControl onClick={handleDecrement}>-</NumberControl>
 //         <NumberControl onClick={handleIncrement}>+</NumberControl>
 //       </NumberControlWrapper>
-//     </Field>
+//     </InputWrapper>
 //   );
 // };
 
