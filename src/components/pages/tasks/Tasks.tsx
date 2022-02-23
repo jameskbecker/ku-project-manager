@@ -12,6 +12,7 @@ import Footer from '../../layout/Footer';
 import NavBar from '../../layout/HeaderBar';
 import Layout from '../../layout/Layout';
 import SideBar from '../../layout/SideBar';
+import InviteModal from '../../modals/InviteModal';
 import NewProjectModal from '../../modals/NewProjectModal';
 import NewTaskModal from '../../modals/NewTaskModal';
 import Content from './Content';
@@ -20,7 +21,7 @@ import TaskGrid from './TaskGrid';
 
 const Project = () => {
   const { id, taskId } = useParams<any>();
-  const { showNewProject, selectedProject } = useSelector(
+  const { showInvite, showNewProject, selectedProject } = useSelector(
     (state: any) => state.projects
   );
   const { pageName, showNewTask } = useSelector((state: any) => state.tasks);
@@ -50,6 +51,7 @@ const Project = () => {
       </Content>
 
       {showNewProject && <NewProjectModal />}
+      {showInvite && <InviteModal />}
       {showNewTask && <NewTaskModal />}
     </Layout>
   );

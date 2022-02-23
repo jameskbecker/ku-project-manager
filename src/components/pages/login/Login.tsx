@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import theme from '../../../theme';
 import Button from '../../global/Button';
 import { FlexColumn } from '../../global/Flex';
 import TextInput from '../../global/input/TextInput';
@@ -32,6 +33,13 @@ const Login = () => {
         <label>Please enter your login details:</label>
         <TextInput label="Email" />
         <TextInput label="Password" />
+        <Separator />
+        <Button
+          text="Register"
+          color={theme.textBody}
+          light
+          onClick={handleLogin}
+        />
         <Button text="Sign In" round onClick={handleLogin} />
       </Panel>
     </FlexColumn>

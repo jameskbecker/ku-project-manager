@@ -40,8 +40,7 @@ const ButtonWrapper = styled.button<ButtonProps>`
   user-select: none;
 
   :hover {
-    background: ${({ highlightColor }) =>
-      highlightColor ? highlightColor : theme.accentB};
+    background: ${({ color }) => (color ? color : theme.accent)};
     transition: 0.5s ease-in-out;
   }
 

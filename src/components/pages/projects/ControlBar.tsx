@@ -11,6 +11,7 @@ import {
   applyFilter,
   selectProject,
   toggleDeleteAll,
+  toggleInvite,
   toggleNewProject,
 } from '../../../store/projects';
 import theme from '../../../theme';
@@ -81,7 +82,7 @@ const ControlBar = () => {
         <Button
           light
           text="Delete All Projects"
-          color={theme.error}
+          color={theme.textBody}
           icon={faTimes}
           onClick={handleDeleteAll}
         />

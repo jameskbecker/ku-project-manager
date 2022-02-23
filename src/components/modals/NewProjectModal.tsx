@@ -5,6 +5,7 @@ import {
   saveProject,
   toggleNewProject,
 } from '../../store/projects';
+import theme from '../../theme';
 import Button from '../global/Button';
 import TextArea from '../global/input/TextArea';
 import TextInput from '../global/input/TextInput';
@@ -62,7 +63,12 @@ const NewProjectModal = () => {
 
         <Separator />
 
-        <Button light text="Cancel" onClick={handleCancel}></Button>
+        <Button
+          light
+          text="Cancel"
+          color={theme.textBody}
+          onClick={handleCancel}
+        ></Button>
         <Button round text="Save" onClick={handleSave} />
       </ModalContent>
     </ModalBackdrop>

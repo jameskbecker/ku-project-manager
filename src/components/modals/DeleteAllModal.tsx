@@ -18,7 +18,12 @@ const DeleteAllModal = () => {
 
         <h5>This action cannot be undone.</h5>
         <Separator />
-        <Button light text="Cancel" onClick={handleCancel}></Button>
+        <Button
+          light
+          text="Cancel"
+          color={theme.textBody}
+          onClick={handleCancel}
+        ></Button>
         <Button text="Delete All" color={theme.error} onClick={null} />
       </ModalContent>
     </ModalBackdrop>

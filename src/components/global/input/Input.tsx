@@ -20,7 +20,8 @@ export const InputWrapper = styled(FlexColumn)<any>`
   overflow: visible;
 
   label {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
+    font-weight: 500;
     flex: 1 0 auto;
   }
 

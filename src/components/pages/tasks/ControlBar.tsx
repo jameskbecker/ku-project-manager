@@ -10,7 +10,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { selectProject, toggleNewProject } from '../../../store/projects';
+import {
+  selectProject,
+  toggleInvite,
+  toggleNewProject,
+} from '../../../store/projects';
 import { applyFilter, toggleNewTask } from '../../../store/tasks';
 import theme from '../../../theme';
 import Button from '../../global/Button';
@@ -44,7 +48,9 @@ const ControlBar = () => {
 
   const handleNewTask = () => dispatch(toggleNewTask());
 
-  const handleInvite = () => {};
+  const handleInvite = () => {
+    dispatch(toggleInvite());
+  };
 
   const handleSearch = (e: any) => {
     const { value } = e.target;
@@ -63,7 +69,8 @@ const ControlBar = () => {
           <Button
             icon={faUserPlus}
             text="Invite Members"
-            onClick={null}
+            color={theme.textBody}
+            onClick={handleInvite}
             round
             light
           />
@@ -81,8 +88,8 @@ const ControlBar = () => {
         {!taskId && (
           <Button
             icon={faPencilAlt}
+            color={theme.textBody}
             text="Edit Project"
-            color={theme.warn}
             onClick={handleEdit}
             light
           />
@@ -90,7 +97,7 @@ const ControlBar = () => {
         <Button
           light
           text="Delete All Tasks"
-          color={theme.error}
+          color={theme.textBody}
           icon={faTimes}
         />
       </FlexRow>

@@ -11,6 +11,7 @@ import {
   selectTask,
   toggleNewTask,
 } from '../../store/tasks';
+import theme from '../../theme';
 import Button from '../global/Button';
 import { FlexColumn } from '../global/Flex';
 import SelectInput from '../global/input/SelectInput';
@@ -113,7 +114,12 @@ const NewTaskModal = () => {
         </FlexColumn>
         <Separator />
         <ModalFooter>
-          <Button light text="Cancel" onClick={handleCancel}></Button>
+          <Button
+            light
+            text="Cancel"
+            color={theme.textBody}
+            onClick={handleCancel}
+          ></Button>
           <Button
             round
             text={`Save${selectedTask ? ' Changes' : ''}`}

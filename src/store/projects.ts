@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState: any = {
   showNewProject: false,
+  showInvite: false,
   showDeleteAll: false,
   isLoading: null,
   selectedProject: '',
@@ -56,8 +57,11 @@ export const projectsSlice = createSlice({
     },
 
     toggleNewProject: (state) => {
-      console.log(JSON.parse(JSON.stringify(state)));
       state.showNewProject = !state.showNewProject;
+    },
+
+    toggleInvite: (state) => {
+      state.showInvite = !state.showInvite;
     },
 
     selectProject: (state, { payload }) => {
@@ -101,6 +105,11 @@ export const projectsSlice = createSlice({
   },
 });
 
-export const { toggleDeleteAll, toggleNewProject, selectProject, applyFilter } =
-  projectsSlice.actions;
+export const {
+  toggleDeleteAll,
+  toggleInvite,
+  toggleNewProject,
+  selectProject,
+  applyFilter,
+} = projectsSlice.actions;
 export default projectsSlice.reducer;

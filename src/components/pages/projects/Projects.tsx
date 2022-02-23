@@ -10,6 +10,7 @@ import ControlBar from './ControlBar';
 import NewProjectModal from '../../modals/NewProjectModal';
 import ProjectTable from './ProjectTable';
 import DeleteAllModal from '../../modals/DeleteAllModal';
+import InviteModal from '../../modals/InviteModal';
 
 type Project = {
   id: string;

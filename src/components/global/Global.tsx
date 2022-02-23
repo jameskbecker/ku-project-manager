@@ -54,6 +54,7 @@ const Global = createGlobalStyle`
   h1 {
     font-size: 2rem;
     font-weight: 800;
+    color: ${theme.textBrand};
   }
 
   h2 {
