@@ -71,12 +71,16 @@ const NavBar = ({ back, pageName }: NavBarProps) => {
     history.push('/settings');
   };
 
+  const handleSignout = () => {
+    history.push('/login');
+  };
+
   const UserMenu = () => {
     return (
       <UserWrapper
         items={[
           { label: 'Account', onClick: handleAccount },
-          { label: 'Sign Out', onClick: () => {} },
+          { label: 'Sign Out', onClick: handleSignout },
         ]}
       >
         <span>Welcome back, John!</span>
