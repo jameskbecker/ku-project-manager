@@ -92,14 +92,14 @@ const ProjectTableRow = ({ project }: any) => {
       <TableCell size={20}>{project.name}</TableCell>
       <TableCell size={32.5}>{project.description}</TableCell>
       <TableCell size={15}>
+        {format(new Date(project.createdAt * 1000), "do LLL y 'at' hh:mm aa")}
+      </TableCell>
+      <TableCell size={15}>
         {formatDistance(new Date(project.createdAt * 1000), Date.now(), {
           addSuffix: true,
         })}
       </TableCell>
-      <TableCell size={15}>
-        {format(new Date(project.createdAt * 1000), "do LLL y 'at' hh:mm aa")}
-      </TableCell>
-      {/* <div>{project.isComplete ? 'Complete!' : 'Incomplete'}</div> */}
+
       <TableCell size={5}>
         <ActionButton icon={faPencilAlt} onClick={handleEdit} />
         <ActionButton icon={faTrash} onClick={handleDelete} />

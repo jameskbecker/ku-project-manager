@@ -15,8 +15,8 @@ const columns: any[] = [
   { name: '', size: '5%' },
   { name: 'Name', size: '20%' },
   { name: 'Description', size: '32.5%' },
-  { name: 'Created', size: '15%' },
   { name: 'Due Date', size: '15%' },
+  { name: 'Created', size: '15%' },
   { name: 'Actions', size: '5%' },
 ];
 
