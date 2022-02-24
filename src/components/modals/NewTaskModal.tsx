@@ -12,7 +12,7 @@ import {
   toggleNewTask,
 } from '../../store/tasks';
 import theme from '../../theme';
-import Button from '../global/Button';
+import Button, { ButtonWrapper } from '../global/Button';
 import { FlexColumn } from '../global/Flex';
 import SelectInput from '../global/input/SelectInput';
 import TextArea from '../global/input/TextArea';
@@ -74,11 +74,7 @@ const NewTaskModal = () => {
   console.log(taskOptions);
   return (
     <ModalBackdrop onClick={handleCancel}>
-      <ModalContent
-        secondary
-        onClick={(e) => e.stopPropagation()}
-        style={{ minWidth: '500px' }}
-      >
+      <ModalContent secondary onClick={(e) => e.stopPropagation()}>
         <h2>{selectedTask ? 'Edit' : 'New'} Task</h2>
         <Separator />
         <FlexColumn>
@@ -97,7 +93,7 @@ const NewTaskModal = () => {
             disabled
           />
 
-          <Separator />
+          {/* <Separator /> */}
 
           <TextInput label="Name" value={name} onChange={handleNameChange} />
           <TextArea
@@ -113,7 +109,8 @@ const NewTaskModal = () => {
           />
         </FlexColumn>
         <Separator />
-        <ModalFooter>
+
+        <ButtonWrapper>
           <Button
             light
             text="Cancel"
@@ -125,7 +122,7 @@ const NewTaskModal = () => {
             text={`Save${selectedTask ? ' Changes' : ''}`}
             onClick={handleSave}
           />
-        </ModalFooter>
+        </ButtonWrapper>
       </ModalContent>
     </ModalBackdrop>
   );

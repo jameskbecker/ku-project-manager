@@ -10,7 +10,7 @@ import ProjectTableRow from './TaskGridCard';
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 200px;
+  grid-auto-rows: 175px;
   gap: 0.75rem;
 `;
 

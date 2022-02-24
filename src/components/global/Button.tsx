@@ -14,7 +14,30 @@ type ButtonProps = {
   round?: boolean;
 };
 
-const ButtonWrapper = styled.button<ButtonProps>`
+export const ButtonWrapper = styled.div`
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  padding: 0;
+  margin: 0;
+
+  & > * {
+    flex: 1 0 auto;
+  }
+
+  /** Tablet  */
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+
+    & > * {
+      flex: 1 1;
+    }
+  }
+`;
+
+const StyledButton = styled.button<ButtonProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -69,18 +92,18 @@ const ButtonText = styled.span`
   font-family: Inter, sans-serif;
   font-weight: 500;
 
-  /** Tablet  */
+  /* * Desktop
   @media screen and (max-width: 992px) {
     display: none;
-  }
+  } */
 `;
 
 const Button = (props: ButtonProps) => {
   return (
-    <ButtonWrapper {...props}>
+    <StyledButton {...props}>
       {props.icon && <ButtonIcon icon={props.icon} />}
       {props.text && <ButtonText>{props.text}</ButtonText>}
-    </ButtonWrapper>
+    </StyledButton>
   );
 };
 

@@ -60,22 +60,42 @@ const Global = createGlobalStyle`
   h2 {
     font-size: 1.5rem;
     font-weight: 700;
+
+    /* Mobile */
+    @media screen and (max-width: 479px) {
+      font-size: 1.375rem;
+    }
   }
 
   h3 {
     font-size: 1.125rem;
     font-weight: 700;
     grid-area: title;
+
+    /* Mobile */
+    @media screen and (max-width: 479px) {
+      font-size: 1rem;
+    }
   }
 
   h4 {
     font-size: 1rem;
     font-weight: 600;
+
+    /* Mobile */
+    @media screen and (max-width: 479px) {
+      font-size: 0.875rem;
+    }
   }
 
   h5 {
     font-size: 0.875rem;
     color: ${theme.textBody};
+
+    /* Mobile */
+    @media screen and (max-width: 479px) {
+      font-size: 0.75rem;
+    }
   }
 
   ul {

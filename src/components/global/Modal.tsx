@@ -26,9 +26,10 @@ export const ModalBackdrop = styled.div`
 
 export const ModalContent = styled(Panel)`
   flex: 0 1 auto;
-  min-width: 400px;
+  width: calc(100% - 2rem);
 
   background: ${theme.primary};
+  padding: 1rem;
 
   opacity: 1;
   cursor: default;
@@ -36,6 +37,13 @@ export const ModalContent = styled(Panel)`
   :hover {
     background: ${theme.primary};
   }
+
+  /**Tablet */
+  @media screen and (min-width: 768px) {
+    width: 600px;
+  }
 `;
 
-export const ModalFooter = styled(FlexColumn)``;
+export const ModalFooter = styled(FlexColumn)`
+  flex: 1 1;
+`;

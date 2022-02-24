@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { toggleDeleteAll } from '../../store/projects';
 import theme from '../../theme';
-import Button from '../global/Button';
+import Button, { ButtonWrapper } from '../global/Button';
 import { ModalBackdrop, ModalContent } from '../global/Modal';
 import Separator from '../global/Separator';
 
@@ -18,13 +18,15 @@ const DeleteAllModal = () => {
 
         <h5>This action cannot be undone.</h5>
         <Separator />
-        <Button
-          light
-          text="Cancel"
-          color={theme.textBody}
-          onClick={handleCancel}
-        ></Button>
-        <Button text="Delete All" color={theme.error} onClick={null} />
+        <ButtonWrapper>
+          <Button
+            light
+            text="Cancel"
+            color={theme.textBody}
+            onClick={handleCancel}
+          ></Button>
+          <Button text="Delete All" color={theme.error} onClick={null} />
+        </ButtonWrapper>
       </ModalContent>
     </ModalBackdrop>
   );

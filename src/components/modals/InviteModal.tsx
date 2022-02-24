@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleInvite } from '../../store/projects';
 import theme from '../../theme';
-import Button from '../global/Button';
+import Button, { ButtonWrapper } from '../global/Button';
 import { FlexColumn } from '../global/Flex';
 import TextInput from '../global/input/TextInput';
 import { ModalBackdrop, ModalContent, ModalFooter } from '../global/Modal';
@@ -49,11 +49,7 @@ const InviteModal = () => {
 
   return (
     <ModalBackdrop onClick={handleCancel}>
-      <ModalContent
-        secondary
-        onClick={(e) => e.stopPropagation()}
-        style={{ minWidth: '500px' }}
-      >
+      <ModalContent secondary onClick={(e) => e.stopPropagation()}>
         <h2>Invite Member</h2>
         <Separator />
         <FlexColumn>
@@ -65,7 +61,7 @@ const InviteModal = () => {
           />
         </FlexColumn>
         <Separator />
-        <ModalFooter>
+        <ButtonWrapper>
           <Button
             light
             text="Cancel"
@@ -73,7 +69,7 @@ const InviteModal = () => {
             onClick={handleCancel}
           ></Button>
           <Button round text="Send Invite" onClick={handleSave} />
-        </ModalFooter>
+        </ButtonWrapper>
       </ModalContent>
     </ModalBackdrop>
   );
