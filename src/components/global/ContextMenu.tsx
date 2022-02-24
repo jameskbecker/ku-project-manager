@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import theme from '../../theme';
 import { FlexColumn, FlexRow } from './Flex';
+import Separator from './Separator';
 
 const StyledContextMenu = styled.div`
   position: absolute;
@@ -9,10 +10,12 @@ const StyledContextMenu = styled.div`
   right: 0rem;
   height: auto
   width: auto;
+  display: flex;
+  flex-direction: column;
 
   background: ${theme.disabled};
   border-radius: 0.5rem;
-  padding: 0.5rem 0;
+  padding: 0.5rem;
 
   box-shadow: 0 0 0 1px #00000040;
   z-index: 400;
@@ -43,8 +46,9 @@ const ContextItem = styled(FlexRow)`
   font-size: 0.75rem;
   font-weight: 500;
   text-align: center;
-  background: ${theme.primary};
+  background: transparent;
   padding: 0.5rem 2rem;
+  border-radius: 0.5rem;
 
   cursor: pointer;
 
