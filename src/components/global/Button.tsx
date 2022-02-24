@@ -47,7 +47,7 @@ const StyledButton = styled.button<ButtonProps>`
 
   font-size: 0.875rem;
   font-weight: 500;
-  color: ${theme.textButton};
+  color: ${({ color }) => (color ? theme.text : theme.textButton)};
   background: ${({ color }) => (color ? color : theme.accent)};
   padding: 0.5rem 1.25rem;
 
