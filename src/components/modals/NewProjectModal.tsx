@@ -6,10 +6,10 @@ import {
   toggleNewProject,
 } from '../../store/projects';
 import theme from '../../theme';
-import Button, { ButtonWrapper } from '../global/Button';
+import Button from '../global/Button';
 import TextArea from '../global/input/TextArea';
 import TextInput from '../global/input/TextInput';
-import { ModalBackdrop, ModalContent } from '../global/Modal';
+import { ModalBackdrop, ModalContent, ModalFooter } from '../global/Modal';
 import Separator from '../global/Separator';
 
 const NewProjectModal = () => {
@@ -62,7 +62,8 @@ const NewProjectModal = () => {
         />
 
         <Separator />
-        <ButtonWrapper>
+
+        <ModalFooter>
           <Button
             light
             text="Cancel"
@@ -70,7 +71,7 @@ const NewProjectModal = () => {
             onClick={handleCancel}
           ></Button>
           <Button round text="Save" onClick={handleSave} />
-        </ButtonWrapper>
+        </ModalFooter>
       </ModalContent>
     </ModalBackdrop>
   );

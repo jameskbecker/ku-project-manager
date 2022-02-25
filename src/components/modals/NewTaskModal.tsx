@@ -1,10 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  fetchAllProjects,
-  saveProject,
-  selectProject,
-} from '../../store/projects';
 import {
   fetchProjectTasks,
   saveTask,
@@ -12,7 +7,7 @@ import {
   toggleNewTask,
 } from '../../store/tasks';
 import theme from '../../theme';
-import Button, { ButtonWrapper } from '../global/Button';
+import Button from '../global/Button';
 import { FlexColumn } from '../global/Flex';
 import SelectInput from '../global/input/SelectInput';
 import TextArea from '../global/input/TextArea';
@@ -77,40 +72,38 @@ const NewTaskModal = () => {
       <ModalContent secondary onClick={(e) => e.stopPropagation()}>
         <h2>{selectedTask ? 'Edit' : 'New'} Task</h2>
         <Separator />
-        <FlexColumn>
-          <SelectInput
-            label="Project"
-            options={projectOptions}
-            value={projectOptions[0]}
-            onChange={null}
-            disabled
-          />
-          <SelectInput
-            label="Parent Task"
-            options={taskOptions}
-            value={taskOptions[taskOptions.length - 1]}
-            onChange={() => {}}
-            disabled
-          />
 
-          {/* <Separator /> */}
+        <SelectInput
+          label="Project"
+          options={projectOptions}
+          value={projectOptions[0]}
+          onChange={null}
+          disabled
+        />
+        <SelectInput
+          label="Parent Task"
+          options={taskOptions}
+          value={taskOptions[taskOptions.length - 1]}
+          onChange={() => {}}
+          disabled
+        />
 
-          <TextInput label="Name" value={name} onChange={handleNameChange} />
-          <TextArea
-            label="Description"
-            value={description}
-            onChange={handleDescriptionChange}
-          />
-          <TextInput
-            label="Priority"
-            type="number"
-            value={priority}
-            onChange={handlePriorityChange}
-          />
-        </FlexColumn>
+        <TextInput label="Name" value={name} onChange={handleNameChange} />
+        <TextArea
+          label="Description"
+          value={description}
+          onChange={handleDescriptionChange}
+        />
+        <TextInput
+          label="Priority"
+          type="number"
+          value={priority}
+          onChange={handlePriorityChange}
+        />
+
         <Separator />
 
-        <ButtonWrapper>
+        <ModalFooter>
           <Button
             light
             text="Cancel"
@@ -122,7 +115,7 @@ const NewTaskModal = () => {
             text={`Save${selectedTask ? ' Changes' : ''}`}
             onClick={handleSave}
           />
-        </ButtonWrapper>
+        </ModalFooter>
       </ModalContent>
     </ModalBackdrop>
   );

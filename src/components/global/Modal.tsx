@@ -44,6 +44,25 @@ export const ModalContent = styled(Panel)`
   }
 `;
 
-export const ModalFooter = styled(FlexColumn)`
-  flex: 1 1;
+export const ModalFooter = styled.div`
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  padding: 0;
+  margin: 0;
+
+  & > * {
+    flex: 1 0 auto;
+  }
+
+  /** Tablet  */
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+
+    & > * {
+      flex: 1 1;
+    }
+  }
 `;
