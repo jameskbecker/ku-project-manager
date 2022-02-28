@@ -36,7 +36,7 @@ export const LogoWrapper = styled.div`
   margin: 2rem 1.75rem;
   border-radius: 1rem;
 
-  box-shadow: 0.25rem 0.25rem black;
+  /* box-shadow: 0.25rem 0.25rem black; */
 
   h1 {
     width: 100%;
@@ -52,7 +52,7 @@ const SideBarButton = styled(Link)<any>`
   font-size: 0.75rem;
   font-weight: ${({ $active }) => ($active ? 600 : 500)};
   color: ${({ $active }) => ($active ? theme.text : theme.text)} !important;
-  background: ${(props) => (props.$active ? theme.secondary : 'transparent')};
+  background: ${(props) => (props.$active ? theme.highlight : 'transparent')};
   border-radius: 0.25rem;
   box-sizing: border-box;
 
@@ -60,8 +60,8 @@ const SideBarButton = styled(Link)<any>`
   cursor: pointer;
 
   :hover {
-    transition: 0.25s ease-in-out;
-    background: ${theme.secondary};
+    transition: 0.5s ease-in-out;
+    background: ${theme.highlight};
     opacity: 1;
   }
 

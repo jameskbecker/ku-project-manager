@@ -88,7 +88,7 @@ const ControlBar = () => {
         {!taskId && (
           <Button
             icon={faPencilAlt}
-            color={theme.textBody}
+            color={theme.warn}
             text="Edit Project"
             onClick={handleEdit}
             light
@@ -97,7 +97,7 @@ const ControlBar = () => {
         <Button
           light
           text="Delete All Tasks"
-          color={theme.textBody}
+          color={theme.error}
           icon={faTimes}
         />
       </FlexRow>

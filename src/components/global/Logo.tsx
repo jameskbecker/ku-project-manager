@@ -11,7 +11,7 @@ const StyledLogo = styled(FlexRow)`
   background: ${theme.brand};
   border-radius: 1rem;
 
-  box-shadow: 4px 5px black;
+  /* box-shadow: 4px 5px black; */
 `;
 
 const Logo = () => (

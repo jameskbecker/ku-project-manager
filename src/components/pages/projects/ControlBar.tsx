@@ -82,7 +82,7 @@ const ControlBar = () => {
         <Button
           light
           text="Delete All Projects"
-          color={theme.textBody}
+          color={theme.error}
           icon={faTimes}
           onClick={handleDeleteAll}
         />

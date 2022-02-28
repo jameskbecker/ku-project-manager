@@ -83,7 +83,7 @@ const ProjectTableRow = ({ project }: any) => {
       <TableCell size={5}>
         <FontAwesomeIcon
           icon={project.isComplete ? faCheckCircle : faCircle}
-          color={project.isComplete ? theme.brand : theme.textBody}
+          color={theme.brand}
           style={{ fontSize: '0.875rem' }}
           onClick={handleComplete}
         />

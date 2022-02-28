@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { toggleInvite } from '../../store/projects';
 import theme from '../../theme';
 import Button from '../global/Button';
-import { FlexColumn } from '../global/Flex';
 import TextInput from '../global/input/TextInput';
 import { ModalBackdrop, ModalContent, ModalFooter } from '../global/Modal';
 import Separator from '../global/Separator';
