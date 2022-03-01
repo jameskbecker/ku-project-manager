@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import {
   deleteTask,
   fetchProjectTasks,
+  saveTask,
   selectTask,
   toggleNewTask,
 } from '../../../store/tasks';
@@ -44,7 +45,6 @@ const MoreButton = styled(FontAwesomeIcon)`
 `;
 
 const TaskGridCard = ({ task }: any) => {
-  const [isDone, setIsDone] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -74,12 +74,11 @@ const TaskGridCard = ({ task }: any) => {
 
   const toggleIsDone = (e: any) => {
     e.stopPropagation();
-    setIsDone(!isDone);
+    dispatch(saveTask({ id: task.id, is_complete: !task.isComplete }));
+    location.reload();
   };
 
   const handleDrag = (e: any) => {
-    console.log('hi');
-
     e.target.style.display = 'none';
     const switchElement = document.elementFromPoint(e.clientX, e.clientY);
     //@ts-ignore
@@ -88,8 +87,6 @@ const TaskGridCard = ({ task }: any) => {
   };
 
   const handleDragEnd = (e: React.DragEvent<HTMLDivElement>) => {
-    console.log('bye');
-
     //@ts-ignore
     e.target.style.display = 'flex';
   };
@@ -106,7 +103,7 @@ const TaskGridCard = ({ task }: any) => {
       </ContextMenu>
     );
   };
-
+  console.log(task);
   return (
     <Wrapper
       key={task.id}
@@ -127,7 +124,7 @@ const TaskGridCard = ({ task }: any) => {
         <h4 style={{ flex: '1 0' }}>{task.name}</h4>
         <FlexRow style={{ overflow: 'visible' }}>
           <FontAwesomeIcon
-            icon={isDone ? faCheckSquare : faSquare}
+            icon={task.isComplete ? faCheckSquare : faSquare}
             color={theme.brand}
             onClick={toggleIsDone}
           />
