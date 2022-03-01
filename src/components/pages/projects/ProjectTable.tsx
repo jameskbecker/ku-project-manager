@@ -43,7 +43,9 @@ const ProjectTable = () => {
       }}
     >
       <TableHeader columns={columns} />
-      {isLoading === false ? (
+      {isLoading && data.length === 0 ? (
+        <FontAwesomeIcon style={{ flex: '1 1' }} icon={faSpinner} spin />
+      ) : (
         <FlexColumn
           style={{
             overflow: 'auto',
@@ -52,8 +54,6 @@ const ProjectTable = () => {
         >
           {getProjects}
         </FlexColumn>
-      ) : (
-        <FontAwesomeIcon style={{ flex: '1 1' }} icon={faSpinner} spin />
       )}
     </FlexColumn>
   );

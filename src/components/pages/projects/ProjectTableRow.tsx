@@ -13,6 +13,7 @@ import styled from 'styled-components';
 import {
   deleteProject,
   fetchAllProjects,
+  saveProject,
   selectProject,
   toggleNewProject,
 } from '../../../store/projects';
@@ -53,7 +54,6 @@ const ActionButton = styled(FontAwesomeIcon)`
 `;
 
 const ProjectTableRow = ({ project }: any) => {
-  const [isDone, setIsDone] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -63,7 +63,8 @@ const ProjectTableRow = ({ project }: any) => {
 
   const handleComplete = (e: any) => {
     e.stopPropagation();
-    setIsDone(!isDone);
+    dispatch(saveProject({ id: project.id, is_complete: !project.isComplete }));
+    dispatch(fetchAllProjects());
   };
 
   const handleEdit = (e: any) => {
