@@ -15,6 +15,7 @@ import SideBar from '../../layout/SideBar';
 import InviteModal from '../../modals/InviteModal';
 import NewProjectModal from '../../modals/NewProjectModal';
 import NewTaskModal from '../../modals/NewTaskModal';
+import ActivityFeed from './ActivityFeed';
 import Content from './Content';
 import ControlBar from './ControlBar';
 import TaskGrid from './TaskGrid';
@@ -48,6 +49,7 @@ const Project = () => {
       <NavBar back pageName={pageName} />
       <Content>
         <TaskGrid />
+        <ActivityFeed />
       </Content>
 
       {showNewProject && <NewProjectModal />}

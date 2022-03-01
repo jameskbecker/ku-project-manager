@@ -7,15 +7,12 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: stretch;
-  gap: 0.75rem;
-
-  padding: 1rem;
+  /* align-items: stretch; */
 
   /** Tablet  */
   @media screen and (min-width: 600px) {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     height: auto;
     overflow: auto;
   }

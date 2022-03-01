@@ -18,9 +18,9 @@ export const FlexColumn = styled(Flex)`
   flex-direction: column;
   justify-content: flex-start;
   max-height: 100%;
-  align-items: stretch;
+  /* align-items: stretch; */
 
-  & > * {
+  /* & > * {
     flex: 0 1 auto;
-  }
+  } */
 `;

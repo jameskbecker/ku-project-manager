@@ -7,9 +7,15 @@ import { FlexColumn, FlexRow } from '../../global/Flex';
 import TaskGridCard from './TaskGridCard';
 import ProjectTableRow from './TaskGridCard';
 
+const StyledTaskGrid = styled(FlexColumn)`
+  justify-content: flex-start;
+  flex: 3 1;
+  padding: 1rem;
+`;
+
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 175px;
   gap: 0.75rem;
 `;
@@ -44,11 +50,7 @@ const TaskGrid = () => {
   ));
 
   return (
-    <FlexColumn
-      style={{
-        justifyContent: 'flex-start',
-      }}
-    >
+    <StyledTaskGrid>
       {isLoading === false ? (
         <Wrapper
           style={{
@@ -60,7 +62,7 @@ const TaskGrid = () => {
       ) : (
         <FontAwesomeIcon style={{ flex: '1 1' }} icon={faSpinner} spin />
       )}
-    </FlexColumn>
+    </StyledTaskGrid>
   );
 };
 
