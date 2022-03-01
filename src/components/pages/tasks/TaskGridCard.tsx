@@ -10,6 +10,7 @@ import {
   fetchProjectTasks,
   saveTask,
   selectTask,
+  toggleAddComment,
   toggleNewTask,
 } from '../../../store/tasks';
 import theme from '../../../theme';
@@ -72,6 +73,10 @@ const TaskGridCard = ({ task }: any) => {
     //dispatch(toggleNewProject());
   };
 
+  const handleAddComment = () => {
+    dispatch(toggleAddComment());
+  };
+
   const toggleIsDone = (e: any) => {
     e.stopPropagation();
     dispatch(saveTask({ id: task.id, is_complete: !task.isComplete }));
@@ -95,6 +100,7 @@ const TaskGridCard = ({ task }: any) => {
     return (
       <ContextMenu
         items={[
+          { label: 'Add Comment', onClick: handleAddComment },
           { label: 'Edit', onClick: handleEdit },
           { label: 'Delete', onClick: handleDelete },
         ]}

@@ -12,6 +12,7 @@ import Footer from '../../layout/Footer';
 import NavBar from '../../layout/HeaderBar';
 import Layout from '../../layout/Layout';
 import SideBar from '../../layout/SideBar';
+import AddCommentModal from '../../modals/AddComment';
 import InviteModal from '../../modals/InviteModal';
 import NewProjectModal from '../../modals/NewProjectModal';
 import NewTaskModal from '../../modals/NewTaskModal';
@@ -25,7 +26,9 @@ const Project = () => {
   const { showInvite, showNewProject, selectedProject } = useSelector(
     (state: any) => state.projects
   );
-  const { pageName, showNewTask } = useSelector((state: any) => state.tasks);
+  const { pageName, showNewTask, showAddComment } = useSelector(
+    (state: any) => state.tasks
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -55,6 +58,7 @@ const Project = () => {
       {showNewProject && <NewProjectModal />}
       {showInvite && <InviteModal />}
       {showNewTask && <NewTaskModal />}
+      {showAddComment && <AddCommentModal />}
     </Layout>
   );
 };

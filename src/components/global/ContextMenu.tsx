@@ -43,6 +43,7 @@ const Wrapper = styled(FlexColumn)`
 const ContextItem = styled(FlexRow)`
   justify-content: center;
 
+  white-space: nowrap;
   font-size: 0.75rem;
   font-weight: 500;
   text-align: center;
