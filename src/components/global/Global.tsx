@@ -41,6 +41,10 @@ const Global = createGlobalStyle`
 
   }
 
+  div {
+    color: ${theme.textBody};
+  }
+
   
 
   h2, h3, h4 {

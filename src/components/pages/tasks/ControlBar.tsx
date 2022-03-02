@@ -3,7 +3,9 @@ import {
   faPlus,
   faSearch,
   faTimes,
+  faTrashAlt,
   faUserPlus,
+  faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
@@ -22,16 +24,16 @@ import { FlexRow } from '../../global/Flex';
 import TextInput from '../../global/input/TextInput';
 
 const ControlBarWrapper = styled.div`
-  /* display: flex;
-  justify-content: space-between; */
-  display: grid;
-  grid-template-columns: 350px 2fr 350px;
+  display: flex;
+  justify-content: space-between;
+  /* display: grid;
+  grid-template-columns: 350px 2fr 350px; */
   align-items: center;
   grid-area: control;
   gap: 0.75rem;
 
   background: ${theme.control};
-  padding: 1rem;
+  padding: 0.75rem 1rem;
 
   //border-bottom: 1px solid ${theme.sidebar};
   border-bottom: 1px solid ${theme.secondary};
@@ -57,19 +59,14 @@ const ControlBar = () => {
     dispatch(applyFilter({ text: value }));
   };
 
-  const handleEdit = () => {
-    dispatch(toggleNewProject());
-  };
-
   return (
     <ControlBarWrapper>
-      <FlexRow>
+      <FlexRow style={{ flex: '2 2' }}>
         <Button icon={faPlus} text="New Task" onClick={handleNewTask} round />
         {!taskId && (
           <Button
             icon={faUserPlus}
             text="Invite Members"
-            color={theme.textBody}
             onClick={handleInvite}
             round
             light
@@ -82,23 +79,18 @@ const ControlBar = () => {
         icon={faSearch}
         value={filter}
         onChange={handleSearch}
+        style={{ flex: '2 2' }}
       />
 
-      <FlexRow style={{ justifyContent: 'flex-end' }}>
+      <FlexRow style={{ justifyContent: 'flex-end', flex: '2 2' }}>
         {!taskId && (
-          <Button
-            icon={faPencilAlt}
-            color={theme.warn}
-            text="Edit Project"
-            onClick={handleEdit}
-            light
-          />
+          <Button icon={faUsers} text="View Members" onClick={null} light />
         )}
         <Button
           light
           text="Delete All Tasks"
           color={theme.error}
-          icon={faTimes}
+          icon={faTrashAlt}
         />
       </FlexRow>
     </ControlBarWrapper>

@@ -33,6 +33,7 @@ const ToggleWrapper = styled(FlexRow)`
 `;
 
 const Wrapper = styled(FlexColumn)`
+  flex: 1 1;
   position: relative;
   justify-content: center;
   align-items: center;
@@ -66,7 +67,7 @@ const ContextMenu = ({ children, items }: any) => {
     e.stopPropagation && e.stopPropagation();
     setVisible(!visible);
   };
-  console.log('visible', visible);
+
   return (
     <Wrapper onClick={toggle}>
       <ToggleWrapper>{children}</ToggleWrapper>

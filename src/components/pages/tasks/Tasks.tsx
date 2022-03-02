@@ -1,15 +1,21 @@
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { fetchAllProjects, selectProject } from '../../../store/projects';
+import {
+  fetchAllProjects,
+  selectProject,
+  toggleNewProject,
+} from '../../../store/projects';
 import {
   fetchProjectTasks,
   fetchSubTasks,
   selectTask,
 } from '../../../store/tasks';
 import { Project } from '../../../types';
+import Button from '../../global/Button';
 import Footer from '../../layout/Footer';
-import NavBar from '../../layout/HeaderBar';
+import HeaderBar from '../../layout/HeaderBar';
 import Layout from '../../layout/Layout';
 import SideBar from '../../layout/SideBar';
 import AddCommentModal from '../../modals/AddComment';
@@ -45,11 +51,21 @@ const Project = () => {
     else dispatch(fetchProjectTasks({ projectId: id }));
   }, [id, taskId]);
 
+  const handleEdit = () => {
+    dispatch(toggleNewProject());
+  };
   return (
     <Layout>
       <SideBar activePage="projects" />
       <ControlBar />
-      <NavBar back pageName={pageName} />
+      <HeaderBar
+        back
+        pageName={pageName}
+        description="Description"
+        Options={() => (
+          <Button icon={faPencilAlt} onClick={handleEdit} round light />
+        )}
+      />
       <Content>
         <TaskGrid />
         <ActivityFeed />

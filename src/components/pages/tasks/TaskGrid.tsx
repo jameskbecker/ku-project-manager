@@ -9,7 +9,7 @@ import ProjectTableRow from './TaskGridCard';
 
 const StyledTaskGrid = styled(FlexColumn)`
   justify-content: flex-start;
-  flex: 3 1;
+  flex: 5 5;
   padding: 1rem;
 `;
 

@@ -5,7 +5,7 @@ const Layout = styled.div`
   display: grid;
   height: 100vh;
   grid-template-columns: 200px 9fr;
-  grid-template-rows: 75px 75px 80fr;
+  grid-auto-rows: auto auto 1fr;
   grid-template-areas:
     'navbar navbar'
     'control control'

@@ -19,7 +19,7 @@ const StyledButton = styled.button<ButtonProps>`
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
-  min-width: 100px;
+  /* min-width: 100px; */
   height: auto;
 
   font-size: 0.875rem;
@@ -54,10 +54,12 @@ const StyledButton = styled.button<ButtonProps>`
       background: transparent;
       border-color: ${color ? color : theme.accent};
       color: ${color ? color : theme.accent};
+      opacity: ${color ? 1 : 0.6};
 
       :hover {
         background: ${color ? color : theme.accent};
         color: ${theme.textButton};
+        opacity: 1;
       }
     `}
 `;

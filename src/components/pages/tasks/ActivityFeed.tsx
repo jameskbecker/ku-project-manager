@@ -6,7 +6,7 @@ import Panel from '../../global/Panel';
 
 const StyledActivityFeed = styled(FlexColumn)`
   gap: 0.75rem;
-  flex: 1 0;
+  flex: 2 2;
   padding: 1rem;
   border-left: 1px solid ${theme.secondary};
 `;

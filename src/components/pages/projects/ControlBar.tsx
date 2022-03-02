@@ -3,6 +3,7 @@ import {
   faPlus,
   faSearch,
   faTimes,
+  faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,16 +21,16 @@ import { FlexRow } from '../../global/Flex';
 import TextInput from '../../global/input/TextInput';
 
 const ControlBarWrapper = styled.div`
-  /* display: flex;
-  justify-content: space-between; */
-  display: grid;
-  grid-template-columns: 350px 2fr 350px;
+  display: flex;
+  justify-content: space-between;
+  /* display: grid;
+  grid-template-columns: 350px 2fr 350px; */
   align-items: center;
   grid-area: control;
   gap: 0.75rem;
 
   background: ${theme.control};
-  padding: 0 1rem;
+  padding: 0.75rem 1rem;
 
   & > * {
     overflow: visible;
@@ -58,7 +59,7 @@ const ControlBar = () => {
 
   return (
     <ControlBarWrapper>
-      <FlexRow style={{ height: '100%' }}>
+      <FlexRow style={{ flex: '2 2', height: '100%' }}>
         <Button
           icon={faPlus}
           text="New Project"
@@ -71,8 +72,9 @@ const ControlBar = () => {
         icon={faSearch}
         onChange={handleSearch}
         value={filter}
+        style={{ flex: '3 3' }}
       />
-      <FlexRow style={{ justifyContent: 'flex-end' }}>
+      <FlexRow style={{ flex: '2 2', justifyContent: 'flex-end' }}>
         {/* <Button
           light
           text="Mark as Completed (0)"
@@ -83,7 +85,7 @@ const ControlBar = () => {
           light
           text="Delete All Projects"
           color={theme.error}
-          icon={faTimes}
+          icon={faTrashAlt}
           onClick={handleDeleteAll}
         />
       </FlexRow>

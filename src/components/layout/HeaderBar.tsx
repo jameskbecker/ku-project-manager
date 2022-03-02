@@ -3,15 +3,20 @@ import {
   faBars,
   faChevronDown,
   faChevronLeft,
+  faPencilAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
+import { toggleNewProject } from '../../store/projects';
 import theme from '../../theme';
+import Button from '../global/Button';
 import ContextMenu from '../global/ContextMenu';
 import { FlexRow } from '../global/Flex';
 import TextInput from '../global/input/TextInput';
+import { VerticalSeparator } from '../global/Separator';
 
 const StyledHeaderBar = styled.div`
   grid-area: navbar;
@@ -20,7 +25,7 @@ const StyledHeaderBar = styled.div`
   align-items: center;
 
   background: ${theme.titlebar};
-  padding: 0 1rem;
+  padding: 0.75rem 1rem;
 
   /* border-bottom: 1px solid ${theme.sidebar}; */
 
@@ -55,17 +60,14 @@ const TitleBar = styled.div`
 
 type NavBarProps = {
   pageName: string;
+  description?: string;
   back?: boolean;
   toggleUserModal?: () => void;
+  Options?: any;
 };
 
-const NavBar = ({ back, pageName }: NavBarProps) => {
-  const [showUserModal, setShowUserModal] = useState(false);
+const HeaderBar = ({ back, pageName, description, Options }: NavBarProps) => {
   const history = useHistory();
-
-  const toggleUserModal = () => {
-    setShowUserModal(!showUserModal);
-  };
 
   const handleAccount = () => {
     history.push('/settings');
@@ -91,18 +93,29 @@ const NavBar = ({ back, pageName }: NavBarProps) => {
 
   return (
     <StyledHeaderBar style={{ overflow: 'visible' }}>
-      {back && (
-        <FontAwesomeIcon
-          icon={faChevronLeft}
-          onClick={history.goBack}
-          color={theme.brand}
-          style={{ cursor: 'pointer', fontSize: '1.25rem' }}
-        />
-      )}
+      <FlexRow style={{ flex: '2 2' }}>
+        {back && (
+          <FontAwesomeIcon
+            icon={faChevronLeft}
+            onClick={history.goBack}
+            color={theme.brand}
+            style={{ cursor: 'pointer', fontSize: '1.125rem' }}
+          />
+        )}
+        <TitleBar>
+          <h2>{pageName}</h2>
+        </TitleBar>
+        {Options && <Options />}
+      </FlexRow>
 
-      <TitleBar>
-        <h2>{pageName}</h2>
-      </TitleBar>
+      <FlexRow style={{ flex: '3 3', height: '100%' }}>
+        {description && (
+          <>
+            <VerticalSeparator />
+            <div>{description}</div>
+          </>
+        )}
+      </FlexRow>
 
       <UserMenu />
       <Menu>
@@ -112,10 +125,12 @@ const NavBar = ({ back, pageName }: NavBarProps) => {
   );
 };
 
-export default NavBar;
+export default HeaderBar;
 
 /** @todo propably better solution than absolute positioning */
 const UserWrapper = styled(ContextMenu)`
+  flex: 2 2 !important;
+  height: 100%;
   & > *,
   & > * > * {
     user-select: none;
