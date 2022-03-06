@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllProjects } from '../../../store/projects';
 import Footer from '../../layout/Footer';
-import NavBar from '../../layout/HeaderBar';
+import HeaderBar from '../../layout/HeaderBar';
 import Layout from '../../layout/Layout';
 import SideBar from '../../layout/SideBar';
 import Content from './Content';
@@ -36,8 +36,9 @@ const ProjectOverview = () => {
   return (
     <Layout>
       <SideBar activePage="projects" />
-      <NavBar pageName="Projects" />
+      <HeaderBar pageName="All Projects" />
       <ControlBar />
+
       <Content>
         <ProjectTable />
       </Content>

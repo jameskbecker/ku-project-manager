@@ -1,56 +1,56 @@
-export default {
-  text: '#E5E5E5',
-  textBrand: '#F6F9FF',
-  textBody: '#A6A6A6',
-  textButton: '#292929',
-
-  brand: '#745EF8',
-  brandAlt: '#6A663F',
-
-  primary: '#363636',
-  secondary: '#404040',
-
-  disabled: '#212121',
-
-  accent: '#E5E5E5',
-  accentB: '#F2F2F2',
-  highlight: '#595959',
-
-  sidebar: '#212121',
-  titlebar: 'transparent',
-  control: 'transparent',
-
-  bg: '#292929',
-  error: '#E57E7E',
-  warn: '#E5A97E',
-  success: '#8DE57E',
-};
-
 // export default {
-//   text: '#292929',
+//   text: '#E5E5E5',
 //   textBrand: '#F6F9FF',
-//   textBody: '#595959',
-//   textButton: '#E5E5E5',
+//   textBody: '#A6A6A6',
+//   textButton: '#292929',
 
-//   brand: '#6952F8',
-//   brandAlt: '#E5E1B8',
+//   brand: '#745EF8',
+//   brandAlt: '#6A663F',
 
-//   primary: '#D9D9D9',
-//   secondary: '#CCCCCC',
+//   primary: '#363636',
+//   secondary: '#404040',
 
-//   disabled: '#EDEDED',
+//   disabled: '#212121',
 
-//   accent: '#292928',
-//   accentB: '#363634',
-//   highlight: '#BFBFBF',
+//   accent: '#E5E5E5',
+//   accentB: '#F2F2F2',
+//   highlight: '#595959',
 
-//   sidebar: '#EDEDED',
+//   sidebar: '#212121',
 //   titlebar: 'transparent',
 //   control: 'transparent',
 
-//   heading: '#333129',
-//   bg: '#E5E5E5',
+//   bg: '#292929',
 //   error: '#E57E7E',
 //   warn: '#E5A97E',
 //   success: '#8DE57E',
 // };
+
+export default {
+  text: '#292929',
+  textBrand: '#F6F9FF',
+  textBody: '#595959',
+  textButton: '#E5E5E5',
+
+  brand: '#6952F8',
+  brandAlt: '#E5E1B8',
+
+  primary: '#D9D9D9',
+  secondary: '#CCCCCC',
+
+  disabled: '#EDEDED',
+
+  accent: '#292928',
+  accentB: '#363634',
+  highlight: '#BFBFBF',
+
+  sidebar: '#EDEDED',
+  titlebar: 'transparent',
+  control: 'transparent',
+
+  heading: '#333129',
+  bg: '#E5E5E5',
+  error: '#E57E7E',
+  warn: '#E5A97E',
+  success: '#8DE57E',
+};

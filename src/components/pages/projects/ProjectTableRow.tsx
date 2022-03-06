@@ -81,7 +81,7 @@ const ProjectTableRow = ({ project }: any) => {
 
   return (
     <Wrapper onClick={handleSelect}>
-      <TableCell size={5}>
+      <TableCell size={2.5}>
         <FontAwesomeIcon
           icon={project.isComplete ? faCheckCircle : faCircle}
           color={theme.brand}
@@ -91,14 +91,15 @@ const ProjectTableRow = ({ project }: any) => {
       </TableCell>
       {/* <div>{project.priority}</div> */}
       <TableCell size={20}>{project.name}</TableCell>
-      <TableCell size={32.5}>{project.description}</TableCell>
-      <TableCell size={15}>
-        {format(new Date(project.createdAt * 1000), "do LLL y 'at' hh:mm aa")}
-      </TableCell>
-      <TableCell size={15}>
+      <TableCell size={30}>{project.description}</TableCell>
+      <TableCell size={20}>
         {formatDistance(new Date(project.createdAt * 1000), Date.now(), {
           addSuffix: true,
-        })}
+        })}{' '}
+        by {project.owner}
+      </TableCell>
+      <TableCell size={15}>
+        {format(new Date(project.createdAt * 1000), "do LLL y 'at' hh:mm aa")}
       </TableCell>
 
       <TableCell size={5}>

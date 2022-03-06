@@ -25,7 +25,7 @@ const StyledHeaderBar = styled.div`
   align-items: center;
 
   background: ${theme.titlebar};
-  padding: 0.75rem 1rem;
+  padding: 1rem;
 
   /* border-bottom: 1px solid ${theme.sidebar}; */
 
@@ -108,7 +108,7 @@ const HeaderBar = ({ back, pageName, description, Options }: NavBarProps) => {
         {Options && <Options />}
       </FlexRow>
 
-      <FlexRow style={{ flex: '3 3', height: '100%' }}>
+      <FlexRow style={{ flex: '4 4', height: '100%' }}>
         {description && (
           <>
             <VerticalSeparator />

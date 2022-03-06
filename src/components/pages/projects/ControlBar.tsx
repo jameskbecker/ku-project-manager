@@ -36,6 +36,15 @@ const ControlBarWrapper = styled.div`
     overflow: visible;
   }
 
+  & > :first-child,
+  & > :last-child {
+    flex: 2 2;
+
+    & > * {
+      flex: 1 1;
+    }
+  }
+
   border-bottom: 1px solid ${theme.secondary};
 `;
 
@@ -59,13 +68,14 @@ const ControlBar = () => {
 
   return (
     <ControlBarWrapper>
-      <FlexRow style={{ flex: '2 2', height: '100%' }}>
+      <FlexRow>
         <Button
           icon={faPlus}
           text="New Project"
           onClick={handleNewProject}
           round
         />
+        <div></div>
       </FlexRow>
       <TextInput
         placeholder="Search"
@@ -74,13 +84,8 @@ const ControlBar = () => {
         value={filter}
         style={{ flex: '3 3' }}
       />
-      <FlexRow style={{ flex: '2 2', justifyContent: 'flex-end' }}>
-        {/* <Button
-          light
-          text="Mark as Completed (0)"
-          color={theme.error}
-          icon={faCheck}
-        /> */}
+      <FlexRow>
+        <div></div>
         <Button
           light
           text="Delete All Projects"

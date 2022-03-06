@@ -37,6 +37,19 @@ const ControlBarWrapper = styled.div`
 
   //border-bottom: 1px solid ${theme.sidebar};
   border-bottom: 1px solid ${theme.secondary};
+
+  & > :first-child,
+  & > :last-child {
+    flex: 2 2;
+
+    & > * {
+      flex: 1 1;
+    }
+  }
+
+  & > :last-child {
+    justify-content: flex-end;
+  }
 `;
 
 const ControlBar = () => {
@@ -61,7 +74,7 @@ const ControlBar = () => {
 
   return (
     <ControlBarWrapper>
-      <FlexRow style={{ flex: '2 2' }}>
+      <FlexRow>
         <Button icon={faPlus} text="New Task" onClick={handleNewTask} round />
         {!taskId && (
           <Button
@@ -79,10 +92,10 @@ const ControlBar = () => {
         icon={faSearch}
         value={filter}
         onChange={handleSearch}
-        style={{ flex: '2 2' }}
+        style={{ flex: '3 3' }}
       />
 
-      <FlexRow style={{ justifyContent: 'flex-end', flex: '2 2' }}>
+      <FlexRow>
         {!taskId && (
           <Button icon={faUsers} text="View Members" onClick={null} light />
         )}
