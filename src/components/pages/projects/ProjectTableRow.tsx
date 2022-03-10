@@ -1,12 +1,12 @@
+import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import {
   faCheckCircle,
   faPencilAlt,
-  faSquare,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
-import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import { formatDistance } from 'date-fns';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
@@ -18,10 +18,8 @@ import {
   toggleNewProject,
 } from '../../../store/projects';
 import theme from '../../../theme';
-import { FlexRow } from '../../global/Flex';
 import Panel from '../../global/Panel';
 import { TableCell } from '../../global/Table';
-import { format, formatDistance } from 'date-fns';
 
 const Wrapper = styled(Panel)`
   gap: 1rem;
@@ -93,13 +91,13 @@ const ProjectTableRow = ({ project }: any) => {
       <TableCell size={20}>{project.name}</TableCell>
       <TableCell size={30}>{project.description}</TableCell>
       <TableCell size={20}>
-        {formatDistance(new Date(project.createdAt * 1000), Date.now(), {
+        {project.owner}{' '}
+        {formatDistance(new Date(project.createdAt), Date.now(), {
           addSuffix: true,
-        })}{' '}
-        by {project.owner}
+        })}
       </TableCell>
       <TableCell size={15}>
-        {format(new Date(project.createdAt * 1000), "do LLL y 'at' hh:mm aa")}
+        {/* {format(new Date(project.createdAt), "do LLL y 'at' hh:mm aa")} */}
       </TableCell>
 
       <TableCell size={5}>

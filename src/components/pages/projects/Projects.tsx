@@ -30,6 +30,7 @@ const ProjectOverview = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    document.title = 'Projects | KUPM';
     dispatch(fetchAllProjects());
   }, []);
 

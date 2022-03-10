@@ -34,7 +34,7 @@ const Global = createGlobalStyle`
   body {
     background: ${theme.bg};
     height: 100%;
-    font-family: Inter, Poppins, sans-serif;
+    font-family: Inter, sans-serif;
     font-size: 0.75rem;
     font-weight: 500;
     color: ${theme.text};

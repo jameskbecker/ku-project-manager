@@ -160,12 +160,12 @@ const TaskGridCard = ({ task }: any) => {
         </ContextMenu> */}
 
       <h5 style={{ gridColumn: 'span 2' }}>
-        {new Date(task.createdAt * 1000).toLocaleString()}
+        {new Date(task.createdAt).toLocaleString()}
       </h5>
 
       <p style={{ gridColumn: 'span 2' }}>{task.description}</p>
       {/* <div>{project.isComplete ? 'Complete!' : 'Incomplete'}</div>
-      <div>{new Date(project.createdAt * 1000).toLocaleString()}</div>
+      <div>{new Date(project.createdAt).toLocaleString()}</div>
       <FlexRow style={{ justifyContent: 'flex-start' }}>
         <FontAwesomeIcon icon={faPencilAlt} onClick={handleEdit} />
         <FontAwesomeIcon icon={faTrash} onClick={handleDelete} />

@@ -25,10 +25,7 @@ const UpcomingPanel = ({ project }: UpcomingPanelProps) => {
     <StyledUpcomingPanel key={project.id} secondary onClick={handleClick}>
       <h4>{project.name}</h4>
       <h5>
-        {format(
-          new Date(project.createdAt * 1000),
-          "'Due' do LLL y 'at' hh:mm aa"
-        )}
+        {format(new Date(project.createdAt), "'Due' do LLL y 'at' hh:mm aa")}
       </h5>
     </StyledUpcomingPanel>
   );

@@ -37,6 +37,7 @@ const Dashboard = () => {
     <UpcomingPanel key={i} project={p} />
   ));
   useEffect(() => {
+    document.title = 'Dashboard | KUPM';
     dispatch(fetchAllProjects());
   }, []);
 
