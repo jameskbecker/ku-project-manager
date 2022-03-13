@@ -4,8 +4,9 @@ import {
   faUserMinus,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProjectMembers } from '../../store/projects';
 import { toggleAddComment, toggleMembers } from '../../store/tasks';
 import theme from '../../theme';
 import Button from '../global/Button';
@@ -14,25 +15,43 @@ import { ModalBackdrop, ModalContent, ModalFooter } from '../global/Modal';
 import Panel from '../global/Panel';
 import Separator from '../global/Separator';
 
-const MemberPanel = () => (
-  <Panel secondary style={{ flex: '0 0 auto' }}>
-    <FlexRow>
-      <FlexColumn style={{ flex: '1 1', gap: '0.5rem' }}>
-        <h4>DOE, John R.</h4>
-        <h5>Can Read and Write</h5>
-        <p>Joined 04/03/2022 at 11:59 PM</p>
-      </FlexColumn>
+const MemberPanel = ({ data }: any) => {
+  const getPermissionText = () => {
+    if (data.isOwner) return 'Owner';
+    else if (data.canRead && data.canWrite) return 'Can Read and Write';
+    else if (data.canRead) return 'Can Read';
+    else return 'Restricted';
+  };
+
+  return (
+    <Panel secondary style={{ flex: '0 0 auto' }}>
       <FlexRow>
-        <FontAwesomeIcon icon={faEye} color={theme.accent} />
-        <FontAwesomeIcon icon={faPencilAlt} color={theme.accent} />
-        <FontAwesomeIcon icon={faUserMinus} color={theme.error} />
+        <FlexColumn style={{ flex: '1 1', gap: '0.5rem' }}>
+          <h4>
+            {data.lastName}, {data.firstName}
+          </h4>
+          <h5>{getPermissionText()}</h5>
+          <p>Joined {data.joinedAt}</p>
+        </FlexColumn>
+        <FlexRow>
+          <FontAwesomeIcon icon={faEye} color={theme.accent} />
+          <FontAwesomeIcon icon={faPencilAlt} color={theme.accent} />
+          <FontAwesomeIcon icon={faUserMinus} color={theme.error} />
+        </FlexRow>
       </FlexRow>
-    </FlexRow>
-  </Panel>
-);
+    </Panel>
+  );
+};
 
 const MembersModal = () => {
+  const { members, selectedProject } = useSelector(
+    (state: any) => state.projects
+  );
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProjectMembers({ projectId: selectedProject }));
+  }, []);
 
   const handleCancel = () => dispatch(toggleMembers());
 
@@ -47,10 +66,9 @@ const MembersModal = () => {
 
         <Separator />
         <FlexColumn style={{ flex: '1 1', overflow: 'auto' }}>
-          <MemberPanel />
-          <MemberPanel />
-          <MemberPanel />
-          <MemberPanel />
+          {members.map((m: any) => (
+            <MemberPanel key={m.id} data={m} />
+          ))}
         </FlexColumn>
         <Separator />
 

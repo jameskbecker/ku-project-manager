@@ -8,6 +8,7 @@ const initialState: any = {
   selectedProject: '',
   filter: '',
   data: [],
+  members: [],
 };
 
 export const fetchAllProjects = createAsyncThunk(
@@ -45,6 +46,18 @@ export const deleteProject = createAsyncThunk(
     });
 
     return await resp.json();
+  }
+);
+
+export const fetchProjectMembers = createAsyncThunk(
+  'projects/getMembers',
+  async (payload: any) => {
+    // 'https://kupm-api.herokuapp.com/api/projects'
+    const { projectId } = payload;
+    const res = await fetch(`/local/api/projects/${projectId}/members`);
+    const body = await res.json();
+    console.log(body);
+    return body;
   }
 );
 
@@ -102,6 +115,15 @@ export const projectsSlice = createSlice({
     });
 
     builder.addCase(saveProject.rejected, () => {});
+
+    builder.addCase(fetchProjectMembers.pending, () => {});
+    builder.addCase(fetchProjectMembers.fulfilled, (state, { payload }) => {
+      if (!payload.success) {
+        console.log('error member');
+      }
+      state.members = payload.data;
+    });
+    builder.addCase(fetchProjectMembers.rejected, () => {});
   },
 });
 
