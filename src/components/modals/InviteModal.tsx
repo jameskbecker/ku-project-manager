@@ -50,6 +50,7 @@ const InviteModal = () => {
         expires: expiryOption.value,
       })
     );
+    dispatch(toggleInvite());
   };
 
   return (
