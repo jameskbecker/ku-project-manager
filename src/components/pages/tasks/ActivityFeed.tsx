@@ -1,7 +1,11 @@
-import React from 'react';
+import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { fetchActivity } from '../../../store/projects';
 import theme from '../../../theme';
-import { FlexColumn } from '../../global/Flex';
+import { FlexColumn, FlexRow } from '../../global/Flex';
 import Panel from '../../global/Panel';
 
 const StyledActivityFeed = styled(FlexColumn)`
@@ -12,30 +16,30 @@ const StyledActivityFeed = styled(FlexColumn)`
 `;
 
 const ActivityFeed = () => {
+  const { selectedProject, activity } = useSelector(
+    (state: any) => state.projects
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchActivity({ id: '6f35f124-46d4-11ec-8b6c-d2f44fac733b' }));
+  }, []);
+
   return (
     <StyledActivityFeed>
-      <h3>Activity Feed</h3>
+      <FlexRow>
+        <h3 style={{ flex: '1 1' }}>Activity Feed</h3>
+        <FontAwesomeIcon icon={faSyncAlt} />
+      </FlexRow>
+
       <FlexColumn>
-        <Panel style={{ flex: '1 1', gap: '0.5rem' }}>
-          <h4>New Comment from Smith, John</h4>
-          <h5>Something</h5>
-          <p>I'll do all your work for you!</p>
-        </Panel>
-        <Panel style={{ flex: '1 1', gap: '0.5rem' }}>
-          <h4>New Comment from Smith, John</h4>
-          <h5>Something</h5>
-          <p>I'll do all your work for you!</p>
-        </Panel>
-        <Panel style={{ flex: '1 1', gap: '0.5rem' }}>
-          <h4>New Comment from Smith, John</h4>
-          <h5>Something</h5>
-          <p>I'll do all your work for you!</p>
-        </Panel>
-        <Panel style={{ flex: '1 1', gap: '0.5rem' }}>
-          <h4>New Comment from Smith, John</h4>
-          <h5>Something</h5>
-          <p>I'll do all your work for you!</p>
-        </Panel>
+        {activity.map((a: any, i: number) => (
+          <Panel key={i} style={{ flex: '1 1', gap: '0.5rem' }}>
+            <h4>{a.heading}</h4>
+            <h5>{a.subheading}</h5>
+            <p>{a.body}</p>
+          </Panel>
+        ))}
       </FlexColumn>
     </StyledActivityFeed>
   );
