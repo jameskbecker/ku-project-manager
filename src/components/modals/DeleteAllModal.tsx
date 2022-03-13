@@ -20,12 +20,7 @@ const DeleteAllModal = () => {
         <Separator />
 
         <ModalFooter>
-          <Button
-            light
-            text="Cancel"
-            color={theme.textBody}
-            onClick={handleCancel}
-          ></Button>
+          <Button light text="Cancel" onClick={handleCancel}></Button>
           <Button text="Delete All" color={theme.error} onClick={null} />
         </ModalFooter>
       </ModalContent>

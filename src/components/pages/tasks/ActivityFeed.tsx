@@ -16,22 +16,22 @@ const ActivityFeed = () => {
     <StyledActivityFeed>
       <h3>Activity Feed</h3>
       <FlexColumn>
-        <Panel style={{ flex: '1 1', height: 'auto' }}>
+        <Panel style={{ flex: '1 1', gap: '0.5rem' }}>
           <h4>New Comment from Smith, John</h4>
           <h5>Something</h5>
           <p>I'll do all your work for you!</p>
         </Panel>
-        <Panel style={{ flex: '1 1' }}>
+        <Panel style={{ flex: '1 1', gap: '0.5rem' }}>
           <h4>New Comment from Smith, John</h4>
           <h5>Something</h5>
           <p>I'll do all your work for you!</p>
         </Panel>
-        <Panel style={{ flex: '1 1' }}>
+        <Panel style={{ flex: '1 1', gap: '0.5rem' }}>
           <h4>New Comment from Smith, John</h4>
           <h5>Something</h5>
           <p>I'll do all your work for you!</p>
         </Panel>
-        <Panel style={{ flex: '1 1' }}>
+        <Panel style={{ flex: '1 1', gap: '0.5rem' }}>
           <h4>New Comment from Smith, John</h4>
           <h5>Something</h5>
           <p>I'll do all your work for you!</p>

@@ -5,6 +5,7 @@ import Button from '../../global/Button';
 import { FlexColumn } from '../../global/Flex';
 import TextInput from '../../global/input/TextInput';
 import Logo from '../../global/Logo';
+import { ModalFooter } from '../../global/Modal';
 import Panel from '../../global/Panel';
 import Separator from '../../global/Separator';
 import { LogoWrapper } from '../../layout/SideBar';
@@ -34,13 +35,10 @@ const Login = () => {
         <TextInput label="Email" />
         <TextInput label="Password" />
         <Separator />
-        <Button
-          text="Register"
-          color={theme.textBody}
-          light
-          onClick={handleLogin}
-        />
-        <Button text="Sign In" round onClick={handleLogin} />
+        <ModalFooter>
+          <Button text="Create an Account" light onClick={handleLogin} />
+          <Button text="Sign In" round onClick={handleLogin} />
+        </ModalFooter>
       </Panel>
     </FlexColumn>
   );

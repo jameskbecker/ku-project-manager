@@ -9,6 +9,11 @@ const Global = createGlobalStyle`
     min-width: 0;
     overflow: hidden;
 
+
+    ::selection {
+      background: ${theme.brand};
+      color: ${theme.textBrand};
+    }
   }
     /* width */
   ::-webkit-scrollbar {
@@ -94,6 +99,7 @@ const Global = createGlobalStyle`
 
   h5 {
     font-size: 0.875rem;
+    font-weight: 700;
     color: ${theme.textBody};
 
     /* Mobile */

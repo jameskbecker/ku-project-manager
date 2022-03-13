@@ -4,7 +4,7 @@
 //   textBody: '#A6A6A6',
 //   textButton: '#292929',
 
-//   brand: '#745EF8',
+//   brand: '#7E6BF8',
 //   brandAlt: '#6A663F',
 
 //   primary: '#363636',

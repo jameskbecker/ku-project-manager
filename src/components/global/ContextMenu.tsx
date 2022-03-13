@@ -61,7 +61,7 @@ const ContextItem = styled(FlexRow)`
   }
 `;
 
-const ContextMenu = ({ children, items }: any) => {
+const ContextMenu = (props: any) => {
   const [visible, setVisible] = useState(false);
   const toggle = (e: any) => {
     e.stopPropagation && e.stopPropagation();
@@ -69,11 +69,11 @@ const ContextMenu = ({ children, items }: any) => {
   };
 
   return (
-    <Wrapper onClick={toggle}>
-      <ToggleWrapper>{children}</ToggleWrapper>
+    <Wrapper {...props} onClick={toggle}>
+      <ToggleWrapper>{props.children}</ToggleWrapper>
       {visible && (
         <StyledContextMenu>
-          {items.map((item: any, i: number) => (
+          {props.items.map((item: any, i: number) => (
             <ContextItem key={i} onClick={item.onClick}>
               {item.label}
             </ContextItem>

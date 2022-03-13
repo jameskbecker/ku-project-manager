@@ -15,7 +15,6 @@ const FooterWrapper = styled.footer`
   background: ${theme.bg};
   padding: 0.25rem 0;
   box-sizing: border-box;
-  border-right: 1px solid ${theme.secondary};
 `;
 
 const Footer = () => {

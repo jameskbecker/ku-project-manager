@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 const initialState: any = {
   showNewTask: false,
   showAddComment: false,
+  showMembers: false,
   isLoading: null,
   selectedTask: '',
   data: [],
@@ -71,6 +72,10 @@ export const tasksSlice = createSlice({
       state.showAddComment = !state.showAddComment;
     },
 
+    toggleMembers: (state) => {
+      state.showMembers = !state.showMembers;
+    },
+
     selectTask: (state, { payload }) => {
       state.selectedTask = payload;
     },
@@ -132,6 +137,11 @@ export const tasksSlice = createSlice({
   },
 });
 
-export const { toggleNewTask, toggleAddComment, selectTask, applyFilter } =
-  tasksSlice.actions;
+export const {
+  toggleNewTask,
+  toggleAddComment,
+  toggleMembers,
+  selectTask,
+  applyFilter,
+} = tasksSlice.actions;
 export default tasksSlice.reducer;

@@ -64,12 +64,7 @@ const NewProjectModal = () => {
         <Separator />
 
         <ModalFooter>
-          <Button
-            light
-            text="Cancel"
-            color={theme.textBody}
-            onClick={handleCancel}
-          ></Button>
+          <Button light text="Cancel" onClick={handleCancel}></Button>
           <Button round text="Save" onClick={handleSave} />
         </ModalFooter>
       </ModalContent>

@@ -14,10 +14,10 @@ export const StyledReactSelect = styled(ReactSelect)`
 
     font-size: 1rem;
 
-    border: 1px solid transparent;
-    border-radius: 5px !important;
+    border: 0;
+    border-radius: 0.5rem !important;
     box-sizing: border-box;
-    padding: 0;
+    padding: 0rem;
 
     box-shadow: none;
     overflow: visible;
@@ -53,7 +53,7 @@ export const StyledReactSelect = styled(ReactSelect)`
   }
 
   .Select__menu {
-    border-radius: 5px;
+    border-radius: 0.5rem;
     background: ${theme.sidebar};
     overflow: hidden;
   }
@@ -90,8 +90,10 @@ export const StyledReactSelect = styled(ReactSelect)`
 
   .Select__option {
     padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
     margin: 5px 0;
-    border-radius: 5px;
+    border-radius: 0.5rem;
     cursor: pointer;
   }
 
@@ -101,7 +103,7 @@ export const StyledReactSelect = styled(ReactSelect)`
   }
 
   .Select__value-container {
-    padding: 0.2rem;
+    padding: 0.5rem;
   }
 
   .Select__input-container {
@@ -117,27 +119,30 @@ export const StyledReactSelect = styled(ReactSelect)`
     height: 0.875rem;
     overflow: hidden;
 
-    svg {
+    svg,
+    svg > path {
       /* min-width: 0.875rem; */
       height: 0.875rem;
+      fill: ${theme.textBrand};
     }
   }
 
+  .Select__indicators {
+    background: ${theme.brand};
+    padding: 0.5rem;
+    margin: 0;
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+
   .Select__option--is-selected {
-    color: ${theme.text};
-    background: ${theme.highlight};
+    color: ${theme.textBrand};
+    background: ${theme.brand};
     cursor: pointer;
   }
 
   // Input element used for searching through options
   .Select__input {
     color: ${theme.text} !important;
-  }
-
-  svg,
-  svg > path,
-  svg > text {
-    fill: ${theme.text};
   }
 `;
 
@@ -158,6 +163,7 @@ const SelectInput = (props: InputProps) => {
         value={value}
         isDisabled={props.disabled}
         classNamePrefix="Select"
+        isSearchable={false}
       />
     </InputWrapper>
   );

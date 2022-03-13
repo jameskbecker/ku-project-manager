@@ -17,7 +17,7 @@ const StyledPanel = styled(FlexColumn)<PanelProps>`
   flex: 1 0 auto;
   padding: 0.75rem;
   border: 2px solid #ffffff00;
-  box-sizing: border-box;
+  box-sizing: content-box;
   border-radius: 0.5rem;
   font-weight: 400;
 

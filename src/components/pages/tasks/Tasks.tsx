@@ -20,6 +20,7 @@ import Layout from '../../layout/Layout';
 import SideBar from '../../layout/SideBar';
 import AddCommentModal from '../../modals/AddComment';
 import InviteModal from '../../modals/InviteModal';
+import MembersModal from '../../modals/MembersModal';
 import NewProjectModal from '../../modals/NewProjectModal';
 import NewTaskModal from '../../modals/NewTaskModal';
 import ActivityFeed from './ActivityFeed';
@@ -32,7 +33,7 @@ const Project = () => {
   const { showInvite, showNewProject, selectedProject } = useSelector(
     (state: any) => state.projects
   );
-  const { pageName, showNewTask, showAddComment } = useSelector(
+  const { pageName, showNewTask, showMembers, showAddComment } = useSelector(
     (state: any) => state.tasks
   );
   const dispatch = useDispatch();
@@ -75,6 +76,7 @@ const Project = () => {
       {showInvite && <InviteModal />}
       {showNewTask && <NewTaskModal />}
       {showAddComment && <AddCommentModal />}
+      {showMembers && <MembersModal />}
     </Layout>
   );
 };

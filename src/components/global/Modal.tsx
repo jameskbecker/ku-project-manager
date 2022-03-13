@@ -33,6 +33,7 @@ export const ModalContent = styled(Panel)`
 
   opacity: 1;
   cursor: default;
+  overflow: visible;
 
   :hover {
     background: ${theme.primary};
@@ -59,6 +60,7 @@ export const ModalFooter = styled.div`
 
   /** Tablet  */
   @media screen and (min-width: 768px) {
+    flex: 0 0 auto;
     flex-direction: row;
 
     & > * {

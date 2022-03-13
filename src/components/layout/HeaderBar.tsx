@@ -80,6 +80,7 @@ const HeaderBar = ({ back, pageName, description, Options }: NavBarProps) => {
   const UserMenu = () => {
     return (
       <UserWrapper
+        classNamePrefix="User-Wrapper"
         items={[
           { label: 'Account', onClick: handleAccount },
           { label: 'Sign Out', onClick: handleSignout },
@@ -129,11 +130,16 @@ export default HeaderBar;
 
 /** @todo propably better solution than absolute positioning */
 const UserWrapper = styled(ContextMenu)`
-  flex: 2 2 !important;
+  //flex: 2 2 !important;
+
   height: 100%;
   & > *,
   & > * > * {
     user-select: none;
+  }
+
+  & > :first-child {
+    justify-content: flex-end !important;
   }
 
   span {

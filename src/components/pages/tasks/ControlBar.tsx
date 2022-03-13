@@ -17,7 +17,11 @@ import {
   toggleInvite,
   toggleNewProject,
 } from '../../../store/projects';
-import { applyFilter, toggleNewTask } from '../../../store/tasks';
+import {
+  applyFilter,
+  toggleMembers,
+  toggleNewTask,
+} from '../../../store/tasks';
 import theme from '../../../theme';
 import Button from '../../global/Button';
 import { FlexRow } from '../../global/Flex';
@@ -72,6 +76,10 @@ const ControlBar = () => {
     dispatch(applyFilter({ text: value }));
   };
 
+  const handleViewMembers = () => {
+    dispatch(toggleMembers());
+  };
+
   return (
     <ControlBarWrapper>
       <FlexRow>
@@ -97,7 +105,12 @@ const ControlBar = () => {
 
       <FlexRow>
         {!taskId && (
-          <Button icon={faUsers} text="View Members" onClick={null} light />
+          <Button
+            icon={faUsers}
+            text="View Members"
+            onClick={handleViewMembers}
+            light
+          />
         )}
         <Button
           light
