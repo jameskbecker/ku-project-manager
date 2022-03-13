@@ -61,6 +61,21 @@ export const fetchProjectMembers = createAsyncThunk(
   }
 );
 
+export const sendInvite = createAsyncThunk(
+  'projects/sendInvite',
+  async (payload: any) => {
+    // 'https://kupm-api.herokuapp.com/api/projects',
+    const { projectId: id } = payload;
+    const res = await fetch('/local/api/invites', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    return await res.json();
+  }
+);
+
 export const projectsSlice = createSlice({
   name: 'projects',
   initialState,

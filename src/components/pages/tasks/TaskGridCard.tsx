@@ -109,7 +109,7 @@ const TaskGridCard = ({ task }: any) => {
       </ContextMenu>
     );
   };
-  console.log(task);
+
   return (
     <Wrapper
       key={task.id}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { toggleInvite } from '../../store/projects';
+import { useDispatch, useSelector } from 'react-redux';
+import { sendInvite, toggleInvite } from '../../store/projects';
 import theme from '../../theme';
 import Button from '../global/Button';
 import SelectInput from '../global/input/SelectInput';
@@ -20,13 +20,37 @@ const expiryOptions = [
 ];
 
 const InviteModal = () => {
-  const [recipient, setRecipient] = useState('');
+  const { selectedProject } = useSelector((state: any) => state.projects);
+
+  const [email, setEmail] = useState('');
+  const [permissionOption, setPermissionOption] = useState(
+    permissionOptions[0]
+  );
+  const [expiryOption, setExpiryOption] = useState(expiryOptions[0]);
   const dispatch = useDispatch();
 
-  const handleRecipientChange = (e: any) => setRecipient(e.target.value);
+  const handleEmailChange = (e: any) => setEmail(e.target.value);
+
+  const handlePermissionChange = ({ name, value }: any) => {
+    setPermissionOption(value);
+  };
+
+  const handleExpiryChange = ({ name, value }: any) => {
+    setExpiryOption(value);
+  };
 
   const handleCancel = () => dispatch(toggleInvite());
-  const handleSave = () => {};
+  const handleSave = (e: any) => {
+    e.target.style.background = theme.success;
+    dispatch(
+      sendInvite({
+        projectId: selectedProject,
+        email,
+        permissions: permissionOption.value,
+        expires: expiryOption.value,
+      })
+    );
+  };
 
   return (
     <ModalBackdrop onClick={handleCancel}>
@@ -38,22 +62,24 @@ const InviteModal = () => {
         <TextInput
           label="Recipient"
           placeholder="Recipient Email"
-          value={recipient}
-          onChange={handleRecipientChange}
+          value={email}
+          onChange={handleEmailChange}
         />
 
         <SelectInput
           label="Permissions"
           options={permissionOptions}
-          value={permissionOptions[permissionOptions.length - 1]}
-          onChange={() => {}}
+          value={permissionOption}
+          name="permissions"
+          onChange={handlePermissionChange}
         />
 
         <SelectInput
           label="Expires After"
           options={expiryOptions}
-          value={expiryOptions[expiryOptions.length - 1]}
-          onChange={() => {}}
+          value={expiryOption}
+          name="expiry"
+          onChange={handleExpiryChange}
         />
 
         <Separator />
