@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import theme from '../../../theme';
 import { InputWrapper } from './Input';
 
 export const StyledTextArea = styled.textarea<any>`
@@ -14,8 +13,8 @@ export const StyledTextArea = styled.textarea<any>`
 
   font-family: inherit;
   font-size: 1rem;
-  color: ${theme.text};
-  background: ${theme.secondary};
+  color: ${({ theme }) => theme.text};
+  background: ${({ theme }) => theme.secondary};
   border: none;
   border-radius: 5px;
   box-sizing: border-box;
@@ -35,7 +34,7 @@ export const StyledTextArea = styled.textarea<any>`
   }
 
   :disabled {
-    background: ${theme.disabled};
+    background: ${({ theme }) => theme.disabled};
   }
 `;
 

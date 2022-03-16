@@ -1,7 +1,6 @@
 // import { FlexRow } from '../Flex';
 // import React, { useState } from 'react';
 // import styled from 'styled-components';
-// import theme from '../../../theme';
 // import { InputWrapper, InputProps } from './Input';
 // import { StyledInput } from './TextInput';
 

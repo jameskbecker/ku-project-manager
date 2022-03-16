@@ -1,7 +1,4 @@
-import React from 'react';
 import styled from 'styled-components';
-import theme from '../../theme';
-import { FlexColumn, FlexRow } from './Flex';
 import Panel from './Panel';
 
 export const ModalBackdrop = styled.div`
@@ -28,7 +25,7 @@ export const ModalContent = styled(Panel)`
   flex: 0 1 auto;
   width: calc(100% - 2rem);
 
-  background: ${theme.primary};
+  background: ${({ theme }) => theme.primary};
   padding: 1rem;
 
   opacity: 1;
@@ -36,7 +33,7 @@ export const ModalContent = styled(Panel)`
   overflow: visible;
 
   :hover {
-    background: ${theme.primary};
+    background: ${({ theme }) => theme.primary};
   }
 
   /**Tablet */

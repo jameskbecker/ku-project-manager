@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import theme from '../../theme';
 import { FlexColumn, FlexRow } from './Flex';
-import Separator from './Separator';
 
 const StyledContextMenu = styled.div`
   position: absolute;
@@ -13,7 +11,7 @@ const StyledContextMenu = styled.div`
   display: flex;
   flex-direction: column;
 
-  background: ${theme.disabled};
+  background: ${({ theme }) => theme.disabled};
   border-radius: 0.5rem;
   padding: 0.5rem;
 
@@ -55,8 +53,8 @@ const ContextItem = styled(FlexRow)`
   cursor: pointer;
 
   :hover {
-    color: ${theme.textBrand};
-    background: ${theme.brand};
+    color: ${({ theme }) => theme.textBrand};
+    background: ${({ theme }) => theme.brand};
     transition: 0.5s ease-in-out;
   }
 `;

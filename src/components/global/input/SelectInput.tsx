@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ReactSelect, { components } from 'react-select';
 import styled from 'styled-components';
-import theme from '../../../theme';
 import { InputWrapper, InputProps } from './Input';
 
 export const StyledReactSelect = styled(ReactSelect)`
@@ -22,13 +21,13 @@ export const StyledReactSelect = styled(ReactSelect)`
     box-shadow: none;
     overflow: visible;
 
-    background: ${({ isDisabled }) =>
+    background: ${({ isDisabled, theme }) =>
       isDisabled ? theme.disabled : theme.secondary};
     cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
   }
 
   .Select__control--is-disabled {
-    color: ${theme.textBody};
+    color: ${({ theme }) => theme.textBody};
   }
 
   .Select__control,
@@ -54,12 +53,12 @@ export const StyledReactSelect = styled(ReactSelect)`
 
   .Select__menu {
     border-radius: 0.5rem;
-    background: ${theme.sidebar};
+    background: ${({ theme }) => theme.sidebar};
     overflow: hidden;
   }
 
   .Select__menu-list {
-    /* border: 1px solid ${theme.highlight}; */
+    /* border: 1px solid ${({ theme }) => theme.highlight}; */
     box-sizing: border-box;
 
     padding: 0 5px;
@@ -74,7 +73,7 @@ export const StyledReactSelect = styled(ReactSelect)`
   .Select__single-value,
   .Select__placeholder {
     font-size: 1rem;
-    /* color: ${theme.text}; */
+    /* color: ${({ theme }) => theme.text}; */
   }
 
   .Select__input-container {
@@ -85,7 +84,7 @@ export const StyledReactSelect = styled(ReactSelect)`
 
   .Select__single-value {
     /* grid-area: none; */
-    color: ${theme.text};
+    color: ${({ theme }) => theme.text};
   }
 
   .Select__option {
@@ -98,8 +97,8 @@ export const StyledReactSelect = styled(ReactSelect)`
   }
 
   .Select__option--is-focused {
-    background: ${theme.highlight};
-    color: ${theme.text};
+    background: ${({ theme }) => theme.highlight};
+    color: ${({ theme }) => theme.text};
   }
 
   .Select__value-container {
@@ -123,26 +122,26 @@ export const StyledReactSelect = styled(ReactSelect)`
     svg > path {
       /* min-width: 0.875rem; */
       height: 0.875rem;
-      fill: ${theme.textBrand};
+      fill: ${({ theme }) => theme.textBrand};
     }
   }
 
   .Select__indicators {
-    background: ${theme.brand};
+    background: ${({ theme }) => theme.brand};
     padding: 0.5rem;
     margin: 0;
     border-radius: 0 0.5rem 0.5rem 0;
   }
 
   .Select__option--is-selected {
-    color: ${theme.textBrand};
-    background: ${theme.brand};
+    color: ${({ theme }) => theme.textBrand};
+    background: ${({ theme }) => theme.brand};
     cursor: pointer;
   }
 
   // Input element used for searching through options
   .Select__input {
-    color: ${theme.text} !important;
+    color: ${({ theme }) => theme.text} !important;
   }
 `;
 

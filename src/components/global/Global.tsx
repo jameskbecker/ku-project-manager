@@ -1,8 +1,6 @@
-import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-import theme from '../../theme';
-
-const Global = createGlobalStyle`
+import { createGlobalStyle } from 'styled-components';
+//default theme?
+const Global = createGlobalStyle<any>`
   * {
     margin: 0;
     padding: 0;
@@ -11,8 +9,8 @@ const Global = createGlobalStyle`
 
 
     ::selection {
-      background: ${theme.brand};
-      color: ${theme.textBrand};
+      background: ${({ theme }) => theme.brand};
+      color: ${({ theme }) => theme.textBrand};
     }
   }
     /* width */
@@ -37,23 +35,23 @@ const Global = createGlobalStyle`
 
 
   body {
-    background: ${theme.bg};
+    background: ${({ theme }) => theme.bg};
     height: 100%;
     font-family: Inter, sans-serif;
     font-size: 0.75rem;
     font-weight: 500;
-    color: ${theme.text};
+    color: ${({ theme }) => theme.text};
 
   }
 
   div {
-    color: ${theme.textBody};
+    color: ${({ theme }) => theme.textBody};
   }
 
   
 
   h2, h3, h4 {
-    color: ${theme.text};
+    color: ${({ theme }) => theme.text};
     font-family: Inter, sans-serif;
     overflow: hidden;
     white-space: nowrap;
@@ -63,7 +61,7 @@ const Global = createGlobalStyle`
   h1 {
     font-size: 2rem;
     font-weight: 800;
-    color: ${theme.textBrand};
+    color: ${({ theme }) => theme.textBrand};
   }
 
   h2 {
@@ -100,7 +98,7 @@ const Global = createGlobalStyle`
   h5 {
     font-size: 0.875rem;
     font-weight: 700;
-    color: ${theme.textBody};
+    color: ${({ theme }) => theme.textBody};
 
     /* Mobile */
     @media screen and (max-width: 479px) {
@@ -124,7 +122,7 @@ const Global = createGlobalStyle`
     word-break: break-word;
     white-space: normal;
     text-overflow: ellipsis;
-    color: ${theme.textBody};
+    color: ${({ theme }) => theme.textBody};
   }
 
  

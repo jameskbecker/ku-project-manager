@@ -1,8 +1,6 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import theme from '../../../theme';
-import { FlexRow } from '../Flex';
-import { InputWrapper, InputIcon, InputProps, InputField } from './Input';
+import styled from 'styled-components';
+import { InputField, InputIcon, InputProps, InputWrapper } from './Input';
 
 export const StyledInput = styled.input<any>`
   flex: 1 0 auto;
@@ -11,7 +9,7 @@ export const StyledInput = styled.input<any>`
   min-width: 0;
 
   font-size: 1rem;
-  color: ${theme.text};
+  color: ${({ theme }) => theme.text};
   border: 0;
   background: transparent;
   padding: 0.5rem 0;
@@ -22,7 +20,7 @@ export const StyledInput = styled.input<any>`
 
   ::placeholder {
     font-size: 1rem;
-    color: ${theme.textBody};
+    color: ${({ theme }) => theme.textBody};
   }
 `;
 

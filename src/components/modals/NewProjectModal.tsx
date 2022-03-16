@@ -5,7 +5,6 @@ import {
   saveProject,
   toggleNewProject,
 } from '../../store/projects';
-import theme from '../../theme';
 import Button from '../global/Button';
 import TextArea from '../global/input/TextArea';
 import TextInput from '../global/input/TextInput';

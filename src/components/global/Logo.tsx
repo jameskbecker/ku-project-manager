@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import theme from '../../theme';
 import { FlexRow } from './Flex';
 
 const StyledLogo = styled(FlexRow)`
@@ -8,10 +7,8 @@ const StyledLogo = styled(FlexRow)`
   width: 144px;
   justify-content: center;
 
-  background: ${theme.brand};
+  background: ${({ theme }) => theme.brand};
   border-radius: 1rem;
-
-  /* box-shadow: 4px 5px black; */
 `;
 
 const Logo = () => (

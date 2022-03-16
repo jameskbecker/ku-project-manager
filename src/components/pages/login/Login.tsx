@@ -1,6 +1,5 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import theme from '../../../theme';
 import Button from '../../global/Button';
 import { FlexColumn } from '../../global/Flex';
 import TextInput from '../../global/input/TextInput';
@@ -8,7 +7,6 @@ import Logo from '../../global/Logo';
 import { ModalFooter } from '../../global/Modal';
 import Panel from '../../global/Panel';
 import Separator from '../../global/Separator';
-import { LogoWrapper } from '../../layout/SideBar';
 import LoginHeader from './LoginHeader';
 
 const Login = () => {

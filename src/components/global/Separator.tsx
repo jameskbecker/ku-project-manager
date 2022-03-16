@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import theme from '../../theme';
 
 const Separator = styled.div`
   min-height: 1px;
   max-height: 1px;
 
-  background-color: ${theme.highlight};
+  background: ${({ theme }) => theme.highlight};
 `;
 
 export const VerticalSeparator = styled.div`
@@ -14,7 +13,7 @@ export const VerticalSeparator = styled.div`
   min-width: 1px;
   max-width: 1px;
 
-  background-color: ${theme.highlight};
+  background: ${({ theme }) => theme.highlight};
 `;
 
 export default Separator;

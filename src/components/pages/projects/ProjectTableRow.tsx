@@ -6,10 +6,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { formatDistance } from 'date-fns';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import {
   deleteProject,
   fetchAllProjects,
@@ -17,20 +17,19 @@ import {
   selectProject,
   toggleNewProject,
 } from '../../../store/projects';
-import theme from '../../../theme';
 import Panel from '../../global/Panel';
 import { TableCell } from '../../global/Table';
 
 const Wrapper = styled(Panel)`
   gap: 1rem;
 
-  color: ${theme.textBody};
+  color: ${({ theme }) => theme.textBody};
   white-space: nowrap;
   text-overflow: ellipsis;
   padding: 1rem;
 
   :hover {
-    color: ${theme.text};
+    color: ${({ theme }) => theme.text};
     transition: 0.5s ease-in-out;
   }
 
@@ -41,17 +40,18 @@ const Wrapper = styled(Panel)`
 
 const ActionButton = styled(FontAwesomeIcon)`
   font-size: 0.875rem;
-  color: ${theme.accent};
+  color: ${({ theme }) => theme.accent};
   opacity: 0.8;
 
   :hover {
-    color: ${theme.brand};
+    color: ${({ theme }) => theme.brand};
     opacity: 1;
     transition: 0.25s ease-in-out;
   }
 `;
 
 const ProjectTableRow = ({ project }: any) => {
+  const theme = useContext(ThemeContext);
   const history = useHistory();
   const dispatch = useDispatch();
 

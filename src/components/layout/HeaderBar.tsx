@@ -6,12 +6,11 @@ import {
   faPencilAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import { toggleNewProject } from '../../store/projects';
-import theme from '../../theme';
 import Button from '../global/Button';
 import ContextMenu from '../global/ContextMenu';
 import { FlexRow } from '../global/Flex';
@@ -24,12 +23,12 @@ const StyledHeaderBar = styled.div`
   gap: 0.75rem;
   align-items: center;
 
-  background: ${theme.titlebar};
+  background: ${({ theme }) => theme.titlebar};
   padding: 1rem;
 
-  /* border-bottom: 1px solid ${theme.sidebar}; */
+  /* border-bottom: 1px solid ${({ theme }) => theme.sidebar}; */
 
-  border-bottom: 1px solid ${theme.secondary};
+  border-bottom: 1px solid ${({ theme }) => theme.secondary};
 
   overflow-y: visible;
 `;
@@ -68,6 +67,7 @@ type NavBarProps = {
 
 const HeaderBar = ({ back, pageName, description, Options }: NavBarProps) => {
   const history = useHistory();
+  const theme = useContext(ThemeContext);
 
   const handleAccount = () => {
     history.push('/settings');
@@ -144,7 +144,7 @@ const UserWrapper = styled(ContextMenu)`
 
   span {
     cursor: pointer;
-    color: ${theme.textBody};
+    color: ${({ theme }) => theme.textBody};
   }
 `;
 
@@ -159,7 +159,7 @@ const UserModalWrapper = styled.div`
   text-align: center;
 
   border-radius: 0 0 0.5em 0.5em;
-  background: ${theme.sidebar};
+  background: ${({ theme }) => theme.sidebar};
 
   cursor: pointer;
   z-index: 1;
@@ -171,7 +171,7 @@ const UserModalWrapper = styled.div`
     padding: 0.5em 0;
     &:hover {
       opacity: 1;
-      color: ${theme.bg};
+      color: ${({ theme }) => theme.bg};
     }
   }
 `;

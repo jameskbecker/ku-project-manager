@@ -4,7 +4,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { fetchActivity } from '../../../store/projects';
-import theme from '../../../theme';
 import { FlexColumn, FlexRow } from '../../global/Flex';
 import Panel from '../../global/Panel';
 
@@ -12,7 +11,7 @@ const StyledActivityFeed = styled(FlexColumn)`
   gap: 0.75rem;
   flex: 2 2;
   padding: 1rem;
-  border-left: 1px solid ${theme.secondary};
+  border-left: 1px solid ${({ theme }) => theme.secondary};
 `;
 
 const ActivityFeed = () => {

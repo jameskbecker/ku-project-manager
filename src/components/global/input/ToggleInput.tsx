@@ -3,7 +3,6 @@
 // import ToggleOn from 'icons/toggle-on.svg';
 // import ToggleOff from 'icons/toggle-off.svg';
 // import styled from 'styled-components';
-// import theme from '../../../theme';
 // import { InputProps } from './Input';
 // import { values } from 'lodash';
 

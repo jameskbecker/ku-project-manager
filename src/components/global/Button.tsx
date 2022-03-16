@@ -2,7 +2,6 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import styled, { css } from 'styled-components';
-import theme from '../../theme';
 
 type ButtonProps = {
   color?: string;
@@ -24,11 +23,11 @@ const StyledButton = styled.button<ButtonProps>`
 
   font-size: 0.875rem;
   font-weight: 500;
-  color: ${({ color }) => (color ? theme.text : theme.textButton)};
-  background: ${({ color }) => (color ? color : theme.accent)};
+  color: ${({ color, theme }) => (color ? theme.text : theme.textButton)};
+  background: ${({ color, theme }) => (color ? color : theme.accent)};
   padding: 0.5rem 1.25rem;
 
-  border: 1.5px solid ${({ color }) => (color ? color : theme.accent)};
+  border: 1.5px solid ${({ color, theme }) => (color ? color : theme.accent)};
   box-sizing: content-box;
   border-radius: ${({ round }) => (round ? '20px' : '5px')};
   /* box-shadow: 1px 1px 3px 0 #00000030; */
@@ -40,15 +39,15 @@ const StyledButton = styled.button<ButtonProps>`
   user-select: none;
 
   :hover {
-    background: ${({ color }) => (color ? color : theme.accent)};
+    background: ${({ color, theme }) => (color ? color : theme.accent)};
     transition: 0.5s ease-in-out;
   }
 
   :focus-visible {
-    outline: 3px solid ${theme.brand};
+    outline: 3px solid ${({ theme }) => theme.brand};
   }
 
-  ${({ light, color }) =>
+  ${({ light, color, theme }) =>
     light &&
     css`
       background: transparent;

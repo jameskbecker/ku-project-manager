@@ -4,11 +4,11 @@ import {
   faUserMinus,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { ThemeContext } from 'styled-components';
 import { fetchProjectMembers } from '../../store/projects';
 import { toggleAddComment, toggleMembers } from '../../store/tasks';
-import theme from '../../theme';
 import Button from '../global/Button';
 import { FlexColumn, FlexRow } from '../global/Flex';
 import { ModalBackdrop, ModalContent, ModalFooter } from '../global/Modal';
@@ -16,6 +16,8 @@ import Panel from '../global/Panel';
 import Separator from '../global/Separator';
 
 const MemberPanel = ({ data }: any) => {
+  const theme = useContext(ThemeContext);
+
   const getPermissionText = () => {
     if (data.isOwner) return 'Owner';
     else if (data.canRead && data.canWrite) return 'Can Read and Write';

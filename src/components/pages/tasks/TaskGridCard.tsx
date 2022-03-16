@@ -1,10 +1,10 @@
 import { faSquare } from '@fortawesome/free-regular-svg-icons';
 import { faCheckSquare, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { MouseEvent, useState } from 'react';
+import React, { MouseEvent, useContext, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import {
   deleteTask,
   fetchProjectTasks,
@@ -13,7 +13,6 @@ import {
   toggleAddComment,
   toggleNewTask,
 } from '../../../store/tasks';
-import theme from '../../../theme';
 import ContextMenu from '../../global/ContextMenu';
 import { FlexRow } from '../../global/Flex';
 import Panel from '../../global/Panel';
@@ -29,7 +28,7 @@ const Wrapper = styled(Panel)<any>`
     flex: 1 1;
   }
 
-  color: ${theme.textBody};
+  color: ${({ theme }) => theme.textBody};
 
   h3,
   svg {
@@ -46,6 +45,7 @@ const MoreButton = styled(FontAwesomeIcon)`
 `;
 
 const TaskGridCard = ({ task }: any) => {
+  const theme = useContext(ThemeContext);
   const [showMore, setShowMore] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();

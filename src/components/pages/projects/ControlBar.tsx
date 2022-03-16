@@ -1,21 +1,17 @@
 import {
-  faCheck,
   faPlus,
   faSearch,
-  faTimes,
   faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import {
   applyFilter,
   selectProject,
   toggleDeleteAll,
-  toggleInvite,
   toggleNewProject,
 } from '../../../store/projects';
-import theme from '../../../theme';
 import Button from '../../global/Button';
 import { FlexRow } from '../../global/Flex';
 import TextInput from '../../global/input/TextInput';
@@ -29,7 +25,7 @@ const ControlBarWrapper = styled.div`
   grid-area: control;
   gap: 0.75rem;
 
-  background: ${theme.control};
+  background: ${({ theme }) => theme.control};
   padding: 0.75rem 1rem;
 
   & > * {
@@ -45,10 +41,11 @@ const ControlBarWrapper = styled.div`
     }
   }
 
-  border-bottom: 1px solid ${theme.secondary};
+  border-bottom: 1px solid ${({ theme }) => theme.secondary};
 `;
 
 const ControlBar = () => {
+  const theme = useContext(ThemeContext);
   const { filter } = useSelector((state: any) => state.projects);
   const dispatch = useDispatch();
 

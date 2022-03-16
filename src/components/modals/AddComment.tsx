@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { toggleInvite } from '../../store/projects';
 import { toggleAddComment } from '../../store/tasks';
-import theme from '../../theme';
 import Button from '../global/Button';
 import TextArea from '../global/input/TextArea';
-import TextInput from '../global/input/TextInput';
 import { ModalBackdrop, ModalContent, ModalFooter } from '../global/Modal';
 import Separator from '../global/Separator';
 

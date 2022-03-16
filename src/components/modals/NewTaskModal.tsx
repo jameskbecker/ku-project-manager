@@ -6,9 +6,7 @@ import {
   selectTask,
   toggleNewTask,
 } from '../../store/tasks';
-import theme from '../../theme';
 import Button from '../global/Button';
-import { FlexColumn } from '../global/Flex';
 import SelectInput from '../global/input/SelectInput';
 import TextArea from '../global/input/TextArea';
 import TextInput from '../global/input/TextInput';

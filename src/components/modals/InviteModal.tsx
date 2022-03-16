@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { ThemeContext } from 'styled-components';
 import { sendInvite, toggleInvite } from '../../store/projects';
-import theme from '../../theme';
 import Button from '../global/Button';
 import SelectInput from '../global/input/SelectInput';
 import TextInput from '../global/input/TextInput';
@@ -21,6 +21,7 @@ const expiryOptions = [
 
 const InviteModal = () => {
   const { selectedProject } = useSelector((state: any) => state.projects);
+  const theme = useContext(ThemeContext);
 
   const [email, setEmail] = useState('');
   const [permissionOption, setPermissionOption] = useState(

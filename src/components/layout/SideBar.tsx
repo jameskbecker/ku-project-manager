@@ -7,15 +7,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import theme from '../../theme';
 import { FlexColumn } from '../global/Flex';
 import Footer from './Footer';
 
 const SideBarWrapper = styled.div`
   display: none;
   grid-area: sidebar;
-  background: ${theme.bg};
-  border-right: 1px solid ${theme.secondary};
+  background: ${({ theme }) => theme.bg};
+  border-right: 1px solid ${({ theme }) => theme.secondary};
 
   /** Desktop  */
   @media screen and (min-width: 992px) {
@@ -31,7 +30,7 @@ export const LogoWrapper = styled.div`
   height: auto;
   flex: 1 1;
 
-  background: ${theme.brand};
+  background: ${({ theme }) => theme.brand};
   box-sizing: border-box;
   margin: 2rem 1.75rem;
   border-radius: 1rem;
@@ -41,7 +40,7 @@ export const LogoWrapper = styled.div`
   h1 {
     width: 100%;
     text-align: center;
-    color: ${theme.textBrand};
+    color: ${({ theme }) => theme.textBrand};
   }
 `;
 
@@ -51,8 +50,10 @@ const SideBarButton = styled(Link)<any>`
 
   font-size: 0.75rem;
   font-weight: ${({ $active }) => ($active ? 600 : 500)};
-  color: ${({ $active }) => ($active ? theme.text : theme.text)} !important;
-  background: ${(props) => (props.$active ? theme.highlight : 'transparent')};
+  color: ${({ $active, theme }) =>
+    $active ? theme.text : theme.text} !important;
+  background: ${({ $active, theme }) =>
+    $active ? theme.highlight : 'transparent'};
   border-radius: 0.25rem;
   box-sizing: border-box;
 
@@ -61,12 +62,12 @@ const SideBarButton = styled(Link)<any>`
 
   :hover {
     transition: 0.5s ease-in-out;
-    background: ${theme.highlight};
+    background: ${({ theme }) => theme.highlight};
     opacity: 1;
   }
 
   :focus-visible {
-    outline: 2px solid ${theme.brandAlt};
+    outline: 2px solid ${({ theme }) => theme.brandAlt};
     outline-offset: 0;
   }
 

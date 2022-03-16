@@ -1,6 +1,5 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import theme from '../../theme';
 import { FlexColumn } from './Flex';
 import Separator from './Separator';
 
@@ -21,7 +20,7 @@ const StyledPanel = styled(FlexColumn)<PanelProps>`
   border-radius: 0.5rem;
   font-weight: 400;
 
-  background: ${({ secondary }) =>
+  background: ${({ secondary, theme }) =>
     secondary ? theme.secondary : theme.primary};
 
   cursor: ${({ onClick }) => (onClick ? 'pointer' : 'default')};
@@ -31,7 +30,7 @@ const StyledPanel = styled(FlexColumn)<PanelProps>`
     onClick &&
     css`
       :hover {
-        background: ${theme.highlight};
+        background: ${({ theme }) => theme.highlight};
         transition: 0.5s ease-out;
       }
     `}

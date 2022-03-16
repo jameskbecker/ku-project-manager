@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import theme from '../../theme';
 import Separator from '../global/Separator';
 
 const FooterWrapper = styled.footer`
@@ -10,9 +9,9 @@ const FooterWrapper = styled.footer`
   font-weight: 600;
   width: 100%;
 
-  color: ${theme.text};
+  color: ${({ theme }) => theme.text};
   text-align: center;
-  background: ${theme.bg};
+  background: ${({ theme }) => theme.bg};
   padding: 0.25rem 0;
   box-sizing: border-box;
 `;

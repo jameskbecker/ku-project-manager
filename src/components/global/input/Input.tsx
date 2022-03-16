@@ -1,9 +1,8 @@
-import { FlexColumn, FlexRow } from '../Flex';
-import React, { CSSProperties } from 'react';
-import styled, { css } from 'styled-components';
-import TextInput from './TextInput';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import theme from '../../../theme';
+import { CSSProperties } from 'react';
+import styled, { css } from 'styled-components';
+import { FlexColumn, FlexRow } from '../Flex';
+import TextInput from './TextInput';
 // import NumberInput from './NumberInput';
 // import SelectInput from './SelectInput';
 // import TextArea from './TextArea';
@@ -27,7 +26,7 @@ export const InputWrapper = styled(FlexColumn)<any>`
 
   :focus-within {
     svg {
-      color: ${theme.text};
+      color: ${({ theme }) => theme.text};
       transition: 0.25s ease-in-out;
     }
   }
@@ -36,18 +35,18 @@ export const InputWrapper = styled(FlexColumn)<any>`
     disabled &&
     css`
       label {
-        color: ${theme.textBody};
+        color: ${({ theme }) => theme.textBody};
       }
 
       & :last-child {
-        background: ${theme.disabled};
+        background: ${({ theme }) => theme.disabled};
         cursor: not-allowed;
       }
     `}
 `;
 
 export const InputField = styled(FlexRow)`
-  background: ${theme.secondary};
+  background: ${({ theme }) => theme.secondary};
   border: 1px solid transparent;
   border-radius: 0.5rem;
   gap: 0.5rem;
