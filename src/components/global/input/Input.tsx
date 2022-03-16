@@ -10,7 +10,7 @@ import TextInput from './TextInput';
 // import Toggle from './ToggleInput';
 
 export const InputWrapper = styled(FlexColumn)<any>`
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   width: 100%;
 
   position: relative;
@@ -46,6 +46,7 @@ export const InputWrapper = styled(FlexColumn)<any>`
 `;
 
 export const InputField = styled(FlexRow)`
+  flex: 0 0 auto;
   background: ${({ theme }) => theme.secondary};
   border: 1px solid transparent;
   border-radius: 0.5rem;
