@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeTheme } from '../../../store/settings';
 import Button from '../../global/Button';
 import SelectInput from '../../global/input/SelectInput';
 import TextInput from '../../global/input/TextInput';
@@ -8,7 +10,15 @@ import Layout from '../../layout/Layout';
 import SideBar from '../../layout/SideBar';
 import Content from './Content';
 
+const themeOptions = [
+  { label: 'Light', value: 'light' },
+  { label: 'Dark', value: 'dark' },
+];
+
 const Settings = () => {
+  const { theme } = useSelector((state: any) => state.settings);
+  const dispatch = useDispatch();
+
   const [editMode, setEditMode] = useState(false);
   const [first, setFirst] = useState('John');
   const [last, setLast] = useState('Doe');
@@ -27,6 +37,10 @@ const Settings = () => {
   const handleLastChange = () => {};
   const handleEmailChange = () => {};
   const handlePasswordChange = () => {};
+
+  const handleThemeSelect = ({ value: { value } }: any) => {
+    dispatch(changeTheme({ theme: value }));
+  };
 
   return (
     <Layout>
@@ -77,10 +91,9 @@ const Settings = () => {
         <Panel heading="Appearance">
           <SelectInput
             label="Theme"
-            options={[
-              { label: 'Light', value: 'light' },
-              { label: 'Dark', value: 'dark' },
-            ]}
+            options={themeOptions}
+            value={themeOptions.find((o) => o.value === theme)}
+            onChange={handleThemeSelect}
           />
         </Panel>
       </Content>
