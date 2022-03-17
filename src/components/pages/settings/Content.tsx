@@ -12,7 +12,7 @@ const Content = styled.div`
   @media screen and (min-width: 600px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: minmax(0, auto);
+    grid-auto-rows: minmax(0, min-content);
   }
 
   /** Desktop  */

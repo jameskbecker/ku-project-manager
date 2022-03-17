@@ -14,18 +14,18 @@ const StyledTodoPanel = styled(Panel)`
   gap: 0.5rem;
 `;
 
-const TodoPanel = ({ todo }: TodoPanelProps) => {
+const TodoPanel = ({ data }: any) => {
   const history = useHistory();
-  const [assignment] = assignments.filter((a) => a.id === todo.id);
 
   const handleClick = () => {
-    history.push('/projects/');
+    history.push(`/projects/${data.projectId}/${data.id}`);
   };
 
   return (
-    <StyledTodoPanel secondary key={todo.id}>
-      <h4>{todo.name}</h4>
-      <h5>{assignment.name}</h5>
+    <StyledTodoPanel secondary key={data.id} onClick={handleClick}>
+      <h4>{data.heading}</h4>
+      <h5>{data.subHeading}</h5>
+      <p>{data.body}</p>
     </StyledTodoPanel>
   );
 };

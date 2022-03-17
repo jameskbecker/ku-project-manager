@@ -16,54 +16,29 @@ import TodoPanel from './TodoPanel';
 import UpcomingPanel from './UpcomingPanel';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllProjects } from '../../../store/projects';
+import { fetchNotifications, fetchTodo } from '../../../store/dashboard';
 
 const Dashboard = () => {
-  const history = useHistory();
-
-  const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
-  const { isLoading, data, filter } = useSelector(
-    (state: any) => state.projects
-  );
+  const { notifications, todo } = useSelector((state: any) => state.dashboard);
+  const { data, filter } = useSelector((state: any) => state.projects);
 
-  const filteredData = data.filter(
-    (t: any) =>
-      t.name?.toLowerCase().includes(filter.toLowerCase()) ||
-      // t.dueAt ?.toLowerCase().includes(filter.toLowerCase()) ||
-      t.description?.toLowerCase().includes(filter.toLowerCase())
-  );
-
-  const getProjects = filteredData.map((p: any, i: number) => (
+  const getProjects = data.map((p: any, i: number) => (
     <UpcomingPanel key={i} project={p} />
   ));
   useEffect(() => {
     document.title = 'Dashboard | KUPM';
+    dispatch(fetchNotifications());
+    dispatch(fetchTodo());
     dispatch(fetchAllProjects());
   }, []);
 
-  const loadProjectData = async () => {
-    try {
-      const resp = await window.fetch(
-        '/local/api/projects'
-        //'https://kupm-api.herokuapp.com/api/projects'
-      );
-      const body = await resp.json();
-      if (body.error) return;
-      // setProjects(body.data);
-      setIsLoaded(true);
-    } catch (e) {}
-  };
-
-  const selectProjectHandler = (id: string) => {
-    history.push(`/projects/${id}`);
-  };
-
   /** @todo consider react-window to support large amounts or data */
-  const getNotifications = comments.map((comment) =>
-    NotificationPanel({ comment })
-  );
+  const getNotifications = notifications.map((n: any) => (
+    <NotificationPanel data={n} />
+  ));
 
-  const getTodo = todo.map((todo) => TodoPanel({ todo }));
+  const getTodo = todo.map((data: any) => <TodoPanel data={data} />);
 
   return (
     <Layout>

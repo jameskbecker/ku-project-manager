@@ -1,3 +1,4 @@
+import { formatDistance } from 'date-fns';
 import React from 'react';
 import styled from 'styled-components';
 import users from '../../../mock-data/user';
@@ -5,7 +6,7 @@ import { Comment, User } from '../../../types';
 import Panel from '../../global/Panel';
 
 type NotificationPanelProps = {
-  comment: Comment;
+  data: any;
 };
 
 const StyledNotificationPanel = styled(Panel)`
@@ -13,13 +14,12 @@ const StyledNotificationPanel = styled(Panel)`
   gap: 0.5rem;
 `;
 
-const NotificationPanel = ({ comment }: NotificationPanelProps) => {
-  const [sender] = users.filter((u: User) => u.id === comment.senderId);
+const NotificationPanel = ({ data }: NotificationPanelProps) => {
   return (
-    <StyledNotificationPanel secondary key={comment.id}>
-      <h4>{`New Comment from ${sender.lastName}, ${sender.firstName}`}</h4>
-      <h5>Project Name</h5>
-      <p>{comment.details}</p>
+    <StyledNotificationPanel secondary key={data.id}>
+      <h4>{data.heading}</h4>
+      <h5>{data.subHeading}</h5>
+      <p>{data.body}</p>
     </StyledNotificationPanel>
   );
 };

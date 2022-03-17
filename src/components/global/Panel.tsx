@@ -14,6 +14,7 @@ type PanelProps = {
 
 const StyledPanel = styled(FlexColumn)<PanelProps>`
   flex: 1 0 auto;
+
   padding: 0.75rem;
   border: 2px solid #ffffff00;
   box-sizing: content-box;
