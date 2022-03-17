@@ -15,8 +15,8 @@ const permissionOptions = [
 
 const expiryOptions = [
   { label: '1 Day', value: 'day' },
-  { label: '1 Week', value: 'week' },
-  { label: '1 Month', value: 'month' },
+  { label: '7 Days', value: 'week' },
+  { label: '30 Days', value: 'month' },
 ];
 
 const InviteModal = () => {
