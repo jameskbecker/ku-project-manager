@@ -109,6 +109,7 @@ const ControlBar = () => {
             icon={faUsers}
             text="View Members"
             onClick={handleViewMembers}
+            round
             light
           />
         )}
