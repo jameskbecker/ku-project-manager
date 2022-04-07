@@ -84,7 +84,7 @@ const ControlBar = () => {
     <ControlBarWrapper>
       <FlexRow>
         <Button icon={faPlus} text="New Task" onClick={handleNewTask} round />
-        {!taskId && (
+        {!taskId ? (
           <Button
             icon={faUserPlus}
             text="Invite Members"
@@ -92,6 +92,8 @@ const ControlBar = () => {
             round
             light
           />
+        ) : (
+          <div></div>
         )}
       </FlexRow>
 
@@ -104,7 +106,7 @@ const ControlBar = () => {
       />
 
       <FlexRow>
-        {!taskId && (
+        {!taskId ? (
           <Button
             icon={faUsers}
             text="View Members"
@@ -112,6 +114,8 @@ const ControlBar = () => {
             round
             light
           />
+        ) : (
+          <div></div>
         )}
         <Button
           light
