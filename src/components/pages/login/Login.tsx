@@ -31,7 +31,7 @@ const Login = () => {
         <Separator />
         <label>Please enter your login details:</label>
         <TextInput label="Email" />
-        <TextInput label="Password" />
+        <TextInput type="password" label="Password" />
         <Separator />
         <ModalFooter>
           <Button text="Create an Account" light onClick={handleLogin} />

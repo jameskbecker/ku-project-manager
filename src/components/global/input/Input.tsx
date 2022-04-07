@@ -79,7 +79,14 @@ type Option = {
 };
 
 export type InputProps = {
-  type?: 'text' | 'number' | 'select' | 'toggle' | 'textarea' | 'hidden';
+  type?:
+    | 'text'
+    | 'number'
+    | 'select'
+    | 'toggle'
+    | 'textarea'
+    | 'hidden'
+    | 'password';
   label?: string;
   icon?: any;
   placeholder?: string | JSX.Element;
