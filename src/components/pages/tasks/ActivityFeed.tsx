@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { fetchActivity } from '../../../store/projects';
+import { SecondaryButton } from '../../global/Button';
 import { FlexColumn, FlexRow } from '../../global/Flex';
 import Panel from '../../global/Panel';
 
@@ -24,11 +25,13 @@ const ActivityFeed = () => {
     dispatch(fetchActivity({ id: '6f35f124-46d4-11ec-8b6c-d2f44fac733b' }));
   }, []);
 
+  const handleActivityRefresh = () => {};
+
   return (
     <StyledActivityFeed>
       <FlexRow>
         <h3 style={{ flex: '1 1' }}>Activity Feed</h3>
-        <FontAwesomeIcon icon={faSyncAlt} />
+        <SecondaryButton icon={faSyncAlt} onClic={handleActivityRefresh} />
       </FlexRow>
 
       <FlexColumn>
