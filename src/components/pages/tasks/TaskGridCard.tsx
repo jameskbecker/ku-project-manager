@@ -84,19 +84,6 @@ const TaskGridCard = ({ task }: any) => {
     location.reload();
   };
 
-  const handleDrag = (e: any) => {
-    e.target.style.display = 'none';
-    const switchElement = document.elementFromPoint(e.clientX, e.clientY);
-    //@ts-ignore
-    switchElement && (switchElement.style.backgroundColor = 'red');
-    e.target.style.display = 'flex';
-  };
-
-  const handleDragEnd = (e: React.DragEvent<HTMLDivElement>) => {
-    //@ts-ignore
-    e.target.style.display = 'flex';
-  };
-
   const OptionMenu = () => {
     return (
       <ContextMenu
@@ -116,8 +103,6 @@ const TaskGridCard = ({ task }: any) => {
       key={task.id}
       draggable="true"
       onClick={handleSelect}
-      onDrag={handleDrag}
-      onDragEnd={handleDragEnd}
       style={{ overflow: 'visible' }}
     >
       {/* <div>{project.priority}</div> */}
