@@ -50,7 +50,7 @@ const NotificationPanel = ({ data }: NotificationPanelProps) => {
       <FlexColumn style={{ flex: '1 1', gap: '0.5rem' }}>
         <h4>{data.heading}</h4>
         <h5>{data.subHeading}</h5>
-        <p>{data.body}</p>
+        {data.body && <p>{data.body}</p>}
       </FlexColumn>
       {ExtraOptions()}
     </StyledNotificationPanel>

@@ -18,7 +18,7 @@ const StyledPanel = styled(FlexColumn)<PanelProps>`
   padding: 0.75rem;
   border: 2px solid #ffffff00;
   box-sizing: content-box;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   font-weight: 400;
 
   background: ${({ secondary, theme }) =>

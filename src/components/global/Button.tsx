@@ -113,7 +113,7 @@ const StyledSecondaryButton = styled.button<any>`
   :hover {
     background: ${({ theme, secondary }) =>
       secondary ? theme.secondary : theme.primary};
-    transition: 0.5s ease-in-out;
+    transition: 0.25s ease-in-out;
   }
 
   :focus-visible {
