@@ -17,6 +17,7 @@ import {
   selectProject,
   toggleNewProject,
 } from '../../../store/projects';
+import { SecondaryButton } from '../../global/Button';
 import Panel from '../../global/Panel';
 import { TableCell } from '../../global/Table';
 
@@ -35,18 +36,6 @@ const Wrapper = styled(Panel)`
 
   @media screen and (min-width: 600px) {
     flex-direction: row;
-  }
-`;
-
-const ActionButton = styled(FontAwesomeIcon)`
-  font-size: 0.875rem;
-  color: ${({ theme }) => theme.accent};
-  opacity: 0.8;
-
-  :hover {
-    color: ${({ theme }) => theme.brand};
-    opacity: 1;
-    transition: 0.25s ease-in-out;
   }
 `;
 
@@ -101,8 +90,8 @@ const ProjectTableRow = ({ project }: any) => {
       </TableCell>
 
       <TableCell size={5}>
-        <ActionButton icon={faPencilAlt} onClick={handleEdit} />
-        <ActionButton icon={faTrash} onClick={handleDelete} />
+        <SecondaryButton secondary icon={faPencilAlt} onClick={handleEdit} />
+        <SecondaryButton secondary icon={faTrash} onClick={handleDelete} />
       </TableCell>
     </Wrapper>
   );

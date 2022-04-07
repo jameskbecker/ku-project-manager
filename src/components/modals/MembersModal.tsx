@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ThemeContext } from 'styled-components';
 import { fetchProjectMembers } from '../../store/projects';
 import { toggleAddComment, toggleMembers } from '../../store/tasks';
-import Button from '../global/Button';
+import Button, { SecondaryButton } from '../global/Button';
 import { FlexColumn, FlexRow } from '../global/Flex';
 import { ModalBackdrop, ModalContent, ModalFooter } from '../global/Modal';
 import Panel from '../global/Panel';
@@ -36,9 +36,9 @@ const MemberPanel = ({ data }: any) => {
           <p>Joined {data.joinedAt}</p>
         </FlexColumn>
         <FlexRow>
-          <FontAwesomeIcon icon={faEye} color={theme.accent} />
-          <FontAwesomeIcon icon={faPencilAlt} color={theme.accent} />
-          <FontAwesomeIcon icon={faUserMinus} color={theme.error} />
+          <SecondaryButton icon={faEye} />
+          <SecondaryButton icon={faPencilAlt} />
+          <SecondaryButton icon={faUserMinus} />
         </FlexRow>
       </FlexRow>
     </Panel>

@@ -13,6 +13,7 @@ import {
   toggleAddComment,
   toggleNewTask,
 } from '../../../store/tasks';
+import { SecondaryButton } from '../../global/Button';
 import ContextMenu from '../../global/ContextMenu';
 import { FlexRow } from '../../global/Flex';
 import Panel from '../../global/Panel';
@@ -105,7 +106,7 @@ const TaskGridCard = ({ task }: any) => {
           { label: 'Delete', onClick: handleDelete },
         ]}
       >
-        <MoreButton icon={faEllipsisV} />
+        <SecondaryButton secondary icon={faEllipsisV} onClick={null} />
       </ContextMenu>
     );
   };
