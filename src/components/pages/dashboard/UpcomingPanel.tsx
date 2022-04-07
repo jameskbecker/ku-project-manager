@@ -12,6 +12,10 @@ type UpcomingPanelProps = {
 const StyledUpcomingPanel = styled(Panel)`
   flex: 0 0 auto;
   gap: 0.5rem;
+
+  p {
+    white-space: nowrap;
+  }
 `;
 
 const UpcomingPanel = ({ project }: UpcomingPanelProps) => {

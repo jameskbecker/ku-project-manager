@@ -15,6 +15,10 @@ type NotificationPanelProps = {
 const StyledNotificationPanel = styled(Panel)`
   flex: 0 0 auto;
   flex-direction: row;
+
+  p {
+    white-space: nowrap;
+  }
 `;
 
 const NotificationPanel = ({ data }: NotificationPanelProps) => {

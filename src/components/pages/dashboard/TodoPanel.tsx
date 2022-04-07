@@ -12,6 +12,10 @@ type TodoPanelProps = {
 const StyledTodoPanel = styled(Panel)`
   flex: 0 0 auto;
   gap: 0.5rem;
+
+  p {
+    white-space: nowrap;
+  }
 `;
 
 const TodoPanel = ({ data }: any) => {
