@@ -106,7 +106,7 @@ const ProjectTableRow = ({ project }: any) => {
         {/* {format(new Date(project.createdAt), "do LLL y 'at' hh:mm aa")} */}
       </TableCell>
 
-      <TableCell size={5} style={{ overflow: 'visible' }}>
+      <TableCell size={5} style={{ overflow: 'visible', gap: '0.5rem' }}>
         <SecondaryButton secondary icon={faPencilAlt} onClick={handleEdit} />
         <OptionMenu />
       </TableCell>

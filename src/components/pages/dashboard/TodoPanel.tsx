@@ -62,7 +62,7 @@ const TodoPanel = ({ data }: any) => {
         <p>{data.body}</p>
       </FlexColumn>
 
-      <FlexRow style={{ overflow: 'visible' }}>
+      <FlexRow style={{ overflow: 'visible', gap: '0.5rem' }}>
         <StyledIcon icon={faSquare} />
         <OptionMenu />
       </FlexRow>

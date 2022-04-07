@@ -1,4 +1,9 @@
-import { faUserCheck, faUserTimes } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCheck,
+  faTimes,
+  faUserCheck,
+  faUserTimes,
+} from '@fortawesome/free-solid-svg-icons';
 import { formatDistance } from 'date-fns';
 import React from 'react';
 import styled from 'styled-components';
@@ -34,9 +39,9 @@ const NotificationPanel = ({ data }: NotificationPanelProps) => {
     switch (data.type) {
       case 'invite':
         return (
-          <FlexRow>
-            <SecondaryButton icon={faUserCheck} onClick={handleInviteAccept} />
-            <SecondaryButton icon={faUserTimes} onClick={handleInviteDecline} />
+          <FlexRow style={{ gap: '0.5rem' }}>
+            <SecondaryButton icon={faCheck} onClick={handleInviteAccept} />
+            <SecondaryButton icon={faTimes} onClick={handleInviteDecline} />
           </FlexRow>
         );
 

@@ -63,7 +63,7 @@ const UpcomingPanel = ({ project }: UpcomingPanelProps) => {
         </h5>
       </FlexColumn>
 
-      <FlexRow style={{ overflow: 'visible' }}>
+      <FlexRow style={{ overflow: 'visible', gap: '0.5rem' }}>
         <StyledIcon icon={faSquare} />
         <OptionMenu />
       </FlexRow>

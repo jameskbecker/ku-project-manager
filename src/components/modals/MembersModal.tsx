@@ -35,7 +35,7 @@ const MemberPanel = ({ data }: any) => {
           <h5>{getPermissionText()}</h5>
           <p>Joined {data.joinedAt}</p>
         </FlexColumn>
-        <FlexRow>
+        <FlexRow style={{ gap: '0.5rem' }}>
           <SecondaryButton icon={faEye} />
           <SecondaryButton icon={faPencilAlt} />
           <SecondaryButton icon={faUserMinus} />
