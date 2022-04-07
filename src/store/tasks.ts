@@ -120,6 +120,7 @@ export const tasksSlice = createSlice({
       state.data = payload.data.subtasks;
       console.log(payload);
       state.pageName = payload.data.parentName;
+      state.description = payload.data.description || '';
       state.isLoading = false;
     });
 
