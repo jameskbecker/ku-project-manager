@@ -25,13 +25,15 @@ const ActivityFeed = () => {
     dispatch(fetchActivity({ id: '6f35f124-46d4-11ec-8b6c-d2f44fac733b' }));
   }, []);
 
-  const handleActivityRefresh = () => {};
+  const handleActivityRefresh = () => {
+    dispatch(fetchActivity({ id: '6f35f124-46d4-11ec-8b6c-d2f44fac733b' }));
+  };
 
   return (
     <StyledActivityFeed>
       <FlexRow>
         <h3 style={{ flex: '1 1' }}>Activity Feed</h3>
-        <SecondaryButton icon={faSyncAlt} onClic={handleActivityRefresh} />
+        <SecondaryButton icon={faSyncAlt} onClick={handleActivityRefresh} />
       </FlexRow>
 
       <FlexColumn>

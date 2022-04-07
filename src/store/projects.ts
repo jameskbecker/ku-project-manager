@@ -150,11 +150,12 @@ export const projectsSlice = createSlice({
     });
     builder.addCase(fetchProjectMembers.rejected, () => {});
 
-    builder.addCase(fetchActivity.pending, () => {});
+    builder.addCase(fetchActivity.pending, (state) => {});
     builder.addCase(fetchActivity.fulfilled, (state, { payload }) => {
       if (!payload.success) {
         console.log('error activity');
       }
+
       state.activity = payload.data;
     });
     builder.addCase(fetchActivity.rejected, () => {});
