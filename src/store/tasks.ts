@@ -8,6 +8,7 @@ const initialState: any = {
   selectedTask: '',
   data: [],
   pageName: '',
+  description: '',
   filter: '',
 };
 
@@ -99,6 +100,7 @@ export const tasksSlice = createSlice({
       state.data = payload.data.tasks;
       console.log(payload);
       state.pageName = payload.data.name;
+      state.description = payload.data.description;
       state.isLoading = false;
     });
 

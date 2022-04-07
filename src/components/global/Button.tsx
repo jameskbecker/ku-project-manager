@@ -67,7 +67,7 @@ const ButtonIcon = styled(FontAwesomeIcon)``;
 
 const ButtonText = styled.span`
   flex: 1 1;
-  font-family: Inter, sans-serif;
+  font-family: -apple-system, Inter, sans-serif;
   font-weight: 500;
 
   /* * Desktop

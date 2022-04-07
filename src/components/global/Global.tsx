@@ -37,7 +37,7 @@ const Global = createGlobalStyle<any>`
   body {
     background: ${({ theme }) => theme.bg};
     height: 100%;
-    font-family: Inter, sans-serif;
+    font-family: -apple-system, Inter, sans-serif;
     font-size: 0.75rem;
     font-weight: 500;
     color: ${({ theme }) => theme.text};
@@ -52,7 +52,7 @@ const Global = createGlobalStyle<any>`
 
   h2, h3, h4 {
     color: ${({ theme }) => theme.text};
-    font-family: Inter, sans-serif;
+    font-family: -apple-system, Inter, sans-serif;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

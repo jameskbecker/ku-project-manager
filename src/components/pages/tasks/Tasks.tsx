@@ -33,9 +33,8 @@ const Project = () => {
   const { showInvite, showNewProject, selectedProject } = useSelector(
     (state: any) => state.projects
   );
-  const { pageName, showNewTask, showMembers, showAddComment } = useSelector(
-    (state: any) => state.tasks
-  );
+  const { pageName, description, showNewTask, showMembers, showAddComment } =
+    useSelector((state: any) => state.tasks);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -62,7 +61,7 @@ const Project = () => {
       <HeaderBar
         back
         pageName={pageName}
-        description="Description"
+        description={description}
         Options={() => (
           <Button icon={faPencilAlt} onClick={handleEdit} round light />
         )}
