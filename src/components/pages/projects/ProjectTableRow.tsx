@@ -1,6 +1,7 @@
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import {
   faCheckCircle,
+  faEllipsisV,
   faPencilAlt,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
@@ -18,6 +19,7 @@ import {
   toggleNewProject,
 } from '../../../store/projects';
 import { SecondaryButton } from '../../global/Button';
+import ContextMenu from '../../global/ContextMenu';
 import Panel from '../../global/Panel';
 import { TableCell } from '../../global/Table';
 
@@ -25,9 +27,11 @@ const Wrapper = styled(Panel)`
   gap: 1rem;
 
   color: ${({ theme }) => theme.textBody};
-  white-space: nowrap;
   text-overflow: ellipsis;
   padding: 1rem;
+
+  overflow: visible;
+  white-space: nowrap;
 
   :hover {
     color: ${({ theme }) => theme.text};
@@ -66,6 +70,19 @@ const ProjectTableRow = ({ project }: any) => {
     dispatch(fetchAllProjects());
   };
 
+  const OptionMenu = () => {
+    return (
+      <ContextMenu
+        items={[
+          { label: 'Invite Member', onClick: null },
+          { label: 'Delete Project', onClick: handleDelete },
+        ]}
+      >
+        <SecondaryButton secondary icon={faEllipsisV} onClick={null} />
+      </ContextMenu>
+    );
+  };
+
   return (
     <Wrapper onClick={handleSelect}>
       <TableCell size={2.5}>
@@ -89,9 +106,9 @@ const ProjectTableRow = ({ project }: any) => {
         {/* {format(new Date(project.createdAt), "do LLL y 'at' hh:mm aa")} */}
       </TableCell>
 
-      <TableCell size={5}>
+      <TableCell size={5} style={{ overflow: 'visible' }}>
         <SecondaryButton secondary icon={faPencilAlt} onClick={handleEdit} />
-        <SecondaryButton secondary icon={faTrash} onClick={handleDelete} />
+        <OptionMenu />
       </TableCell>
     </Wrapper>
   );
