@@ -1,8 +1,11 @@
+import { faUserCheck, faUserTimes } from '@fortawesome/free-solid-svg-icons';
 import { formatDistance } from 'date-fns';
 import React from 'react';
 import styled from 'styled-components';
 import users from '../../../mock-data/user';
 import { Comment, User } from '../../../types';
+import { SecondaryButton } from '../../global/Button';
+import { FlexColumn, FlexRow } from '../../global/Flex';
 import Panel from '../../global/Panel';
 
 type NotificationPanelProps = {
@@ -11,15 +14,41 @@ type NotificationPanelProps = {
 
 const StyledNotificationPanel = styled(Panel)`
   flex: 0 0 auto;
-  gap: 0.5rem;
+  flex-direction: row;
 `;
 
 const NotificationPanel = ({ data }: NotificationPanelProps) => {
+  const handleInviteAccept = () => {
+    console.log('accept');
+  };
+
+  const handleInviteDecline = () => {
+    console.log('decline');
+  };
+
+  const ExtraOptions = () => {
+    switch (data.type) {
+      case 'invite':
+        return (
+          <FlexRow>
+            <SecondaryButton icon={faUserCheck} onClick={handleInviteAccept} />
+            <SecondaryButton icon={faUserTimes} onClick={handleInviteDecline} />
+          </FlexRow>
+        );
+
+      default:
+        return null;
+    }
+  };
+
   return (
     <StyledNotificationPanel secondary key={data.id}>
-      <h4>{data.heading}</h4>
-      <h5>{data.subHeading}</h5>
-      <p>{data.body}</p>
+      <FlexColumn style={{ flex: '1 1', gap: '0.5rem' }}>
+        <h4>{data.heading}</h4>
+        <h5>{data.subHeading}</h5>
+        <p>{data.body}</p>
+      </FlexColumn>
+      {ExtraOptions()}
     </StyledNotificationPanel>
   );
 };
