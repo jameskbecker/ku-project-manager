@@ -27,6 +27,7 @@ const ProjectOverview = () => {
   const { showDeleteAll, showNewProject } = useSelector(
     (state: any) => state.projects
   );
+  const { showInvite } = useSelector((state: any) => state.projects);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -46,6 +47,7 @@ const ProjectOverview = () => {
 
       {showNewProject && <NewProjectModal />}
       {showDeleteAll && <DeleteAllModal />}
+      {showInvite && <InviteModal />}
     </Layout>
   );
 };

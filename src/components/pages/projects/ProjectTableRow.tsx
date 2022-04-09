@@ -16,6 +16,7 @@ import {
   fetchAllProjects,
   saveProject,
   selectProject,
+  toggleInvite,
   toggleNewProject,
 } from '../../../store/projects';
 import { SecondaryButton } from '../../global/Button';
@@ -64,6 +65,11 @@ const ProjectTableRow = ({ project }: any) => {
     dispatch(toggleNewProject());
   };
 
+  const handleInvite = (e: any) => {
+    e.stopPropagation();
+    dispatch(toggleInvite());
+  };
+
   const handleDelete = (e: any) => {
     e.stopPropagation();
     dispatch(deleteProject({ id: project.id }));
@@ -74,7 +80,7 @@ const ProjectTableRow = ({ project }: any) => {
     return (
       <ContextMenu
         items={[
-          { label: 'Invite Member', onClick: null },
+          { label: 'Invite Member', onClick: handleInvite },
           { label: 'Delete Project', onClick: handleDelete },
         ]}
       >
