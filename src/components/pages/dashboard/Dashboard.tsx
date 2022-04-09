@@ -56,7 +56,17 @@ const Dashboard = () => {
     );
   };
 
-  const getTodo = todo.map((data: any) => <TodoPanel data={data} />);
+  const Todos = () => {
+    return (
+      <Panel heading="Todo" style={{ gridRow: 'span 2' }}>
+        <ScrollContainer>
+          {todo.map((data: any) => (
+            <TodoPanel data={data} />
+          ))}
+        </ScrollContainer>
+      </Panel>
+    );
+  };
 
   return (
     <Layout>
@@ -66,9 +76,7 @@ const Dashboard = () => {
       <Content>
         <Notifications />
         {/**@todo replace style attribute */}
-        <Panel heading="Todo" style={{ gridRow: 'span 2' }}>
-          {getTodo}
-        </Panel>
+        <Todos />
 
         <UpcomingProjects />
       </Content>
