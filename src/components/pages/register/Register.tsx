@@ -10,7 +10,7 @@ import Separator from '../../global/Separator';
 const Register = () => {
   const history = useHistory();
 
-  const handleLogin = () => {
+  const handleRegister = () => {
     history.push('/');
   };
 
@@ -38,7 +38,7 @@ const Register = () => {
         <Separator />
         <ModalFooter>
           <Button text="Back" light onClick={handleBack} />
-          <Button text="Sign In" round onClick={handleLogin} />
+          <Button text="Register" round onClick={handleRegister} />
         </ModalFooter>
       </Panel>
     </FlexColumn>

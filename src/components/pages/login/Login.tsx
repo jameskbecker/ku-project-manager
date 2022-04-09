@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from '../../global/Button';
-import { FlexColumn } from '../../global/Flex';
+import { FlexColumn, FlexRow } from '../../global/Flex';
 import TextInput from '../../global/input/TextInput';
 import Logo from '../../global/Logo';
 import { ModalFooter } from '../../global/Modal';
@@ -33,12 +33,13 @@ const Login = () => {
           <Logo />
         </LoginHeader>
         <Separator />
-        <label>
-          <span>Please enter your login details:</span>
-          <span>
-            <a href="/forgot">Forgot Password?</a>
-          </span>
-        </label>
+        <FlexRow>
+          <label style={{ flexGrow: 1 }}>
+            Please enter your login details:
+          </label>
+          <a href="/forgot">Forgot Password?</a>
+        </FlexRow>
+
         <TextInput label="Email" />
         <TextInput type="password" label="Password" />
         <Separator />
