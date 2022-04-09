@@ -1,14 +1,6 @@
-import {
-  faCheck,
-  faTimes,
-  faUserCheck,
-  faUserTimes,
-} from '@fortawesome/free-solid-svg-icons';
-import { formatDistance } from 'date-fns';
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import styled from 'styled-components';
-import users from '../../../mock-data/user';
-import { Comment, User } from '../../../types';
 import { SecondaryButton } from '../../global/Button';
 import { FlexColumn, FlexRow } from '../../global/Flex';
 import Panel from '../../global/Panel';

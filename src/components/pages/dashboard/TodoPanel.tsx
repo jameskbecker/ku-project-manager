@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import assignments from '../../../mock-data/assignment';
 import { Task } from '../../../types';
 import { SecondaryButton } from '../../global/Button';
 import ContextMenu from '../../global/ContextMenu';

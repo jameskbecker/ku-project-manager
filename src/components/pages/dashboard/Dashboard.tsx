@@ -1,12 +1,9 @@
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
-import comments from '../../../mock-data/comment';
-import todo from '../../../mock-data/task';
-import { Project } from '../../../types';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchNotifications, fetchTodo } from '../../../store/dashboard';
+import { fetchAllProjects } from '../../../store/projects';
 import Panel from '../../global/Panel';
-import Footer from '../../layout/Footer';
+import ScrollContainer from '../../global/ScrollContainer';
 import NavBar from '../../layout/HeaderBar';
 import Layout from '../../layout/Layout';
 import SideBar from '../../layout/SideBar';
@@ -14,10 +11,6 @@ import Content from './Content';
 import NotificationPanel from './NotificationPanel';
 import TodoPanel from './TodoPanel';
 import UpcomingPanel from './UpcomingPanel';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllProjects } from '../../../store/projects';
-import { fetchNotifications, fetchTodo } from '../../../store/dashboard';
-import ScrollContainer from '../../global/ScrollContainer';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
