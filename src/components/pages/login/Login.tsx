@@ -33,7 +33,12 @@ const Login = () => {
           <Logo />
         </LoginHeader>
         <Separator />
-        <label>Please enter your login details:</label>
+        <label>
+          <span>Please enter your login details:</span>
+          <span>
+            <a href="/forgot">Forgot Password?</a>
+          </span>
+        </label>
         <TextInput label="Email" />
         <TextInput type="password" label="Password" />
         <Separator />

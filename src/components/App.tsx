@@ -11,6 +11,7 @@ import Login from './pages/login/Login';
 import { ThemeProvider } from 'styled-components';
 import light, { dark } from '../theme';
 import Register from './pages/register/Register';
+import Forgot from './pages/forgot/Forgot';
 
 const App = () => {
   const { theme } = useSelector((state: any) => state.settings);
@@ -21,6 +22,7 @@ const App = () => {
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/forgot" component={Forgot} />
 
           <Route exact path="/" component={Dashboard} />
           <Route exact path="/projects" component={ProjectOverview}></Route>
