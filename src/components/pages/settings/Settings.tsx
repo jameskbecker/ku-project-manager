@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeTheme } from '../../../store/settings';
+import { getCookie } from '../../../utils/cookie';
 import Button from '../../global/Button';
 import SelectInput from '../../global/input/SelectInput';
 import TextInput from '../../global/input/TextInput';
@@ -40,6 +41,10 @@ const Settings = () => {
 
   const handleThemeSelect = ({ value: { value } }: any) => {
     dispatch(changeTheme({ theme: value }));
+
+    // does not expire
+    const expiryDate = 'Fri, 31 Dec 9999 23:59:59 GMT';
+    document.cookie = `kupm_theme=${value}; expires=${expiryDate};`;
   };
 
   return (

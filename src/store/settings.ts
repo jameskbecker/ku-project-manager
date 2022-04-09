@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { getCookie } from '../utils/cookie';
 
 const initialState: any = {
-  theme: 'light',
+  theme: getCookie('kupm_theme') || 'light',
 };
 
 export const settingsSlice = createSlice({
