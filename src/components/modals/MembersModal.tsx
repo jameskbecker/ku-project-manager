@@ -13,6 +13,7 @@ import Button, { SecondaryButton } from '../global/Button';
 import { FlexColumn, FlexRow } from '../global/Flex';
 import { ModalBackdrop, ModalContent, ModalFooter } from '../global/Modal';
 import Panel from '../global/Panel';
+import ScrollContainer from '../global/ScrollContainer';
 import Separator from '../global/Separator';
 
 const MemberPanel = ({ data }: any) => {
@@ -67,11 +68,11 @@ const MembersModal = () => {
         <h2 style={{ flex: '0 0 auto' }}>Members</h2>
 
         <Separator />
-        <FlexColumn style={{ flex: '1 1', overflow: 'auto' }}>
+        <ScrollContainer>
           {members.map((m: any) => (
             <MemberPanel key={m.id} data={m} />
           ))}
-        </FlexColumn>
+        </ScrollContainer>
         <Separator />
 
         <ModalFooter>

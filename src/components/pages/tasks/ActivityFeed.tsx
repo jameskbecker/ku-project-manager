@@ -7,6 +7,7 @@ import { fetchActivity } from '../../../store/projects';
 import { SecondaryButton } from '../../global/Button';
 import { FlexColumn, FlexRow } from '../../global/Flex';
 import Panel from '../../global/Panel';
+import ScrollContainer from '../../global/ScrollContainer';
 
 const StyledActivityFeed = styled(FlexColumn)`
   gap: 0.75rem;
@@ -36,15 +37,15 @@ const ActivityFeed = () => {
         <SecondaryButton icon={faSyncAlt} onClick={handleActivityRefresh} />
       </FlexRow>
 
-      <FlexColumn>
+      <ScrollContainer>
         {activity.map((a: any, i: number) => (
-          <Panel key={i} style={{ flex: '1 1', gap: '0.5rem' }}>
+          <Panel key={i} style={{ gap: '0.5rem' }}>
             <h4>{a.heading}</h4>
             <h5>{a.subheading}</h5>
             <p>{a.body}</p>
           </Panel>
         ))}
-      </FlexColumn>
+      </ScrollContainer>
     </StyledActivityFeed>
   );
 };

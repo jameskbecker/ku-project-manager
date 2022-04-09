@@ -17,15 +17,13 @@ import UpcomingPanel from './UpcomingPanel';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllProjects } from '../../../store/projects';
 import { fetchNotifications, fetchTodo } from '../../../store/dashboard';
+import ScrollContainer from '../../global/ScrollContainer';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { notifications, todo } = useSelector((state: any) => state.dashboard);
   const { data, filter } = useSelector((state: any) => state.projects);
 
-  const getProjects = data.map((p: any, i: number) => (
-    <UpcomingPanel key={i} project={p} />
-  ));
   useEffect(() => {
     document.title = 'Dashboard | KUPM';
     dispatch(fetchNotifications());
@@ -34,9 +32,29 @@ const Dashboard = () => {
   }, []);
 
   /** @todo consider react-window to support large amounts or data */
-  const getNotifications = notifications.map((n: any) => (
-    <NotificationPanel data={n} />
-  ));
+  const Notifications = () => {
+    return (
+      <Panel heading="Recent Notifications">
+        <ScrollContainer>
+          {notifications.map((n: any, i: number) => (
+            <NotificationPanel key={i} data={n} />
+          ))}
+        </ScrollContainer>
+      </Panel>
+    );
+  };
+
+  const UpcomingProjects = () => {
+    return (
+      <Panel heading="Upcoming Projects">
+        <ScrollContainer>
+          {data.map((p: any, i: number) => (
+            <UpcomingPanel key={i} project={p} />
+          ))}
+        </ScrollContainer>
+      </Panel>
+    );
+  };
 
   const getTodo = todo.map((data: any) => <TodoPanel data={data} />);
 
@@ -46,13 +64,13 @@ const Dashboard = () => {
       {/**@todo replace with context */}
       <NavBar pageName="Dashboard" />
       <Content>
-        <Panel heading="Recent Notifications">{getNotifications}</Panel>
+        <Notifications />
         {/**@todo replace style attribute */}
         <Panel heading="Todo" style={{ gridRow: 'span 2' }}>
           {getTodo}
         </Panel>
 
-        <Panel heading="Upcoming Projects">{getProjects}</Panel>
+        <UpcomingProjects />
       </Content>
     </Layout>
   );

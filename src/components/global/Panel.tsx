@@ -13,7 +13,7 @@ type PanelProps = {
 };
 
 const StyledPanel = styled(FlexColumn)<PanelProps>`
-  flex: 1 0 auto;
+  flex: 0 1;
 
   padding: 0.75rem;
   border: 2px solid #ffffff00;
@@ -25,7 +25,7 @@ const StyledPanel = styled(FlexColumn)<PanelProps>`
     secondary ? theme.secondary : theme.primary};
 
   cursor: ${({ onClick }) => (onClick ? 'pointer' : 'default')};
-  overflow: auto;
+  overflow: visible;
 
   ${({ onClick, light }) =>
     onClick &&
