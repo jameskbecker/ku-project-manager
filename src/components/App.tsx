@@ -10,6 +10,7 @@ import Settings from './pages/settings/Settings';
 import Login from './pages/login/Login';
 import { ThemeProvider } from 'styled-components';
 import light, { dark } from '../theme';
+import Register from './pages/register/Register';
 
 const App = () => {
   const { theme } = useSelector((state: any) => state.settings);
@@ -19,6 +20,7 @@ const App = () => {
       <BrowserRouter>
         <Switch>
           <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
 
           <Route exact path="/" component={Dashboard} />
           <Route exact path="/projects" component={ProjectOverview}></Route>

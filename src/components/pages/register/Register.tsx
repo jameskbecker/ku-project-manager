@@ -3,21 +3,19 @@ import { useHistory } from 'react-router-dom';
 import Button from '../../global/Button';
 import { FlexColumn } from '../../global/Flex';
 import TextInput from '../../global/input/TextInput';
-import Logo from '../../global/Logo';
 import { ModalFooter } from '../../global/Modal';
 import Panel from '../../global/Panel';
 import Separator from '../../global/Separator';
-import LoginHeader from './LoginHeader';
 
-const Login = () => {
+const Register = () => {
   const history = useHistory();
-
-  const handleRegister = () => {
-    history.push('/register');
-  };
 
   const handleLogin = () => {
     history.push('/');
+  };
+
+  const handleBack = () => {
+    history.push('/login');
   };
 
   return (
@@ -28,17 +26,18 @@ const Login = () => {
         alignItems: 'center',
       }}
     >
-      <Panel style={{ width: '600px', flex: '0 0 auto' }}>
-        <LoginHeader>
-          <Logo />
-        </LoginHeader>
-        <Separator />
-        <label>Please enter your login details:</label>
-        <TextInput label="Email" />
+      <Panel
+        heading="Create an Account"
+        style={{ width: '600px', flex: '0 0 auto' }}
+      >
+        <TextInput label="First Name" placeholder="John" />
+        <TextInput label="Last Name" placeholder="Doe" />
+        <TextInput label="Email" placeholder="johndoe@kupm.org" />
         <TextInput type="password" label="Password" />
+        <TextInput type="password" label="Confirm Password" />
         <Separator />
         <ModalFooter>
-          <Button text="Create an Account" light onClick={handleRegister} />
+          <Button text="Back" light onClick={handleBack} />
           <Button text="Sign In" round onClick={handleLogin} />
         </ModalFooter>
       </Panel>
@@ -46,4 +45,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
