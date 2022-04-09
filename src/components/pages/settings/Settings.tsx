@@ -82,9 +82,10 @@ const Settings = () => {
           />
           <SelectInput
             label="Modules"
+            isMulti={true}
             options={[
-              { label: 'Light', value: 'light' },
-              { label: 'Dark', value: 'dark' },
+              { label: 'Final Year Project', value: 'fyp' },
+              { label: 'Software Development Practice ', value: 'sdp' },
             ]}
           />
         </Panel>
