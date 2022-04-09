@@ -92,13 +92,13 @@ const StyledSecondaryButton = styled.button<any>`
   align-items: center;
   gap: 0.5rem;
   min-width: 1.125rem;
-  height: auto;
+  height: 1.625rem;
 
   font-size: 0.875rem;
   font-weight: 500;
   color: ${({ theme }) => theme.textBody};
   background: transparent;
-  padding: 0.25rem;
+  padding: 0 0.25rem;
 
   border: 0;
   box-sizing: content-box;
