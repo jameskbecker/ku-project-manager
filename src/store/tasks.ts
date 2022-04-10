@@ -17,7 +17,9 @@ export const fetchProjectTasks = createAsyncThunk(
   async ({ projectId }: any) => {
     console.log('[STORE]', 'fetchProjectTasks');
     // 'https://kupm-api.herokuapp.com/api/tasks'
-    const res = await fetch(`/local/api/projects/${projectId}/tasks`);
+    const res = await fetch(
+      `https://kupm-api.herokuapp.com/api/projects/${projectId}/tasks`
+    );
     return await res.json();
   }
 );
@@ -27,7 +29,9 @@ export const fetchSubTasks = createAsyncThunk(
   async ({ taskId }: any) => {
     console.log('[STORE]', 'fetchSubTasks');
     // 'https://kupm-api.herokuapp.com/api/subtasks'
-    const res = await fetch(`/local/api/tasks/${taskId}/subtasks`);
+    const res = await fetch(
+      `https://kupm-api.herokuapp.com/api/tasks/${taskId}/subtasks`
+    );
     return await res.json();
   }
 );
@@ -38,7 +42,7 @@ export const saveTask = createAsyncThunk(
   async (payload: any) => {
     // 'https://kupm-api.herokuapp.com/api/tasks',
     const { id } = payload;
-    const baseEndpoint = '/local/api/tasks';
+    const baseEndpoint = 'https://kupm-api.herokuapp.com/api/tasks';
     const res = await fetch(id ? `${baseEndpoint}/${id}` : baseEndpoint, {
       method: id ? 'PUT' : 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -54,9 +58,12 @@ export const deleteTask = createAsyncThunk(
   async (payload: any) => {
     console.log(payload);
     // 'https://kupm-api.herokuapp.com/api/tasks'
-    const resp = await fetch(`/local/api/tasks/${payload.id}`, {
-      method: 'DELETE',
-    });
+    const resp = await fetch(
+      `https://kupm-api.herokuapp.com/api/tasks/${payload.id}`,
+      {
+        method: 'DELETE',
+      }
+    );
 
     return await resp.json();
   }

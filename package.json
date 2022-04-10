@@ -6,7 +6,9 @@
   "author": "James Becker <48602730+jameskbecker@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "start": "npx webpack serve --env=dev"
+    "start:dev": "npx webpack serve --env=dev",
+    "start": "node app.js",
+    "build": "webpack --mode=production"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -15,7 +17,9 @@
     "@fortawesome/react-fontawesome": "^0.1.15",
     "@reduxjs/toolkit": "^1.7.1",
     "date-fns": "^2.28.0",
+    "express": "^4.17.3",
     "html-webpack-plugin": "^5.4.0",
+    "path": "^0.12.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",

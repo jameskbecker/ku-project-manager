@@ -10,14 +10,18 @@ export const fetchNotifications = createAsyncThunk(
   'tasks/getNotifications',
   async () => {
     console.log('[STORE]', 'fetchNotifications');
-    const res = await fetch(`/local/api/users/userId/notifications`);
+    const res = await fetch(
+      `https://kupm-api.herokuapp.com/api/users/userId/notifications`
+    );
     return await res.json();
   }
 );
 
 export const fetchTodo = createAsyncThunk('tasks/getTodo', async () => {
   console.log('[STORE]', 'fetchTodo');
-  const res = await fetch(`/local/api/users/userId/todo`);
+  const res = await fetch(
+    `https://kupm-api.herokuapp.com/api/users/userId/todo`
+  );
   return await res.json();
 });
 
