@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { getCookie } from '../utils/cookie';
 
 const initialState: any = {
   showNewProject: false,
@@ -16,7 +17,11 @@ export const fetchAllProjects = createAsyncThunk(
   'projects/getProjects',
   async () => {
     // 'https://kupm-api.herokuapp.com/api/projects'
-    const res = await fetch('https://kupm-api.herokuapp.com/api/projects');
+    const res = await fetch(
+      `https://kupm-api.herokuapp.com/api/projects?userId=${getCookie(
+        'kupm_user_id'
+      )}`
+    );
     return await res.json();
   }
 );

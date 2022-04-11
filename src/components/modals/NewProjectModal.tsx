@@ -5,6 +5,7 @@ import {
   saveProject,
   toggleNewProject,
 } from '../../store/projects';
+import { getCookie } from '../../utils/cookie';
 import Button from '../global/Button';
 import TextArea from '../global/input/TextArea';
 import TextInput from '../global/input/TextInput';
@@ -28,7 +29,12 @@ const NewProjectModal = () => {
 
   const handleCancel = () => dispatch(toggleNewProject());
   const handleSave = () => {
-    const payload: any = { name, description, priority };
+    const payload: any = {
+      name,
+      description,
+      priority,
+      createdBy: getCookie('kupm_user_id'),
+    };
     if (selectedProject) payload.id = selectedProject;
 
     try {

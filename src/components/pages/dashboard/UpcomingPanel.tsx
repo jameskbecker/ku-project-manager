@@ -59,7 +59,8 @@ const UpcomingPanel = ({ project }: UpcomingPanelProps) => {
       <FlexColumn style={{ flex: '1 1', gap: '0.5rem' }}>
         <h4>{project.name}</h4>
         <h5>
-          {format(new Date(project.createdAt), "'Due' do LLL y 'at' hh:mm aa")}
+          {/**@ts-ignore */}
+          {format(new Date(project.dueAt), "'Due' do LLL y 'at' hh:mm aa")}
         </h5>
       </FlexColumn>
 

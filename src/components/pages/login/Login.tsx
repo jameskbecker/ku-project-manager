@@ -11,6 +11,12 @@ import Panel from '../../global/Panel';
 import Separator from '../../global/Separator';
 import LoginHeader from './LoginHeader';
 
+const userIds = {
+  owner: '39aeec9a-b8bb-11ec-a034-02e4fd6e79c6',
+  memberA: '4727bca9-b8bb-11ec-a034-02e4fd6e79c6',
+  memberB: '63a74276-b8bb-11ec-a034-02e4fd6e79c6',
+};
+
 const Login = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -23,6 +29,13 @@ const Login = () => {
 
   const handleLogin = () => {
     dispatch(postLogin({ email, password }));
+    history.push('/');
+  };
+
+  const handleMockLogin = (id: string) => {
+    // does not expire
+    const expiryDate = 'Fri, 31 Dec 9999 23:59:59 GMT';
+    document.cookie = `kupm_user_id=${id}; expires=${expiryDate};`;
     history.push('/');
   };
 
@@ -62,6 +75,23 @@ const Login = () => {
           <Button text="Create an Account" light onClick={handleRegister} />
           <Button text="Sign In" round onClick={handleLogin} />
         </ModalFooter>
+        <FlexRow>
+          <Button
+            light
+            text="Login as Project Owner"
+            onClick={() => handleMockLogin(userIds.owner)}
+          />
+          <Button
+            light
+            text="Project Member A"
+            onClick={() => handleMockLogin(userIds.memberA)}
+          />
+          <Button
+            light
+            text="Project Member B"
+            onClick={() => handleMockLogin(userIds.memberB)}
+          />
+        </FlexRow>
       </Panel>
     </FlexColumn>
   );
