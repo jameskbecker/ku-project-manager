@@ -108,9 +108,7 @@ const ProjectTableRow = ({ project }: any) => {
           addSuffix: true,
         })}
       </TableCell>
-      <TableCell size={15}>
-        {/* {format(new Date(project.createdAt), "do LLL y 'at' hh:mm aa")} */}
-      </TableCell>
+      <TableCell size={15}>{project.dueAt}</TableCell>
 
       <TableCell size={5} style={{ overflow: 'visible', gap: '0.5rem' }}>
         <SecondaryButton secondary icon={faPencilAlt} onClick={handleEdit} />

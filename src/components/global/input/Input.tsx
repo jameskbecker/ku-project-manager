@@ -86,7 +86,8 @@ export type InputProps = {
     | 'toggle'
     | 'textarea'
     | 'hidden'
-    | 'password';
+    | 'password'
+    | 'datetime-local';
   label?: string;
   icon?: any;
   placeholder?: string | JSX.Element;
