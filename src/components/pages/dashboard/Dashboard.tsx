@@ -1,9 +1,11 @@
 import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { fetchNotifications, fetchTodo } from '../../../store/dashboard';
 import { fetchAllProjects } from '../../../store/projects';
+import { getCookie } from '../../../utils/cookie';
 import { SecondaryButton } from '../../global/Button';
 import Panel from '../../global/Panel';
 import ScrollContainer from '../../global/ScrollContainer';
@@ -25,10 +27,15 @@ const DataPlaceholder = styled.div`
 
 const Dashboard = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { notifications, todo } = useSelector((state: any) => state.dashboard);
   const { data, filter } = useSelector((state: any) => state.projects);
 
   useEffect(() => {
+    if (!getCookie('kupm_user_id')) {
+      history.push('/login');
+      return;
+    }
     document.title = 'Dashboard | KUPM';
     dispatch(fetchNotifications());
     dispatch(fetchTodo());

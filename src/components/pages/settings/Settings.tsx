@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { changeTheme } from '../../../store/settings';
 import { getCookie } from '../../../utils/cookie';
 import Button from '../../global/Button';
@@ -19,6 +20,7 @@ const themeOptions = [
 const Settings = () => {
   const { theme } = useSelector((state: any) => state.settings);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [editMode, setEditMode] = useState(false);
   const [first, setFirst] = useState('John');
@@ -27,6 +29,10 @@ const Settings = () => {
   const [password, setPassword] = useState('••••••••••••');
 
   useEffect(() => {
+    if (!getCookie('kupm_user_id')) {
+      history.push('/login');
+      return;
+    }
     document.title = 'Settings | KUPM';
   }, []);
 

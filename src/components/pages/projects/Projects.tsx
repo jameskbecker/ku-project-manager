@@ -14,6 +14,8 @@ import InviteModal from '../../modals/InviteModal';
 import { FlexRow } from '../../global/Flex';
 import { SecondaryButton } from '../../global/Button';
 import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
+import { useHistory } from 'react-router-dom';
+import { getCookie } from '../../../utils/cookie';
 
 type Project = {
   id: string;
@@ -27,6 +29,7 @@ type Project = {
 };
 
 const ProjectOverview = () => {
+  const history = useHistory();
   const { showDeleteAll, showNewProject } = useSelector(
     (state: any) => state.projects
   );
@@ -34,6 +37,10 @@ const ProjectOverview = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (!getCookie('kupm_user_id')) {
+      history.push('/login');
+      return;
+    }
     document.title = 'Projects | KUPM';
     dispatch(fetchAllProjects());
   }, []);

@@ -1,7 +1,7 @@
 import { faPencilAlt, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
+import { useParams, useHistory } from 'react-router';
 import {
   fetchAllProjects,
   selectProject,
@@ -13,6 +13,7 @@ import {
   selectTask,
 } from '../../../store/tasks';
 import { Project } from '../../../types';
+import { getCookie } from '../../../utils/cookie';
 import Button, { SecondaryButton } from '../../global/Button';
 import { FlexRow } from '../../global/Flex';
 import Footer from '../../layout/Footer';
@@ -30,6 +31,7 @@ import ControlBar from './ControlBar';
 import TaskGrid from './TaskGrid';
 
 const Project = () => {
+  const history = useHistory();
   const { id, taskId } = useParams<any>();
   const { showInvite, showNewProject, selectedProject } = useSelector(
     (state: any) => state.projects
@@ -39,6 +41,10 @@ const Project = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (!getCookie('kupm_user_id')) {
+      history.push('/login');
+      return;
+    }
     if (!selectedProject) {
       dispatch(selectProject(id));
     }
