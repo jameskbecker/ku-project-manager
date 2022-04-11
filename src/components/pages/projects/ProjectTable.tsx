@@ -40,6 +40,7 @@ const ProjectTable = () => {
     <FlexColumn
       style={{
         justifyContent: 'flex-start',
+        flex: '1 1',
       }}
     >
       <TableHeader columns={columns} />
@@ -50,6 +51,7 @@ const ProjectTable = () => {
           style={{
             overflow: 'auto',
             gap: '0.5rem',
+            flex: '1 1',
           }}
         >
           {getProjects}
