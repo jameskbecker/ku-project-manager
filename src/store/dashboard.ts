@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { getCookie } from '../utils/cookie';
 
 const initialState: any = {
   notifications: [],
@@ -10,8 +11,9 @@ export const fetchNotifications = createAsyncThunk(
   'tasks/getNotifications',
   async () => {
     console.log('[STORE]', 'fetchNotifications');
+    const userId = getCookie('kupm_user_id');
     const res = await fetch(
-      `https://kupm-api.herokuapp.com/api/users/userId/notifications`
+      `https://kupm-api.herokuapp.com/api/users/${userId}/notifications`
     );
     return await res.json();
   }
@@ -19,8 +21,9 @@ export const fetchNotifications = createAsyncThunk(
 
 export const fetchTodo = createAsyncThunk('tasks/getTodo', async () => {
   console.log('[STORE]', 'fetchTodo');
+  const userId = getCookie('kupm_user_id');
   const res = await fetch(
-    `https://kupm-api.herokuapp.com/api/users/userId/todo`
+    `https://kupm-api.herokuapp.com/api/users/${userId}/todo`
   );
   return await res.json();
 });
