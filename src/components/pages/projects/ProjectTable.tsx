@@ -20,6 +20,14 @@ const columns: any[] = [
   { name: 'Actions', size: '5%' },
 ];
 
+const DataPlaceholder = styled.div`
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 const ProjectTable = () => {
   const { isLoading, data, filter } = useSelector(
     (state: any) => state.projects
@@ -44,8 +52,12 @@ const ProjectTable = () => {
       }}
     >
       <TableHeader columns={columns} />
-      {isLoading && data.length === 0 ? (
-        <FontAwesomeIcon style={{ flex: '1 1' }} icon={faSpinner} spin />
+      {isLoading ? (
+        <DataPlaceholder>
+          <FontAwesomeIcon style={{ flex: '1 1' }} icon={faSpinner} spin />
+        </DataPlaceholder>
+      ) : data.length === 0 ? (
+        <DataPlaceholder>No Projects Yet</DataPlaceholder>
       ) : (
         <FlexColumn
           style={{

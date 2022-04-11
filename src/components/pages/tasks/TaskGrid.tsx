@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import DataPlaceholder from '../../global/DataPlaceholder';
 import { FlexColumn, FlexRow } from '../../global/Flex';
 import TaskGridCard from './TaskGridCard';
 import ProjectTableRow from './TaskGridCard';
@@ -20,21 +21,6 @@ const Wrapper = styled.div`
   gap: 0.75rem;
 `;
 
-const TableHeader = styled(FlexRow)`
-  display: none;
-  flex: 0 1 auto;
-  padding: 1rem;
-  font-weight: 600;
-  justify-content: flex-start;
-
-  & > * {
-    flex: 1 1;
-  }
-
-  @media screen and (min-width: 600px) {
-    display: flex;
-  }
-`;
 const TaskGrid = () => {
   const { isLoading, data, filter } = useSelector((state: any) => state.tasks);
 
@@ -51,7 +37,13 @@ const TaskGrid = () => {
 
   return (
     <StyledTaskGrid>
-      {isLoading === false ? (
+      {isLoading ? (
+        <DataPlaceholder>
+          <FontAwesomeIcon style={{ flex: '1 1' }} icon={faSpinner} spin />
+        </DataPlaceholder>
+      ) : data.length < 1 ? (
+        <DataPlaceholder>No Tasks Yet</DataPlaceholder>
+      ) : (
         <Wrapper
           style={{
             overflow: 'auto',
@@ -59,8 +51,6 @@ const TaskGrid = () => {
         >
           {getTasks}
         </Wrapper>
-      ) : (
-        <FontAwesomeIcon style={{ flex: '1 1' }} icon={faSpinner} spin />
       )}
     </StyledTaskGrid>
   );
