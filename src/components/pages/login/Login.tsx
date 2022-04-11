@@ -78,24 +78,24 @@ const Login = () => {
           <Button text="Create an Account" light onClick={handleRegister} />
           <Button text="Sign In" round onClick={handleLogin} />
         </ModalFooter>
-        <FlexRow>
-          <Button
-            light
-            text="Login as Project Owner"
-            onClick={() => handleMockLogin(userIds.owner)}
-          />
-          <Button
-            light
-            text="Project Member A"
-            onClick={() => handleMockLogin(userIds.memberA)}
-          />
-          <Button
-            light
-            text="Project Member B"
-            onClick={() => handleMockLogin(userIds.memberB)}
-          />
-        </FlexRow>
       </Panel>
+      <FlexRow style={{ position: 'absolute', right: 12, bottom: 12 }}>
+        <Button
+          light
+          text="Login as Project Owner"
+          onClick={() => handleMockLogin(userIds.owner)}
+        />
+        <Button
+          light
+          text="Project Member A"
+          onClick={() => handleMockLogin(userIds.memberA)}
+        />
+        <Button
+          light
+          text="Project Member B"
+          onClick={() => handleMockLogin(userIds.memberB)}
+        />
+      </FlexRow>
     </FlexColumn>
   );
 };
