@@ -11,6 +11,7 @@ import {
   fetchProjectTasks,
   fetchSubTasks,
   selectTask,
+  toggleNewTask,
 } from '../../../store/tasks';
 import { Project } from '../../../types';
 import { getCookie } from '../../../utils/cookie';
@@ -59,7 +60,7 @@ const Project = () => {
   }, [id, taskId]);
 
   const handleEdit = () => {
-    dispatch(toggleNewProject());
+    dispatch(!taskId ? toggleNewProject() : toggleNewTask());
   };
   return (
     <Layout>

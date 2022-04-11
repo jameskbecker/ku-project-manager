@@ -21,13 +21,13 @@ const NewTaskModal = () => {
     (state: any) => state.projects
   );
   console.log(data, selectedTask);
-  const selectedData = data.find((d: any) => d.id === selectedTask);
+  const selectedTaskData = data.find((d: any) => d.id === selectedTask);
 
   const [projectId, setProjectId] = useState(selectedProject);
   const [parentId, setParentId] = useState('');
-  const [name, setName] = useState(selectedData?.name || '');
+  const [name, setName] = useState(selectedTaskData?.name || '');
   const [description, setDescription] = useState(
-    selectedData?.description || ''
+    selectedTaskData?.description || ''
   );
   const [priority, setPriority] = useState('0');
 
@@ -63,7 +63,7 @@ const NewTaskModal = () => {
     //...data.map((d: any) => ({ label: d.name, value: d.id })),
   ];
 
-  if (!selectedData) taskOptions.push({ label: pageName, value: '' });
+  if (!selectedTaskData) taskOptions.push({ label: pageName, value: '' });
   console.log(taskOptions);
   return (
     <ModalBackdrop onClick={handleCancel}>
