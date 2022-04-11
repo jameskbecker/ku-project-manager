@@ -46,7 +46,7 @@ const Menu = styled.div`
 `;
 
 const TitleBar = styled.div`
-  flex: 1 1;
+  flex: 1 1 auto;
   display: flex;
   align-items: center;
 

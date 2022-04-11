@@ -11,6 +11,9 @@ import NewProjectModal from '../../modals/NewProjectModal';
 import ProjectTable from './ProjectTable';
 import DeleteAllModal from '../../modals/DeleteAllModal';
 import InviteModal from '../../modals/InviteModal';
+import { FlexRow } from '../../global/Flex';
+import { SecondaryButton } from '../../global/Button';
+import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 
 type Project = {
   id: string;
@@ -38,7 +41,14 @@ const ProjectOverview = () => {
   return (
     <Layout>
       <SideBar activePage="projects" />
-      <HeaderBar pageName="All Projects" />
+      <HeaderBar
+        pageName="All Projects"
+        Options={() => (
+          <FlexRow style={{ flex: '5 1' }}>
+            <SecondaryButton icon={faSyncAlt} onClick={null} round light />
+          </FlexRow>
+        )}
+      />
       <ControlBar />
 
       <Content>

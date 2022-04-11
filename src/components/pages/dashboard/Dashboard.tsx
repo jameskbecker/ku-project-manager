@@ -1,8 +1,10 @@
+import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { fetchNotifications, fetchTodo } from '../../../store/dashboard';
 import { fetchAllProjects } from '../../../store/projects';
+import { SecondaryButton } from '../../global/Button';
 import Panel from '../../global/Panel';
 import ScrollContainer from '../../global/ScrollContainer';
 import NavBar from '../../layout/HeaderBar';
@@ -36,7 +38,18 @@ const Dashboard = () => {
   /** @todo consider react-window to support large amounts or data */
   const Notifications = () => {
     return (
-      <Panel heading="Recent Notifications">
+      <Panel
+        heading="Recent Notifications"
+        Options={
+          <SecondaryButton
+            secondary
+            icon={faSyncAlt}
+            onClick={null}
+            round
+            light
+          />
+        }
+      >
         {notifications.length < 1 ? (
           <DataPlaceholder>No Recent Notifications</DataPlaceholder>
         ) : (
@@ -52,7 +65,18 @@ const Dashboard = () => {
 
   const UpcomingProjects = () => {
     return (
-      <Panel heading="Upcoming Projects">
+      <Panel
+        heading="Upcoming Projects"
+        Options={
+          <SecondaryButton
+            secondary
+            icon={faSyncAlt}
+            onClick={null}
+            round
+            light
+          />
+        }
+      >
         {data.length < 1 ? (
           <DataPlaceholder>No Upcoming Projects</DataPlaceholder>
         ) : (
@@ -68,7 +92,19 @@ const Dashboard = () => {
 
   const Todos = () => {
     return (
-      <Panel heading="Todo" style={{ gridRow: 'span 2' }}>
+      <Panel
+        heading="Todo"
+        style={{ gridRow: 'span 2' }}
+        Options={
+          <SecondaryButton
+            secondary
+            icon={faSyncAlt}
+            onClick={null}
+            round
+            light
+          />
+        }
+      >
         {todo.length < 1 ? (
           <DataPlaceholder>No Tasks</DataPlaceholder>
         ) : (

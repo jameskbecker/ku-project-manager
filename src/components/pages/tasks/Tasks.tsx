@@ -1,4 +1,4 @@
-import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
@@ -13,7 +13,8 @@ import {
   selectTask,
 } from '../../../store/tasks';
 import { Project } from '../../../types';
-import Button from '../../global/Button';
+import Button, { SecondaryButton } from '../../global/Button';
+import { FlexRow } from '../../global/Flex';
 import Footer from '../../layout/Footer';
 import HeaderBar from '../../layout/HeaderBar';
 import Layout from '../../layout/Layout';
@@ -63,7 +64,15 @@ const Project = () => {
         pageName={pageName}
         description={description}
         Options={() => (
-          <Button icon={faPencilAlt} onClick={handleEdit} round light />
+          <FlexRow>
+            <SecondaryButton
+              icon={faPencilAlt}
+              onClick={handleEdit}
+              round
+              light
+            />
+            <SecondaryButton icon={faSyncAlt} onClick={null} round light />
+          </FlexRow>
         )}
       />
       <Content>

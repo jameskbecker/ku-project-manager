@@ -1,11 +1,12 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { FlexColumn } from './Flex';
+import { FlexColumn, FlexRow } from './Flex';
 import Separator from './Separator';
 
 type PanelProps = {
   heading?: String;
   children: React.ReactNode;
+  Options?: any;
   secondary?: boolean;
   light?: boolean;
   style?: React.CSSProperties;
@@ -40,7 +41,15 @@ const StyledPanel = styled(FlexColumn)<PanelProps>`
 const Panel = (props: PanelProps) => {
   return (
     <StyledPanel {...props}>
-      {props.heading && <h3 style={{ flex: '0 0 auto' }}>{props.heading}</h3>}
+      {(props.heading || props.Options) && (
+        <FlexRow style={{ flex: '0 0 auto' }}>
+          {props.heading && (
+            <h3 style={{ flex: '1 0 auto' }}>{props.heading}</h3>
+          )}
+          {props.Options && props.Options}
+        </FlexRow>
+      )}
+
       {props.children}
     </StyledPanel>
   );
