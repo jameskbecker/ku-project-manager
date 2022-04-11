@@ -7,7 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import styled, { ThemeContext } from 'styled-components';
 import { toggleNewProject } from '../../store/projects';
@@ -68,6 +68,7 @@ type NavBarProps = {
 const HeaderBar = ({ back, pageName, description, Options }: NavBarProps) => {
   const history = useHistory();
   const theme = useContext(ThemeContext);
+  const { accountFirstName } = useSelector((state: any) => state.settings);
 
   const handleAccount = () => {
     history.push('/settings');
@@ -86,7 +87,7 @@ const HeaderBar = ({ back, pageName, description, Options }: NavBarProps) => {
           { label: 'Sign Out', onClick: handleSignout },
         ]}
       >
-        <span>Welcome back, John!</span>
+        <span>Welcome back, {accountFirstName}!</span>
         <FontAwesomeIcon icon={faChevronDown} color={theme.brand} />
       </UserWrapper>
     );

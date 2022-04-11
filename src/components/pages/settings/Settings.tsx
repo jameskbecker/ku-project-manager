@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { changeTheme } from '../../../store/settings';
+import { changeTheme, getAccountDetails } from '../../../store/settings';
 import { getCookie } from '../../../utils/cookie';
 import Button from '../../global/Button';
 import SelectInput from '../../global/input/SelectInput';
@@ -18,14 +18,15 @@ const themeOptions = [
 ];
 
 const Settings = () => {
-  const { theme } = useSelector((state: any) => state.settings);
+  const { theme, accountFirstName, accountLastName, accountEmail } =
+    useSelector((state: any) => state.settings);
   const dispatch = useDispatch();
   const history = useHistory();
 
   const [editMode, setEditMode] = useState(false);
-  const [first, setFirst] = useState('John');
-  const [last, setLast] = useState('Doe');
-  const [email, setEmail] = useState('johndoe@kupm.edu');
+  const [first, setFirst] = useState(accountFirstName);
+  const [last, setLast] = useState(accountLastName);
+  const [email, setEmail] = useState(accountEmail);
   const [password, setPassword] = useState('••••••••••••');
 
   useEffect(() => {
@@ -33,6 +34,7 @@ const Settings = () => {
       history.push('/login');
       return;
     }
+    dispatch(getAccountDetails());
     document.title = 'Settings | KUPM';
   }, []);
 

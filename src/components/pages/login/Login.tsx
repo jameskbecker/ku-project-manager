@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { postLogin } from '../../../store/auth';
+import { getAccountDetails } from '../../../store/settings';
 import Button from '../../global/Button';
 import { FlexColumn, FlexRow } from '../../global/Flex';
 import TextInput from '../../global/input/TextInput';
@@ -29,6 +30,7 @@ const Login = () => {
 
   const handleLogin = () => {
     dispatch(postLogin({ email, password }));
+    dispatch(getAccountDetails());
     history.push('/');
   };
 
@@ -36,6 +38,7 @@ const Login = () => {
     // does not expire
     const expiryDate = 'Fri, 31 Dec 9999 23:59:59 GMT';
     document.cookie = `kupm_user_id=${id}; expires=${expiryDate};`;
+    dispatch(getAccountDetails());
     history.push('/');
   };
 
