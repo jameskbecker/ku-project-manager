@@ -13,9 +13,9 @@ import Separator from '../../global/Separator';
 import LoginHeader from './LoginHeader';
 
 const userIds = {
-  owner: '39aeec9a-b8bb-11ec-a034-02e4fd6e79c6',
-  memberA: '4727bca9-b8bb-11ec-a034-02e4fd6e79c6',
-  memberB: '63a74276-b8bb-11ec-a034-02e4fd6e79c6',
+  joseph: '39aeec9a-b8bb-11ec-a034-02e4fd6e79c6',
+  eddie: '4727bca9-b8bb-11ec-a034-02e4fd6e79c6',
+  alan: '63a74276-b8bb-11ec-a034-02e4fd6e79c6',
 };
 
 const Login = () => {
@@ -82,18 +82,18 @@ const Login = () => {
       <FlexRow style={{ position: 'absolute', right: 12, bottom: 12 }}>
         <Button
           light
-          text="Login as Project Owner"
-          onClick={() => handleMockLogin(userIds.owner)}
+          text="Login as Joseph"
+          onClick={() => handleMockLogin(userIds.joseph)}
         />
         <Button
           light
-          text="Project Member A"
-          onClick={() => handleMockLogin(userIds.memberA)}
+          text="Login as Eddie"
+          onClick={() => handleMockLogin(userIds.eddie)}
         />
         <Button
           light
-          text="Project Member B"
-          onClick={() => handleMockLogin(userIds.memberB)}
+          text="Login as Alan"
+          onClick={() => handleMockLogin(userIds.alan)}
         />
       </FlexRow>
     </FlexColumn>
