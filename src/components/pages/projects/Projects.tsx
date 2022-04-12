@@ -45,6 +45,10 @@ const ProjectOverview = () => {
     dispatch(fetchAllProjects());
   }, []);
 
+  const handleRefresh = () => {
+    dispatch(fetchAllProjects());
+  };
+
   return (
     <Layout>
       <SideBar activePage="projects" />
@@ -52,7 +56,12 @@ const ProjectOverview = () => {
         pageName="All Projects"
         Options={() => (
           <FlexRow style={{ flex: '5 1' }}>
-            <SecondaryButton icon={faSyncAlt} onClick={null} round light />
+            <SecondaryButton
+              icon={faSyncAlt}
+              onClick={handleRefresh}
+              round
+              light
+            />
           </FlexRow>
         )}
       />

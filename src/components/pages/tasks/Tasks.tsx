@@ -62,6 +62,12 @@ const Project = () => {
   const handleEdit = () => {
     dispatch(!taskId ? toggleNewProject() : toggleNewTask());
   };
+
+  const handleRefresh = () => {
+    if (taskId) dispatch(fetchSubTasks({ taskId }));
+    else dispatch(fetchProjectTasks({ projectId: id }));
+  };
+
   return (
     <Layout>
       <SideBar activePage="projects" />
@@ -78,7 +84,12 @@ const Project = () => {
               round
               light
             />
-            <SecondaryButton icon={faSyncAlt} onClick={null} round light />
+            <SecondaryButton
+              icon={faSyncAlt}
+              onClick={handleRefresh}
+              round
+              light
+            />
           </FlexRow>
         )}
       />

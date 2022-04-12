@@ -42,6 +42,18 @@ const Dashboard = () => {
     dispatch(fetchAllProjects());
   }, []);
 
+  const handleNotificationRefresh = () => {
+    dispatch(fetchNotifications());
+  };
+
+  const handleProjectRefresh = () => {
+    dispatch(fetchAllProjects());
+  };
+
+  const handleTodoRefresh = () => {
+    dispatch(fetchTodo());
+  };
+
   /** @todo consider react-window to support large amounts or data */
   const Notifications = () => {
     return (
@@ -51,7 +63,7 @@ const Dashboard = () => {
           <SecondaryButton
             secondary
             icon={faSyncAlt}
-            onClick={null}
+            onClick={handleNotificationRefresh}
             round
             light
           />
@@ -78,7 +90,7 @@ const Dashboard = () => {
           <SecondaryButton
             secondary
             icon={faSyncAlt}
-            onClick={null}
+            onClick={handleProjectRefresh}
             round
             light
           />
@@ -106,7 +118,7 @@ const Dashboard = () => {
           <SecondaryButton
             secondary
             icon={faSyncAlt}
-            onClick={null}
+            onClick={handleTodoRefresh}
             round
             light
           />
