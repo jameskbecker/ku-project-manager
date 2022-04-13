@@ -114,7 +114,7 @@ const Dashboard = () => {
   const Todos = () => {
     return (
       <Panel
-        heading="Todo"
+        heading="Tasks Todo"
         style={{ gridRow: 'span 2' }}
         Options={
           <SecondaryButton
