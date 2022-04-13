@@ -19,13 +19,9 @@ const StyledNotificationPanel = styled(Panel)`
 `;
 
 const NotificationPanel = ({ data }: NotificationPanelProps) => {
-  const handleInviteAccept = () => {
-    console.log('accept');
-  };
+  const handleInviteAccept = () => {};
 
-  const handleInviteDecline = () => {
-    console.log('decline');
-  };
+  const handleInviteDecline = () => {};
 
   const ExtraOptions = () => {
     switch (data.type) {

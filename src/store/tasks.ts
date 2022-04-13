@@ -16,7 +16,6 @@ export const fetchProjectTasks = createAsyncThunk(
   'tasks/getTasks',
   async ({ projectId }: any) => {
     console.log('[STORE]', 'fetchProjectTasks');
-    // 'https://kupm-api.herokuapp.com/api/tasks'
     const res = await fetch(
       `https://kupm-api.herokuapp.com/api/projects/${projectId}/tasks`
     );
@@ -28,7 +27,6 @@ export const fetchSubTasks = createAsyncThunk(
   'tasks/getSubTasks',
   async ({ taskId }: any) => {
     console.log('[STORE]', 'fetchSubTasks');
-    // 'https://kupm-api.herokuapp.com/api/subtasks'
     const res = await fetch(
       `https://kupm-api.herokuapp.com/api/tasks/${taskId}/subtasks`
     );
@@ -40,7 +38,6 @@ export const fetchSubTasks = createAsyncThunk(
 export const saveTask = createAsyncThunk(
   'tasks/saveTask',
   async (payload: any) => {
-    // 'https://kupm-api.herokuapp.com/api/tasks',
     const { id } = payload;
     const baseEndpoint = 'https://kupm-api.herokuapp.com/api/tasks';
     const res = await fetch(id ? `${baseEndpoint}/${id}` : baseEndpoint, {
@@ -56,8 +53,6 @@ export const saveTask = createAsyncThunk(
 export const deleteTask = createAsyncThunk(
   'tasks/deleteTask',
   async (payload: any) => {
-    console.log(payload);
-    // 'https://kupm-api.herokuapp.com/api/tasks'
     const resp = await fetch(
       `https://kupm-api.herokuapp.com/api/tasks/${payload.id}`,
       {
@@ -105,7 +100,6 @@ export const tasksSlice = createSlice({
       // Avoid unneccesary rerenders
       if (state.data === payload.data) return;
       state.data = payload.data.tasks;
-      console.log(payload);
       state.pageName = payload.data.name;
       state.description = payload.data.description;
       state.isLoading = false;
@@ -125,7 +119,6 @@ export const tasksSlice = createSlice({
       // Avoid unneccesary rerenders
       if (state.data === payload.data.subtasks) return;
       state.data = payload.data.subtasks;
-      console.log(payload);
       state.pageName = payload.data.parentName;
       state.description = payload.data.description || '';
       state.isLoading = false;

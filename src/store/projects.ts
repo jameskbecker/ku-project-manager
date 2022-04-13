@@ -16,7 +16,6 @@ const initialState: any = {
 export const fetchAllProjects = createAsyncThunk(
   'projects/getProjects',
   async () => {
-    // 'https://kupm-api.herokuapp.com/api/projects'
     const res = await fetch(
       `https://kupm-api.herokuapp.com/api/projects?userId=${getCookie(
         'kupm_user_id'
@@ -30,7 +29,6 @@ export const fetchAllProjects = createAsyncThunk(
 export const saveProject = createAsyncThunk(
   'projects/saveProject',
   async (payload: any) => {
-    // 'https://kupm-api.herokuapp.com/api/projects',
     const { id } = payload;
     const baseEndpoint = 'https://kupm-api.herokuapp.com/api/projects';
     const res = await fetch(id ? `${baseEndpoint}/${id}` : baseEndpoint, {
@@ -46,7 +44,6 @@ export const saveProject = createAsyncThunk(
 export const deleteProject = createAsyncThunk(
   'projects/deleteProject',
   async (payload: any) => {
-    // 'https://kupm-api.herokuapp.com/api/projects'
     const resp = await fetch(
       `https://kupm-api.herokuapp.com/api/projects/${payload.id}`,
       {
@@ -61,13 +58,11 @@ export const deleteProject = createAsyncThunk(
 export const fetchProjectMembers = createAsyncThunk(
   'projects/getMembers',
   async (payload: any) => {
-    // 'https://kupm-api.herokuapp.com/api/projects'
     const { projectId } = payload;
     const res = await fetch(
       `https://kupm-api.herokuapp.com/api/projects/${projectId}/members`
     );
     const body = await res.json();
-    console.log(body);
     return body;
   }
 );
@@ -75,11 +70,7 @@ export const fetchProjectMembers = createAsyncThunk(
 export const sendInvite = createAsyncThunk(
   'projects/sendInvite',
   async (payload: any) => {
-    // 'https://kupm-api.herokuapp.com/api/projects',
-    const { projectId: id } = payload;
-
     const userId = getCookie('kupm_user_id');
-
     const res = await fetch('https://kupm-api.herokuapp.com/api/invites', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -93,7 +84,6 @@ export const sendInvite = createAsyncThunk(
 export const fetchActivity = createAsyncThunk(
   'projects/getActivity',
   async ({ id }: any) => {
-    // 'https://kupm-api.herokuapp.com/api/projects'
     const res = await fetch(
       `https://kupm-api.herokuapp.com/api/projects/${id}/activity`
     );

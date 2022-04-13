@@ -15,8 +15,6 @@ import Separator from '../global/Separator';
 const NewProjectModal = () => {
   const { data, selectedProject } = useSelector((state: any) => state.projects);
   const selectedData = data.find((d: any) => d.id === selectedProject);
-
-  console.log(selectedData);
   const [name, setName] = useState(selectedData?.name || '');
   const [dueAt, setDueAt] = useState(selectedData?.dueAt || '');
   const [priority, setPriority] = useState(selectedData?.priority || '0');
@@ -28,9 +26,7 @@ const NewProjectModal = () => {
 
   const handleNameChange = (e: any) => setName(e.target.value);
   const handlePriorityChange = (e: any) => setPriority(e.target.value);
-  const handleDueAtChange = (e: any) => (
-    console.log(e.target.value), setDueAt(e.target.value)
-  );
+  const handleDueAtChange = (e: any) => setDueAt(e.target.value);
   const handleDescriptionChange = (e: any) => setDescription(e.target.value);
 
   const handleCancel = () => dispatch(toggleNewProject());
