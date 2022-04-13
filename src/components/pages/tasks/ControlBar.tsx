@@ -83,7 +83,12 @@ const ControlBar = () => {
   return (
     <ControlBarWrapper>
       <FlexRow>
-        <Button icon={faPlus} text="New Task" onClick={handleNewTask} round />
+        <Button
+          icon={faPlus}
+          text={taskId ? 'New Subtask' : 'New Task'}
+          onClick={handleNewTask}
+          round
+        />
         {!taskId ? (
           <Button
             icon={faUserPlus}

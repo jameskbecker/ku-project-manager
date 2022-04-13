@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { fetchNotifications, fetchTodo } from '../../../store/dashboard';
 import { fetchAllProjects } from '../../../store/projects';
+import { getAccountDetails } from '../../../store/settings';
 import { getCookie } from '../../../utils/cookie';
 import { SecondaryButton } from '../../global/Button';
 import Panel from '../../global/Panel';
@@ -37,6 +38,7 @@ const Dashboard = () => {
       return;
     }
     document.title = 'Dashboard | KUPM';
+    dispatch(getAccountDetails());
     dispatch(fetchNotifications());
     dispatch(fetchTodo());
     dispatch(fetchAllProjects());

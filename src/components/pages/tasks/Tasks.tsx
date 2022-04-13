@@ -7,6 +7,7 @@ import {
   selectProject,
   toggleNewProject,
 } from '../../../store/projects';
+import { getAccountDetails } from '../../../store/settings';
 import {
   fetchProjectTasks,
   fetchSubTasks,
@@ -50,6 +51,7 @@ const Project = () => {
       dispatch(selectProject(id));
     }
 
+    dispatch(getAccountDetails());
     dispatch(selectTask(taskId));
 
     //change to specific project

@@ -16,6 +16,7 @@ import { SecondaryButton } from '../../global/Button';
 import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import { getCookie } from '../../../utils/cookie';
+import { getAccountDetails } from '../../../store/settings';
 
 type Project = {
   id: string;
@@ -42,6 +43,7 @@ const ProjectOverview = () => {
       return;
     }
     document.title = 'Projects | KUPM';
+    dispatch(getAccountDetails());
     dispatch(fetchAllProjects());
   }, []);
 
