@@ -100,6 +100,10 @@ const Global = createGlobalStyle<any>`
     font-weight: 700;
     color: ${({ theme }) => theme.textBody};
 
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
     /* Mobile */
     @media screen and (max-width: 479px) {
       font-size: 0.75rem;

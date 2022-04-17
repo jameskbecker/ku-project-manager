@@ -27,6 +27,7 @@ const ControlBarWrapper = styled.div`
 
   background: ${({ theme }) => theme.control};
   padding: 0.75rem 1rem;
+  border-bottom: 1px solid ${({ theme }) => theme.secondary};
 
   & > * {
     overflow: visible;
@@ -41,7 +42,12 @@ const ControlBarWrapper = styled.div`
     }
   }
 
-  border-bottom: 1px solid ${({ theme }) => theme.secondary};
+  /* Mobile */
+  @media screen and (max-width: 479px) {
+    & > :nth-child(2) {
+      display: none;
+    }
+  }
 `;
 
 const ControlBar = () => {

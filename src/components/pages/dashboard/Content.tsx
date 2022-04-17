@@ -1,10 +1,10 @@
 import styled from 'styled-components';
+import { FlexColumn } from '../../global/Flex';
 
 /** @todo optimise large scale displays */
-const Content = styled.div`
+const Content = styled(FlexColumn)`
   grid-area: content;
   grid-row: 2 / span 3;
-  gap: 0.75rem;
 
   padding: 1rem;
 

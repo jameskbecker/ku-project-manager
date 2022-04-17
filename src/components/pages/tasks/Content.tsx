@@ -1,11 +1,9 @@
 import styled from 'styled-components';
+import { FlexColumn } from '../../global/Flex';
 
 /** @todo optimise large scale displays */
-const Content = styled.div`
+const Content = styled(FlexColumn)`
   grid-area: content;
-
-  display: flex;
-  flex-direction: column;
   justify-content: flex-start;
 
   /* align-items: stretch; */

@@ -15,6 +15,11 @@ const StyledActivityFeed = styled(FlexColumn)`
   flex: 2 2;
   padding: 1rem;
   border-left: 1px solid ${({ theme }) => theme.secondary};
+
+  /** Tablet & Mobile  */
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 const ActivityFeed = () => {

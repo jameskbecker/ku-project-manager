@@ -16,6 +16,7 @@ type ButtonProps = {
 const StyledButton = styled.button<ButtonProps>`
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
   gap: 0.5rem;
   /* min-width: 100px; */
@@ -45,6 +46,13 @@ const StyledButton = styled.button<ButtonProps>`
 
   :focus-visible {
     outline: 3px solid ${({ theme }) => theme.brand};
+  }
+
+  /** Tablet & Mobile  */
+  @media screen and (max-width: 600px) {
+    & > span {
+      display: none;
+    }
   }
 
   ${({ light, color, theme }) =>

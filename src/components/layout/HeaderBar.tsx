@@ -46,7 +46,7 @@ const Menu = styled.div`
 `;
 
 const TitleBar = styled.div`
-  flex: 1 1 auto;
+  flex: 1 1 200px;
   display: flex;
   align-items: center;
 
@@ -54,6 +54,16 @@ const TitleBar = styled.div`
 
   h2 {
     flex: 1 1;
+  }
+`;
+
+const DescriptionContainer = styled(FlexRow)`
+  flex: 4 4;
+  height: 100%;
+
+  /** Tablet & Mobile  */
+  @media screen and (max-width: 600px) {
+    display: none;
   }
 `;
 
@@ -110,14 +120,14 @@ const HeaderBar = ({ back, pageName, description, Options }: NavBarProps) => {
         {Options && <Options />}
       </FlexRow>
 
-      <FlexRow style={{ flex: '4 4', height: '100%' }}>
+      <DescriptionContainer>
         {description && (
           <>
             <VerticalSeparator />
             <div>{description}</div>
           </>
         )}
-      </FlexRow>
+      </DescriptionContainer>
 
       <UserMenu />
       <Menu>
@@ -146,6 +156,11 @@ const UserWrapper = styled(ContextMenu)`
   span {
     cursor: pointer;
     color: ${({ theme }) => theme.textBody};
+  }
+
+  /** Tablet & Mobile  */
+  @media screen and (max-width: 600px) {
+    display: none;
   }
 `;
 

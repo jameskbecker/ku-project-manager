@@ -1,22 +1,15 @@
 import {
-  faPencilAlt,
   faPlus,
   faSearch,
-  faTimes,
   faTrashAlt,
   faUserPlus,
   faUsers,
 } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
-import {
-  selectProject,
-  toggleInvite,
-  toggleNewProject,
-} from '../../../store/projects';
+import { selectProject, toggleInvite } from '../../../store/projects';
 import {
   applyFilter,
   toggleMembers,
@@ -52,6 +45,13 @@ const ControlBarWrapper = styled.div`
 
   & > :last-child {
     justify-content: flex-end;
+  }
+
+  /* Mobile */
+  @media screen and (max-width: 479px) {
+    & > :nth-child(2) {
+      display: none;
+    }
   }
 `;
 
