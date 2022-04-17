@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { getAccountDetails } from '../api/users';
 import { getCookie } from '../utils/cookie';
 
 const initialState: any = {
@@ -8,19 +9,9 @@ const initialState: any = {
   accountEmail: '',
 };
 
-export const getAccountDetails = createAsyncThunk(
+export const fetchAccountDetails = createAsyncThunk(
   'settings/getAccountDetails',
-  async () => {
-    const userId = getCookie('kupm_user_id');
-    const res = await fetch(
-      `https://kupm-api.herokuapp.com/api/users/${userId}`,
-      {
-        headers: { 'Content-Type': 'application/json' },
-      }
-    );
-
-    return await res.json();
-  }
+  getAccountDetails
 );
 
 export const settingsSlice = createSlice({
@@ -32,9 +23,9 @@ export const settingsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(getAccountDetails.pending, () => {});
+    builder.addCase(fetchAccountDetails.pending, () => {});
 
-    builder.addCase(getAccountDetails.fulfilled, (state, { payload }) => {
+    builder.addCase(fetchAccountDetails.fulfilled, (state, { payload }) => {
       try {
         const { data } = payload;
         state.accountFirstName = data.firstName;
@@ -45,7 +36,7 @@ export const settingsSlice = createSlice({
       }
     });
 
-    builder.addCase(getAccountDetails.rejected, () => {});
+    builder.addCase(fetchAccountDetails.rejected, () => {});
   },
 });
 

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getCookie } from '../utils/cookie';
+import { postAuthLogin } from '../api/auth';
 
 const initialState: any = {
   errorMessage: '',
@@ -7,16 +7,7 @@ const initialState: any = {
 
 export const postLogin = createAsyncThunk(
   'authentication/postLogin',
-  async (payload: any) => {
-    const { email, password } = payload;
-    const res = await fetch('https://kupm-api.herokuapp.com/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    });
-
-    return await res.json();
-  }
+  postAuthLogin
 );
 
 export const authSlice = createSlice({

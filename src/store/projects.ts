@@ -1,5 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getCookie } from '../utils/cookie';
+import { postInvite } from '../api/invites';
+import {
+  deleteProjectRequest,
+  getProjectActiviy,
+  getProjectMembers,
+  getProjects,
+  postProject,
+} from '../api/projects';
 
 const initialState: any = {
   showNewProject: false,
@@ -15,80 +22,30 @@ const initialState: any = {
 
 export const fetchAllProjects = createAsyncThunk(
   'projects/getProjects',
-  async () => {
-    const res = await fetch(
-      `https://kupm-api.herokuapp.com/api/projects?userId=${getCookie(
-        'kupm_user_id'
-      )}`
-    );
-    return await res.json();
-  }
+  getProjects
 );
 
 // Used for PUT and POST
 export const saveProject = createAsyncThunk(
   'projects/saveProject',
-  async (payload: any) => {
-    const { id } = payload;
-    const baseEndpoint = 'https://kupm-api.herokuapp.com/api/projects';
-    const res = await fetch(id ? `${baseEndpoint}/${id}` : baseEndpoint, {
-      method: id ? 'PUT' : 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-
-    return await res.json();
-  }
+  postProject
 );
 
 export const deleteProject = createAsyncThunk(
   'projects/deleteProject',
-  async (payload: any) => {
-    const resp = await fetch(
-      `https://kupm-api.herokuapp.com/api/projects/${payload.id}`,
-      {
-        method: 'DELETE',
-      }
-    );
-
-    return await resp.json();
-  }
+  deleteProjectRequest
 );
 
 export const fetchProjectMembers = createAsyncThunk(
   'projects/getMembers',
-  async (payload: any) => {
-    const { projectId } = payload;
-    const res = await fetch(
-      `https://kupm-api.herokuapp.com/api/projects/${projectId}/members`
-    );
-    const body = await res.json();
-    return body;
-  }
+  getProjectMembers
 );
 
-export const sendInvite = createAsyncThunk(
-  'projects/sendInvite',
-  async (payload: any) => {
-    const userId = getCookie('kupm_user_id');
-    const res = await fetch('https://kupm-api.herokuapp.com/api/invites', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...payload, userId }),
-    });
-
-    return await res.json();
-  }
-);
+export const sendInvite = createAsyncThunk('projects/sendInvite', postInvite);
 
 export const fetchActivity = createAsyncThunk(
   'projects/getActivity',
-  async ({ id }: any) => {
-    const res = await fetch(
-      `https://kupm-api.herokuapp.com/api/projects/${id}/activity`
-    );
-    return await res.json();
-  }
+  getProjectActiviy
 );
 
 export const projectsSlice = createSlice({

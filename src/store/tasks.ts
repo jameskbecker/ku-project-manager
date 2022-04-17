@@ -1,4 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { getProjectTasks } from '../api/projects';
+import { deleteTaskRequest, getSubTasks, postTask } from '../api/tasks';
 
 const initialState: any = {
   showNewTask: false,
@@ -14,54 +16,17 @@ const initialState: any = {
 
 export const fetchProjectTasks = createAsyncThunk(
   'tasks/getTasks',
-  async ({ projectId }: any) => {
-    console.log('[STORE]', 'fetchProjectTasks');
-    const res = await fetch(
-      `https://kupm-api.herokuapp.com/api/projects/${projectId}/tasks`
-    );
-    return await res.json();
-  }
+  getProjectTasks
 );
 
-export const fetchSubTasks = createAsyncThunk(
-  'tasks/getSubTasks',
-  async ({ taskId }: any) => {
-    console.log('[STORE]', 'fetchSubTasks');
-    const res = await fetch(
-      `https://kupm-api.herokuapp.com/api/tasks/${taskId}/subtasks`
-    );
-    return await res.json();
-  }
-);
+export const fetchSubTasks = createAsyncThunk('tasks/getSubTasks', getSubTasks);
 
 // Used for PUT and POST
-export const saveTask = createAsyncThunk(
-  'tasks/saveTask',
-  async (payload: any) => {
-    const { id } = payload;
-    const baseEndpoint = 'https://kupm-api.herokuapp.com/api/tasks';
-    const res = await fetch(id ? `${baseEndpoint}/${id}` : baseEndpoint, {
-      method: id ? 'PUT' : 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-
-    return await res.json();
-  }
-);
+export const saveTask = createAsyncThunk('tasks/saveTask', postTask);
 
 export const deleteTask = createAsyncThunk(
   'tasks/deleteTask',
-  async (payload: any) => {
-    const resp = await fetch(
-      `https://kupm-api.herokuapp.com/api/tasks/${payload.id}`,
-      {
-        method: 'DELETE',
-      }
-    );
-
-    return await resp.json();
-  }
+  deleteTaskRequest
 );
 
 export const tasksSlice = createSlice({
