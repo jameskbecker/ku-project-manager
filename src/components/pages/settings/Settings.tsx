@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { changeTheme, getAccountDetails } from '../../../store/settings';
+import { changeTheme, fetchAccountDetails } from '../../../store/settings';
 import { getCookie } from '../../../utils/cookie';
 import Button from '../../global/Button';
 import SelectInput from '../../global/input/SelectInput';
@@ -34,7 +34,7 @@ const Settings = () => {
       history.push('/login');
       return;
     }
-    dispatch(getAccountDetails());
+    dispatch(fetchAccountDetails());
     document.title = 'Settings | KUPM';
   }, []);
 
