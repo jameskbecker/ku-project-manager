@@ -1,5 +1,4 @@
 export const getSubTasks = async ({ taskId }: any) => {
-  console.log('[STORE]', 'fetchSubTasks');
   const res = await fetch(
     `https://kupm-api.herokuapp.com/api/tasks/${taskId}/subtasks`
   );

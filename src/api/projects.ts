@@ -60,7 +60,6 @@ export const getProjectActiviy = async ({ id }: any) => {
 };
 
 export const getProjectTasks = async ({ projectId }: any) => {
-  console.log('[STORE]', 'fetchProjectTasks');
   const res = await fetch(
     `https://kupm-api.herokuapp.com/api/projects/${projectId}/tasks`
   );
