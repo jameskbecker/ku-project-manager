@@ -78,6 +78,10 @@ const ButtonText = styled.span`
   font-family: -apple-system, Inter, sans-serif;
   font-weight: 500;
 
+  overflow: hidden;
+  whitespace: nowrap;
+  text-overflow: ellipsis;
+
   /* * Desktop
   @media screen and (max-width: 992px) {
     display: none;
