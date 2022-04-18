@@ -73,6 +73,7 @@ const NewProjectModal = () => {
           label="Description"
           value={description}
           onChange={handleDescriptionChange}
+          max={1000}
         />
 
         <Separator />

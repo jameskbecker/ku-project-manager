@@ -24,9 +24,9 @@ const AddCommentModal = () => {
 
         <TextArea
           label="Message"
-          placeholder="Max 500 Characters"
           value={message}
           onChange={handleMessageChange}
+          max={2000}
         />
 
         <Separator />

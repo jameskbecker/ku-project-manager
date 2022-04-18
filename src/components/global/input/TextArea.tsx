@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { InputWrapper } from './Input';
 
@@ -38,11 +38,31 @@ export const StyledTextArea = styled.textarea<any>`
   }
 `;
 
+const Counter = styled.span`
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+
+  opacity: 0.6;
+`;
+
 const TextArea = (props: any) => {
+  const [remainingCharacters, setRemainingCharacters] = useState(props.max);
+
+  const handleOnChange = (e: any) => {
+    if (e.nativeEvent.inputType === 'insertText') {
+      setRemainingCharacters(remainingCharacters - 1);
+    } else {
+      setRemainingCharacters(remainingCharacters + 1);
+    }
+    props.onChange && props.onChange();
+  };
+
   return (
     <InputWrapper {...props}>
       {props.label && <label>{props.label}</label>}
-      <StyledTextArea {...props} />
+      <StyledTextArea {...props} onChange={handleOnChange} />
+      <Counter>{remainingCharacters}</Counter>
     </InputWrapper>
   );
 };

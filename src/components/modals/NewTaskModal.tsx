@@ -91,6 +91,7 @@ const NewTaskModal = () => {
           label="Description"
           value={description}
           onChange={handleDescriptionChange}
+          max={500}
         />
         <TextInput
           label="Priority"
