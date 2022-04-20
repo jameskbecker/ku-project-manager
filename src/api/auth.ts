@@ -5,7 +5,7 @@ type LoginPayload = {
 
 export const postAuthLogin = async (payload: LoginPayload) => {
   const { email, password } = payload;
-  const res = await fetch('https://kupm-api.herokuapp.com/api/auth/login', {
+  const res = await fetch('https://kupm-api2.herokuapp.com/api/auth/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),

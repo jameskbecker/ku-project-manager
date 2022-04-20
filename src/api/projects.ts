@@ -3,14 +3,14 @@ import { getCookie } from '../utils/cookie';
 export const getProjects = async () => {
   const userId = getCookie('kupm_user_id');
   const res = await fetch(
-    `https://kupm-api.herokuapp.com/api/projects?userId=${userId}`
+    `https://kupm-api2.herokuapp.com/api/projects?userId=${userId}`
   );
   return await res.json();
 };
 
 export const postProject = async (payload: any) => {
   const { id } = payload;
-  const baseEndpoint = 'https://kupm-api.herokuapp.com/api/projects';
+  const baseEndpoint = 'https://kupm-api2.herokuapp.com/api/projects';
   const res = await fetch(id ? `${baseEndpoint}/${id}` : baseEndpoint, {
     method: id ? 'PUT' : 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -22,8 +22,9 @@ export const postProject = async (payload: any) => {
 
 export const deleteProjectRequest = async (payload: any) => {
   const { id } = payload;
+  console.log(id);
   const resp = await fetch(
-    `https://kupm-api.herokuapp.com/api/projects/${payload.id}`,
+    `https://kupm-api2.herokuapp.com/api/projects/${payload.id}`,
     {
       method: 'DELETE',
     }
@@ -35,7 +36,7 @@ export const deleteProjectRequest = async (payload: any) => {
 export const getProjectMembers = async (payload: any) => {
   const { projectId } = payload;
   const res = await fetch(
-    `https://kupm-api.herokuapp.com/api/projects/${projectId}/members`
+    `https://kupm-api2.herokuapp.com/api/projects/${projectId}/members`
   );
   const body = await res.json();
   return body;
@@ -43,7 +44,7 @@ export const getProjectMembers = async (payload: any) => {
 
 export const postProjectInvite = async (payload: any) => {
   const userId = getCookie('kupm_user_id');
-  const res = await fetch('https://kupm-api.herokuapp.com/api/invites', {
+  const res = await fetch('https://kupm-api2.herokuapp.com/api/invites', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ ...payload, userId }),
@@ -54,14 +55,14 @@ export const postProjectInvite = async (payload: any) => {
 
 export const getProjectActiviy = async ({ id }: any) => {
   const res = await fetch(
-    `https://kupm-api.herokuapp.com/api/projects/${id}/activity`
+    `https://kupm-api2.herokuapp.com/api/projects/${id}/activity`
   );
   return await res.json();
 };
 
 export const getProjectTasks = async ({ projectId }: any) => {
   const res = await fetch(
-    `https://kupm-api.herokuapp.com/api/projects/${projectId}/tasks`
+    `https://kupm-api2.herokuapp.com/api/projects/${projectId}/tasks`
   );
   return await res.json();
 };
