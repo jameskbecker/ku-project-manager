@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { postLogin } from '../../../store/auth';
 import { fetchAccountDetails } from '../../../store/settings';
@@ -21,6 +21,7 @@ const userIds = {
 const Login = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const { errorMessage } = useSelector((state: any) => state.auth);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -31,7 +32,7 @@ const Login = () => {
   const handleLogin = () => {
     dispatch(postLogin({ email, password }));
     dispatch(fetchAccountDetails());
-    history.push('/');
+    //history.push('/');
   };
 
   const handleMockLogin = (id: string) => {
@@ -55,6 +56,7 @@ const Login = () => {
           <Logo />
         </LoginHeader>
         <Separator />
+        {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
         <FlexRow>
           <label style={{ flexGrow: 1 }}>
             Please enter your login details:

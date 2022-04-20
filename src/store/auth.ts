@@ -21,15 +21,23 @@ export const authSlice = createSlice({
   extraReducers: (builder) => {
     // CRUDL: POST actions
     builder.addCase(postLogin.pending, () => {
-      console.log('Creating Project...');
+      console.log('Logging In...');
     });
 
     //Consider returning new project from API and updating here instead of refetching all
-    builder.addCase(postLogin.fulfilled, () => {
-      console.log('Created New Project!');
+    builder.addCase(postLogin.fulfilled, (state, { payload: body }) => {
+      console.log(body);
+      if (!body.success) {
+        state.errorMessage = body.error || '';
+        return;
+      }
+
+      location.href = '/';
     });
 
-    builder.addCase(postLogin.rejected, () => {});
+    builder.addCase(postLogin.rejected, () => {
+      console.log('Error logging in');
+    });
   },
 });
 
