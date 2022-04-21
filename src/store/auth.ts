@@ -32,7 +32,12 @@ export const authSlice = createSlice({
         return;
       }
 
-      location.href = '/';
+      if (!body.userId) {
+        console.log('NO USERID');
+        return;
+      }
+      const expiryDate = 'Fri, 31 Dec 9999 23:59:59 GMT';
+      document.cookie = `kupm_user_id=${body.userId}; expires=${expiryDate};`;
     });
 
     builder.addCase(postLogin.rejected, () => {
