@@ -10,8 +10,8 @@ const Content = styled(FlexColumn)`
 
   /** Tablet  */
   @media screen and (min-width: 600px) {
-    display: flex;
     flex-direction: row;
+    gap: 0;
     height: auto;
     overflow: auto;
   }
