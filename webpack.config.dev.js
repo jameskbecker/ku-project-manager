@@ -1,3 +1,4 @@
+const { DefinePlugin } = require('webpack');
 const { merge } = require('webpack-merge');
 const commonConfig = require('./webpack.config.common');
 
@@ -8,15 +9,18 @@ const config = {
     historyApiFallback: true,
     hot: true,
     port: 3000,
-    proxy: {
-      '/local/**': {
-        target: 'http://localhost:8081/',
-        pathRewrite: { '^/local': '' },
-        secure: false,
-        logLevel: 'debug',
-      },
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers':
+        'X-Requested-With, content-type, Authorization',
     },
   },
+  plugins: [
+    new DefinePlugin({
+      BASE_URL: JSON.stringify('http://localhost:8081'),
+    }),
+  ],
 };
 
 module.exports = merge(commonConfig, config);
