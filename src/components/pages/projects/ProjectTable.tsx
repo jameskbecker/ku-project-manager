@@ -28,16 +28,17 @@ const DataPlaceholder = styled.div`
   align-items: center;
 `;
 
-const ProjectTable = () => {
+const ProjectTable = (props: any) => {
   const { isLoading, data, filter } = useSelector(
     (state: any) => state.projects
   );
 
   const filteredData = data.filter(
     (t: any) =>
-      t.name?.toLowerCase().includes(filter.toLowerCase()) ||
-      // t.dueAt ?.toLowerCase().includes(filter.toLowerCase()) ||
-      t.description?.toLowerCase().includes(filter.toLowerCase())
+      (props.complete ? !!t.isComplete : !t.isComplete) &&
+      (t.name?.toLowerCase().includes(filter.toLowerCase()) ||
+        // t.dueAt ?.toLowerCase().includes(filter.toLowerCase()) ||
+        t.description?.toLowerCase().includes(filter.toLowerCase()))
   );
 
   const getProjects = filteredData.map((p: any, i: number) => (
@@ -51,6 +52,7 @@ const ProjectTable = () => {
         flex: '1 1',
       }}
     >
+      <h3>{props.complete ? 'Complete' : 'Incomplete'}</h3>
       <TableHeader columns={columns} />
       {isLoading ? (
         <DataPlaceholder>

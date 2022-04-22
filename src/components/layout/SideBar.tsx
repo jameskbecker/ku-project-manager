@@ -95,7 +95,7 @@ const SideBar = ({ activePage }: SideBarProps) => {
         </SideBarButton>
         <SideBarButton to="/projects" $active={activePage === 'projects'}>
           <FontAwesomeIcon icon={faList} />
-          Projects
+          My Projects
         </SideBarButton>
         <SideBarButton to="/settings" $active={activePage === 'settings'}>
           <FontAwesomeIcon icon={faCogs} />

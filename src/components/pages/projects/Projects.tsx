@@ -54,11 +54,12 @@ const ProjectOverview = () => {
   return (
     <Layout>
       <SideBar activePage="projects" />
-      <HeaderBar pageName="All Projects" />
+      <HeaderBar pageName="My Projects" />
       <ControlBar />
 
       <Content>
         <ProjectTable />
+        <ProjectTable complete />
       </Content>
 
       {showNewProject && <NewProjectModal />}
