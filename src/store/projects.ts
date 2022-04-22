@@ -73,12 +73,11 @@ export const projectsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // CRUDL: GET actions
+    /** ----------------------------- FETCH ALL PROJECTS -------------------------------- */
     builder.addCase(fetchAllProjects.pending, (state) => {
       console.log('Fetching Projects');
       state.isLoading = true;
     });
-
     builder.addCase(fetchAllProjects.fulfilled, (state, { payload }) => {
       console.log('Fetched Projects!', payload);
 
@@ -88,21 +87,31 @@ export const projectsSlice = createSlice({
       state.data = payload.data;
       state.isLoading = false;
     });
-
     builder.addCase(fetchAllProjects.rejected, () => {});
 
-    // CRUDL: POST actions
+    /** -------------------------------- SAVE PROJECT ----------------------------------- */
     builder.addCase(saveProject.pending, () => {
       console.log('Creating Project...');
     });
-
     //Consider returning new project from API and updating here instead of refetching all
     builder.addCase(saveProject.fulfilled, () => {
       console.log('Created New Project!');
     });
-
     builder.addCase(saveProject.rejected, () => {});
 
+    /** -------------------------------- DELETE PROJECT ----------------------------------- */
+    builder.addCase(deleteProject.pending, () => {
+      console.log('Deleting Project');
+    });
+    builder.addCase(deleteProject.fulfilled, (state, { meta, payload }) => {
+      if (!payload.success) return;
+      state.data = state.data.filter((d: any) => d.id !== meta.arg.id);
+    });
+    builder.addCase(deleteProject.rejected, () => {
+      console.log('Failed to Delete Project');
+    });
+
+    /** --------------------------- FETCH PROJECT MEMBERS ------------------------------ */
     builder.addCase(fetchProjectMembers.pending, () => {});
     builder.addCase(fetchProjectMembers.fulfilled, (state, { payload }) => {
       if (!payload.success) {
@@ -112,12 +121,14 @@ export const projectsSlice = createSlice({
     });
     builder.addCase(fetchProjectMembers.rejected, () => {});
 
+    /** -------------------------------- SEND INVITE ----------------------------------- */
+
+    /** --------------------------- FETCH PROJECT ACTIVITY ----------------------------- */
     builder.addCase(fetchActivity.pending, (state) => {});
     builder.addCase(fetchActivity.fulfilled, (state, { payload }) => {
       if (!payload.success) {
         console.log('error activity');
       }
-
       state.activity = payload.data;
     });
     builder.addCase(fetchActivity.rejected, () => {});

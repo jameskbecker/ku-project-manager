@@ -73,7 +73,6 @@ const ProjectTableRow = ({ project }: any) => {
   const handleDelete = (e: any) => {
     e.stopPropagation();
     dispatch(deleteProject({ id: project.id }));
-    dispatch(fetchAllProjects());
   };
 
   const OptionMenu = () => {
