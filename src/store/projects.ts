@@ -90,12 +90,14 @@ export const projectsSlice = createSlice({
     builder.addCase(fetchAllProjects.rejected, () => {});
 
     /** -------------------------------- SAVE PROJECT ----------------------------------- */
-    builder.addCase(saveProject.pending, () => {
+    builder.addCase(saveProject.pending, ({ payload }) => {
       console.log('Creating Project...');
     });
     //Consider returning new project from API and updating here instead of refetching all
-    builder.addCase(saveProject.fulfilled, () => {
+    builder.addCase(saveProject.fulfilled, (state, { payload }) => {
+      if (!payload.success || !payload.data) return;
       console.log('Created New Project!');
+      state.data = [...state.data, ...payload.data];
     });
     builder.addCase(saveProject.rejected, () => {});
 

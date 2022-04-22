@@ -42,7 +42,6 @@ const NewProjectModal = () => {
 
     try {
       dispatch(saveProject(payload));
-      dispatch(fetchAllProjects());
       dispatch(toggleNewProject());
     } catch (e) {
       console.error(e);
