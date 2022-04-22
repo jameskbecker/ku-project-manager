@@ -145,9 +145,9 @@ const Dashboard = () => {
       {/**@todo replace with context */}
       <NavBar pageName="Dashboard" />
       <Content>
+        <Todos />
         <Notifications />
         {/**@todo replace style attribute */}
-        <Todos />
 
         <UpcomingProjects />
       </Content>
