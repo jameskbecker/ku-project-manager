@@ -54,19 +54,7 @@ const ProjectOverview = () => {
   return (
     <Layout>
       <SideBar activePage="projects" />
-      <HeaderBar
-        pageName="All Projects"
-        Options={() => (
-          <FlexRow style={{ flex: '5 1' }}>
-            <SecondaryButton
-              icon={faSyncAlt}
-              onClick={handleRefresh}
-              round
-              light
-            />
-          </FlexRow>
-        )}
-      />
+      <HeaderBar pageName="All Projects" />
       <ControlBar />
 
       <Content>
