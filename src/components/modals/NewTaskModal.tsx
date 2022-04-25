@@ -87,17 +87,17 @@ const NewTaskModal = () => {
         />
 
         <TextInput label="Name" value={name} onChange={handleNameChange} />
-        <TextArea
-          label="Description"
-          value={description}
-          onChange={handleDescriptionChange}
-          max={500}
-        />
         <TextInput
           label="Priority"
           type="number"
           value={priority}
           onChange={handlePriorityChange}
+        />
+        <TextArea
+          label="Description"
+          value={description}
+          onChange={handleDescriptionChange}
+          max={500}
         />
 
         <Separator />
