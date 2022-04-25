@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { changeTheme, fetchAccountDetails } from '../../../store/settings';
 import { getCookie } from '../../../utils/cookie';
 import Button from '../../global/Button';
+import { FlexRow } from '../../global/Flex';
 import SelectInput from '../../global/input/SelectInput';
 import TextInput from '../../global/input/TextInput';
 import Panel from '../../global/Panel';
@@ -24,10 +25,11 @@ const Settings = () => {
   const history = useHistory();
 
   const [editMode, setEditMode] = useState(false);
+  const [resetPassword, setResetPassword] = useState(false);
   const [first, setFirst] = useState(accountFirstName);
   const [last, setLast] = useState(accountLastName);
   const [email, setEmail] = useState(accountEmail);
-  const [password, setPassword] = useState('••••••••••••');
+  const [password, setPassword] = useState('');
 
   useEffect(() => {
     if (!getCookie('kupm_user_id')) {
@@ -40,6 +42,9 @@ const Settings = () => {
 
   const toggleEditMode = () => {
     setEditMode(!editMode);
+  };
+  const toggleReset = () => {
+    setResetPassword(!resetPassword);
   };
 
   const handleFirstChange = () => {};
@@ -55,37 +60,71 @@ const Settings = () => {
     document.cookie = `kupm_theme=${value}; expires=${expiryDate};`;
   };
 
+  const DetailsForm = () => (
+    <>
+      <FlexRow>
+        <TextInput
+          label="First Name"
+          value={first}
+          onChange={handleFirstChange}
+          disabled={!editMode}
+        />
+        <TextInput
+          label="Last Name"
+          value={last}
+          onChange={handleLastChange}
+          disabled={!editMode}
+        />
+      </FlexRow>
+
+      <TextInput
+        label="Email"
+        value={email}
+        onChange={handleEmailChange}
+        disabled={!editMode}
+      />
+    </>
+  );
+
+  const PasswordForm = () => (
+    <>
+      <TextInput
+        label="Old Password"
+        value={password}
+        onChange={handlePasswordChange}
+      />
+      <TextInput
+        label="New Password"
+        value={password}
+        onChange={handlePasswordChange}
+      />
+      <TextInput
+        label="Confirm New Password"
+        value={password}
+        onChange={handlePasswordChange}
+      />
+    </>
+  );
+
   return (
     <Layout>
       <SideBar activePage="settings" />
       <NavBar pageName="Settings" />
       <Content>
         <Panel heading="Account" style={{ gridRow: 'span 2' }}>
-          <TextInput
-            label="First Name"
-            value={first}
-            onChange={handleFirstChange}
-            disabled={!editMode}
+          <DetailsForm />
+          <Button
+            light={!editMode}
+            text={editMode ? 'Save' : 'Update Details'}
+            onClick={toggleEditMode}
           />
-          <TextInput
-            label="Last Name"
-            value={last}
-            onChange={handleLastChange}
-            disabled={!editMode}
+          {resetPassword && <PasswordForm />}
+
+          <Button
+            light={!resetPassword}
+            text={resetPassword ? 'Save' : 'Reset Password'}
+            onClick={toggleReset}
           />
-          <TextInput
-            label="Email"
-            value={email}
-            onChange={handleEmailChange}
-            disabled={!editMode}
-          />
-          <TextInput
-            label="Password"
-            value={password}
-            onChange={handlePasswordChange}
-            disabled={!editMode}
-          />
-          <Button text={editMode ? 'Save' : 'Edit'} onClick={toggleEditMode} />
         </Panel>
 
         <Panel heading="Enrolment">
