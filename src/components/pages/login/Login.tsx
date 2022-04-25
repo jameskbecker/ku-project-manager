@@ -61,7 +61,9 @@ const Login = () => {
           <label style={{ flexGrow: 1 }}>
             Please enter your login details:
           </label>
-          <a href="/forgot">Forgot Password?</a>
+          <a href="/forgot" style={{ textDecoration: 'underline' }}>
+            Forgot Password?
+          </a>
         </FlexRow>
 
         <TextInput
