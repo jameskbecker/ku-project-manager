@@ -25,7 +25,6 @@ const Settings = () => {
       history.push('/login');
       return;
     }
-    dispatch(fetchAccountDetails());
     document.title = 'Settings | KUPM';
   }, []);
 

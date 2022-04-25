@@ -1,31 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { changeTheme, fetchAccountDetails } from '../../../store/settings';
-import { getCookie } from '../../../utils/cookie';
+import { fetchAccountDetails } from '../../../store/settings';
 import Button from '../../global/Button';
 import { FlexRow } from '../../global/Flex';
-import SelectInput from '../../global/input/SelectInput';
 import TextInput from '../../global/input/TextInput';
 import Panel from '../../global/Panel';
-import NavBar from '../../layout/HeaderBar';
-import Layout from '../../layout/Layout';
-import SideBar from '../../layout/SideBar';
-import Content from './Content';
 
 const AccountPanel = () => {
-  const { theme, accountFirstName, accountLastName, accountEmail } =
-    useSelector((state: any) => state.settings);
   const dispatch = useDispatch();
-  const history = useHistory();
+  const { accountFirstName, accountLastName, accountEmail } = useSelector(
+    (state: any) => state.settings
+  );
 
   const [editMode, setEditMode] = useState(false);
   const [resetPassword, setResetPassword] = useState(false);
-
-  const [first, setFirst] = useState(accountFirstName);
-  const [last, setLast] = useState(accountLastName);
-  const [email, setEmail] = useState(accountEmail);
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    dispatch(fetchAccountDetails());
+  }, []);
 
   const toggleEditMode = () => {
     setEditMode(!editMode);
@@ -44,13 +37,13 @@ const AccountPanel = () => {
       <FlexRow>
         <TextInput
           label="First Name"
-          value={first}
+          value={accountFirstName}
           onChange={handleFirstChange}
           disabled={!editMode}
         />
         <TextInput
           label="Last Name"
-          value={last}
+          value={accountLastName}
           onChange={handleLastChange}
           disabled={!editMode}
         />
@@ -58,7 +51,7 @@ const AccountPanel = () => {
 
       <TextInput
         label="Email"
-        value={email}
+        value={accountEmail}
         onChange={handleEmailChange}
         disabled={!editMode}
       />
