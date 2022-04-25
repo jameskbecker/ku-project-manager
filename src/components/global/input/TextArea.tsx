@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { InputWrapper } from './Input';
+import { InputField, InputWrapper } from './Input';
 
 export const StyledTextArea = styled.textarea<any>`
-  flex: 0 1 auto;
+  flex: 1 0 auto;
 
   position: relative;
   min-height: 6rem;
@@ -16,16 +16,10 @@ export const StyledTextArea = styled.textarea<any>`
   color: ${({ theme }) => theme.text};
   background: ${({ theme }) => theme.secondary};
   border: none;
-  border-radius: 5px;
   box-sizing: border-box;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0;
 
   resize: vertical;
-
-  label {
-    font-size: 1rem;
-    min-height: 1rem;
-  }
 
   :focus {
     outline: 0;
@@ -61,8 +55,10 @@ const TextArea = (props: any) => {
   return (
     <InputWrapper {...props}>
       {props.label && <label>{props.label}</label>}
-      <StyledTextArea {...props} onChange={handleOnChange} />
-      <Counter>{remainingCharacters}</Counter>
+      <InputField>
+        <StyledTextArea {...props} onChange={handleOnChange} />
+        <Counter>{remainingCharacters}</Counter>
+      </InputField>
     </InputWrapper>
   );
 };
