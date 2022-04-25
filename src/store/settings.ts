@@ -8,6 +8,7 @@ const initialState: any = {
   accountLastName: '',
   accountEmail: '',
   editDetails: false,
+  accountError: '',
 };
 
 export const fetchAccountDetails = createAsyncThunk(
@@ -24,6 +25,9 @@ export const settingsSlice = createSlice({
     },
     toggleEditDetails: (state) => {
       state.editDetails = !state.editDetails;
+    },
+    showAccountError: (state, { payload }) => {
+      state.accountError = payload;
     },
   },
   extraReducers: (builder) => {
@@ -44,5 +48,6 @@ export const settingsSlice = createSlice({
   },
 });
 
-export const { changeTheme, toggleEditDetails } = settingsSlice.actions;
+export const { changeTheme, toggleEditDetails, showAccountError } =
+  settingsSlice.actions;
 export default settingsSlice.reducer;

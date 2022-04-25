@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleEditDetails } from '../../../store/settings';
+import { ThemeContext } from 'styled-components';
+import { showAccountError, toggleEditDetails } from '../../../store/settings';
 import Button from '../../global/Button';
 import Panel from '../../global/Panel';
 import DetailsForm from './DetailsForm';
@@ -8,18 +9,26 @@ import PasswordForm from './PasswordForm';
 
 const AccountPanel = () => {
   const dispatch = useDispatch();
-  const { editDetails } = useSelector((state: any) => state.settings);
+  const theme = useContext(ThemeContext);
+  const { editDetails, accountError } = useSelector(
+    (state: any) => state.settings
+  );
   const [resetPassword, setResetPassword] = useState(false);
 
   const toggleEditMode = () => {
     dispatch(toggleEditDetails());
   };
-  const toggleReset = () => {
+
+  const handleReset = () => {
     setResetPassword(!resetPassword);
+    if (resetPassword) {
+      dispatch(showAccountError('Passwords do not match.'));
+    }
   };
 
   return (
     <Panel heading="Account" style={{ gridRow: 'span 2' }}>
+      <div style={{ color: theme.error }}>{accountError}</div>
       <DetailsForm />
       <Button
         text={editDetails ? 'Save' : 'Update Details'}
@@ -30,7 +39,7 @@ const AccountPanel = () => {
       <Button
         light={!resetPassword}
         text={resetPassword ? 'Save' : 'Reset Password'}
-        onClick={toggleReset}
+        onClick={handleReset}
       />
     </Panel>
   );
