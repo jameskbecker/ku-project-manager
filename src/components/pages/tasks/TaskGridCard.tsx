@@ -90,7 +90,7 @@ const TaskGridCard = ({ task }: any) => {
         items={[
           { label: 'Add Comment', onClick: handleAddComment },
           { label: 'Edit', onClick: handleEdit },
-          { label: 'Delete', onClick: handleDelete },
+          { label: 'Delete', onClick: handleDelete, color: theme.error },
         ]}
       >
         <SecondaryButton secondary icon={faEllipsisV} onClick={null} />

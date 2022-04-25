@@ -42,19 +42,20 @@ const Wrapper = styled(FlexColumn)`
 const ContextItem = styled(FlexRow)`
   justify-content: center;
 
-  white-space: nowrap;
   font-size: 0.75rem;
   font-weight: 500;
   text-align: center;
+  color: ${({ color, theme }) => (color ? color : theme.textBody)};
   background: transparent;
   padding: 0.5rem 2rem;
   border-radius: 0.5rem;
 
   cursor: pointer;
+  white-space: nowrap;
 
   :hover {
     color: ${({ theme }) => theme.textBrand};
-    background: ${({ theme }) => theme.brand};
+    background: ${({ color, theme }) => (color ? color : theme.brand)};
     transition: 0.5s ease-in-out;
   }
 `;
@@ -72,7 +73,7 @@ const ContextMenu = (props: any) => {
       {visible && (
         <StyledContextMenu>
           {props.items.map((item: any, i: number) => (
-            <ContextItem key={i} onClick={item.onClick}>
+            <ContextItem key={i} onClick={item.onClick} color={item.color}>
               {item.label}
             </ContextItem>
           ))}

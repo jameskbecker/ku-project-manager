@@ -46,7 +46,7 @@ const UpcomingPanel = ({ project }: UpcomingPanelProps) => {
       <ContextMenu
         items={[
           { label: 'Invite Member', onClick: null },
-          { label: 'Delete Project', onClick: null },
+          { label: 'Delete Project', onClick: null, color: theme.error },
         ]}
       >
         <SecondaryButton secondary icon={faEllipsisV} onClick={null} />

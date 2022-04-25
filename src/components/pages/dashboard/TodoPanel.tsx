@@ -1,9 +1,9 @@
 import { faSquare } from '@fortawesome/free-regular-svg-icons';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import { Task } from '../../../types';
 import { SecondaryButton } from '../../global/Button';
 import ContextMenu from '../../global/ContextMenu';
@@ -34,6 +34,7 @@ const StyledIcon = styled(FontAwesomeIcon)`
 
 const TodoPanel = ({ data }: any) => {
   const history = useHistory();
+  const theme = useContext(ThemeContext);
 
   const handleClick = () => {
     history.push(`/projects/${data.projectId}/${data.id}`);
@@ -45,7 +46,7 @@ const TodoPanel = ({ data }: any) => {
         items={[
           { label: 'Add Comment', onClick: null },
           { label: 'Edit', onClick: null },
-          { label: 'Delete', onClick: null },
+          { label: 'Delete', onClick: null, color: theme },
         ]}
       >
         <SecondaryButton secondary icon={faEllipsisV} onClick={null} />

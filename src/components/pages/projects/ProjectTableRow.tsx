@@ -80,7 +80,11 @@ const ProjectTableRow = ({ project }: any) => {
       <ContextMenu
         items={[
           { label: 'Invite Member', onClick: handleInvite },
-          { label: 'Delete Project', onClick: handleDelete },
+          {
+            label: 'Delete Project',
+            onClick: handleDelete,
+            color: theme.error,
+          },
         ]}
       >
         <SecondaryButton secondary icon={faEllipsisV} onClick={null} />
