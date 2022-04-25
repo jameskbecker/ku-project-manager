@@ -1,13 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { changeTheme, fetchAccountDetails } from '../../../store/settings';
 import { getCookie } from '../../../utils/cookie';
-import Button from '../../global/Button';
-import { FlexRow } from '../../global/Flex';
-import SelectInput from '../../global/input/SelectInput';
-import TextInput from '../../global/input/TextInput';
-import Panel from '../../global/Panel';
 import NavBar from '../../layout/HeaderBar';
 import Layout from '../../layout/Layout';
 import SideBar from '../../layout/SideBar';
@@ -17,7 +10,6 @@ import Content from './Content';
 import EnrolmentPanel from './EnrolmentPanel';
 
 const Settings = () => {
-  const dispatch = useDispatch();
   const history = useHistory();
 
   useEffect(() => {
