@@ -12,12 +12,6 @@ import Panel from '../../global/Panel';
 import Separator from '../../global/Separator';
 import LoginHeader from './LoginHeader';
 
-const userIds = {
-  joseph: '39aeec9a-b8bb-11ec-a034-02e4fd6e79c6',
-  eddie: '4727bca9-b8bb-11ec-a034-02e4fd6e79c6',
-  alan: '63a74276-b8bb-11ec-a034-02e4fd6e79c6',
-};
-
 const Login = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -83,23 +77,6 @@ const Login = () => {
           <Button text="Sign In" round onClick={handleLogin} />
         </ModalFooter>
       </Panel>
-      <FlexRow style={{ position: 'absolute', right: 12, bottom: 12 }}>
-        <Button
-          light
-          text="Login as Joseph"
-          onClick={() => handleMockLogin(userIds.joseph)}
-        />
-        <Button
-          light
-          text="Login as Eddie"
-          onClick={() => handleMockLogin(userIds.eddie)}
-        />
-        <Button
-          light
-          text="Login as Alan"
-          onClick={() => handleMockLogin(userIds.alan)}
-        />
-      </FlexRow>
     </FlexColumn>
   );
 };
