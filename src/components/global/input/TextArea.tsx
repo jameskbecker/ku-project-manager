@@ -19,7 +19,7 @@ export const StyledTextArea = styled.textarea<any>`
   box-sizing: border-box;
   padding: 0.5rem 0;
 
-  resize: vertical;
+  resize: none;
 
   :focus {
     outline: 0;
