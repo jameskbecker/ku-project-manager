@@ -5,6 +5,7 @@ import Button from '../../global/Button';
 import { FlexRow } from '../../global/Flex';
 import TextInput from '../../global/input/TextInput';
 import Panel from '../../global/Panel';
+import PasswordForm from './PasswordForm';
 
 const AccountPanel = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,6 @@ const AccountPanel = () => {
 
   const [editMode, setEditMode] = useState(false);
   const [resetPassword, setResetPassword] = useState(false);
-  const [password, setPassword] = useState('');
 
   useEffect(() => {
     dispatch(fetchAccountDetails());
@@ -30,7 +30,6 @@ const AccountPanel = () => {
   const handleFirstChange = () => {};
   const handleLastChange = () => {};
   const handleEmailChange = () => {};
-  const handlePasswordChange = () => {};
 
   const DetailsForm = () => (
     <>
@@ -54,26 +53,6 @@ const AccountPanel = () => {
         value={accountEmail}
         onChange={handleEmailChange}
         disabled={!editMode}
-      />
-    </>
-  );
-
-  const PasswordForm = () => (
-    <>
-      <TextInput
-        label="Old Password"
-        value={password}
-        onChange={handlePasswordChange}
-      />
-      <TextInput
-        label="New Password"
-        value={password}
-        onChange={handlePasswordChange}
-      />
-      <TextInput
-        label="Confirm New Password"
-        value={password}
-        onChange={handlePasswordChange}
       />
     </>
   );
