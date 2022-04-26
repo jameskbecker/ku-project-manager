@@ -5,7 +5,7 @@ import Logo from '@kupm/components/common/Logo';
 import { ModalFooter } from '@kupm/components/common/Modal';
 import Panel from '@kupm/components/common/Panel';
 import Separator from '@kupm/components/common/Separator';
-import LoginHeader from '@kupm/components/pages/login/LoginHeader';
+import LoginHeader from '@kupm/components/login/LoginHeader';
 import { postLogin } from '@kupm/store/auth';
 import { fetchAccountDetails } from '@kupm/store/settings';
 import React, { useState } from 'react';

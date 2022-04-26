@@ -1,10 +1,10 @@
 import NavBar from '@kupm/components/layout/HeaderBar';
 import Layout from '@kupm/components/layout/Layout';
 import SideBar from '@kupm/components/layout/SideBar';
-import AccountPanel from '@kupm/components/pages/settings/AccountPanel';
-import AppearancePanel from '@kupm/components/pages/settings/AppearancePanel';
-import Content from '@kupm/components/pages/settings/Content';
-import EnrolmentPanel from '@kupm/components/pages/settings/EnrolmentPanel';
+import AccountPanel from '@kupm/components/settings/AccountPanel';
+import AppearancePanel from '@kupm/components/settings/AppearancePanel';
+import Content from '@kupm/components/settings/Content';
+import EnrolmentPanel from '@kupm/components/settings/EnrolmentPanel';
 import { getCookie } from '@kupm/utils/cookie';
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';

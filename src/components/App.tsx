@@ -1,11 +1,11 @@
 import Global from '@kupm/components/common/Global';
-import Dashboard from '@kupm/components/pages/dashboard/Dashboard';
-import Forgot from '@kupm/components/pages/forgot/Forgot';
-import Login from '@kupm/components/pages/login/Login';
-import ProjectOverview from '@kupm/components/pages/projects/Projects';
-import Register from '@kupm/components/pages/register/Register';
-import Settings from '@kupm/components/pages/settings/Settings';
-import Project from '@kupm/components/pages/tasks/Tasks';
+import Dashboard from '@kupm/components/dashboard/Dashboard';
+import Forgot from '@kupm/components/forgot/Forgot';
+import Login from '@kupm/components/login/Login';
+import ProjectOverview from '@kupm/components/projects/Projects';
+import Register from '@kupm/components/register/Register';
+import Settings from '@kupm/components/settings/Settings';
+import Project from '@kupm/components/tasks/Tasks';
 import light, { dark } from '@kupm/theme';
 import React from 'react';
 import { useSelector } from 'react-redux';

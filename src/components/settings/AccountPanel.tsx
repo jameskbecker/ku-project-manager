@@ -1,7 +1,7 @@
 import Button from '@kupm/components/common/Button';
 import Panel from '@kupm/components/common/Panel';
-import DetailsForm from '@kupm/components/pages/settings/DetailsForm';
-import PasswordForm from '@kupm/components/pages/settings/PasswordForm';
+import DetailsForm from '@kupm/components/settings/DetailsForm';
+import PasswordForm from '@kupm/components/settings/PasswordForm';
 import { showAccountError, toggleEditDetails } from '@kupm/store/settings';
 import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

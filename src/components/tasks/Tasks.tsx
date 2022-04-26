@@ -8,10 +8,10 @@ import InviteModal from '@kupm/components/modals/InviteModal';
 import MembersModal from '@kupm/components/modals/MembersModal';
 import NewProjectModal from '@kupm/components/modals/NewProjectModal';
 import NewTaskModal from '@kupm/components/modals/NewTaskModal';
-import ActivityFeed from '@kupm/components/pages/tasks/ActivityFeed';
-import Content from '@kupm/components/pages/tasks/Content';
-import ControlBar from '@kupm/components/pages/tasks/ControlBar';
-import TaskGrid from '@kupm/components/pages/tasks/TaskGrid';
+import ActivityFeed from '@kupm/components/tasks/ActivityFeed';
+import Content from '@kupm/components/tasks/Content';
+import ControlBar from '@kupm/components/tasks/ControlBar';
+import TaskGrid from '@kupm/components/tasks/TaskGrid';
 import {
   fetchAllProjects,
   selectProject,
