@@ -1,23 +1,23 @@
+import { faPencilAlt, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import { SecondaryButton } from '@kupm/common/Button';
 import { FlexRow } from '@kupm/common/Flex';
 import HeaderBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
 import SideBar from '@kupm/common/layout/SideBar';
-import AddCommentModal from '@kupm/features/tasks/AddComment';
 import InviteModal from '@kupm/features/projects/InviteModal';
 import MembersModal from '@kupm/features/projects/MembersModal';
 import NewProjectModal from '@kupm/features/projects/NewProjectModal';
-import NewTaskModal from '@kupm/features/tasks/NewTaskModal';
-import ActivityFeed from '@kupm/features/tasks/ActivityFeed';
-import Content from '@kupm/features/tasks/Content';
-import ControlBar from '@kupm/features/tasks/ControlBar';
-import TaskGrid from '@kupm/features/tasks/TaskGrid';
 import {
-  fetchAllProjects,
   selectProject,
   toggleNewProject,
 } from '@kupm/features/projects/projectsSlice';
 import { fetchAccountDetails } from '@kupm/features/settings/settingsSlice';
+import ActivityFeed from '@kupm/features/tasks/ActivityFeed';
+import AddCommentModal from '@kupm/features/tasks/AddComment';
+import Content from '@kupm/features/tasks/Content';
+import ControlBar from '@kupm/features/tasks/ControlBar';
+import NewTaskModal from '@kupm/features/tasks/NewTaskModal';
+import TaskGrid from '@kupm/features/tasks/TaskGrid';
 import {
   fetchProjectTasks,
   fetchSubTasks,
@@ -26,7 +26,6 @@ import {
 } from '@kupm/features/tasks/tasksSlice';
 import { Project } from '@kupm/types';
 import { getCookie } from '@kupm/utils/cookie';
-import { faPencilAlt, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
@@ -54,7 +53,7 @@ const Project = () => {
     dispatch(selectTask(taskId));
 
     //change to specific project
-    dispatch(fetchAllProjects());
+    //dispatch(fetchAllProjects());
 
     if (taskId) dispatch(fetchSubTasks({ taskId }));
     else dispatch(fetchProjectTasks({ projectId: id }));

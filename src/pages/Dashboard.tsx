@@ -1,21 +1,21 @@
+import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import { SecondaryButton } from '@kupm/common/Button';
-import Panel from '@kupm/common/Panel';
-import ScrollContainer from '@kupm/common/ScrollContainer';
 import NavBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
 import SideBar from '@kupm/common/layout/SideBar';
+import Panel from '@kupm/common/Panel';
+import ScrollContainer from '@kupm/common/ScrollContainer';
+import { useGetProjectsQuery } from '@kupm/features/api/apiSlice';
 import Content from '@kupm/features/dashboard/Content';
-import NotificationPanel from '@kupm/features/dashboard/NotificationPanel';
-import TodoPanel from '@kupm/features/dashboard/TodoPanel';
-import UpcomingPanel from '@kupm/features/dashboard/UpcomingPanel';
 import {
   fetchNotifications,
   fetchTodo,
 } from '@kupm/features/dashboard/dashboardSlice';
-import { fetchAllProjects } from '@kupm/features/projects/projectsSlice';
+import NotificationPanel from '@kupm/features/dashboard/NotificationPanel';
+import TodoPanel from '@kupm/features/dashboard/TodoPanel';
+import UpcomingPanel from '@kupm/features/dashboard/UpcomingPanel';
 import { fetchAccountDetails } from '@kupm/features/settings/settingsSlice';
 import { getCookie } from '@kupm/utils/cookie';
-import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -33,7 +33,10 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { notifications, todo } = useSelector((state: any) => state.dashboard);
-  const { data, filter } = useSelector((state: any) => state.projects);
+  const { filter } = useSelector((state: any) => state.projects);
+
+  const { data: projects, refetch: refetchProjects } =
+    useGetProjectsQuery(null);
 
   useEffect(() => {
     if (!getCookie('kupm_user_id')) {
@@ -44,15 +47,10 @@ const Dashboard = () => {
     dispatch(fetchAccountDetails());
     dispatch(fetchNotifications());
     dispatch(fetchTodo());
-    dispatch(fetchAllProjects());
   }, []);
 
   const handleNotificationRefresh = () => {
     dispatch(fetchNotifications());
-  };
-
-  const handleProjectRefresh = () => {
-    dispatch(fetchAllProjects());
   };
 
   const handleTodoRefresh = () => {
@@ -95,17 +93,17 @@ const Dashboard = () => {
           <SecondaryButton
             secondary
             icon={faSyncAlt}
-            onClick={handleProjectRefresh}
+            onClick={refetchProjects}
             round
             light
           />
         }
       >
-        {data.length < 1 ? (
+        {projects?.data.length < 1 ? (
           <DataPlaceholder>No Upcoming Projects</DataPlaceholder>
         ) : (
           <ScrollContainer>
-            {data.map((p: any, i: number) => (
+            {projects?.data.map((p: any, i: number) => (
               <UpcomingPanel key={i} project={p} />
             ))}
           </ScrollContainer>

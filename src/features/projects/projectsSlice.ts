@@ -1,12 +1,11 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { postInvite } from '@kupm/features/api/invites';
 import {
   deleteProjectRequest,
   getProjectActiviy,
   getProjectMembers,
-  getProjects,
   postProject,
 } from '@kupm/features/api/projects';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState: any = {
   showNewProject: false,
@@ -20,10 +19,10 @@ const initialState: any = {
   activity: [],
 };
 
-export const fetchAllProjects = createAsyncThunk(
-  'projects/getProjects',
-  getProjects
-);
+// export const fetchAllProjects = createAsyncThunk(
+//   'projects/getProjects',
+//   getProjects
+// );
 
 // Used for PUT and POST
 export const saveProject = createAsyncThunk(
@@ -74,20 +73,20 @@ export const projectsSlice = createSlice({
   },
   extraReducers: (builder) => {
     /** ----------------------------- FETCH ALL PROJECTS -------------------------------- */
-    builder.addCase(fetchAllProjects.pending, (state) => {
-      console.log('Fetching Projects');
-      state.isLoading = true;
-    });
-    builder.addCase(fetchAllProjects.fulfilled, (state, { payload }) => {
-      console.log('Fetched Projects!', payload);
+    // builder.addCase(fetchAllProjects.pending, (state) => {
+    //   console.log('Fetching Projects');
+    //   state.isLoading = true;
+    // });
+    // builder.addCase(fetchAllProjects.fulfilled, (state, { payload }) => {
+    //   console.log('Fetched Projects!', payload);
 
-      // Avoid unneccesary rerenders
-      if (state.data === payload.data) return;
+    //   // Avoid unneccesary rerenders
+    //   if (state.data === payload.data) return;
 
-      state.data = payload.data;
-      state.isLoading = false;
-    });
-    builder.addCase(fetchAllProjects.rejected, () => {});
+    //   state.data = payload.data;
+    //   state.isLoading = false;
+    // });
+    // builder.addCase(fetchAllProjects.rejected, () => {});
 
     /** -------------------------------- SAVE PROJECT ----------------------------------- */
     builder.addCase(saveProject.pending, ({ payload }) => {

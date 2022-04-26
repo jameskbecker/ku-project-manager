@@ -1,15 +1,3 @@
-import { SecondaryButton } from '@kupm/common/Button';
-import ContextMenu from '@kupm/common/ContextMenu';
-import Panel from '@kupm/common/Panel';
-import { TableCell } from '@kupm/common/Table';
-import {
-  deleteProject,
-  fetchAllProjects,
-  saveProject,
-  selectProject,
-  toggleInvite,
-  toggleNewProject,
-} from '@kupm/features/projects/projectsSlice';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import {
   faCheckCircle,
@@ -17,11 +5,23 @@ import {
   faPencilAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { SecondaryButton } from '@kupm/common/Button';
+import ContextMenu from '@kupm/common/ContextMenu';
+import Panel from '@kupm/common/Panel';
+import { TableCell } from '@kupm/common/Table';
+import {
+  deleteProject,
+  saveProject,
+  selectProject,
+  toggleInvite,
+  toggleNewProject,
+} from '@kupm/features/projects/projectsSlice';
 import { formatDistance } from 'date-fns';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
+import { useGetProjectsQuery } from '../api/apiSlice';
 
 const Wrapper = styled(Panel)`
   gap: 1rem;
@@ -47,6 +47,7 @@ const ProjectTableRow = ({ project }: any) => {
   const theme = useContext(ThemeContext);
   const history = useHistory();
   const dispatch = useDispatch();
+  const { refetch: refetchProjects } = useGetProjectsQuery(null);
 
   const handleSelect = () => {
     history.push(`/projects/${project.id}`);
@@ -55,7 +56,7 @@ const ProjectTableRow = ({ project }: any) => {
   const handleComplete = (e: any) => {
     e.stopPropagation();
     dispatch(saveProject({ id: project.id, is_complete: !project.isComplete }));
-    dispatch(fetchAllProjects());
+    refetchProjects();
   };
 
   const handleEdit = (e: any) => {

@@ -1,11 +1,11 @@
 import { getCookie } from '@kupm/utils/cookie';
 declare const BASE_URL: string;
 
-export const getProjects = async () => {
-  const userId = getCookie('kupm_user_id');
-  const res = await fetch(`${BASE_URL}/api/projects?userId=${userId}`);
-  return await res.json();
-};
+// export const getProjects = async () => {
+//   const userId = getCookie('kupm_user_id');
+//   const res = await fetch(`${BASE_URL}/api/projects?userId=${userId}`);
+//   return await res.json();
+// };
 
 export const postProject = async (payload: any) => {
   const { id } = payload;
