@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import App from '@kupm/components/App';
+import App from '@kupm/App';
 import configureStore from '@kupm/store/configureStore';
 
 const Root = () => (
