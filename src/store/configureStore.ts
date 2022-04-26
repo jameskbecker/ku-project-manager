@@ -1,4 +1,4 @@
-import authReducer from '@kupm/features/login/authSlice';
+import authReducer from '@kupm/features/auth/authSlice';
 import dashboardReducer from '@kupm/features/dashboard/dashboardSlice';
 import projectsReducer from '@kupm/features/projects/projectsSlice';
 import settingsReducer from '@kupm/features/settings/settingsSlice';

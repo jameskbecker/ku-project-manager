@@ -4,7 +4,7 @@ import TextInput from '@kupm/common/input/TextInput';
 import { ModalFooter } from '@kupm/common/Modal';
 import Panel from '@kupm/common/Panel';
 import Separator from '@kupm/common/Separator';
-import { postRegister } from '@kupm/features/login/authSlice';
+import { postRegister } from '@kupm/features/auth/authSlice';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
