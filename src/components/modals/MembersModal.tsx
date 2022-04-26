@@ -1,15 +1,15 @@
-import Button, { SecondaryButton } from '@/components/global/Button';
-import { FlexColumn, FlexRow } from '@/components/global/Flex';
+import Button, { SecondaryButton } from '@kupm/components/global/Button';
+import { FlexColumn, FlexRow } from '@kupm/components/global/Flex';
 import {
   ModalBackdrop,
   ModalContent,
   ModalFooter,
-} from '@/components/global/Modal';
-import Panel from '@/components/global/Panel';
-import ScrollContainer from '@/components/global/ScrollContainer';
-import Separator from '@/components/global/Separator';
-import { fetchProjectMembers } from '@/store/projects';
-import { toggleMembers } from '@/store/tasks';
+} from '@kupm/components/global/Modal';
+import Panel from '@kupm/components/global/Panel';
+import ScrollContainer from '@kupm/components/global/ScrollContainer';
+import Separator from '@kupm/components/global/Separator';
+import { fetchProjectMembers } from '@kupm/store/projects';
+import { toggleMembers } from '@kupm/store/tasks';
 import {
   faEye,
   faPencilAlt,

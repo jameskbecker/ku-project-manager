@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import TextInput from '@/components/global/input/TextInput';
+import TextInput from '@kupm/components/global/input/TextInput';
 
 const PasswordForm = () => {
   const [password, setPassword] = useState('');

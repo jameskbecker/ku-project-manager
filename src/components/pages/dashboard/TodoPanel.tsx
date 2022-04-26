@@ -4,11 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
-import { Task } from '@/types';
-import { SecondaryButton } from '@/components/global/Button';
-import ContextMenu from '@/components/global/ContextMenu';
-import { FlexColumn, FlexRow } from '@/components/global/Flex';
-import Panel from '@/components/global/Panel';
+import { Task } from '@kupm/types';
+import { SecondaryButton } from '@kupm/components/global/Button';
+import ContextMenu from '@kupm/components/global/ContextMenu';
+import { FlexColumn, FlexRow } from '@kupm/components/global/Flex';
+import Panel from '@kupm/components/global/Panel';
 
 type TodoPanelProps = {
   todo: Task;

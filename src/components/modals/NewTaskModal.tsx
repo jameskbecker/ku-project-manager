@@ -1,19 +1,19 @@
-import Button from '@/components/global/Button';
-import SelectInput from '@/components/global/input/SelectInput';
-import TextArea from '@/components/global/input/TextArea';
-import TextInput from '@/components/global/input/TextInput';
+import Button from '@kupm/components/global/Button';
+import SelectInput from '@kupm/components/global/input/SelectInput';
+import TextArea from '@kupm/components/global/input/TextArea';
+import TextInput from '@kupm/components/global/input/TextInput';
 import {
   ModalBackdrop,
   ModalContent,
   ModalFooter,
-} from '@/components/global/Modal';
-import Separator from '@/components/global/Separator';
+} from '@kupm/components/global/Modal';
+import Separator from '@kupm/components/global/Separator';
 import {
   fetchProjectTasks,
   saveTask,
   selectTask,
   toggleNewTask,
-} from '@/store/tasks';
+} from '@kupm/store/tasks';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 

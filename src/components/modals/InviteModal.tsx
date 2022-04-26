@@ -1,13 +1,13 @@
-import Button from '@/components/global/Button';
-import SelectInput from '@/components/global/input/SelectInput';
-import TextInput from '@/components/global/input/TextInput';
+import Button from '@kupm/components/global/Button';
+import SelectInput from '@kupm/components/global/input/SelectInput';
+import TextInput from '@kupm/components/global/input/TextInput';
 import {
   ModalBackdrop,
   ModalContent,
   ModalFooter,
-} from '@/components/global/Modal';
-import Separator from '@/components/global/Separator';
-import { sendInvite, toggleInvite } from '@/store/projects';
+} from '@kupm/components/global/Modal';
+import Separator from '@kupm/components/global/Separator';
+import { sendInvite, toggleInvite } from '@kupm/store/projects';
 import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeContext } from 'styled-components';

@@ -1,6 +1,6 @@
-import ContextMenu from '@/components/global/ContextMenu';
-import { FlexRow } from '@/components/global/Flex';
-import { VerticalSeparator } from '@/components/global/Separator';
+import ContextMenu from '@kupm/components/global/ContextMenu';
+import { FlexRow } from '@kupm/components/global/Flex';
+import { VerticalSeparator } from '@kupm/components/global/Separator';
 import {
   faBars,
   faChevronDown,

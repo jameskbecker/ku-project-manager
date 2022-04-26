@@ -1,8 +1,8 @@
-import authReducer from '@/store/auth';
-import dashboardReducer from '@/store/dashboard';
-import projectsReducer from '@/store/projects';
-import settingsReducer from '@/store/settings';
-import tasksReducer from '@/store/tasks';
+import authReducer from '@kupm/store/auth';
+import dashboardReducer from '@kupm/store/dashboard';
+import projectsReducer from '@kupm/store/projects';
+import settingsReducer from '@kupm/store/settings';
+import tasksReducer from '@kupm/store/tasks';
 import { configureStore } from '@reduxjs/toolkit';
 
 export default configureStore({

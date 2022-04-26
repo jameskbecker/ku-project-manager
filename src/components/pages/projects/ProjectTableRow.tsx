@@ -1,7 +1,7 @@
-import { SecondaryButton } from '@/components/global/Button';
-import ContextMenu from '@/components/global/ContextMenu';
-import Panel from '@/components/global/Panel';
-import { TableCell } from '@/components/global/Table';
+import { SecondaryButton } from '@kupm/components/global/Button';
+import ContextMenu from '@kupm/components/global/ContextMenu';
+import Panel from '@kupm/components/global/Panel';
+import { TableCell } from '@kupm/components/global/Table';
 import {
   deleteProject,
   fetchAllProjects,
@@ -9,7 +9,7 @@ import {
   selectProject,
   toggleInvite,
   toggleNewProject,
-} from '@/store/projects';
+} from '@kupm/store/projects';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import {
   faCheckCircle,

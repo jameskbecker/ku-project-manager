@@ -1,6 +1,6 @@
-import SelectInput from '@/components/global/input/SelectInput';
-import Panel from '@/components/global/Panel';
-import { changeTheme } from '@/store/settings';
+import SelectInput from '@kupm/components/global/input/SelectInput';
+import Panel from '@kupm/components/global/Panel';
+import { changeTheme } from '@kupm/store/settings';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 

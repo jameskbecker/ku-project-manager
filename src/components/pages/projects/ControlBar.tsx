@@ -1,12 +1,12 @@
-import Button from '@/components/global/Button';
-import { FlexRow } from '@/components/global/Flex';
-import TextInput from '@/components/global/input/TextInput';
+import Button from '@kupm/components/global/Button';
+import { FlexRow } from '@kupm/components/global/Flex';
+import TextInput from '@kupm/components/global/input/TextInput';
 import {
   applyFilter,
   selectProject,
   toggleDeleteAll,
   toggleNewProject,
-} from '@/store/projects';
+} from '@kupm/store/projects';
 import {
   faPlus,
   faSearch,

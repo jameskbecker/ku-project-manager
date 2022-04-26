@@ -1,8 +1,8 @@
-import Button from '@/components/global/Button';
-import Panel from '@/components/global/Panel';
-import DetailsForm from '@/components/pages/settings/DetailsForm';
-import PasswordForm from '@/components/pages/settings/PasswordForm';
-import { showAccountError, toggleEditDetails } from '@/store/settings';
+import Button from '@kupm/components/global/Button';
+import Panel from '@kupm/components/global/Panel';
+import DetailsForm from '@kupm/components/pages/settings/DetailsForm';
+import PasswordForm from '@kupm/components/pages/settings/PasswordForm';
+import { showAccountError, toggleEditDetails } from '@kupm/store/settings';
 import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeContext } from 'styled-components';

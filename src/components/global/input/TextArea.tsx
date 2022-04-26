@@ -1,4 +1,4 @@
-import { InputField, InputWrapper } from '@/components/global/input/Input';
+import { InputField, InputWrapper } from '@kupm/components/global/input/Input';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Project } from '@/types';
-import Panel from '@/components/global/Panel';
+import { Project } from '@kupm/types';
+import Panel from '@kupm/components/global/Panel';
 
 type ProjectPanelProps = {
   project: Project;

@@ -1,4 +1,4 @@
-import { getCookie } from '@/utils/cookie';
+import { getCookie } from '@kupm/utils/cookie';
 declare const BASE_URL: string;
 
 export const postInvite = async (payload: any) => {

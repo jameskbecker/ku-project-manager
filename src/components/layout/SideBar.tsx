@@ -1,5 +1,5 @@
-import { FlexColumn } from '@/components/global/Flex';
-import Footer from '@/components/layout/Footer';
+import { FlexColumn } from '@kupm/components/global/Flex';
+import Footer from '@kupm/components/layout/Footer';
 import {
   faCogs,
   faList,

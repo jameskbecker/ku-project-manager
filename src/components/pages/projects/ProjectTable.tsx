@@ -1,6 +1,6 @@
-import { FlexColumn } from '@/components/global/Flex';
-import { TableHeader } from '@/components/global/Table';
-import ProjectTableRow from '@/components/pages/projects/ProjectTableRow';
+import { FlexColumn } from '@kupm/components/global/Flex';
+import { TableHeader } from '@kupm/components/global/Table';
+import ProjectTableRow from '@kupm/components/pages/projects/ProjectTableRow';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';

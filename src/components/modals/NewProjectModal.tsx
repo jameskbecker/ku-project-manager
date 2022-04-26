@@ -1,14 +1,14 @@
-import Button from '@/components/global/Button';
-import TextArea from '@/components/global/input/TextArea';
-import TextInput from '@/components/global/input/TextInput';
+import Button from '@kupm/components/global/Button';
+import TextArea from '@kupm/components/global/input/TextArea';
+import TextInput from '@kupm/components/global/input/TextInput';
 import {
   ModalBackdrop,
   ModalContent,
   ModalFooter,
-} from '@/components/global/Modal';
-import Separator from '@/components/global/Separator';
-import { saveProject, toggleNewProject } from '@/store/projects';
-import { getCookie } from '@/utils/cookie';
+} from '@kupm/components/global/Modal';
+import Separator from '@kupm/components/global/Separator';
+import { saveProject, toggleNewProject } from '@kupm/store/projects';
+import { getCookie } from '@kupm/utils/cookie';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 

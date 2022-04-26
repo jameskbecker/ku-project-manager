@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import App from '@/components/App';
-import configureStore from '@/store/configureStore';
+import App from '@kupm/components/App';
+import configureStore from '@kupm/store/configureStore';
 
 const Root = () => (
   <Provider store={configureStore}>

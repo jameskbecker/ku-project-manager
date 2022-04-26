@@ -1,5 +1,5 @@
-import { FlexColumn, FlexRow } from '@/components/global/Flex';
-import TextInput from '@/components/global/input/TextInput';
+import { FlexColumn, FlexRow } from '@kupm/components/global/Flex';
+import TextInput from '@kupm/components/global/input/TextInput';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CSSProperties } from 'react';
 import styled, { css } from 'styled-components';

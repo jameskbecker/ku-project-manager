@@ -1,4 +1,4 @@
-import Panel from '@/components/global/Panel';
+import Panel from '@kupm/components/global/Panel';
 import styled from 'styled-components';
 
 export const ModalBackdrop = styled.div`

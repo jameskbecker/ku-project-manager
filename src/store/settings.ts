@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getAccountDetails } from '@/api/users';
-import { getCookie } from '@/utils/cookie';
+import { getAccountDetails } from '@kupm/api/users';
+import { getCookie } from '@kupm/utils/cookie';
 
 const initialState: any = {
   theme: getCookie('kupm_theme') || 'light',

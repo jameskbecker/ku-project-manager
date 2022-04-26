@@ -1,31 +1,31 @@
-import { SecondaryButton } from '@/components/global/Button';
-import { FlexRow } from '@/components/global/Flex';
-import HeaderBar from '@/components/layout/HeaderBar';
-import Layout from '@/components/layout/Layout';
-import SideBar from '@/components/layout/SideBar';
-import AddCommentModal from '@/components/modals/AddComment';
-import InviteModal from '@/components/modals/InviteModal';
-import MembersModal from '@/components/modals/MembersModal';
-import NewProjectModal from '@/components/modals/NewProjectModal';
-import NewTaskModal from '@/components/modals/NewTaskModal';
-import ActivityFeed from '@/components/pages/tasks/ActivityFeed';
-import Content from '@/components/pages/tasks/Content';
-import ControlBar from '@/components/pages/tasks/ControlBar';
-import TaskGrid from '@/components/pages/tasks/TaskGrid';
+import { SecondaryButton } from '@kupm/components/global/Button';
+import { FlexRow } from '@kupm/components/global/Flex';
+import HeaderBar from '@kupm/components/layout/HeaderBar';
+import Layout from '@kupm/components/layout/Layout';
+import SideBar from '@kupm/components/layout/SideBar';
+import AddCommentModal from '@kupm/components/modals/AddComment';
+import InviteModal from '@kupm/components/modals/InviteModal';
+import MembersModal from '@kupm/components/modals/MembersModal';
+import NewProjectModal from '@kupm/components/modals/NewProjectModal';
+import NewTaskModal from '@kupm/components/modals/NewTaskModal';
+import ActivityFeed from '@kupm/components/pages/tasks/ActivityFeed';
+import Content from '@kupm/components/pages/tasks/Content';
+import ControlBar from '@kupm/components/pages/tasks/ControlBar';
+import TaskGrid from '@kupm/components/pages/tasks/TaskGrid';
 import {
   fetchAllProjects,
   selectProject,
   toggleNewProject,
-} from '@/store/projects';
-import { fetchAccountDetails } from '@/store/settings';
+} from '@kupm/store/projects';
+import { fetchAccountDetails } from '@kupm/store/settings';
 import {
   fetchProjectTasks,
   fetchSubTasks,
   selectTask,
   toggleNewTask,
-} from '@/store/tasks';
-import { Project } from '@/types';
-import { getCookie } from '@/utils/cookie';
+} from '@kupm/store/tasks';
+import { Project } from '@kupm/types';
+import { getCookie } from '@kupm/utils/cookie';
 import { faPencilAlt, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

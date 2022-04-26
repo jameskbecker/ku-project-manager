@@ -1,7 +1,7 @@
-import { SecondaryButton } from '@/components/global/Button';
-import ContextMenu from '@/components/global/ContextMenu';
-import { FlexRow } from '@/components/global/Flex';
-import Panel from '@/components/global/Panel';
+import { SecondaryButton } from '@kupm/components/global/Button';
+import ContextMenu from '@kupm/components/global/ContextMenu';
+import { FlexRow } from '@kupm/components/global/Flex';
+import Panel from '@kupm/components/global/Panel';
 import {
   deleteTask,
   fetchProjectTasks,
@@ -9,7 +9,7 @@ import {
   selectTask,
   toggleAddComment,
   toggleNewTask,
-} from '@/store/tasks';
+} from '@kupm/store/tasks';
 import { faSquare } from '@fortawesome/free-regular-svg-icons';
 import { faCheckSquare, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
