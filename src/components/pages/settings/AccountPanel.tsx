@@ -1,11 +1,11 @@
+import Button from '@/components/global/Button';
+import Panel from '@/components/global/Panel';
+import DetailsForm from '@/components/pages/settings/DetailsForm';
+import PasswordForm from '@/components/pages/settings/PasswordForm';
+import { showAccountError, toggleEditDetails } from '@/store/settings';
 import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeContext } from 'styled-components';
-import { showAccountError, toggleEditDetails } from '../../../store/settings';
-import Button from '../../global/Button';
-import Panel from '../../global/Panel';
-import DetailsForm from './DetailsForm';
-import PasswordForm from './PasswordForm';
 
 const AccountPanel = () => {
   const dispatch = useDispatch();

@@ -1,9 +1,9 @@
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import styled from 'styled-components';
-import { SecondaryButton } from '../../global/Button';
-import { FlexColumn, FlexRow } from '../../global/Flex';
-import Panel from '../../global/Panel';
+import { SecondaryButton } from '@/components/global/Button';
+import { FlexColumn, FlexRow } from '@/components/global/Flex';
+import Panel from '@/components/global/Panel';
 
 type NotificationPanelProps = {
   data: any;

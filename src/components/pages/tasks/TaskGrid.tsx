@@ -1,12 +1,11 @@
-import { faSpinner, faSquare } from '@fortawesome/free-solid-svg-icons';
+import DataPlaceholder from '@/components/global/DataPlaceholder';
+import { FlexColumn } from '@/components/global/Flex';
+import TaskGridCard from '@/components/pages/tasks/TaskGridCard';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import DataPlaceholder from '../../global/DataPlaceholder';
-import { FlexColumn, FlexRow } from '../../global/Flex';
-import TaskGridCard from './TaskGridCard';
-import ProjectTableRow from './TaskGridCard';
 
 const StyledTaskGrid = styled(FlexColumn)`
   justify-content: flex-start;

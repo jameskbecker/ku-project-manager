@@ -1,17 +1,16 @@
+import Global from '@/components/global/Global';
+import Dashboard from '@/components/pages/dashboard/Dashboard';
+import Forgot from '@/components/pages/forgot/Forgot';
+import Login from '@/components/pages/login/Login';
+import ProjectOverview from '@/components/pages/projects/Projects';
+import Register from '@/components/pages/register/Register';
+import Settings from '@/components/pages/settings/Settings';
+import Project from '@/components/pages/tasks/Tasks';
+import light, { dark } from '@/theme';
 import React from 'react';
-import { Provider, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import configureStore from '../store/configureStore';
-import Global from './global/Global';
-import Dashboard from './pages/dashboard/Dashboard';
-import ProjectOverview from './pages/projects/Projects';
-import Project from './pages/tasks/Tasks';
-import Settings from './pages/settings/Settings';
-import Login from './pages/login/Login';
 import { ThemeProvider } from 'styled-components';
-import light, { dark } from '../theme';
-import Register from './pages/register/Register';
-import Forgot from './pages/forgot/Forgot';
 
 const App = () => {
   const { theme } = useSelector((state: any) => state.settings);

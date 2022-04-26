@@ -1,9 +1,9 @@
+import authReducer from '@/store/auth';
+import dashboardReducer from '@/store/dashboard';
+import projectsReducer from '@/store/projects';
+import settingsReducer from '@/store/settings';
+import tasksReducer from '@/store/tasks';
 import { configureStore } from '@reduxjs/toolkit';
-import dashboardReducer from './dashboard';
-import projectsReducer from './projects';
-import tasksReducer from './tasks';
-import settingsReducer from './settings';
-import authReducer from './auth';
 
 export default configureStore({
   reducer: {

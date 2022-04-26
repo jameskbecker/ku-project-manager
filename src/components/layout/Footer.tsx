@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Separator from '../global/Separator';
 
 const FooterWrapper = styled.footer`
   grid-area: footer;

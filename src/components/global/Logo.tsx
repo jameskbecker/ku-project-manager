@@ -1,6 +1,6 @@
+import { FlexRow } from '@/components/global/Flex';
 import React from 'react';
 import styled from 'styled-components';
-import { FlexRow } from './Flex';
 
 const StyledLogo = styled(FlexRow)`
   height: 99px;

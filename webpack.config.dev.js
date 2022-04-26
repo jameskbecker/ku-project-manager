@@ -1,4 +1,5 @@
 const { DefinePlugin } = require('webpack');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { merge } = require('webpack-merge');
 const commonConfig = require('./webpack.config.common');
 
@@ -15,6 +16,10 @@ const config = {
       'Access-Control-Allow-Headers':
         'X-Requested-With, content-type, Authorization',
     },
+  },
+  resolve: {
+    plugins: [new TsconfigPathsPlugin()],
+    extensions: ['.ts', '.js'],
   },
   plugins: [
     new DefinePlugin({

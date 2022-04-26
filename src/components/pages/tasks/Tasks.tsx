@@ -1,36 +1,35 @@
-import { faPencilAlt, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useHistory } from 'react-router';
+import { SecondaryButton } from '@/components/global/Button';
+import { FlexRow } from '@/components/global/Flex';
+import HeaderBar from '@/components/layout/HeaderBar';
+import Layout from '@/components/layout/Layout';
+import SideBar from '@/components/layout/SideBar';
+import AddCommentModal from '@/components/modals/AddComment';
+import InviteModal from '@/components/modals/InviteModal';
+import MembersModal from '@/components/modals/MembersModal';
+import NewProjectModal from '@/components/modals/NewProjectModal';
+import NewTaskModal from '@/components/modals/NewTaskModal';
+import ActivityFeed from '@/components/pages/tasks/ActivityFeed';
+import Content from '@/components/pages/tasks/Content';
+import ControlBar from '@/components/pages/tasks/ControlBar';
+import TaskGrid from '@/components/pages/tasks/TaskGrid';
 import {
   fetchAllProjects,
   selectProject,
   toggleNewProject,
-} from '../../../store/projects';
-import { fetchAccountDetails } from '../../../store/settings';
+} from '@/store/projects';
+import { fetchAccountDetails } from '@/store/settings';
 import {
   fetchProjectTasks,
   fetchSubTasks,
   selectTask,
   toggleNewTask,
-} from '../../../store/tasks';
-import { Project } from '../../../types';
-import { getCookie } from '../../../utils/cookie';
-import Button, { SecondaryButton } from '../../global/Button';
-import { FlexRow } from '../../global/Flex';
-import Footer from '../../layout/Footer';
-import HeaderBar from '../../layout/HeaderBar';
-import Layout from '../../layout/Layout';
-import SideBar from '../../layout/SideBar';
-import AddCommentModal from '../../modals/AddComment';
-import InviteModal from '../../modals/InviteModal';
-import MembersModal from '../../modals/MembersModal';
-import NewProjectModal from '../../modals/NewProjectModal';
-import NewTaskModal from '../../modals/NewTaskModal';
-import ActivityFeed from './ActivityFeed';
-import Content from './Content';
-import ControlBar from './ControlBar';
-import TaskGrid from './TaskGrid';
+} from '@/store/tasks';
+import { Project } from '@/types';
+import { getCookie } from '@/utils/cookie';
+import { faPencilAlt, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router';
 
 const Project = () => {
   const history = useHistory();

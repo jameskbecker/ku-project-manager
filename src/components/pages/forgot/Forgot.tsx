@@ -1,11 +1,11 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import Button from '../../global/Button';
-import { FlexColumn } from '../../global/Flex';
-import TextInput from '../../global/input/TextInput';
-import { ModalFooter } from '../../global/Modal';
-import Panel from '../../global/Panel';
-import Separator from '../../global/Separator';
+import Button from '@/components/global/Button';
+import { FlexColumn } from '@/components/global/Flex';
+import TextInput from '@/components/global/input/TextInput';
+import { ModalFooter } from '@/components/global/Modal';
+import Panel from '@/components/global/Panel';
+import Separator from '@/components/global/Separator';
 
 const Forgot = () => {
   const history = useHistory();

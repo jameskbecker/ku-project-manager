@@ -1,10 +1,14 @@
+import Button from '@/components/global/Button';
+import {
+  ModalBackdrop,
+  ModalContent,
+  ModalFooter,
+} from '@/components/global/Modal';
+import Separator from '@/components/global/Separator';
+import { toggleDeleteAll } from '@/store/projects';
 import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { ThemeContext } from 'styled-components';
-import { toggleDeleteAll } from '../../store/projects';
-import Button from '../global/Button';
-import { ModalBackdrop, ModalContent, ModalFooter } from '../global/Modal';
-import Separator from '../global/Separator';
 
 const DeleteAllModal = () => {
   const dispatch = useDispatch();

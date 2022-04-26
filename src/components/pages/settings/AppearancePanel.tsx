@@ -1,8 +1,8 @@
+import SelectInput from '@/components/global/input/SelectInput';
+import Panel from '@/components/global/Panel';
+import { changeTheme } from '@/store/settings';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeTheme } from '../../../store/settings';
-import SelectInput from '../../global/input/SelectInput';
-import Panel from '../../global/Panel';
 
 const themeOptions = [
   { label: 'Light', value: 'light' },

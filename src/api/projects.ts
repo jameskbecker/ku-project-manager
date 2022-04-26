@@ -1,5 +1,6 @@
-import { getCookie } from '../utils/cookie';
+import { getCookie } from '@/utils/cookie';
 declare const BASE_URL: string;
+
 export const getProjects = async () => {
   const userId = getCookie('kupm_user_id');
   const res = await fetch(`${BASE_URL}/api/projects?userId=${userId}`);

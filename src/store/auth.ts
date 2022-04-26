@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { postAuthLogin, postAuthRegister } from '../api/auth';
+import { postAuthLogin, postAuthRegister } from '@/api/auth';
 
 const initialState: any = {
   errorMessage: '',

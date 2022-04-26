@@ -1,6 +1,6 @@
+import { InputField, InputWrapper } from '@/components/global/input/Input';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { InputField, InputWrapper } from './Input';
 
 export const StyledTextArea = styled.textarea<any>`
   flex: 1 0 auto;

@@ -5,11 +5,11 @@ import { format } from 'date-fns';
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
-import { Project } from '../../../types';
-import { SecondaryButton } from '../../global/Button';
-import ContextMenu from '../../global/ContextMenu';
-import { FlexColumn, FlexRow } from '../../global/Flex';
-import Panel from '../../global/Panel';
+import { Project } from '@/types';
+import { SecondaryButton } from '@/components/global/Button';
+import ContextMenu from '@/components/global/ContextMenu';
+import { FlexColumn, FlexRow } from '@/components/global/Flex';
+import Panel from '@/components/global/Panel';
 
 type UpcomingPanelProps = {
   project: Project;

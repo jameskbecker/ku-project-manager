@@ -1,5 +1,5 @@
+import Panel from '@/components/global/Panel';
 import styled from 'styled-components';
-import Panel from './Panel';
 
 export const ModalBackdrop = styled.div`
   position: absolute;

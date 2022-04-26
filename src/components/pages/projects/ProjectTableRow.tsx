@@ -1,16 +1,7 @@
-import { faCircle } from '@fortawesome/free-regular-svg-icons';
-import {
-  faCheckCircle,
-  faEllipsisV,
-  faPencilAlt,
-  faTrash,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { formatDistance } from 'date-fns';
-import React, { useContext } from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import styled, { ThemeContext } from 'styled-components';
+import { SecondaryButton } from '@/components/global/Button';
+import ContextMenu from '@/components/global/ContextMenu';
+import Panel from '@/components/global/Panel';
+import { TableCell } from '@/components/global/Table';
 import {
   deleteProject,
   fetchAllProjects,
@@ -18,11 +9,19 @@ import {
   selectProject,
   toggleInvite,
   toggleNewProject,
-} from '../../../store/projects';
-import { SecondaryButton } from '../../global/Button';
-import ContextMenu from '../../global/ContextMenu';
-import Panel from '../../global/Panel';
-import { TableCell } from '../../global/Table';
+} from '@/store/projects';
+import { faCircle } from '@fortawesome/free-regular-svg-icons';
+import {
+  faCheckCircle,
+  faEllipsisV,
+  faPencilAlt,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { formatDistance } from 'date-fns';
+import React, { useContext } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import styled, { ThemeContext } from 'styled-components';
 
 const Wrapper = styled(Panel)`
   gap: 1rem;

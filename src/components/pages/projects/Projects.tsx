@@ -1,22 +1,18 @@
+import HeaderBar from '@/components/layout/HeaderBar';
+import Layout from '@/components/layout/Layout';
+import SideBar from '@/components/layout/SideBar';
+import DeleteAllModal from '@/components/modals/DeleteAllModal';
+import InviteModal from '@/components/modals/InviteModal';
+import NewProjectModal from '@/components/modals/NewProjectModal';
+import Content from '@/components/pages/projects/Content';
+import ControlBar from '@/components/pages/projects/ControlBar';
+import ProjectTable from '@/components/pages/projects/ProjectTable';
+import { fetchAllProjects } from '@/store/projects';
+import { fetchAccountDetails } from '@/store/settings';
+import { getCookie } from '@/utils/cookie';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllProjects } from '../../../store/projects';
-import Footer from '../../layout/Footer';
-import HeaderBar from '../../layout/HeaderBar';
-import Layout from '../../layout/Layout';
-import SideBar from '../../layout/SideBar';
-import Content from './Content';
-import ControlBar from './ControlBar';
-import NewProjectModal from '../../modals/NewProjectModal';
-import ProjectTable from './ProjectTable';
-import DeleteAllModal from '../../modals/DeleteAllModal';
-import InviteModal from '../../modals/InviteModal';
-import { FlexRow } from '../../global/Flex';
-import { SecondaryButton } from '../../global/Button';
-import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
-import { getCookie } from '../../../utils/cookie';
-import { fetchAccountDetails } from '../../../store/settings';
 
 type Project = {
   id: string;

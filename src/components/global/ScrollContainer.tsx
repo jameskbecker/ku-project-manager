@@ -1,5 +1,5 @@
+import { FlexColumn } from '@/components/global/Flex';
 import styled from 'styled-components';
-import { FlexColumn } from './Flex';
 
 const ScrollContainer = styled(FlexColumn)`
   flex: 1 1;

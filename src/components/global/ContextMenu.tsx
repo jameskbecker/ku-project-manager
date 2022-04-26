@@ -1,6 +1,6 @@
+import { FlexColumn, FlexRow } from '@/components/global/Flex';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { FlexColumn, FlexRow } from './Flex';
 
 const StyledContextMenu = styled.div`
   position: absolute;

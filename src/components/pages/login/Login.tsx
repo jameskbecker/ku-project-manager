@@ -1,16 +1,16 @@
+import Button from '@/components/global/Button';
+import { FlexColumn, FlexRow } from '@/components/global/Flex';
+import TextInput from '@/components/global/input/TextInput';
+import Logo from '@/components/global/Logo';
+import { ModalFooter } from '@/components/global/Modal';
+import Panel from '@/components/global/Panel';
+import Separator from '@/components/global/Separator';
+import LoginHeader from '@/components/pages/login/LoginHeader';
+import { postLogin } from '@/store/auth';
+import { fetchAccountDetails } from '@/store/settings';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { postLogin } from '../../../store/auth';
-import { fetchAccountDetails } from '../../../store/settings';
-import Button from '../../global/Button';
-import { FlexColumn, FlexRow } from '../../global/Flex';
-import TextInput from '../../global/input/TextInput';
-import Logo from '../../global/Logo';
-import { ModalFooter } from '../../global/Modal';
-import Panel from '../../global/Panel';
-import Separator from '../../global/Separator';
-import LoginHeader from './LoginHeader';
 
 const Login = () => {
   const history = useHistory();

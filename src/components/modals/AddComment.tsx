@@ -1,10 +1,14 @@
+import Button from '@/components/global/Button';
+import TextArea from '@/components/global/input/TextArea';
+import {
+  ModalBackdrop,
+  ModalContent,
+  ModalFooter,
+} from '@/components/global/Modal';
+import Separator from '@/components/global/Separator';
+import { toggleAddComment } from '@/store/tasks';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { toggleAddComment } from '../../store/tasks';
-import Button from '../global/Button';
-import TextArea from '../global/input/TextArea';
-import { ModalBackdrop, ModalContent, ModalFooter } from '../global/Modal';
-import Separator from '../global/Separator';
 
 const AddCommentModal = () => {
   const [message, setMessage] = useState('');

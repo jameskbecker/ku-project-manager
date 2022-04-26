@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FlexRow } from '../../global/Flex';
+import { FlexRow } from '@/components/global/Flex';
 
 const LoginHeader = styled(FlexRow)`
   justify-content: center;

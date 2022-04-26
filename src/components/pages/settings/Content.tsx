@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FlexColumn } from '../../global/Flex';
+import { FlexColumn } from '@/components/global/Flex';
 
 /** @todo optimise large scale displays */
 const Content = styled(FlexColumn)`

@@ -1,20 +1,23 @@
+import Button, { SecondaryButton } from '@/components/global/Button';
+import { FlexColumn, FlexRow } from '@/components/global/Flex';
+import {
+  ModalBackdrop,
+  ModalContent,
+  ModalFooter,
+} from '@/components/global/Modal';
+import Panel from '@/components/global/Panel';
+import ScrollContainer from '@/components/global/ScrollContainer';
+import Separator from '@/components/global/Separator';
+import { fetchProjectMembers } from '@/store/projects';
+import { toggleMembers } from '@/store/tasks';
 import {
   faEye,
   faPencilAlt,
   faUserMinus,
 } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeContext } from 'styled-components';
-import { fetchProjectMembers } from '../../store/projects';
-import { toggleAddComment, toggleMembers } from '../../store/tasks';
-import Button, { SecondaryButton } from '../global/Button';
-import { FlexColumn, FlexRow } from '../global/Flex';
-import { ModalBackdrop, ModalContent, ModalFooter } from '../global/Modal';
-import Panel from '../global/Panel';
-import ScrollContainer from '../global/ScrollContainer';
-import Separator from '../global/Separator';
 
 const MemberPanel = ({ data }: any) => {
   const theme = useContext(ThemeContext);

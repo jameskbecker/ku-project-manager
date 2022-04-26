@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getUserNotifications, getUserTodo } from '../api/users';
+import { getUserNotifications, getUserTodo } from '@/api/users';
 
 const initialState: any = {
   notifications: [],

@@ -1,6 +1,11 @@
+import {
+  InputField,
+  InputIcon,
+  InputProps,
+  InputWrapper,
+} from '@/components/global/input/Input';
 import React from 'react';
 import styled from 'styled-components';
-import { InputField, InputIcon, InputProps, InputWrapper } from './Input';
 
 export const StyledInput = styled.input<any>`
   flex: 1 0 auto;

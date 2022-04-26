@@ -1,13 +1,8 @@
+import { FlexColumn, FlexRow } from '@/components/global/Flex';
+import TextInput from '@/components/global/input/TextInput';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CSSProperties } from 'react';
 import styled, { css } from 'styled-components';
-import { FlexColumn, FlexRow } from '../Flex';
-import TextInput from './TextInput';
-// import NumberInput from './NumberInput';
-// import SelectInput from './SelectInput';
-// import TextArea from './TextArea';
-// import TextInput from './TextInput';
-// import Toggle from './ToggleInput';
 
 export const InputWrapper = styled(FlexColumn)<any>`
   flex: 0 1 auto;

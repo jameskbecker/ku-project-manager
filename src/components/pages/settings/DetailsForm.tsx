@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { FlexRow } from '@/components/global/Flex';
+import TextInput from '@/components/global/input/TextInput';
+import { fetchAccountDetails } from '@/store/settings';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAccountDetails } from '../../../store/settings';
-import Button from '../../global/Button';
-import { FlexRow } from '../../global/Flex';
-import TextInput from '../../global/input/TextInput';
-import Panel from '../../global/Panel';
-import PasswordForm from './PasswordForm';
 
 const DetailsForm = () => {
   const dispatch = useDispatch();

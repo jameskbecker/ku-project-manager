@@ -1,6 +1,6 @@
 import React from 'react';
-import SelectInput from '../../global/input/SelectInput';
-import Panel from '../../global/Panel';
+import SelectInput from '@/components/global/input/SelectInput';
+import Panel from '@/components/global/Panel';
 
 const courseOptions = [{ label: 'Computer Science', value: 'light' }];
 const moduleOptions = [

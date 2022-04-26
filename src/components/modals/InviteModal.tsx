@@ -1,12 +1,16 @@
+import Button from '@/components/global/Button';
+import SelectInput from '@/components/global/input/SelectInput';
+import TextInput from '@/components/global/input/TextInput';
+import {
+  ModalBackdrop,
+  ModalContent,
+  ModalFooter,
+} from '@/components/global/Modal';
+import Separator from '@/components/global/Separator';
+import { sendInvite, toggleInvite } from '@/store/projects';
 import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeContext } from 'styled-components';
-import { sendInvite, toggleInvite } from '../../store/projects';
-import Button from '../global/Button';
-import SelectInput from '../global/input/SelectInput';
-import TextInput from '../global/input/TextInput';
-import { ModalBackdrop, ModalContent, ModalFooter } from '../global/Modal';
-import Separator from '../global/Separator';
 
 const permissionOptions = [
   { label: 'Read', value: 'read' },

@@ -1,15 +1,11 @@
-import {
-  faCircle,
-  faSpinner,
-  faSquare,
-} from '@fortawesome/free-solid-svg-icons';
+import { FlexColumn } from '@/components/global/Flex';
+import { TableHeader } from '@/components/global/Table';
+import ProjectTableRow from '@/components/pages/projects/ProjectTableRow';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { FlexColumn, FlexRow } from '../../global/Flex';
-import { TableHeader } from '../../global/Table';
-import ProjectTableRow from './ProjectTableRow';
 
 const columns: any[] = [
   { name: '', size: '2.5%' },

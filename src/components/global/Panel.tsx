@@ -1,7 +1,6 @@
+import { FlexColumn, FlexRow } from '@/components/global/Flex';
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { FlexColumn, FlexRow } from './Flex';
-import Separator from './Separator';
 
 type PanelProps = {
   heading?: String;

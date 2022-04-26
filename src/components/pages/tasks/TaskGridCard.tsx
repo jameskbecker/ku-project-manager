@@ -1,10 +1,7 @@
-import { faSquare } from '@fortawesome/free-regular-svg-icons';
-import { faCheckSquare, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { MouseEvent, useContext, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import styled, { ThemeContext } from 'styled-components';
+import { SecondaryButton } from '@/components/global/Button';
+import ContextMenu from '@/components/global/ContextMenu';
+import { FlexRow } from '@/components/global/Flex';
+import Panel from '@/components/global/Panel';
 import {
   deleteTask,
   fetchProjectTasks,
@@ -12,11 +9,14 @@ import {
   selectTask,
   toggleAddComment,
   toggleNewTask,
-} from '../../../store/tasks';
-import { SecondaryButton } from '../../global/Button';
-import ContextMenu from '../../global/ContextMenu';
-import { FlexRow } from '../../global/Flex';
-import Panel from '../../global/Panel';
+} from '@/store/tasks';
+import { faSquare } from '@fortawesome/free-regular-svg-icons';
+import { faCheckSquare, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { MouseEvent, useContext, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import styled, { ThemeContext } from 'styled-components';
 
 const Wrapper = styled(Panel)<any>`
   /* display: grid;

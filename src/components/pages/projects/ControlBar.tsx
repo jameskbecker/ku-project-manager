@@ -1,3 +1,12 @@
+import Button from '@/components/global/Button';
+import { FlexRow } from '@/components/global/Flex';
+import TextInput from '@/components/global/input/TextInput';
+import {
+  applyFilter,
+  selectProject,
+  toggleDeleteAll,
+  toggleNewProject,
+} from '@/store/projects';
 import {
   faPlus,
   faSearch,
@@ -6,15 +15,6 @@ import {
 import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled, { ThemeContext } from 'styled-components';
-import {
-  applyFilter,
-  selectProject,
-  toggleDeleteAll,
-  toggleNewProject,
-} from '../../../store/projects';
-import Button from '../../global/Button';
-import { FlexRow } from '../../global/Flex';
-import TextInput from '../../global/input/TextInput';
 
 const ControlBarWrapper = styled.div`
   display: flex;

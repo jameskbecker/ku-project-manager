@@ -1,21 +1,16 @@
+import ContextMenu from '@/components/global/ContextMenu';
+import { FlexRow } from '@/components/global/Flex';
+import { VerticalSeparator } from '@/components/global/Separator';
 import {
-  faArrowLeft,
   faBars,
   faChevronDown,
   faChevronLeft,
-  faPencilAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useContext, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import styled, { ThemeContext } from 'styled-components';
-import { toggleNewProject } from '../../store/projects';
-import Button from '../global/Button';
-import ContextMenu from '../global/ContextMenu';
-import { FlexRow } from '../global/Flex';
-import TextInput from '../global/input/TextInput';
-import { VerticalSeparator } from '../global/Separator';
 
 const StyledHeaderBar = styled.div`
   grid-area: navbar;

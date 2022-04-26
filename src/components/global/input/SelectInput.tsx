@@ -1,7 +1,7 @@
+import { InputProps, InputWrapper } from '@/components/global/input/Input';
 import React, { useState } from 'react';
 import ReactSelect, { components } from 'react-select';
 import styled from 'styled-components';
-import { InputWrapper, InputProps } from './Input';
 
 export const StyledReactSelect = styled(ReactSelect)`
   overflow: visible;

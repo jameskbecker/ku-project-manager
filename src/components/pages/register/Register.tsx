@@ -1,13 +1,13 @@
+import Button from '@/components/global/Button';
+import { FlexColumn } from '@/components/global/Flex';
+import TextInput from '@/components/global/input/TextInput';
+import { ModalFooter } from '@/components/global/Modal';
+import Panel from '@/components/global/Panel';
+import Separator from '@/components/global/Separator';
+import { postRegister } from '@/store/auth';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { postRegister } from '../../../store/auth';
-import Button from '../../global/Button';
-import { FlexColumn } from '../../global/Flex';
-import TextInput from '../../global/input/TextInput';
-import { ModalFooter } from '../../global/Modal';
-import Panel from '../../global/Panel';
-import Separator from '../../global/Separator';
 
 const Register = () => {
   const { goBack } = useHistory();

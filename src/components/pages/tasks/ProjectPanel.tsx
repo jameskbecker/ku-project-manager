@@ -1,6 +1,6 @@
 import React from 'react';
-import { Project } from '../../../types';
-import Panel from '../../global/Panel';
+import { Project } from '@/types';
+import Panel from '@/components/global/Panel';
 
 type ProjectPanelProps = {
   project: Project;

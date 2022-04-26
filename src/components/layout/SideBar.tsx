@@ -1,3 +1,5 @@
+import { FlexColumn } from '@/components/global/Flex';
+import Footer from '@/components/layout/Footer';
 import {
   faCogs,
   faList,
@@ -7,8 +9,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { FlexColumn } from '../global/Flex';
-import Footer from './Footer';
 
 const SideBarWrapper = styled.div`
   display: none;

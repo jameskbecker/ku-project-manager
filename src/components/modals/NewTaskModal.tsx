@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import Button from '@/components/global/Button';
+import SelectInput from '@/components/global/input/SelectInput';
+import TextArea from '@/components/global/input/TextArea';
+import TextInput from '@/components/global/input/TextInput';
+import {
+  ModalBackdrop,
+  ModalContent,
+  ModalFooter,
+} from '@/components/global/Modal';
+import Separator from '@/components/global/Separator';
 import {
   fetchProjectTasks,
   saveTask,
   selectTask,
   toggleNewTask,
-} from '../../store/tasks';
-import Button from '../global/Button';
-import SelectInput from '../global/input/SelectInput';
-import TextArea from '../global/input/TextArea';
-import TextInput from '../global/input/TextInput';
-import { ModalBackdrop, ModalContent, ModalFooter } from '../global/Modal';
-import Separator from '../global/Separator';
+} from '@/store/tasks';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const NewTaskModal = () => {
   const { data, selectedTask, pageName } = useSelector(

@@ -1,22 +1,22 @@
+import { SecondaryButton } from '@/components/global/Button';
+import Panel from '@/components/global/Panel';
+import ScrollContainer from '@/components/global/ScrollContainer';
+import NavBar from '@/components/layout/HeaderBar';
+import Layout from '@/components/layout/Layout';
+import SideBar from '@/components/layout/SideBar';
+import Content from '@/components/pages/dashboard/Content';
+import NotificationPanel from '@/components/pages/dashboard/NotificationPanel';
+import TodoPanel from '@/components/pages/dashboard/TodoPanel';
+import UpcomingPanel from '@/components/pages/dashboard/UpcomingPanel';
+import { fetchNotifications, fetchTodo } from '@/store/dashboard';
+import { fetchAllProjects } from '@/store/projects';
+import { fetchAccountDetails } from '@/store/settings';
+import { getCookie } from '@/utils/cookie';
 import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { fetchNotifications, fetchTodo } from '../../../store/dashboard';
-import { fetchAllProjects } from '../../../store/projects';
-import { fetchAccountDetails } from '../../../store/settings';
-import { getCookie } from '../../../utils/cookie';
-import { SecondaryButton } from '../../global/Button';
-import Panel from '../../global/Panel';
-import ScrollContainer from '../../global/ScrollContainer';
-import NavBar from '../../layout/HeaderBar';
-import Layout from '../../layout/Layout';
-import SideBar from '../../layout/SideBar';
-import Content from './Content';
-import NotificationPanel from './NotificationPanel';
-import TodoPanel from './TodoPanel';
-import UpcomingPanel from './UpcomingPanel';
 
 const DataPlaceholder = styled.div`
   flex: 1 1;

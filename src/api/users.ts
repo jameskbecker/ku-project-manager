@@ -1,4 +1,4 @@
-import { getCookie } from '../utils/cookie';
+import { getCookie } from '@/utils/cookie';
 declare const BASE_URL: string;
 
 export const getUserNotifications = async () => {

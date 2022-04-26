@@ -1,13 +1,13 @@
+import NavBar from '@/components/layout/HeaderBar';
+import Layout from '@/components/layout/Layout';
+import SideBar from '@/components/layout/SideBar';
+import AccountPanel from '@/components/pages/settings/AccountPanel';
+import AppearancePanel from '@/components/pages/settings/AppearancePanel';
+import Content from '@/components/pages/settings/Content';
+import EnrolmentPanel from '@/components/pages/settings/EnrolmentPanel';
+import { getCookie } from '@/utils/cookie';
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { getCookie } from '../../../utils/cookie';
-import NavBar from '../../layout/HeaderBar';
-import Layout from '../../layout/Layout';
-import SideBar from '../../layout/SideBar';
-import AccountPanel from './AccountPanel';
-import AppearancePanel from './AppearancePanel';
-import Content from './Content';
-import EnrolmentPanel from './EnrolmentPanel';
 
 const Settings = () => {
   const history = useHistory();

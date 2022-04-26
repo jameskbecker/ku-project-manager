@@ -1,16 +1,16 @@
+import Button from '@/components/global/Button';
+import TextArea from '@/components/global/input/TextArea';
+import TextInput from '@/components/global/input/TextInput';
+import {
+  ModalBackdrop,
+  ModalContent,
+  ModalFooter,
+} from '@/components/global/Modal';
+import Separator from '@/components/global/Separator';
+import { saveProject, toggleNewProject } from '@/store/projects';
+import { getCookie } from '@/utils/cookie';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  fetchAllProjects,
-  saveProject,
-  toggleNewProject,
-} from '../../store/projects';
-import { getCookie } from '../../utils/cookie';
-import Button from '../global/Button';
-import TextArea from '../global/input/TextArea';
-import TextInput from '../global/input/TextInput';
-import { ModalBackdrop, ModalContent, ModalFooter } from '../global/Modal';
-import Separator from '../global/Separator';
 
 const NewProjectModal = () => {
   const { data, selectedProject } = useSelector((state: any) => state.projects);
