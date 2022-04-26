@@ -1,5 +1,5 @@
-import DataPlaceholder from '@kupm/components/global/DataPlaceholder';
-import { FlexColumn } from '@kupm/components/global/Flex';
+import DataPlaceholder from '@kupm/components/common/DataPlaceholder';
+import { FlexColumn } from '@kupm/components/common/Flex';
 import TaskGridCard from '@kupm/components/pages/tasks/TaskGridCard';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

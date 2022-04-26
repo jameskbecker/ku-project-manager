@@ -1,4 +1,4 @@
-import { FlexRow } from '@kupm/components/global/Flex';
+import { FlexRow } from '@kupm/components/common/Flex';
 import React from 'react';
 import styled from 'styled-components';
 

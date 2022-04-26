@@ -1,4 +1,4 @@
-import { InputProps, InputWrapper } from '@kupm/components/global/input/Input';
+import { InputProps, InputWrapper } from '@kupm/components/common/input/Input';
 import React, { useState } from 'react';
 import ReactSelect, { components } from 'react-select';
 import styled from 'styled-components';

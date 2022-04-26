@@ -1,4 +1,4 @@
-import { FlexColumn } from '@kupm/components/global/Flex';
+import { FlexColumn } from '@kupm/components/common/Flex';
 import styled from 'styled-components';
 
 /** @todo optimise large scale displays */

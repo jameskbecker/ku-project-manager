@@ -1,9 +1,9 @@
-import Button from '@kupm/components/global/Button';
-import { FlexColumn } from '@kupm/components/global/Flex';
-import TextInput from '@kupm/components/global/input/TextInput';
-import { ModalFooter } from '@kupm/components/global/Modal';
-import Panel from '@kupm/components/global/Panel';
-import Separator from '@kupm/components/global/Separator';
+import Button from '@kupm/components/common/Button';
+import { FlexColumn } from '@kupm/components/common/Flex';
+import TextInput from '@kupm/components/common/input/TextInput';
+import { ModalFooter } from '@kupm/components/common/Modal';
+import Panel from '@kupm/components/common/Panel';
+import Separator from '@kupm/components/common/Separator';
 import { postRegister } from '@kupm/store/auth';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';

@@ -1,7 +1,7 @@
-import { SecondaryButton } from '@kupm/components/global/Button';
-import ContextMenu from '@kupm/components/global/ContextMenu';
-import { FlexRow } from '@kupm/components/global/Flex';
-import Panel from '@kupm/components/global/Panel';
+import { SecondaryButton } from '@kupm/components/common/Button';
+import ContextMenu from '@kupm/components/common/ContextMenu';
+import { FlexRow } from '@kupm/components/common/Flex';
+import Panel from '@kupm/components/common/Panel';
 import {
   deleteTask,
   fetchProjectTasks,

@@ -1,5 +1,5 @@
-import { FlexRow } from '@kupm/components/global/Flex';
-import TextInput from '@kupm/components/global/input/TextInput';
+import { FlexRow } from '@kupm/components/common/Flex';
+import TextInput from '@kupm/components/common/input/TextInput';
 import { fetchAccountDetails } from '@kupm/store/settings';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

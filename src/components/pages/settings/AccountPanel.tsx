@@ -1,5 +1,5 @@
-import Button from '@kupm/components/global/Button';
-import Panel from '@kupm/components/global/Panel';
+import Button from '@kupm/components/common/Button';
+import Panel from '@kupm/components/common/Panel';
 import DetailsForm from '@kupm/components/pages/settings/DetailsForm';
 import PasswordForm from '@kupm/components/pages/settings/PasswordForm';
 import { showAccountError, toggleEditDetails } from '@kupm/store/settings';

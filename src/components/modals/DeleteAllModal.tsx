@@ -1,10 +1,10 @@
-import Button from '@kupm/components/global/Button';
+import Button from '@kupm/components/common/Button';
 import {
   ModalBackdrop,
   ModalContent,
   ModalFooter,
-} from '@kupm/components/global/Modal';
-import Separator from '@kupm/components/global/Separator';
+} from '@kupm/components/common/Modal';
+import Separator from '@kupm/components/common/Separator';
 import { toggleDeleteAll } from '@kupm/store/projects';
 import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FlexRow } from '@kupm/components/global/Flex';
+import { FlexRow } from '@kupm/components/common/Flex';
 
 export const StyledTableHeader = styled(FlexRow)`
   display: none;

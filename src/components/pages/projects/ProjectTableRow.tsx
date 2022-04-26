@@ -1,7 +1,7 @@
-import { SecondaryButton } from '@kupm/components/global/Button';
-import ContextMenu from '@kupm/components/global/ContextMenu';
-import Panel from '@kupm/components/global/Panel';
-import { TableCell } from '@kupm/components/global/Table';
+import { SecondaryButton } from '@kupm/components/common/Button';
+import ContextMenu from '@kupm/components/common/ContextMenu';
+import Panel from '@kupm/components/common/Panel';
+import { TableCell } from '@kupm/components/common/Table';
 import {
   deleteProject,
   fetchAllProjects,

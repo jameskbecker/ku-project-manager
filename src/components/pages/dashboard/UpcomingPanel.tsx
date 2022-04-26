@@ -6,10 +6,10 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
 import { Project } from '@kupm/types';
-import { SecondaryButton } from '@kupm/components/global/Button';
-import ContextMenu from '@kupm/components/global/ContextMenu';
-import { FlexColumn, FlexRow } from '@kupm/components/global/Flex';
-import Panel from '@kupm/components/global/Panel';
+import { SecondaryButton } from '@kupm/components/common/Button';
+import ContextMenu from '@kupm/components/common/ContextMenu';
+import { FlexColumn, FlexRow } from '@kupm/components/common/Flex';
+import Panel from '@kupm/components/common/Panel';
 
 type UpcomingPanelProps = {
   project: Project;

@@ -1,4 +1,4 @@
-import Global from '@kupm/components/global/Global';
+import Global from '@kupm/components/common/Global';
 import Dashboard from '@kupm/components/pages/dashboard/Dashboard';
 import Forgot from '@kupm/components/pages/forgot/Forgot';
 import Login from '@kupm/components/pages/login/Login';

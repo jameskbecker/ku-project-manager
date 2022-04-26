@@ -1,6 +1,6 @@
 import React from 'react';
-import SelectInput from '@kupm/components/global/input/SelectInput';
-import Panel from '@kupm/components/global/Panel';
+import SelectInput from '@kupm/components/common/input/SelectInput';
+import Panel from '@kupm/components/common/Panel';
 
 const courseOptions = [{ label: 'Computer Science', value: 'light' }];
 const moduleOptions = [

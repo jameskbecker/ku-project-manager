@@ -1,13 +1,13 @@
-import Button, { SecondaryButton } from '@kupm/components/global/Button';
-import { FlexColumn, FlexRow } from '@kupm/components/global/Flex';
+import Button, { SecondaryButton } from '@kupm/components/common/Button';
+import { FlexColumn, FlexRow } from '@kupm/components/common/Flex';
 import {
   ModalBackdrop,
   ModalContent,
   ModalFooter,
-} from '@kupm/components/global/Modal';
-import Panel from '@kupm/components/global/Panel';
-import ScrollContainer from '@kupm/components/global/ScrollContainer';
-import Separator from '@kupm/components/global/Separator';
+} from '@kupm/components/common/Modal';
+import Panel from '@kupm/components/common/Panel';
+import ScrollContainer from '@kupm/components/common/ScrollContainer';
+import Separator from '@kupm/components/common/Separator';
 import { fetchProjectMembers } from '@kupm/store/projects';
 import { toggleMembers } from '@kupm/store/tasks';
 import {

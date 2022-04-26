@@ -1,6 +1,6 @@
-import { SecondaryButton } from '@kupm/components/global/Button';
-import Panel from '@kupm/components/global/Panel';
-import ScrollContainer from '@kupm/components/global/ScrollContainer';
+import { SecondaryButton } from '@kupm/components/common/Button';
+import Panel from '@kupm/components/common/Panel';
+import ScrollContainer from '@kupm/components/common/ScrollContainer';
 import NavBar from '@kupm/components/layout/HeaderBar';
 import Layout from '@kupm/components/layout/Layout';
 import SideBar from '@kupm/components/layout/SideBar';

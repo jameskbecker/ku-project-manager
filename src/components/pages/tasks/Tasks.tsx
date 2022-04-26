@@ -1,5 +1,5 @@
-import { SecondaryButton } from '@kupm/components/global/Button';
-import { FlexRow } from '@kupm/components/global/Flex';
+import { SecondaryButton } from '@kupm/components/common/Button';
+import { FlexRow } from '@kupm/components/common/Flex';
 import HeaderBar from '@kupm/components/layout/HeaderBar';
 import Layout from '@kupm/components/layout/Layout';
 import SideBar from '@kupm/components/layout/SideBar';

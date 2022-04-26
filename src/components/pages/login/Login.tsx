@@ -1,10 +1,10 @@
-import Button from '@kupm/components/global/Button';
-import { FlexColumn, FlexRow } from '@kupm/components/global/Flex';
-import TextInput from '@kupm/components/global/input/TextInput';
-import Logo from '@kupm/components/global/Logo';
-import { ModalFooter } from '@kupm/components/global/Modal';
-import Panel from '@kupm/components/global/Panel';
-import Separator from '@kupm/components/global/Separator';
+import Button from '@kupm/components/common/Button';
+import { FlexColumn, FlexRow } from '@kupm/components/common/Flex';
+import TextInput from '@kupm/components/common/input/TextInput';
+import Logo from '@kupm/components/common/Logo';
+import { ModalFooter } from '@kupm/components/common/Modal';
+import Panel from '@kupm/components/common/Panel';
+import Separator from '@kupm/components/common/Separator';
 import LoginHeader from '@kupm/components/pages/login/LoginHeader';
 import { postLogin } from '@kupm/store/auth';
 import { fetchAccountDetails } from '@kupm/store/settings';

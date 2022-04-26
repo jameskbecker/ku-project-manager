@@ -1,13 +1,13 @@
-import Button from '@kupm/components/global/Button';
-import SelectInput from '@kupm/components/global/input/SelectInput';
-import TextArea from '@kupm/components/global/input/TextArea';
-import TextInput from '@kupm/components/global/input/TextInput';
+import Button from '@kupm/components/common/Button';
+import SelectInput from '@kupm/components/common/input/SelectInput';
+import TextArea from '@kupm/components/common/input/TextArea';
+import TextInput from '@kupm/components/common/input/TextInput';
 import {
   ModalBackdrop,
   ModalContent,
   ModalFooter,
-} from '@kupm/components/global/Modal';
-import Separator from '@kupm/components/global/Separator';
+} from '@kupm/components/common/Modal';
+import Separator from '@kupm/components/common/Separator';
 import {
   fetchProjectTasks,
   saveTask,

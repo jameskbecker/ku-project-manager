@@ -1,8 +1,8 @@
-import { SecondaryButton } from '@kupm/components/global/Button';
-import DataPlaceholder from '@kupm/components/global/DataPlaceholder';
-import { FlexColumn, FlexRow } from '@kupm/components/global/Flex';
-import Panel from '@kupm/components/global/Panel';
-import ScrollContainer from '@kupm/components/global/ScrollContainer';
+import { SecondaryButton } from '@kupm/components/common/Button';
+import DataPlaceholder from '@kupm/components/common/DataPlaceholder';
+import { FlexColumn, FlexRow } from '@kupm/components/common/Flex';
+import Panel from '@kupm/components/common/Panel';
+import ScrollContainer from '@kupm/components/common/ScrollContainer';
 import { fetchActivity } from '@kupm/store/projects';
 import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect } from 'react';

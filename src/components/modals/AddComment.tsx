@@ -1,11 +1,11 @@
-import Button from '@kupm/components/global/Button';
-import TextArea from '@kupm/components/global/input/TextArea';
+import Button from '@kupm/components/common/Button';
+import TextArea from '@kupm/components/common/input/TextArea';
 import {
   ModalBackdrop,
   ModalContent,
   ModalFooter,
-} from '@kupm/components/global/Modal';
-import Separator from '@kupm/components/global/Separator';
+} from '@kupm/components/common/Modal';
+import Separator from '@kupm/components/common/Separator';
 import { toggleAddComment } from '@kupm/store/tasks';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';

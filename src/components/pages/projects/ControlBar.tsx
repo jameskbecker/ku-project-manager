@@ -1,6 +1,6 @@
-import Button from '@kupm/components/global/Button';
-import { FlexRow } from '@kupm/components/global/Flex';
-import TextInput from '@kupm/components/global/input/TextInput';
+import Button from '@kupm/components/common/Button';
+import { FlexRow } from '@kupm/components/common/Flex';
+import TextInput from '@kupm/components/common/input/TextInput';
 import {
   applyFilter,
   selectProject,

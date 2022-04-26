@@ -3,7 +3,7 @@ import {
   InputIcon,
   InputProps,
   InputWrapper,
-} from '@kupm/components/global/input/Input';
+} from '@kupm/components/common/input/Input';
 import React from 'react';
 import styled from 'styled-components';
 
