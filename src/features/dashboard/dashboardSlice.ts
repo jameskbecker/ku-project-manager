@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getUserNotifications, getUserTodo } from '@kupm/api/users';
+import { getUserNotifications, getUserTodo } from '@kupm/features/api/users';
 
 const initialState: any = {
   notifications: [],

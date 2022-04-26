@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { postInvite } from '@kupm/api/invites';
+import { postInvite } from '@kupm/features/api/invites';
 import {
   deleteProjectRequest,
   getProjectActiviy,
   getProjectMembers,
   getProjects,
   postProject,
-} from '@kupm/api/projects';
+} from '@kupm/features/api/projects';
 
 const initialState: any = {
   showNewProject: false,

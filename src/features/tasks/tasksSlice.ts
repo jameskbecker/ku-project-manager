@@ -1,6 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getProjectTasks } from '@kupm/api/projects';
-import { deleteTaskRequest, getSubTasks, postTask } from '@kupm/api/tasks';
+import { getProjectTasks } from '@kupm/features/api/projects';
+import {
+  deleteTaskRequest,
+  getSubTasks,
+  postTask,
+} from '@kupm/features/api/tasks';
 
 const initialState: any = {
   showNewTask: false,

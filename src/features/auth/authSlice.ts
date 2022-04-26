@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { postAuthLogin, postAuthRegister } from '@kupm/api/auth';
+import { postAuthLogin, postAuthRegister } from '@kupm/features/api/auth';
 
 const initialState: any = {
   errorMessage: '',

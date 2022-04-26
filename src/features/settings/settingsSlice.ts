@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getAccountDetails } from '@kupm/api/users';
+import { getAccountDetails } from '@kupm/features/api/users';
 import { getCookie } from '@kupm/utils/cookie';
 
 const initialState: any = {
