@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { useGetProjectsQuery } from '../api/apiSlice';
 
 const columns: any[] = [
   { name: '', size: '2.5%' },
@@ -25,11 +26,10 @@ const DataPlaceholder = styled.div`
 `;
 
 const ProjectTable = (props: any) => {
-  const { isLoading, data, filter } = useSelector(
-    (state: any) => state.projects
-  );
+  const { filter } = useSelector((state: any) => state.projects);
+  const { data: projects, isLoading } = useGetProjectsQuery(null);
 
-  const filteredData = data.filter(
+  const filteredData = projects?.data.filter(
     (t: any) =>
       (props.complete ? !!t.isComplete : !t.isComplete) &&
       (t.name?.toLowerCase().includes(filter.toLowerCase()) ||
@@ -37,10 +37,32 @@ const ProjectTable = (props: any) => {
         t.description?.toLowerCase().includes(filter.toLowerCase()))
   );
 
-  const getProjects = filteredData.map((p: any, i: number) => (
-    <ProjectTableRow key={i} project={p} />
-  ));
-
+  let content;
+  if (isLoading) {
+    content = (
+      <DataPlaceholder>
+        <FontAwesomeIcon style={{ flex: '1 1' }} icon={faSpinner} spin />
+      </DataPlaceholder>
+    );
+  } else if (projects?.data.length === 0) {
+    console.log(projects);
+    content = <DataPlaceholder>No Projects Yet</DataPlaceholder>;
+  } else {
+    const getProjects = filteredData.map((p: any, i: number) => (
+      <ProjectTableRow key={i} project={p} />
+    ));
+    content = (
+      <FlexColumn
+        style={{
+          overflow: 'auto',
+          gap: '0.5rem',
+          flex: '1 1',
+        }}
+      >
+        {getProjects}
+      </FlexColumn>
+    );
+  }
   return (
     <FlexColumn
       style={{
@@ -50,23 +72,7 @@ const ProjectTable = (props: any) => {
     >
       <h3>{props.complete ? 'Complete' : 'Incomplete'}</h3>
       <TableHeader columns={columns} />
-      {isLoading ? (
-        <DataPlaceholder>
-          <FontAwesomeIcon style={{ flex: '1 1' }} icon={faSpinner} spin />
-        </DataPlaceholder>
-      ) : data.length === 0 ? (
-        <DataPlaceholder>No Projects Yet</DataPlaceholder>
-      ) : (
-        <FlexColumn
-          style={{
-            overflow: 'auto',
-            gap: '0.5rem',
-            flex: '1 1',
-          }}
-        >
-          {getProjects}
-        </FlexColumn>
-      )}
+      {content}
     </FlexColumn>
   );
 };

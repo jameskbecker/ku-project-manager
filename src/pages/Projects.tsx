@@ -40,7 +40,7 @@ const ProjectOverview = () => {
     }
     document.title = 'Projects | KUPM';
     dispatch(fetchAccountDetails());
-    dispatch(fetchAllProjects());
+    // dispatch(fetchAllProjects());
   }, []);
 
   const handleRefresh = () => {
