@@ -24,11 +24,12 @@ const StyledActivityFeed = styled(FlexColumn)`
 
 const ActivityFeed = () => {
   const { id } = useParams<any>();
-  const { selectedProject, activity } = useSelector(
-    (state: any) => state.projects
-  );
   const dispatch = useDispatch();
-  const { data, isLoading, refetch } = useGetProjectActivityQuery({ id });
+  const {
+    data: activity,
+    isLoading,
+    refetch,
+  } = useGetProjectActivityQuery({ id });
 
   let content;
   if (isLoading) {
@@ -38,7 +39,7 @@ const ActivityFeed = () => {
   } else {
     content = (
       <ScrollContainer>
-        {activity.map((a: any, i: number) => (
+        {activity.data.map((a: any, i: number) => (
           <Panel key={i} style={{ gap: '0.5rem' }}>
             <h4>{a.heading}</h4>
             <h5>{a.subheading}</h5>
