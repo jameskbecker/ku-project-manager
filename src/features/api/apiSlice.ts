@@ -1,35 +1,13 @@
 import { getCookie } from '@kupm/utils/cookie';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import {
+  RegisterPayload,
+  LoginPayload,
+  PostProjectArgs,
+  UpdateProjectArgs,
+  CompleteProjectArgs,
+} from '@kupm/features/api/types';
 declare const BASE_URL: string;
-
-interface PostProjectArgs {
-  name: string;
-  dueAt: string;
-  description: string;
-  priority: string;
-  createdBy: string;
-}
-
-interface UpdateProjectArgs extends PostProjectArgs {
-  id: string;
-}
-
-interface CompleteProjectArgs {
-  id: string;
-  is_complete: boolean;
-}
-
-type RegisterPayload = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-};
-
-type LoginPayload = {
-  email: string;
-  password: string;
-};
 
 export const apiSlice = createApi({
   reducerPath: 'api',
