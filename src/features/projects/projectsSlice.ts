@@ -1,8 +1,5 @@
 import { postInvite } from '@kupm/features/api/invites';
-import {
-  getProjectActiviy,
-  getProjectMembers,
-} from '@kupm/features/api/projects';
+import { getProjectActiviy } from '@kupm/features/api/projects';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState: any = {
@@ -33,10 +30,10 @@ const initialState: any = {
 //   deleteProjectRequest
 // );
 
-export const fetchProjectMembers = createAsyncThunk(
-  'projects/getMembers',
-  getProjectMembers
-);
+// export const fetchProjectMembers = createAsyncThunk(
+//   'projects/getMembers',
+//   getProjectMembers
+// );
 
 export const sendInvite = createAsyncThunk('projects/sendInvite', postInvite);
 
@@ -111,14 +108,14 @@ export const projectsSlice = createSlice({
     // });
 
     /** --------------------------- FETCH PROJECT MEMBERS ------------------------------ */
-    builder.addCase(fetchProjectMembers.pending, () => {});
-    builder.addCase(fetchProjectMembers.fulfilled, (state, { payload }) => {
-      if (!payload.success) {
-        console.log('error member');
-      }
-      state.members = payload.data;
-    });
-    builder.addCase(fetchProjectMembers.rejected, () => {});
+    // builder.addCase(fetchProjectMembers.pending, () => {});
+    // builder.addCase(fetchProjectMembers.fulfilled, (state, { payload }) => {
+    //   if (!payload.success) {
+    //     console.log('error member');
+    //   }
+    //   state.members = payload.data;
+    // });
+    // builder.addCase(fetchProjectMembers.rejected, () => {});
 
     /** -------------------------------- SEND INVITE ----------------------------------- */
 

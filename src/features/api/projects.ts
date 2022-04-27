@@ -29,12 +29,12 @@ declare const BASE_URL: string;
 //   return await resp.json();
 // };
 
-export const getProjectMembers = async (payload: any) => {
-  const { projectId } = payload;
-  const res = await fetch(`${BASE_URL}/api/projects/${projectId}/members`);
-  const body = await res.json();
-  return body;
-};
+// export const getProjectMembers = async (payload: any) => {
+//   const { projectId } = payload;
+//   const res = await fetch(`${BASE_URL}/api/projects/${projectId}/members`);
+//   const body = await res.json();
+//   return body;
+// };
 
 export const postProjectInvite = async (payload: any) => {
   const userId = getCookie('kupm_user_id');

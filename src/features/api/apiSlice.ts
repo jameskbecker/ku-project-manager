@@ -57,6 +57,11 @@ export const apiSlice = createApi({
         method: 'DELETE',
       }),
     }),
+    getProjectMembers: builder.query({
+      query: (args) => {
+        return `/projects/${args.id}/members`;
+      },
+    }),
   }),
 });
 
@@ -65,4 +70,5 @@ export const {
   useAddProjectMutation,
   useUpdateProjectMutation,
   useDeleteProjectMutation,
+  useGetProjectMembersQuery,
 } = apiSlice;

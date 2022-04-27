@@ -1,19 +1,23 @@
+import {
+  faEye,
+  faPencilAlt,
+  faSpinner,
+  faUserMinus,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button, { SecondaryButton } from '@kupm/common/Button';
+import DataPlaceholder from '@kupm/common/DataPlaceholder';
 import { FlexColumn, FlexRow } from '@kupm/common/Flex';
 import { ModalBackdrop, ModalContent, ModalFooter } from '@kupm/common/Modal';
 import Panel from '@kupm/common/Panel';
 import ScrollContainer from '@kupm/common/ScrollContainer';
 import Separator from '@kupm/common/Separator';
-import { fetchProjectMembers } from '@kupm/features/projects/projectsSlice';
 import { toggleMembers } from '@kupm/features/tasks/tasksSlice';
-import {
-  faEye,
-  faPencilAlt,
-  faUserMinus,
-} from '@fortawesome/free-solid-svg-icons';
 import React, { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { ThemeContext } from 'styled-components';
+import { useGetProjectMembersQuery } from '../api/apiSlice';
 
 const MemberPanel = ({ data }: any) => {
   const theme = useContext(ThemeContext);
@@ -44,18 +48,29 @@ const MemberPanel = ({ data }: any) => {
     </Panel>
   );
 };
-
 const MembersModal = () => {
-  const { members, selectedProject } = useSelector(
-    (state: any) => state.projects
-  );
+  const { id } = useParams<any>();
+  const { data: members, isLoading } = useGetProjectMembersQuery({ id });
+
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchProjectMembers({ projectId: selectedProject }));
-  }, []);
-
   const handleCancel = () => dispatch(toggleMembers());
+  let content;
+  if (isLoading) {
+    content = (
+      <DataPlaceholder>
+        <FontAwesomeIcon style={{ flex: '1 1' }} icon={faSpinner} spin />
+      </DataPlaceholder>
+    );
+  } else {
+    content = (
+      <ScrollContainer>
+        {members.data.map((m: any) => (
+          <MemberPanel key={m.id} data={m} />
+        ))}
+      </ScrollContainer>
+    );
+  }
 
   return (
     <ModalBackdrop onClick={handleCancel}>
@@ -67,11 +82,7 @@ const MembersModal = () => {
         <h2 style={{ flex: '0 0 auto' }}>Members</h2>
 
         <Separator />
-        <ScrollContainer>
-          {members.map((m: any) => (
-            <MemberPanel key={m.id} data={m} />
-          ))}
-        </ScrollContainer>
+        {content}
         <Separator />
 
         <ModalFooter>
