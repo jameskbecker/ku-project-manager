@@ -5,10 +5,8 @@ const initialState: any = {
   showNewProject: false,
   showInvite: false,
   showDeleteAll: false,
-  isLoading: null,
   selectedProject: '',
   filter: '',
-  activity: [],
 };
 
 export const sendInvite = createAsyncThunk('projects/sendInvite', postInvite);
