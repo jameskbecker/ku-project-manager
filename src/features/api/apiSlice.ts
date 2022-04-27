@@ -35,7 +35,7 @@ export const apiSlice = createApi({
         return `/projects?userId=${userId}`;
       },
     }),
-    postProject: builder.mutation({
+    addProject: builder.mutation({
       query: (args: PostProjectArgs) => ({
         url: `${BASE_URL}/api/projects`,
         method: 'POST',
@@ -62,7 +62,7 @@ export const apiSlice = createApi({
 
 export const {
   useGetProjectsQuery,
-  usePostProjectMutation,
+  useAddProjectMutation,
   useUpdateProjectMutation,
   useDeleteProjectMutation,
 } = apiSlice;

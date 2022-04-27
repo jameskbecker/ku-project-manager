@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   useGetProjectsQuery,
-  usePostProjectMutation,
+  useAddProjectMutation,
   useUpdateProjectMutation,
 } from '../api/apiSlice';
 
@@ -28,7 +28,7 @@ const NewProjectModal = () => {
 
   const dispatch = useDispatch();
 
-  const [addProject, { isLoading }] = usePostProjectMutation();
+  const [addProject, { isLoading }] = useAddProjectMutation();
   const [updateProject, { isLoading: isLoadingUpdate }] =
     useUpdateProjectMutation();
 
