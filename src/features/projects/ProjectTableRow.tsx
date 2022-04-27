@@ -10,7 +10,6 @@ import ContextMenu from '@kupm/common/ContextMenu';
 import Panel from '@kupm/common/Panel';
 import { TableCell } from '@kupm/common/Table';
 import {
-  deleteProject,
   selectProject,
   toggleInvite,
   toggleNewProject,
@@ -20,7 +19,11 @@ import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
-import { useGetProjectsQuery, useUpdateProjectMutation } from '../api/apiSlice';
+import {
+  useDeleteProjectMutation,
+  useGetProjectsQuery,
+  useUpdateProjectMutation,
+} from '../api/apiSlice';
 
 const Wrapper = styled(Panel)`
   gap: 1rem;
@@ -49,6 +52,7 @@ const ProjectTableRow = ({ project }: any) => {
   const { refetch: refetchProjects } = useGetProjectsQuery(null);
   const [updateProject, { isLoading: isLoadingUpdate }] =
     useUpdateProjectMutation();
+  const [deleteProject] = useDeleteProjectMutation();
 
   const handleSelect = () => {
     history.push(`/projects/${project.id}`);

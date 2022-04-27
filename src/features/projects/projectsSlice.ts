@@ -1,6 +1,5 @@
 import { postInvite } from '@kupm/features/api/invites';
 import {
-  deleteProjectRequest,
   getProjectActiviy,
   getProjectMembers,
 } from '@kupm/features/api/projects';
@@ -29,10 +28,10 @@ const initialState: any = {
 //   postProject
 // );
 
-export const deleteProject = createAsyncThunk(
-  'projects/deleteProject',
-  deleteProjectRequest
-);
+// export const deleteProject = createAsyncThunk(
+//   'projects/deleteProject',
+//   deleteProjectRequest
+// );
 
 export const fetchProjectMembers = createAsyncThunk(
   'projects/getMembers',
@@ -100,16 +99,16 @@ export const projectsSlice = createSlice({
     // builder.addCase(saveProject.rejected, () => {});
 
     /** -------------------------------- DELETE PROJECT ----------------------------------- */
-    builder.addCase(deleteProject.pending, () => {
-      console.log('Deleting Project');
-    });
-    builder.addCase(deleteProject.fulfilled, (state, { meta, payload }) => {
-      if (!payload.success) return;
-      state.data = state.data.filter((d: any) => d.id !== meta.arg.id);
-    });
-    builder.addCase(deleteProject.rejected, () => {
-      console.log('Failed to Delete Project');
-    });
+    // builder.addCase(deleteProject.pending, () => {
+    //   console.log('Deleting Project');
+    // });
+    // builder.addCase(deleteProject.fulfilled, (state, { meta, payload }) => {
+    //   if (!payload.success) return;
+    //   state.data = state.data.filter((d: any) => d.id !== meta.arg.id);
+    // });
+    // builder.addCase(deleteProject.rejected, () => {
+    //   console.log('Failed to Delete Project');
+    // });
 
     /** --------------------------- FETCH PROJECT MEMBERS ------------------------------ */
     builder.addCase(fetchProjectMembers.pending, () => {});

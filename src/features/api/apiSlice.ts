@@ -51,6 +51,12 @@ export const apiSlice = createApi({
         body,
       }),
     }),
+    deleteProject: builder.mutation({
+      query: ({ id, ...body }) => ({
+        url: `${BASE_URL}/api/projects/${id}`,
+        method: 'DELETE',
+      }),
+    }),
   }),
 });
 
@@ -58,4 +64,5 @@ export const {
   useGetProjectsQuery,
   usePostProjectMutation,
   useUpdateProjectMutation,
+  useDeleteProjectMutation,
 } = apiSlice;

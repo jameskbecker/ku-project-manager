@@ -19,15 +19,15 @@ declare const BASE_URL: string;
 //   return await res.json();
 // };
 
-export const deleteProjectRequest = async (payload: any) => {
-  const { id } = payload;
-  console.log(id);
-  const resp = await fetch(`${BASE_URL}/api/projects/${payload.id}`, {
-    method: 'DELETE',
-  });
+// export const deleteProjectRequest = async (payload: any) => {
+//   const { id } = payload;
+//   console.log(id);
+//   const resp = await fetch(`${BASE_URL}/api/projects/${payload.id}`, {
+//     method: 'DELETE',
+//   });
 
-  return await resp.json();
-};
+//   return await resp.json();
+// };
 
 export const getProjectMembers = async (payload: any) => {
   const { projectId } = payload;
