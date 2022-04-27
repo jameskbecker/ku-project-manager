@@ -14,7 +14,7 @@ import { useHistory } from 'react-router-dom';
 const Login = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { errorMessage } = useSelector((state: any) => state.auth);
+  const [errorMessage] = useState('');
   const [login] = useLoginMutation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

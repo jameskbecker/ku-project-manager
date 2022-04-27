@@ -87,6 +87,11 @@ export const apiSlice = createApi({
         return `/projects/${args.id}/members`;
       },
     }),
+    getProjectActivity: builder.query({
+      query: (args) => {
+        return `/projects/${args.id}/activity`;
+      },
+    }),
     getProjectTasks: builder.query({
       query: (args) => {
         return `/projects/${args.id}/tasks`;
@@ -122,6 +127,7 @@ export const {
   useUpdateProjectMutation,
   useDeleteProjectMutation,
   useGetProjectMembersQuery,
+  useGetProjectActivityQuery,
   useGetProjectTasksQuery,
   useAddTaskMutation,
   useUpdateTaskMutation,

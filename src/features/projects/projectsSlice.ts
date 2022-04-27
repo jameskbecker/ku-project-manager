@@ -1,5 +1,4 @@
 import { postInvite } from '@kupm/features/api/invites';
-import { getProjectActiviy } from '@kupm/features/api/projects';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState: any = {
@@ -13,11 +12,6 @@ const initialState: any = {
 };
 
 export const sendInvite = createAsyncThunk('projects/sendInvite', postInvite);
-
-export const fetchActivity = createAsyncThunk(
-  'projects/getActivity',
-  getProjectActiviy
-);
 
 export const projectsSlice = createSlice({
   name: 'projects',
@@ -45,16 +39,6 @@ export const projectsSlice = createSlice({
   },
   extraReducers: (builder) => {
     /** -------------------------------- SEND INVITE ----------------------------------- */
-
-    /** --------------------------- FETCH PROJECT ACTIVITY ----------------------------- */
-    builder.addCase(fetchActivity.pending, (state) => {});
-    builder.addCase(fetchActivity.fulfilled, (state, { payload }) => {
-      if (!payload.success) {
-        console.log('error activity');
-      }
-      state.activity = payload.data;
-    });
-    builder.addCase(fetchActivity.rejected, () => {});
   },
 });
 

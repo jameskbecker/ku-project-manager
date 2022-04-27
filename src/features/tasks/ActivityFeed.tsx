@@ -1,12 +1,13 @@
+import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import { SecondaryButton } from '@kupm/common/Button';
 import DataPlaceholder from '@kupm/common/DataPlaceholder';
 import { FlexColumn, FlexRow } from '@kupm/common/Flex';
 import Panel from '@kupm/common/Panel';
 import ScrollContainer from '@kupm/common/ScrollContainer';
-import { fetchActivity } from '@kupm/features/projects/projectsSlice';
-import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
-import React, { useEffect } from 'react';
+import { useGetProjectActivityQuery } from '@kupm/features/api/apiSlice';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledActivityFeed = styled(FlexColumn)`
@@ -22,38 +23,39 @@ const StyledActivityFeed = styled(FlexColumn)`
 `;
 
 const ActivityFeed = () => {
+  const { id } = useParams<any>();
   const { selectedProject, activity } = useSelector(
     (state: any) => state.projects
   );
   const dispatch = useDispatch();
+  const { data, isLoading, refetch } = useGetProjectActivityQuery({ id });
 
-  useEffect(() => {
-    dispatch(fetchActivity({ id: '6f35f124-46d4-11ec-8b6c-d2f44fac733b' }));
-  }, []);
-
-  const handleActivityRefresh = () => {
-    dispatch(fetchActivity({ id: '6f35f124-46d4-11ec-8b6c-d2f44fac733b' }));
-  };
+  let content;
+  if (isLoading) {
+    content = <DataPlaceholder>Loading</DataPlaceholder>;
+  } else if (activity.length < 1) {
+    content = <DataPlaceholder>No Activity</DataPlaceholder>;
+  } else {
+    content = (
+      <ScrollContainer>
+        {activity.map((a: any, i: number) => (
+          <Panel key={i} style={{ gap: '0.5rem' }}>
+            <h4>{a.heading}</h4>
+            <h5>{a.subheading}</h5>
+            <p>{a.body}</p>
+          </Panel>
+        ))}
+      </ScrollContainer>
+    );
+  }
 
   return (
     <StyledActivityFeed>
       <FlexRow>
         <h3 style={{ flex: '1 1' }}>Activity Feed</h3>
-        <SecondaryButton icon={faSyncAlt} onClick={handleActivityRefresh} />
+        <SecondaryButton icon={faSyncAlt} onClick={refetch} />
       </FlexRow>
-      {activity.length < 1 ? (
-        <DataPlaceholder>No Activity</DataPlaceholder>
-      ) : (
-        <ScrollContainer>
-          {activity.map((a: any, i: number) => (
-            <Panel key={i} style={{ gap: '0.5rem' }}>
-              <h4>{a.heading}</h4>
-              <h5>{a.subheading}</h5>
-              <p>{a.body}</p>
-            </Panel>
-          ))}
-        </ScrollContainer>
-      )}
+      {content}
     </StyledActivityFeed>
   );
 };
