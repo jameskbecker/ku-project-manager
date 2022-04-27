@@ -5,8 +5,8 @@ import Logo from '@kupm/common/Logo';
 import { ModalFooter } from '@kupm/common/Modal';
 import Panel from '@kupm/common/Panel';
 import Separator from '@kupm/common/Separator';
+import { useLoginMutation } from '@kupm/features/api/apiSlice';
 import LoginHeader from '@kupm/features/auth/LoginHeader';
-import { postLogin } from '@kupm/features/auth/authSlice';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -15,6 +15,7 @@ const Login = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { errorMessage } = useSelector((state: any) => state.auth);
+  const [login] = useLoginMutation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -23,7 +24,7 @@ const Login = () => {
   };
 
   const handleLogin = () => {
-    dispatch(postLogin({ email, password }));
+    login({ email, password });
     //history.push('/');
   };
 

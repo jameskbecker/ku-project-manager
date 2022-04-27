@@ -26,6 +26,11 @@ type RegisterPayload = {
   password: string;
 };
 
+type LoginPayload = {
+  email: string;
+  password: string;
+};
+
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
@@ -39,6 +44,14 @@ export const apiSlice = createApi({
     register: builder.mutation({
       query: (args: RegisterPayload) => ({
         url: '/auth/register',
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: args,
+      }),
+    }),
+    login: builder.mutation({
+      query: (args: LoginPayload) => ({
+        url: '/auth/login',
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: args,
@@ -122,6 +135,7 @@ export const apiSlice = createApi({
 
 export const {
   useRegisterMutation,
+  useLoginMutation,
   useGetUserQuery,
   useGetNotificationsQuery,
   useGetTodoQuery,
