@@ -7,6 +7,7 @@ import {
 } from '@kupm/features/projects/projectsSlice';
 import {
   applyFilter,
+  selectTask,
   toggleMembers,
   toggleNewTask,
 } from '@kupm/features/tasks/tasksSlice';
@@ -68,7 +69,10 @@ const ControlBar = () => {
     dispatch(selectProject(id));
   }, []);
 
-  const handleNewTask = () => dispatch(toggleNewTask());
+  const handleNewTask = () => {
+    dispatch(selectTask(''));
+    dispatch(toggleNewTask());
+  };
 
   const handleInvite = () => {
     dispatch(toggleInvite());

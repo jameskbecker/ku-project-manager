@@ -5,23 +5,28 @@ import TextInput from '@kupm/common/input/TextInput';
 import { ModalBackdrop, ModalContent, ModalFooter } from '@kupm/common/Modal';
 import Separator from '@kupm/common/Separator';
 import {
-  fetchProjectTasks,
+  useGetProjectsQuery,
+  useGetProjectTasksQuery,
+} from '@kupm/features/api/apiSlice';
+import {
   saveTask,
   selectTask,
   toggleNewTask,
 } from '@kupm/features/tasks/tasksSlice';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 const NewTaskModal = () => {
-  const { data, selectedTask, pageName } = useSelector(
-    (state: any) => state.tasks
+  const { id } = useParams<any>();
+  const { data: taskResponse, isLoading } = useGetProjectTasksQuery({ id });
+  const { data: projectResponse } = useGetProjectsQuery(null);
+
+  const { selectedTask } = useSelector((state: any) => state.tasks);
+  const { selectedProject } = useSelector((state: any) => state.projects);
+  const selectedTaskData = taskResponse.data.tasks.find(
+    (d: any) => d.id === selectedTask
   );
-  const { data: projectData, selectedProject } = useSelector(
-    (state: any) => state.projects
-  );
-  console.log(data, selectedTask);
-  const selectedTaskData = data.find((d: any) => d.id === selectedTask);
 
   const [projectId, setProjectId] = useState(selectedProject);
   const [parentId, setParentId] = useState('');
@@ -43,7 +48,6 @@ const NewTaskModal = () => {
     if (selectedTask) payload.id = selectedTask;
     try {
       dispatch(saveTask(payload));
-      dispatch(fetchProjectTasks({ projectId }));
       dispatch(toggleNewTask());
       dispatch(selectTask(''));
     } catch (e) {
@@ -53,7 +57,7 @@ const NewTaskModal = () => {
 
   const projectOptions = [
     {
-      label: projectData.find((p: any) => p.id === projectId).name,
+      label: taskResponse?.data.name || '',
       value: projectId,
     },
   ];
@@ -63,8 +67,9 @@ const NewTaskModal = () => {
     //...data.map((d: any) => ({ label: d.name, value: d.id })),
   ];
 
-  if (!selectedTaskData) taskOptions.push({ label: pageName, value: '' });
-  console.log(taskOptions);
+  if (selectedTaskData)
+    taskOptions.push({ label: selectedTaskData.name, value: '' });
+
   return (
     <ModalBackdrop onClick={handleCancel}>
       <ModalContent secondary onClick={(e) => e.stopPropagation()}>

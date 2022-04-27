@@ -1,10 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getProjectTasks } from '@kupm/features/api/projects';
 import {
   deleteTaskRequest,
   getSubTasks,
   postTask,
 } from '@kupm/features/api/tasks';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState: any = {
   showNewTask: false,
@@ -18,10 +17,10 @@ const initialState: any = {
   filter: '',
 };
 
-export const fetchProjectTasks = createAsyncThunk(
-  'tasks/getTasks',
-  getProjectTasks
-);
+// export const fetchProjectTasks = createAsyncThunk(
+//   'tasks/getTasks',
+//   getProjectTasks
+// );
 
 export const fetchSubTasks = createAsyncThunk('tasks/getSubTasks', getSubTasks);
 
@@ -58,23 +57,23 @@ export const tasksSlice = createSlice({
   },
   extraReducers: (builder) => {
     // CRUDL: GET actions
-    builder.addCase(fetchProjectTasks.pending, (state) => {
-      console.log('Fetching Tasks');
-      state.isLoading = true;
-    });
+    // builder.addCase(fetchProjectTasks.pending, (state) => {
+    //   console.log('Fetching Tasks');
+    //   state.isLoading = true;
+    // });
 
-    builder.addCase(fetchProjectTasks.fulfilled, (state, { payload }) => {
-      console.log('Fetched Tasks!', payload);
+    // builder.addCase(fetchProjectTasks.fulfilled, (state, { payload }) => {
+    //   console.log('Fetched Tasks!', payload);
 
-      // Avoid unneccesary rerenders
-      if (state.data === payload.data) return;
-      state.data = payload.data.tasks;
-      state.pageName = payload.data.name;
-      state.description = payload.data.description;
-      state.isLoading = false;
-    });
+    //   // Avoid unneccesary rerenders
+    //   if (state.data === payload.data) return;
+    //   state.data = payload.data.tasks;
+    //   state.pageName = payload.data.name;
+    //   state.description = payload.data.description;
+    //   state.isLoading = false;
+    // });
 
-    builder.addCase(fetchProjectTasks.rejected, () => {});
+    // builder.addCase(fetchProjectTasks.rejected, () => {});
 
     // ---------------------------------------------------------------
     builder.addCase(fetchSubTasks.pending, (state) => {

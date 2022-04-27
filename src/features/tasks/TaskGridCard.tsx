@@ -4,7 +4,6 @@ import { FlexRow } from '@kupm/common/Flex';
 import Panel from '@kupm/common/Panel';
 import {
   deleteTask,
-  fetchProjectTasks,
   saveTask,
   selectTask,
   toggleAddComment,
@@ -64,7 +63,7 @@ const TaskGridCard = ({ task }: any) => {
   const handleDelete = (e: any) => {
     e.stopPropagation();
     dispatch(deleteTask({ id: task.id }));
-    dispatch(fetchProjectTasks({ projectId: task.projectId }));
+    //dispatch(fetchProjectTasks({ projectId: task.projectId }));
   };
 
   const handleMore = (e: any) => {

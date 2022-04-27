@@ -52,7 +52,7 @@ export const getProjectActiviy = async ({ id }: any) => {
   return await res.json();
 };
 
-export const getProjectTasks = async ({ projectId }: any) => {
-  const res = await fetch(`${BASE_URL}/api/projects/${projectId}/tasks`);
-  return await res.json();
-};
+// export const getProjectTasks = async ({ projectId }: any) => {
+//   const res = await fetch(`${BASE_URL}/api/projects/${projectId}/tasks`);
+//   return await res.json();
+// };
