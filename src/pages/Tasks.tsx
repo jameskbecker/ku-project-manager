@@ -12,7 +12,6 @@ import {
   selectProject,
   toggleNewProject,
 } from '@kupm/features/projects/projectsSlice';
-import { fetchAccountDetails } from '@kupm/features/settings/settingsSlice';
 import ActivityFeed from '@kupm/features/tasks/ActivityFeed';
 import AddCommentModal from '@kupm/features/tasks/AddComment';
 import Content from '@kupm/features/tasks/Content';
@@ -50,8 +49,6 @@ const Project = () => {
     if (!selectedProject) {
       dispatch(selectProject(id));
     }
-
-    dispatch(fetchAccountDetails());
     dispatch(selectTask(taskId));
 
     if (taskId) dispatch(fetchSubTasks({ taskId }));

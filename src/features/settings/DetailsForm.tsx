@@ -1,17 +1,12 @@
 import { FlexRow } from '@kupm/common/Flex';
 import TextInput from '@kupm/common/input/TextInput';
-import { fetchAccountDetails } from '@kupm/features/settings/settingsSlice';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useGetUserQuery } from '../api/apiSlice';
 
 const DetailsForm = () => {
-  const dispatch = useDispatch();
-  const { accountFirstName, accountLastName, accountEmail, editDetails } =
-    useSelector((state: any) => state.settings);
-
-  useEffect(() => {
-    dispatch(fetchAccountDetails());
-  }, []);
+  const { editDetails } = useSelector((state: any) => state.settings);
+  const { data: userResponse, isLoading } = useGetUserQuery(null);
 
   const handleFirstChange = () => {};
   const handleLastChange = () => {};
@@ -22,13 +17,13 @@ const DetailsForm = () => {
       <FlexRow>
         <TextInput
           label="First Name"
-          value={accountFirstName}
+          value={isLoading ? '' : userResponse.data.firstName}
           onChange={handleFirstChange}
           disabled={!editDetails}
         />
         <TextInput
           label="Last Name"
-          value={accountLastName}
+          value={isLoading ? '' : userResponse.data.lastName}
           onChange={handleLastChange}
           disabled={!editDetails}
         />
@@ -36,7 +31,7 @@ const DetailsForm = () => {
 
       <TextInput
         label="Email"
-        value={accountEmail}
+        value={isLoading ? '' : userResponse.data.email}
         onChange={handleEmailChange}
         disabled={!editDetails}
       />

@@ -1,14 +1,14 @@
-import ContextMenu from '@kupm/common/ContextMenu';
-import { FlexRow } from '@kupm/common/Flex';
-import { VerticalSeparator } from '@kupm/common/Separator';
 import {
   faBars,
   faChevronDown,
   faChevronLeft,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ContextMenu from '@kupm/common/ContextMenu';
+import { FlexRow } from '@kupm/common/Flex';
+import { VerticalSeparator } from '@kupm/common/Separator';
+import { useGetUserQuery } from '@kupm/features/api/apiSlice';
 import React, { useContext } from 'react';
-import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import styled, { ThemeContext } from 'styled-components';
 
@@ -73,7 +73,7 @@ type NavBarProps = {
 const HeaderBar = ({ back, pageName, description, Options }: NavBarProps) => {
   const history = useHistory();
   const theme = useContext(ThemeContext);
-  const { accountFirstName } = useSelector((state: any) => state.settings);
+  const { data: userResponse, isLoading } = useGetUserQuery(null);
 
   const handleAccount = () => {
     history.push('/settings');
@@ -92,7 +92,9 @@ const HeaderBar = ({ back, pageName, description, Options }: NavBarProps) => {
           { label: 'Sign Out', onClick: handleSignout },
         ]}
       >
-        <span>Welcome back, {accountFirstName}!</span>
+        <span>
+          {!isLoading ? `Welcome back, ${userResponse?.data.firstName}!` : ''}
+        </span>
         <FontAwesomeIcon icon={faChevronDown} color={theme.brand} />
       </UserWrapper>
     );

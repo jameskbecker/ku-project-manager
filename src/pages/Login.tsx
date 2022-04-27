@@ -7,7 +7,6 @@ import Panel from '@kupm/common/Panel';
 import Separator from '@kupm/common/Separator';
 import LoginHeader from '@kupm/features/auth/LoginHeader';
 import { postLogin } from '@kupm/features/auth/authSlice';
-import { fetchAccountDetails } from '@kupm/features/settings/settingsSlice';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -25,7 +24,6 @@ const Login = () => {
 
   const handleLogin = () => {
     dispatch(postLogin({ email, password }));
-    dispatch(fetchAccountDetails());
     //history.push('/');
   };
 
@@ -33,7 +31,6 @@ const Login = () => {
     // does not expire
     const expiryDate = 'Fri, 31 Dec 9999 23:59:59 GMT';
     document.cookie = `kupm_user_id=${id}; expires=${expiryDate};`;
-    dispatch(fetchAccountDetails());
     history.push('/');
   };
 

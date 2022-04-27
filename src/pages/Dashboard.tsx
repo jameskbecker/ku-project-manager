@@ -14,7 +14,6 @@ import Content from '@kupm/features/dashboard/Content';
 import NotificationPanel from '@kupm/features/dashboard/NotificationPanel';
 import TodoPanel from '@kupm/features/dashboard/TodoPanel';
 import UpcomingPanel from '@kupm/features/dashboard/UpcomingPanel';
-import { fetchAccountDetails } from '@kupm/features/settings/settingsSlice';
 import { getCookie } from '@kupm/utils/cookie';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -54,7 +53,6 @@ const Dashboard = () => {
       return;
     }
     document.title = 'Dashboard | KUPM';
-    dispatch(fetchAccountDetails());
   }, []);
 
   const handleNotificationRefresh = () => {

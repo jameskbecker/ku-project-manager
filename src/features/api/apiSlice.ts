@@ -29,6 +29,12 @@ export const apiSlice = createApi({
     },
   }),
   endpoints: (builder) => ({
+    getUser: builder.query({
+      query: () => {
+        const id = getCookie('kupm_user_id');
+        return `/users/${id}`;
+      },
+    }),
     getNotifications: builder.query({
       query: () => {
         const id = getCookie('kupm_user_id');
@@ -100,6 +106,7 @@ export const apiSlice = createApi({
 });
 
 export const {
+  useGetUserQuery,
   useGetNotificationsQuery,
   useGetTodoQuery,
   useGetProjectsQuery,

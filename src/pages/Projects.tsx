@@ -7,7 +7,6 @@ import DeleteAllModal from '@kupm/features/projects/DeleteAllModal';
 import InviteModal from '@kupm/features/projects/InviteModal';
 import NewProjectModal from '@kupm/features/projects/NewProjectModal';
 import ProjectTable from '@kupm/features/projects/ProjectTable';
-import { fetchAccountDetails } from '@kupm/features/settings/settingsSlice';
 import { getCookie } from '@kupm/utils/cookie';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -38,7 +37,6 @@ const ProjectOverview = () => {
       return;
     }
     document.title = 'Projects | KUPM';
-    dispatch(fetchAccountDetails());
   }, []);
 
   return (
