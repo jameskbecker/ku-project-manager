@@ -67,6 +67,22 @@ export const apiSlice = createApi({
         return `/projects/${args.id}/tasks`;
       },
     }),
+    addTask: builder.mutation({
+      query: (args: PostProjectArgs) => ({
+        url: `/tasks`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: args,
+      }),
+    }),
+    updateTask: builder.mutation({
+      query: ({ id, ...body }: UpdateProjectArgs | CompleteProjectArgs) => ({
+        url: `/tasks/${id}`,
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body,
+      }),
+    }),
   }),
 });
 
@@ -77,4 +93,6 @@ export const {
   useDeleteProjectMutation,
   useGetProjectMembersQuery,
   useGetProjectTasksQuery,
+  useAddTaskMutation,
+  useUpdateTaskMutation,
 } = apiSlice;

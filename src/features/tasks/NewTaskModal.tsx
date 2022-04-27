@@ -5,49 +5,56 @@ import TextInput from '@kupm/common/input/TextInput';
 import { ModalBackdrop, ModalContent, ModalFooter } from '@kupm/common/Modal';
 import Separator from '@kupm/common/Separator';
 import {
+  useAddTaskMutation,
   useGetProjectsQuery,
   useGetProjectTasksQuery,
+  useUpdateTaskMutation,
 } from '@kupm/features/api/apiSlice';
-import {
-  saveTask,
-  selectTask,
-  toggleNewTask,
-} from '@kupm/features/tasks/tasksSlice';
+import { selectTask, toggleNewTask } from '@kupm/features/tasks/tasksSlice';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 const NewTaskModal = () => {
-  const { id } = useParams<any>();
+  const { id, taskId } = useParams<any>();
   const { data: taskResponse, isLoading } = useGetProjectTasksQuery({ id });
   const { data: projectResponse } = useGetProjectsQuery(null);
 
   const { selectedTask } = useSelector((state: any) => state.tasks);
   const { selectedProject } = useSelector((state: any) => state.projects);
-  const selectedTaskData = taskResponse.data.tasks.find(
+  const editTaskData = taskResponse.data.tasks.find(
     (d: any) => d.id === selectedTask
+  );
+  const parentTaskData = taskResponse.data.tasks.find(
+    (d: any) => d.id === taskId
   );
 
   const [projectId, setProjectId] = useState(selectedProject);
   const [parentId, setParentId] = useState('');
-  const [name, setName] = useState(selectedTaskData?.name || '');
+  const [name, setName] = useState(editTaskData?.name || '');
   const [description, setDescription] = useState(
-    selectedTaskData?.description || ''
+    editTaskData?.description || ''
   );
-  const [priority, setPriority] = useState('0');
+  const [priority, setPriority] = useState(editTaskData?.priority || '');
 
   const dispatch = useDispatch();
+  const [addTask] = useAddTaskMutation();
+  const [updateTask, { isLoading: isUpdating }] = useUpdateTaskMutation();
 
   const handleNameChange = (e: any) => setName(e.target.value);
   const handleDescriptionChange = (e: any) => setDescription(e.target.value);
   const handlePriorityChange = (e: any) => setPriority(e.target.value);
 
   const handleCancel = () => dispatch(toggleNewTask());
-  const handleSave = () => {
+  const handleSave = async () => {
     const payload: any = { projectId, parentId, name, description, priority };
-    if (selectedTask) payload.id = selectedTask;
     try {
-      dispatch(saveTask(payload));
+      if (selectedTask) {
+        payload.id = selectedTask;
+        await updateTask(payload);
+      } else {
+        await addTask(payload);
+      }
       dispatch(toggleNewTask());
       dispatch(selectTask(''));
     } catch (e) {
@@ -67,8 +74,8 @@ const NewTaskModal = () => {
     //...data.map((d: any) => ({ label: d.name, value: d.id })),
   ];
 
-  if (selectedTaskData)
-    taskOptions.push({ label: selectedTaskData.name, value: '' });
+  if (parentTaskData)
+    taskOptions.push({ label: parentTaskData.name, value: '' });
 
   return (
     <ModalBackdrop onClick={handleCancel}>

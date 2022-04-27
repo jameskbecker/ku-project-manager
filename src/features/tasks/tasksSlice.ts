@@ -25,7 +25,7 @@ const initialState: any = {
 export const fetchSubTasks = createAsyncThunk('tasks/getSubTasks', getSubTasks);
 
 // Used for PUT and POST
-export const saveTask = createAsyncThunk('tasks/saveTask', postTask);
+// export const saveTask = createAsyncThunk('tasks/saveTask', postTask);
 
 export const deleteTask = createAsyncThunk(
   'tasks/deleteTask',
@@ -95,16 +95,16 @@ export const tasksSlice = createSlice({
     builder.addCase(fetchSubTasks.rejected, () => {});
 
     // CRUDL: POST actions
-    builder.addCase(saveTask.pending, () => {
-      console.log('Creating Task...');
-    });
+    // builder.addCase(saveTask.pending, () => {
+    //   console.log('Creating Task...');
+    // });
 
-    //Consider returning new task from API and updating here instead of refetching all
-    builder.addCase(saveTask.fulfilled, () => {
-      console.log('Created New Task!');
-    });
+    // //Consider returning new task from API and updating here instead of refetching all
+    // builder.addCase(saveTask.fulfilled, () => {
+    //   console.log('Created New Task!');
+    // });
 
-    builder.addCase(saveTask.rejected, () => {});
+    // builder.addCase(saveTask.rejected, () => {});
   },
 });
 

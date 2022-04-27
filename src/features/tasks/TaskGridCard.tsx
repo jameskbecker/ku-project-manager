@@ -4,7 +4,6 @@ import { FlexRow } from '@kupm/common/Flex';
 import Panel from '@kupm/common/Panel';
 import {
   deleteTask,
-  saveTask,
   selectTask,
   toggleAddComment,
   toggleNewTask,
@@ -79,8 +78,8 @@ const TaskGridCard = ({ task }: any) => {
 
   const toggleIsDone = (e: any) => {
     e.stopPropagation();
-    dispatch(saveTask({ id: task.id, is_complete: !task.isComplete }));
-    location.reload();
+    //dispatch(saveTask({ id: task.id, is_complete: !task.isComplete }));
+    //location.reload();
   };
 
   const OptionMenu = () => {
