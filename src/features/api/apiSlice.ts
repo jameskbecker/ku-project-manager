@@ -62,7 +62,7 @@ export const apiSlice = createApi({
     }),
     addProject: builder.mutation({
       query: (args: PostProjectArgs) => ({
-        url: `${BASE_URL}/api/projects`,
+        url: '/projects',
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: args,
@@ -70,7 +70,7 @@ export const apiSlice = createApi({
     }),
     updateProject: builder.mutation({
       query: ({ id, ...body }: UpdateProjectArgs | CompleteProjectArgs) => ({
-        url: `${BASE_URL}/api/projects/${id}`,
+        url: `/projects/${id}`,
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body,
@@ -78,7 +78,7 @@ export const apiSlice = createApi({
     }),
     deleteProject: builder.mutation({
       query: ({ id, ...body }) => ({
-        url: `${BASE_URL}/api/projects/${id}`,
+        url: `/projects/${id}`,
         method: 'DELETE',
       }),
     }),
