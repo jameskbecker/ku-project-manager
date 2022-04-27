@@ -3,7 +3,6 @@ import {
   deleteProjectRequest,
   getProjectActiviy,
   getProjectMembers,
-  postProject,
 } from '@kupm/features/api/projects';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
@@ -25,10 +24,10 @@ const initialState: any = {
 // );
 
 // Used for PUT and POST
-export const saveProject = createAsyncThunk(
-  'projects/saveProject',
-  postProject
-);
+// export const saveProject = createAsyncThunk(
+//   'projects/saveProject',
+//   postProject
+// );
 
 export const deleteProject = createAsyncThunk(
   'projects/deleteProject',
@@ -89,16 +88,16 @@ export const projectsSlice = createSlice({
     // builder.addCase(fetchAllProjects.rejected, () => {});
 
     /** -------------------------------- SAVE PROJECT ----------------------------------- */
-    builder.addCase(saveProject.pending, ({ payload }) => {
-      console.log('Creating Project...');
-    });
-    //Consider returning new project from API and updating here instead of refetching all
-    builder.addCase(saveProject.fulfilled, (state, { payload }) => {
-      if (!payload.success || !payload.data) return;
-      console.log('Created New Project!');
-      state.data = [...state.data, ...payload.data];
-    });
-    builder.addCase(saveProject.rejected, () => {});
+    // builder.addCase(saveProject.pending, ({ payload }) => {
+    //   console.log('Creating Project...');
+    // });
+    // //Consider returning new project from API and updating here instead of refetching all
+    // builder.addCase(saveProject.fulfilled, (state, { payload }) => {
+    //   if (!payload.success || !payload.data) return;
+    //   console.log('Created New Project!');
+    //   state.data = [...state.data, ...payload.data];
+    // });
+    // builder.addCase(saveProject.rejected, () => {});
 
     /** -------------------------------- DELETE PROJECT ----------------------------------- */
     builder.addCase(deleteProject.pending, () => {

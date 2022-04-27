@@ -11,17 +11,16 @@ import Panel from '@kupm/common/Panel';
 import { TableCell } from '@kupm/common/Table';
 import {
   deleteProject,
-  saveProject,
   selectProject,
   toggleInvite,
   toggleNewProject,
 } from '@kupm/features/projects/projectsSlice';
 import { formatDistance } from 'date-fns';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
-import { useGetProjectsQuery } from '../api/apiSlice';
+import { useGetProjectsQuery, useUpdateProjectMutation } from '../api/apiSlice';
 
 const Wrapper = styled(Panel)`
   gap: 1rem;
@@ -48,6 +47,8 @@ const ProjectTableRow = ({ project }: any) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { refetch: refetchProjects } = useGetProjectsQuery(null);
+  const [updateProject, { isLoading: isLoadingUpdate }] =
+    useUpdateProjectMutation();
 
   const handleSelect = () => {
     history.push(`/projects/${project.id}`);
@@ -55,7 +56,7 @@ const ProjectTableRow = ({ project }: any) => {
 
   const handleComplete = (e: any) => {
     e.stopPropagation();
-    dispatch(saveProject({ id: project.id, is_complete: !project.isComplete }));
+    updateProject({ id: project.id, is_complete: !project.isComplete });
     refetchProjects();
   };
 

@@ -7,17 +7,17 @@ declare const BASE_URL: string;
 //   return await res.json();
 // };
 
-export const postProject = async (payload: any) => {
-  const { id } = payload;
-  const baseEndpoint = `${BASE_URL}/api/projects`;
-  const res = await fetch(id ? `${baseEndpoint}/${id}` : baseEndpoint, {
-    method: id ? 'PUT' : 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
+// export const postProject = async (payload: any) => {
+//   const { id } = payload;
+//   const baseEndpoint = `${BASE_URL}/api/projects`;
+//   const res = await fetch(id ? `${baseEndpoint}/${id}` : baseEndpoint, {
+//     method: id ? 'PUT' : 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(payload),
+//   });
 
-  return await res.json();
-};
+//   return await res.json();
+// };
 
 export const deleteProjectRequest = async (payload: any) => {
   const { id } = payload;

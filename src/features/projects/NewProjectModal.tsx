@@ -3,18 +3,22 @@ import TextArea from '@kupm/common/input/TextArea';
 import TextInput from '@kupm/common/input/TextInput';
 import { ModalBackdrop, ModalContent, ModalFooter } from '@kupm/common/Modal';
 import Separator from '@kupm/common/Separator';
-import {
-  saveProject,
-  toggleNewProject,
-} from '@kupm/features/projects/projectsSlice';
+import { toggleNewProject } from '@kupm/features/projects/projectsSlice';
 import { getCookie } from '@kupm/utils/cookie';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { usePostProjectMutation } from '../api/apiSlice';
+import {
+  useGetProjectsQuery,
+  usePostProjectMutation,
+  useUpdateProjectMutation,
+} from '../api/apiSlice';
 
 const NewProjectModal = () => {
-  const { data, selectedProject } = useSelector((state: any) => state.projects);
-  const selectedData = data.find((d: any) => d.id === selectedProject);
+  const { data: projects } = useGetProjectsQuery(null);
+  const { selectedProject } = useSelector((state: any) => state.projects);
+  const selectedData = projects?.data.find(
+    (d: any) => d.id === selectedProject
+  );
   const [name, setName] = useState(selectedData?.name || '');
   const [dueAt, setDueAt] = useState(selectedData?.dueAt || '');
   const [priority, setPriority] = useState(selectedData?.priority || '0');
@@ -25,6 +29,8 @@ const NewProjectModal = () => {
   const dispatch = useDispatch();
 
   const [addProject, { isLoading }] = usePostProjectMutation();
+  const [updateProject, { isLoading: isLoadingUpdate }] =
+    useUpdateProjectMutation();
 
   const handleNameChange = (e: any) => setName(e.target.value);
   const handlePriorityChange = (e: any) => setPriority(e.target.value);
@@ -38,19 +44,21 @@ const NewProjectModal = () => {
       alert('no userid');
       return;
     }
-    console.log(userId);
-    const payload: any = {
+
+    const args: any = {
       name,
       dueAt: Math.floor(new Date(dueAt).getTime() / 1000),
       priority,
       description,
       createdBy: userId,
     };
-    //if (selectedProject) payload.id = selectedProject;
 
     try {
-      //dispatch(saveProject(payload));
-      await addProject(payload);
+      if (selectedProject) {
+        args.id = selectedProject;
+        await updateProject(args);
+      } else await addProject(args);
+
       dispatch(toggleNewProject());
     } catch (e) {
       console.error(e);
@@ -90,7 +98,7 @@ const NewProjectModal = () => {
           <Button light text="Cancel" onClick={handleCancel}></Button>
           <Button
             round
-            text={isLoading ? 'Saving...' : 'Save'}
+            text={isLoading || isLoadingUpdate ? 'Saving...' : 'Save'}
             onClick={handleSave}
           />
         </ModalFooter>
