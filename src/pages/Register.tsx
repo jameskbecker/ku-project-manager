@@ -4,7 +4,7 @@ import TextInput from '@kupm/common/input/TextInput';
 import { ModalFooter } from '@kupm/common/Modal';
 import Panel from '@kupm/common/Panel';
 import Separator from '@kupm/common/Separator';
-import { postRegister } from '@kupm/features/auth/authSlice';
+import { useRegisterMutation } from '@kupm/features/api/apiSlice';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -18,8 +18,10 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
 
+  const [register] = useRegisterMutation();
+
   const handleRegister = () => {
-    dispatch(postRegister({ firstName, lastName, email, password }));
+    register({ firstName, lastName, email, password });
   };
 
   return (

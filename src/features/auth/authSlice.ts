@@ -1,14 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { postAuthLogin, postAuthRegister } from '@kupm/features/api/auth';
+import { postAuthLogin } from '@kupm/features/api/auth';
 
 const initialState: any = {
   errorMessage: '',
 };
-
-export const postRegister = createAsyncThunk(
-  'authentication/postRegister',
-  postAuthRegister
-);
 
 export const postLogin = createAsyncThunk(
   'authentication/postLogin',
@@ -24,23 +19,6 @@ export const authSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(postRegister.pending, () => {
-      console.log('Logging In...');
-    });
-
-    builder.addCase(postRegister.fulfilled, (state, { payload: body }) => {
-      console.log(body);
-      if (!body.success) {
-        state.errorMessage = body.error || '';
-        return;
-      }
-      location.href = '/login';
-    });
-
-    builder.addCase(postRegister.rejected, (state) => {
-      console.log('Error creating an account');
-    });
-
     /** ----------------------------------------------------------------------- */
     builder.addCase(postLogin.pending, () => {
       console.log('Logging In...');

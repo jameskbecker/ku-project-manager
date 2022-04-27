@@ -19,6 +19,13 @@ interface CompleteProjectArgs {
   is_complete: boolean;
 }
 
+type RegisterPayload = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+};
+
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
@@ -29,6 +36,14 @@ export const apiSlice = createApi({
     },
   }),
   endpoints: (builder) => ({
+    register: builder.mutation({
+      query: (args: RegisterPayload) => ({
+        url: '/auth/register',
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: args,
+      }),
+    }),
     getUser: builder.query({
       query: () => {
         const id = getCookie('kupm_user_id');
@@ -106,6 +121,7 @@ export const apiSlice = createApi({
 });
 
 export const {
+  useRegisterMutation,
   useGetUserQuery,
   useGetNotificationsQuery,
   useGetTodoQuery,
