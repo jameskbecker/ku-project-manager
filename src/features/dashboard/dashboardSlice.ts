@@ -1,5 +1,5 @@
+import { getUserTodo } from '@kupm/features/api/users';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getUserNotifications, getUserTodo } from '@kupm/features/api/users';
 
 const initialState: any = {
   notifications: [],
@@ -7,10 +7,10 @@ const initialState: any = {
   projects: [],
 };
 
-export const fetchNotifications = createAsyncThunk(
-  'dashboards/getNotifications',
-  getUserNotifications
-);
+// export const fetchNotifications = createAsyncThunk(
+//   'dashboards/getNotifications',
+//   getUserNotifications
+// );
 
 export const fetchTodo = createAsyncThunk('dashboard/getTodo', getUserTodo);
 
@@ -20,15 +20,15 @@ export const tasksSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     // CRUDL: GET actions
-    builder.addCase(fetchNotifications.pending, (state) => {});
+    // builder.addCase(fetchNotifications.pending, (state) => {});
 
-    builder.addCase(fetchNotifications.fulfilled, (state, { payload }) => {
-      // Avoid unneccesary rerenders
-      if (state.notifications === payload.data) return;
-      state.notifications = payload.data;
-    });
+    // builder.addCase(fetchNotifications.fulfilled, (state, { payload }) => {
+    //   // Avoid unneccesary rerenders
+    //   if (state.notifications === payload.data) return;
+    //   state.notifications = payload.data;
+    // });
 
-    builder.addCase(fetchNotifications.rejected, () => {});
+    // builder.addCase(fetchNotifications.rejected, () => {});
 
     // CRUDL: GET actions
     builder.addCase(fetchTodo.pending, (state) => {});

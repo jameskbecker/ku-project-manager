@@ -5,12 +5,12 @@ import Layout from '@kupm/common/layout/Layout';
 import SideBar from '@kupm/common/layout/SideBar';
 import Panel from '@kupm/common/Panel';
 import ScrollContainer from '@kupm/common/ScrollContainer';
-import { useGetProjectsQuery } from '@kupm/features/api/apiSlice';
-import Content from '@kupm/features/dashboard/Content';
 import {
-  fetchNotifications,
-  fetchTodo,
-} from '@kupm/features/dashboard/dashboardSlice';
+  useGetNotificationsQuery,
+  useGetProjectsQuery,
+} from '@kupm/features/api/apiSlice';
+import Content from '@kupm/features/dashboard/Content';
+import { fetchTodo } from '@kupm/features/dashboard/dashboardSlice';
 import NotificationPanel from '@kupm/features/dashboard/NotificationPanel';
 import TodoPanel from '@kupm/features/dashboard/TodoPanel';
 import UpcomingPanel from '@kupm/features/dashboard/UpcomingPanel';
@@ -32,11 +32,17 @@ const DataPlaceholder = styled.div`
 const Dashboard = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { notifications, todo } = useSelector((state: any) => state.dashboard);
+  const { todo } = useSelector((state: any) => state.dashboard);
   const { filter } = useSelector((state: any) => state.projects);
 
   const { data: projects, refetch: refetchProjects } =
     useGetProjectsQuery(null);
+
+  const {
+    data: notifications,
+    isLoading,
+    refetch: refetchNotifications,
+  } = useGetNotificationsQuery(null);
 
   useEffect(() => {
     if (!getCookie('kupm_user_id')) {
@@ -45,20 +51,31 @@ const Dashboard = () => {
     }
     document.title = 'Dashboard | KUPM';
     dispatch(fetchAccountDetails());
-    dispatch(fetchNotifications());
     dispatch(fetchTodo());
   }, []);
 
   const handleNotificationRefresh = () => {
-    dispatch(fetchNotifications());
+    refetchNotifications();
   };
 
   const handleTodoRefresh = () => {
     dispatch(fetchTodo());
   };
-
   /** @todo consider react-window to support large amounts or data */
   const Notifications = () => {
+    let content;
+    if (isLoading) content = <DataPlaceholder>Loading...</DataPlaceholder>;
+    else if (notifications.data.length < 1) {
+      content = <DataPlaceholder>No Recent Notifications</DataPlaceholder>;
+    } else {
+      content = (
+        <ScrollContainer>
+          {notifications.data.map((n: any, i: number) => (
+            <NotificationPanel key={i} data={n} />
+          ))}
+        </ScrollContainer>
+      );
+    }
     return (
       <Panel
         heading="Recent Notifications"
@@ -72,15 +89,7 @@ const Dashboard = () => {
           />
         }
       >
-        {notifications.length < 1 ? (
-          <DataPlaceholder>No Recent Notifications</DataPlaceholder>
-        ) : (
-          <ScrollContainer>
-            {notifications.map((n: any, i: number) => (
-              <NotificationPanel key={i} data={n} />
-            ))}
-          </ScrollContainer>
-        )}
+        {content}
       </Panel>
     );
   };

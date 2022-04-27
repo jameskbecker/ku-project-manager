@@ -29,10 +29,17 @@ export const apiSlice = createApi({
     },
   }),
   endpoints: (builder) => ({
+    getNotifications: builder.query({
+      query: () => {
+        const id = getCookie('kupm_user_id');
+        return `/users/${id}/notifications`;
+      },
+    }),
+
     getProjects: builder.query({
       query: () => {
-        const userId = getCookie('kupm_user_id');
-        return `/projects?userId=${userId}`;
+        const id = getCookie('kupm_user_id');
+        return `/projects?userId=${id}`;
       },
     }),
     addProject: builder.mutation({
@@ -87,6 +94,7 @@ export const apiSlice = createApi({
 });
 
 export const {
+  useGetNotificationsQuery,
   useGetProjectsQuery,
   useAddProjectMutation,
   useUpdateProjectMutation,
