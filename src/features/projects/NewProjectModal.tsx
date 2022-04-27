@@ -10,6 +10,7 @@ import {
 import { getCookie } from '@kupm/utils/cookie';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { usePostProjectMutation } from '../api/apiSlice';
 
 const NewProjectModal = () => {
   const { data, selectedProject } = useSelector((state: any) => state.projects);
@@ -23,24 +24,33 @@ const NewProjectModal = () => {
 
   const dispatch = useDispatch();
 
+  const [addProject, { isLoading }] = usePostProjectMutation();
+
   const handleNameChange = (e: any) => setName(e.target.value);
   const handlePriorityChange = (e: any) => setPriority(e.target.value);
   const handleDueAtChange = (e: any) => setDueAt(e.target.value);
   const handleDescriptionChange = (e: any) => setDescription(e.target.value);
 
   const handleCancel = () => dispatch(toggleNewProject());
-  const handleSave = () => {
+  const handleSave = async () => {
+    const userId = getCookie('kupm_user_id');
+    if (!userId) {
+      alert('no userid');
+      return;
+    }
+    console.log(userId);
     const payload: any = {
       name,
       dueAt: Math.floor(new Date(dueAt).getTime() / 1000),
       priority,
       description,
-      createdBy: getCookie('kupm_user_id'),
+      createdBy: userId,
     };
-    if (selectedProject) payload.id = selectedProject;
+    //if (selectedProject) payload.id = selectedProject;
 
     try {
-      dispatch(saveProject(payload));
+      //dispatch(saveProject(payload));
+      await addProject(payload);
       dispatch(toggleNewProject());
     } catch (e) {
       console.error(e);
@@ -78,7 +88,11 @@ const NewProjectModal = () => {
 
         <ModalFooter>
           <Button light text="Cancel" onClick={handleCancel}></Button>
-          <Button round text="Save" onClick={handleSave} />
+          <Button
+            round
+            text={isLoading ? 'Saving...' : 'Save'}
+            onClick={handleSave}
+          />
         </ModalFooter>
       </ModalContent>
     </ModalBackdrop>

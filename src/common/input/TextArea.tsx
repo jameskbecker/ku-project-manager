@@ -49,7 +49,7 @@ const TextArea = (props: any) => {
     } else {
       setRemainingCharacters(remainingCharacters + 1);
     }
-    props.onChange && props.onChange();
+    props.onChange && props.onChange(e);
   };
 
   return (
