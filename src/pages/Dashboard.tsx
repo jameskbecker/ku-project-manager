@@ -8,9 +8,9 @@ import ScrollContainer from '@kupm/common/ScrollContainer';
 import {
   useGetNotificationsQuery,
   useGetProjectsQuery,
+  useGetTodoQuery,
 } from '@kupm/features/api/apiSlice';
 import Content from '@kupm/features/dashboard/Content';
-import { fetchTodo } from '@kupm/features/dashboard/dashboardSlice';
 import NotificationPanel from '@kupm/features/dashboard/NotificationPanel';
 import TodoPanel from '@kupm/features/dashboard/TodoPanel';
 import UpcomingPanel from '@kupm/features/dashboard/UpcomingPanel';
@@ -32,7 +32,6 @@ const DataPlaceholder = styled.div`
 const Dashboard = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { todo } = useSelector((state: any) => state.dashboard);
   const { filter } = useSelector((state: any) => state.projects);
 
   const { data: projects, refetch: refetchProjects } =
@@ -43,6 +42,11 @@ const Dashboard = () => {
     isLoading,
     refetch: refetchNotifications,
   } = useGetNotificationsQuery(null);
+  const {
+    data: todo,
+    isLoading: isLoadingTodo,
+    refetch: refetchTodo,
+  } = useGetTodoQuery(null);
 
   useEffect(() => {
     if (!getCookie('kupm_user_id')) {
@@ -51,7 +55,6 @@ const Dashboard = () => {
     }
     document.title = 'Dashboard | KUPM';
     dispatch(fetchAccountDetails());
-    dispatch(fetchTodo());
   }, []);
 
   const handleNotificationRefresh = () => {
@@ -59,7 +62,7 @@ const Dashboard = () => {
   };
 
   const handleTodoRefresh = () => {
-    dispatch(fetchTodo());
+    refetchTodo();
   };
   /** @todo consider react-window to support large amounts or data */
   const Notifications = () => {
@@ -122,6 +125,19 @@ const Dashboard = () => {
   };
 
   const Todos = () => {
+    let content;
+    if (isLoadingTodo) content = <DataPlaceholder>Loading...</DataPlaceholder>;
+    else if (todo.data.length < 1) {
+      content = <DataPlaceholder>No Recent Notifications</DataPlaceholder>;
+    } else {
+      content = (
+        <ScrollContainer>
+          {todo.data.map((data: any) => (
+            <TodoPanel key={data.id} data={data} />
+          ))}
+        </ScrollContainer>
+      );
+    }
     return (
       <Panel
         heading="Tasks Todo"
@@ -136,15 +152,7 @@ const Dashboard = () => {
           />
         }
       >
-        {todo.length < 1 ? (
-          <DataPlaceholder>No Tasks</DataPlaceholder>
-        ) : (
-          <ScrollContainer>
-            {todo.map((data: any) => (
-              <TodoPanel key={data.id} data={data} />
-            ))}
-          </ScrollContainer>
-        )}
+        {content}
       </Panel>
     );
   };

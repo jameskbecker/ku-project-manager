@@ -35,6 +35,12 @@ export const apiSlice = createApi({
         return `/users/${id}/notifications`;
       },
     }),
+    getTodo: builder.query({
+      query: () => {
+        const id = getCookie('kupm_user_id');
+        return `/users/${id}/todo`;
+      },
+    }),
 
     getProjects: builder.query({
       query: () => {
@@ -95,6 +101,7 @@ export const apiSlice = createApi({
 
 export const {
   useGetNotificationsQuery,
+  useGetTodoQuery,
   useGetProjectsQuery,
   useAddProjectMutation,
   useUpdateProjectMutation,
