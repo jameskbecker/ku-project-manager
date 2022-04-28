@@ -1,11 +1,17 @@
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import {
+  faChevronLeft,
+  faChevronRight,
+} from '@fortawesome/free-solid-svg-icons';
+import Button from '@kupm/common/Button';
 import Footer from '@kupm/common/layout/Footer';
 import React, { useContext } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled, { ThemeContext } from 'styled-components';
 import Separator from '../../common/Separator';
 import SidebarButton from './SidebarButton';
 import SidebarLogo from './SidebarLogo';
 import SidebarMenu from './SidebarMenu';
+import { toggle } from './sidebarSlice';
 import SidebarUser from './SidebarUser';
 
 const StyledSidebar = styled.div`
@@ -27,15 +33,27 @@ type SidebarProps = {
 
 const Sidebar = (props: SidebarProps) => {
   const theme = useContext(ThemeContext);
+  const { isCollapsed } = useSelector((state: any) => state.sidebar);
+  const dispatch = useDispatch();
+
+  const handleCollapse = () => {
+    dispatch(toggle());
+  };
+
+  const otherOptions: any = {};
+  if (isCollapsed) otherOptions.style = { width: '75px' };
+
   return (
-    <StyledSidebar>
+    <StyledSidebar {...otherOptions}>
       <SidebarLogo />
       <SidebarMenu {...props} />
-      <SidebarButton
-        icon={faChevronLeft}
-        text="Collapse Sidebar"
-        color={theme.brand}
-        style={{ textAlign: 'center' }}
+      <Button
+        light
+        icon={isCollapsed ? faChevronRight : faChevronLeft}
+        text={isCollapsed ? '' : 'Collapse Sidebar'}
+        // color={theme.brand}
+        onClick={handleCollapse}
+        style={{ margin: '0 1rem' }}
       />
       {/* <Footer /> */}
 

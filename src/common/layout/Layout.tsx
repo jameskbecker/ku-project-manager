@@ -4,7 +4,7 @@ const Layout = styled.div`
   position: relative;
   display: grid;
   height: 100vh;
-  grid-template-columns: 220px 9fr;
+  grid-template-columns: auto 9fr;
   grid-auto-rows: auto auto 1fr;
   grid-template-areas:
     'navbar navbar'

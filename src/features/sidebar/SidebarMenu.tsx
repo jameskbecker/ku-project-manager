@@ -19,6 +19,7 @@ const StyledSidebarMenu = styled(FlexColumn)`
 
 const SidebarMenu = ({ activePage }: any) => {
   const theme = useContext(ThemeContext);
+
   return (
     <StyledSidebarMenu>
       <SidebarButton

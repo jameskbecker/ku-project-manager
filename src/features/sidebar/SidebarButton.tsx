@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+import { useSelector } from 'react-redux';
 
 const StyledSidebarButton = styled(Link)<any>`
   padding: 0.5rem 0.75rem;
@@ -50,11 +51,14 @@ const StyledSidebarButton = styled(Link)<any>`
     `}
 `;
 
-const SidebarButton = ({ to, $active, color, icon, style, text }: any) => (
-  <StyledSidebarButton {...{ to, $active, color, style }}>
-    <FontAwesomeIcon icon={icon} />
-    <span>{text}</span>
-  </StyledSidebarButton>
-);
+const SidebarButton = ({ to, $active, color, icon, style, text }: any) => {
+  const { isCollapsed } = useSelector((state: any) => state.sidebar);
+  return (
+    <StyledSidebarButton {...{ to, $active, color, style }}>
+      <FontAwesomeIcon icon={icon} />
+      {!isCollapsed && <span>{text}</span>}
+    </StyledSidebarButton>
+  );
+};
 
 export default SidebarButton;

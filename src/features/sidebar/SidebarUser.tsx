@@ -1,5 +1,6 @@
 import { useGetUserQuery } from '@kupm/features/api/apiSlice';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 const StyledSidebarUser = styled.div`
@@ -30,6 +31,7 @@ const Email = styled.div`
 `;
 
 const SidebarUser = () => {
+  const { isCollapsed } = useSelector((state: any) => state.sidebar);
   const { data: userResponse, isLoading } = useGetUserQuery(null);
 
   if (isLoading) {
@@ -41,10 +43,12 @@ const SidebarUser = () => {
   return (
     <StyledSidebarUser>
       <ProfilePicture src="https://cdn.discordapp.com/avatars/442333264364175361/b93a5cf57dc0b0f00b33da0a6436a84c.webp?size=64" />
-      <UserName>
-        {firstName} {lastName}
-      </UserName>
-      <Email>{email}</Email>
+      {!isCollapsed && (
+        <UserName>
+          {firstName} {lastName}
+        </UserName>
+      )}
+      {!isCollapsed && <Email>{email}</Email>}
     </StyledSidebarUser>
   );
 };

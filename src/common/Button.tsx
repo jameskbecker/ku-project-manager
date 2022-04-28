@@ -1,7 +1,7 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, CSSProperties } from 'styled-components';
 
 type ButtonProps = {
   color?: string;
@@ -11,6 +11,7 @@ type ButtonProps = {
   icon?: IconProp;
   onClick?: any;
   round?: boolean;
+  style?: CSSProperties;
 };
 
 const StyledButton = styled.button<ButtonProps>`
