@@ -35,10 +35,10 @@ const SidebarMenu = ({ activePage }: any) => {
         $active={activePage === 'projects'}
       />
       <SidebarButton
-        to="/projects"
+        to="/shared"
         text="Other Projects"
         icon={faUsers}
-        $active={activePage === 'other'}
+        $active={activePage === 'shared'}
       />
       <Separator />
       <SidebarButton

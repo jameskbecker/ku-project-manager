@@ -12,6 +12,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import OtherProjects from './pages/OtherProjects';
 
 const App = () => {
   const { theme } = useSelector((state: any) => state.settings);
@@ -28,6 +29,7 @@ const App = () => {
           <Route exact path="/projects" component={MyProjects} />
           <Route exact path="/projects/:id" component={ProjectDetails} />
           <Route exact path="/projects/:id/:taskId" component={Tasks} />
+          <Route exact path="/shared" component={OtherProjects} />
           <Route exact path="/settings" component={Settings} />
         </Switch>
       </BrowserRouter>
