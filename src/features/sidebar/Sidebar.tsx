@@ -2,7 +2,7 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import Footer from '@kupm/common/layout/Footer';
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import Separator from '../Separator';
+import Separator from '../../common/Separator';
 import SidebarButton from './SidebarButton';
 import SidebarLogo from './SidebarLogo';
 import SidebarMenu from './SidebarMenu';

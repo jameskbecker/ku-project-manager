@@ -7,7 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FlexColumn } from '@kupm/common/Flex';
 import Separator from '@kupm/common/Separator';
-import SidebarButton from '@kupm/common/sidebar/SidebarButton';
+import SidebarButton from '@kupm/features/sidebar/SidebarButton';
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 

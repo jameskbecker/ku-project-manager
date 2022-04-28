@@ -4,7 +4,7 @@ import DataPlaceholder from '@kupm/common/DataPlaceholder';
 import { FlexRow } from '@kupm/common/Flex';
 import HeaderBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
-import Sidebar from '@kupm/common/sidebar/Sidebar';
+import Sidebar from '@kupm/features/sidebar/Sidebar';
 import { useGetSubTasksQuery } from '@kupm/features/api/apiSlice';
 import InviteModal from '@kupm/features/projects/InviteModal';
 import MembersModal from '@kupm/features/projects/MembersModal';

@@ -1,6 +1,6 @@
 import HeaderBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
-import Sidebar from '@kupm/common/sidebar/Sidebar';
+import Sidebar from '@kupm/features/sidebar/Sidebar';
 import Content from '@kupm/features/projects/Content';
 import ControlBar from '@kupm/features/projects/ControlBar';
 import DeleteAllModal from '@kupm/features/projects/DeleteAllModal';

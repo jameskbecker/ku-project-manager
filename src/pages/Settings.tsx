@@ -1,6 +1,6 @@
 import NavBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
-import Sidebar from '@kupm/common/sidebar/Sidebar';
+import Sidebar from '@kupm/features/sidebar/Sidebar';
 import AccountPanel from '@kupm/features/settings/AccountPanel';
 import AppearancePanel from '@kupm/features/settings/AppearancePanel';
 import Content from '@kupm/features/settings/Content';

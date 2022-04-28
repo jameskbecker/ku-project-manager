@@ -4,7 +4,7 @@ import NavBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
 import Panel from '@kupm/common/Panel';
 import ScrollContainer from '@kupm/common/ScrollContainer';
-import Sidebar from '@kupm/common/sidebar/Sidebar';
+import Sidebar from '@kupm/features/sidebar/Sidebar';
 import {
   useGetNotificationsQuery,
   useGetProjectsQuery,
