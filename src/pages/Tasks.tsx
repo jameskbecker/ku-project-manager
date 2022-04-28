@@ -4,7 +4,7 @@ import DataPlaceholder from '@kupm/common/DataPlaceholder';
 import { FlexRow } from '@kupm/common/Flex';
 import HeaderBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
-import SideBar from '@kupm/common/layout/SideBar';
+import SideBar from '@kupm/common/sidebar/SideBar';
 import {
   useGetProjectTasksQuery,
   useGetSubTasksQuery,
