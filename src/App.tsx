@@ -3,6 +3,7 @@ import Dashboard from '@kupm/pages/Dashboard';
 import Forgot from '@kupm/pages/Forgot';
 import Login from '@kupm/pages/Login';
 import MyProjects from '@kupm/pages/MyProjects';
+import ProjectDetails from '@kupm/pages/ProjectDetails';
 import Register from '@kupm/pages/Register';
 import Settings from '@kupm/pages/Settings';
 import Tasks from '@kupm/pages/Tasks';
@@ -24,8 +25,8 @@ const App = () => {
           <Route exact path="/forgot" component={Forgot} />
 
           <Route exact path="/" component={Dashboard} />
-          <Route exact path="/projects" component={MyProjects}></Route>
-          <Route exact path="/projects/:id" component={Tasks} />
+          <Route exact path="/projects" component={MyProjects} />
+          <Route exact path="/projects/:id" component={ProjectDetails} />
           <Route exact path="/projects/:id/:taskId" component={Tasks} />
           <Route exact path="/settings" component={Settings} />
         </Switch>

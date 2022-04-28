@@ -29,23 +29,17 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 
-const Tasks = () => {
+const ProjectDetails = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { id, taskId } = useParams<any>();
+  const { id } = useParams<any>();
   const { showInvite, showNewProject, selectedProject } = useSelector(
     (state: any) => state.projects
   );
   const { showNewTask, showMembers, showAddComment } = useSelector(
     (state: any) => state.tasks
   );
-  const {
-    data: subtasks,
-    isLoading,
-    refetch,
-  } = useGetSubTasksQuery({
-    taskId,
-  });
+  const { data: tasks, isLoading, refetch } = useGetProjectTasksQuery({ id });
 
   useEffect(() => {
     if (!getCookie('kupm_user_id')) {
@@ -55,20 +49,17 @@ const Tasks = () => {
     if (!selectedProject) {
       dispatch(selectProject(id));
     }
-    dispatch(selectTask(taskId));
-  }, [id, taskId]);
+  }, []);
 
   const handleEdit = () => {
-    dispatch(!taskId ? toggleNewProject() : toggleNewTask());
+    toggleNewProject();
   };
-
   const headerOptions = () => (
     <FlexRow>
       <SecondaryButton icon={faPencilAlt} onClick={handleEdit} round light />
       <SecondaryButton icon={faSyncAlt} onClick={refetch} round light />
     </FlexRow>
   );
-
   let headerData;
   let taskContent;
   if (isLoading) {
@@ -79,10 +70,10 @@ const Tasks = () => {
     taskContent = <DataPlaceholder>Loading...</DataPlaceholder>;
   } else {
     headerData = {
-      pageName: subtasks.data?.parentName,
-      description: 'N/A',
+      pageName: tasks.data?.name,
+      description: tasks.data?.description,
     };
-    taskContent = <TaskGrid data={subtasks.data?.subtasks} />;
+    taskContent = <TaskGrid data={tasks.data?.tasks} />;
   }
 
   return (
@@ -104,4 +95,4 @@ const Tasks = () => {
   );
 };
 
-export default Tasks;
+export default ProjectDetails;

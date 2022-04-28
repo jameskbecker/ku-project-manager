@@ -24,36 +24,23 @@ const Wrapper = styled.div`
   overflow: auto;
 `;
 
-const TaskGrid = () => {
+const TaskGrid = ({ data }: any) => {
   const { id } = useParams<any>();
   const { filter } = useSelector((state: any) => state.tasks);
-  const { data: taskResponse, isLoading } = useGetProjectTasksQuery({ id });
 
-  let content;
-
-  if (isLoading) {
-    content = (
-      <DataPlaceholder>
-        <FontAwesomeIcon style={{ flex: '1 1' }} icon={faSpinner} spin />
-      </DataPlaceholder>
-    );
-  } else if (taskResponse.data.tasks.length < 1) {
-    content = <DataPlaceholder>No Tasks Yet</DataPlaceholder>;
-  } else {
-    const filteredData = taskResponse.data.tasks.filter(
-      (t: any) =>
-        t.name?.toLowerCase().includes(filter.toLowerCase()) ||
-        // t.dueAt ?.toLowerCase().includes(filter.toLowerCase()) ||
-        t.description?.toLowerCase().includes(filter.toLowerCase())
-    );
-    content = (
-      <Wrapper>
-        {filteredData.map((p: any, i: number) => (
-          <TaskGridCard key={i} task={p} />
-        ))}
-      </Wrapper>
-    );
-  }
+  const filteredData = data.filter(
+    (t: any) =>
+      t.name?.toLowerCase().includes(filter.toLowerCase()) ||
+      // t.dueAt ?.toLowerCase().includes(filter.toLowerCase()) ||
+      t.description?.toLowerCase().includes(filter.toLowerCase())
+  );
+  let content = (
+    <Wrapper>
+      {filteredData.map((p: any, i: number) => (
+        <TaskGridCard key={i} task={p} />
+      ))}
+    </Wrapper>
+  );
 
   return <StyledTaskGrid>{content}</StyledTaskGrid>;
 };
