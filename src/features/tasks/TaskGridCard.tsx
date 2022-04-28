@@ -1,20 +1,20 @@
+import { faSquare } from '@fortawesome/free-regular-svg-icons';
+import { faCheckSquare, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SecondaryButton } from '@kupm/common/Button';
 import ContextMenu from '@kupm/common/ContextMenu';
 import { FlexRow } from '@kupm/common/Flex';
 import Panel from '@kupm/common/Panel';
 import {
-  deleteTask,
   selectTask,
   toggleAddComment,
   toggleNewTask,
 } from '@kupm/features/tasks/tasksSlice';
-import { faSquare } from '@fortawesome/free-regular-svg-icons';
-import { faCheckSquare, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { MouseEvent, useContext, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
+import { useDeleteTaskMutation } from '../api/apiSlice';
 
 const Wrapper = styled(Panel)<any>`
   /* display: grid;
@@ -46,6 +46,7 @@ const MoreButton = styled(FontAwesomeIcon)`
 const TaskGridCard = ({ task }: any) => {
   const theme = useContext(ThemeContext);
   const [showMore, setShowMore] = useState(false);
+  const [deleteTask] = useDeleteTaskMutation();
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -61,7 +62,7 @@ const TaskGridCard = ({ task }: any) => {
 
   const handleDelete = (e: any) => {
     e.stopPropagation();
-    dispatch(deleteTask({ id: task.id }));
+    deleteTask({ id: task.id });
     //dispatch(fetchProjectTasks({ projectId: task.projectId }));
   };
 

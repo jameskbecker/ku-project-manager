@@ -97,6 +97,11 @@ export const apiSlice = createApi({
         return `/projects/${args.id}/tasks`;
       },
     }),
+    getSubTasks: builder.query({
+      query: (args) => {
+        return `tasks/${args.taskId}/subtasks`;
+      },
+    }),
     addTask: builder.mutation({
       query: (args: PostProjectArgs) => ({
         url: `/tasks`,
@@ -111,6 +116,12 @@ export const apiSlice = createApi({
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body,
+      }),
+    }),
+    deleteTask: builder.mutation({
+      query: ({ id }) => ({
+        url: `/tasks/${id}`,
+        method: 'DELETE',
       }),
     }),
   }),
@@ -129,6 +140,8 @@ export const {
   useGetProjectMembersQuery,
   useGetProjectActivityQuery,
   useGetProjectTasksQuery,
+  useGetSubTasksQuery,
   useAddTaskMutation,
   useUpdateTaskMutation,
+  useDeleteTaskMutation,
 } = apiSlice;

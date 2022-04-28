@@ -12,18 +12,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-type Project = {
-  id: string;
-  name: string;
-  description: string;
-  isComplete: boolean;
-  priority: number;
-  createdAt: number;
-  completedAt: number | null;
-  memberGroupId: string;
-};
-
-const ProjectOverview = () => {
+const MyProjects = () => {
   const history = useHistory();
   const { showDeleteAll, showNewProject } = useSelector(
     (state: any) => state.projects
@@ -57,4 +46,4 @@ const ProjectOverview = () => {
   );
 };
 
-export default ProjectOverview;
+export default MyProjects;
