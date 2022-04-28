@@ -23,7 +23,7 @@ const StyledSidebar = styled.div`
   @media screen and (min-width: 992px) {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
   }
 `;
 
