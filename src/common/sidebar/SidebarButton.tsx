@@ -50,8 +50,8 @@ const StyledSidebarButton = styled(Link)<any>`
     `}
 `;
 
-const SidebarButton = ({ to, $active, color, icon, text }: any) => (
-  <StyledSidebarButton {...{ to, $active, color }}>
+const SidebarButton = ({ to, $active, color, icon, style, text }: any) => (
+  <StyledSidebarButton {...{ to, $active, color, style }}>
     <FontAwesomeIcon icon={icon} />
     <span>{text}</span>
   </StyledSidebarButton>

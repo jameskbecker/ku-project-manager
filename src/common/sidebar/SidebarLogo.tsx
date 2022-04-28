@@ -12,6 +12,7 @@ export const LogoWrapper = styled.div`
   align-items: center;
   height: auto;
   flex: 1 1;
+  max-height: 115px;
 
   background: ${({ theme }) => theme.brand};
   box-sizing: border-box;
@@ -29,11 +30,9 @@ export const LogoWrapper = styled.div`
 
 const SidebarLogo = () => {
   return (
-    <StyledSidebarLogo>
-      <LogoWrapper>
-        <h1>KUPM</h1>
-      </LogoWrapper>
-    </StyledSidebarLogo>
+    <LogoWrapper>
+      <h1>KUPM</h1>
+    </LogoWrapper>
   );
 };
 
