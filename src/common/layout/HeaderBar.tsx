@@ -126,7 +126,7 @@ const HeaderBar = ({ back, pageName, description, Options }: NavBarProps) => {
         )}
       </DescriptionContainer>
 
-      <UserMenu />
+      {/* <UserMenu /> */}
       <Menu>
         <FontAwesomeIcon icon={faBars} color={theme.brand} />
       </Menu>

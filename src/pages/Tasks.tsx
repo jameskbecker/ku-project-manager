@@ -59,7 +59,7 @@ const Tasks = () => {
   }, [id, taskId]);
 
   const handleEdit = () => {
-    dispatch(!taskId ? toggleNewProject() : toggleNewTask());
+    dispatch(toggleNewTask());
   };
 
   const headerOptions = () => (

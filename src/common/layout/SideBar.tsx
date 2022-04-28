@@ -3,12 +3,15 @@ import Footer from '@kupm/common/layout/Footer';
 import {
   faCogs,
   faList,
+  faSignOutAlt,
   faTachometerAlt,
+  faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css, ThemeContext } from 'styled-components';
+import Separator from '../Separator';
 
 const SideBarWrapper = styled.div`
   display: none;
@@ -44,7 +47,7 @@ export const LogoWrapper = styled.div`
   }
 `;
 
-const SideBarButton = styled(Link)<any>`
+const StyledSidebarButton = styled(Link)<any>`
   padding: 0.5rem 0.75rem;
   margin: 0 1rem;
 
@@ -57,7 +60,7 @@ const SideBarButton = styled(Link)<any>`
   border-radius: 0.25rem;
   box-sizing: border-box;
 
-  opacity: ${({ $active }) => ($active ? 1 : 0.65)};
+  opacity: ${({ $active }) => ($active ? 1 : 0.8)};
   cursor: pointer;
 
   :hover {
@@ -74,13 +77,36 @@ const SideBarButton = styled(Link)<any>`
   & > :first-child {
     padding: 0 0.5em 0 0;
   }
+
+  ${({ theme, color }) =>
+    color &&
+    css`
+      & > * {
+        color: ${color} !important;
+      }
+      :hover {
+        background: ${color};
+
+        & > * {
+          color: ${theme.textButton} !important;
+        }
+      }
+    `}
 `;
+
+const SidebarButton = ({ to, $active, color, icon, text }: any) => (
+  <StyledSidebarButton {...{ to, $active, color }}>
+    <FontAwesomeIcon icon={icon} />
+    <span>{text}</span>
+  </StyledSidebarButton>
+);
 
 type SideBarProps = {
   activePage: string;
 };
 
 const SideBar = ({ activePage }: SideBarProps) => {
+  const theme = useContext(ThemeContext);
   return (
     <SideBarWrapper>
       <div style={{ display: 'flex', height: '155px' }}>
@@ -89,18 +115,37 @@ const SideBar = ({ activePage }: SideBarProps) => {
         </LogoWrapper>
       </div>
       <FlexColumn style={{ flex: '1 1', gap: '0.75rem', marginTop: '1rem' }}>
-        <SideBarButton to="/" $active={activePage === 'dashboard'}>
-          <FontAwesomeIcon icon={faTachometerAlt} />
-          Dashboard
-        </SideBarButton>
-        <SideBarButton to="/projects" $active={activePage === 'projects'}>
-          <FontAwesomeIcon icon={faList} />
-          My Projects
-        </SideBarButton>
-        <SideBarButton to="/settings" $active={activePage === 'settings'}>
-          <FontAwesomeIcon icon={faCogs} />
-          Settings
-        </SideBarButton>
+        <SidebarButton
+          to="/"
+          text="Dashboard"
+          icon={faTachometerAlt}
+          $active={activePage === 'dashboard'}
+        />
+        <SidebarButton
+          to="/projects"
+          text="My Projects"
+          icon={faList}
+          $active={activePage === 'projects'}
+        />
+        <SidebarButton
+          to="/projects"
+          text="Other Projects"
+          icon={faUsers}
+          $active={activePage === 'other'}
+        />
+        <Separator />
+        <SidebarButton
+          to="/settings"
+          text="Settings"
+          icon={faCogs}
+          $active={activePage === 'settings'}
+        />
+        <SidebarButton
+          to="/login"
+          text="Sign Out"
+          icon={faSignOutAlt}
+          color={theme.error}
+        />
       </FlexColumn>
       <Footer />
     </SideBarWrapper>
