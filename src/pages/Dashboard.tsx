@@ -19,6 +19,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import TodoList from '@kupm/features/dashboard/TodoList';
 
 const DataPlaceholder = styled.div`
   flex: 1 1;
@@ -41,11 +42,6 @@ const Dashboard = () => {
     isLoading,
     refetch: refetchNotifications,
   } = useGetNotificationsQuery(null);
-  const {
-    data: todo,
-    isLoading: isLoadingTodo,
-    refetch: refetchTodo,
-  } = useGetTodoQuery(null);
 
   useEffect(() => {
     if (!getCookie('kupm_user_id')) {
@@ -59,9 +55,7 @@ const Dashboard = () => {
     refetchNotifications();
   };
 
-  const handleTodoRefresh = () => {
-    refetchTodo();
-  };
+  const handleTodoRefresh = () => {};
   /** @todo consider react-window to support large amounts or data */
   const Notifications = () => {
     let content;
@@ -122,46 +116,27 @@ const Dashboard = () => {
     );
   };
 
-  const Todos = () => {
-    let content;
-    if (isLoadingTodo) content = <DataPlaceholder>Loading...</DataPlaceholder>;
-    else if (todo.data.length < 1) {
-      content = <DataPlaceholder>No Recent Notifications</DataPlaceholder>;
-    } else {
-      content = (
-        <ScrollContainer>
-          {todo.data.map((data: any) => (
-            <TodoPanel key={data.id} data={data} />
-          ))}
-        </ScrollContainer>
-      );
-    }
-    return (
-      <Panel
-        heading="Tasks Todo"
-        style={{ gridRow: 'span 2' }}
-        Options={
-          <SecondaryButton
-            secondary
-            icon={faSyncAlt}
-            onClick={handleTodoRefresh}
-            round
-            light
-          />
-        }
-      >
-        {content}
-      </Panel>
-    );
-  };
-
   return (
     <Layout>
       <Sidebar activePage="dashboard" />
       {/**@todo replace with context */}
       <NavBar pageName="Dashboard" />
       <Content>
-        <Todos />
+        <Panel
+          heading="Tasks Todo"
+          style={{ gridRow: 'span 2' }}
+          Options={
+            <SecondaryButton
+              secondary
+              icon={faSyncAlt}
+              onClick={handleTodoRefresh}
+              round
+              light
+            />
+          }
+        >
+          <TodoList />
+        </Panel>
         <Notifications />
         {/**@todo replace style attribute */}
 
