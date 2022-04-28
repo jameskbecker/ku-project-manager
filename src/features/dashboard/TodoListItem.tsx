@@ -46,7 +46,7 @@ const TodoListItem = ({ data }: any) => {
         items={[
           { label: 'Add Comment', onClick: null },
           { label: 'Edit', onClick: null },
-          { label: 'Delete', onClick: null, color: theme },
+          { label: 'Delete', onClick: null, color: theme.error },
         ]}
       >
         <SecondaryButton secondary icon={faEllipsisV} onClick={null} />

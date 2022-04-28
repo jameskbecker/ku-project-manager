@@ -27,7 +27,7 @@ const StyledSidebarButton = styled(Link)<any>`
   }
 
   :focus-visible {
-    outline: 2px solid ${({ theme }) => theme.brandAlt};
+    outline: 2px solid ${({ theme }) => theme.brand};
     outline-offset: 0;
   }
 
