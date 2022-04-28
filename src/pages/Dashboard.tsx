@@ -11,6 +11,7 @@ import {
 import Content from '@kupm/features/dashboard/Content';
 import NotificationPanel from '@kupm/features/dashboard/NotificationPanel';
 import TodoList from '@kupm/features/dashboard/TodoList';
+import TodoPanel from '@kupm/features/dashboard/TodoPanel';
 import UpcomingPanel from '@kupm/features/dashboard/UpcomingPanel';
 import Sidebar from '@kupm/features/sidebar/Sidebar';
 import { getCookie } from '@kupm/utils/cookie';
@@ -120,21 +121,7 @@ const Dashboard = () => {
       {/**@todo replace with context */}
       <NavBar pageName="Dashboard" />
       <Content>
-        <Panel
-          heading="Tasks Todo"
-          style={{ gridRow: 'span 2' }}
-          Options={
-            <SecondaryButton
-              secondary
-              icon={faSyncAlt}
-              onClick={handleTodoRefresh}
-              round
-              light
-            />
-          }
-        >
-          <TodoList />
-        </Panel>
+        <TodoPanel />
         <Notifications />
         {/**@todo replace style attribute */}
 
