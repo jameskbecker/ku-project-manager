@@ -2,10 +2,10 @@ import DataPlaceholder from '@kupm/common/DataPlaceholder';
 import ScrollContainer from '@kupm/common/ScrollContainer';
 import React from 'react';
 import { useGetTodoQuery } from '../api/apiSlice';
-import TodoPanel from './TodoPanel';
+import TodoListItem from './TodoListItem';
 
 const TodoList = () => {
-  const { data: todo, isLoading, refetch: refetchTodo } = useGetTodoQuery(null);
+  const { data: todo, isLoading } = useGetTodoQuery(null);
 
   if (isLoading) {
     return <DataPlaceholder>Loading...</DataPlaceholder>;
@@ -17,7 +17,7 @@ const TodoList = () => {
   return (
     <ScrollContainer>
       {todo.data.map((data: any) => (
-        <TodoPanel key={data.id} data={data} />
+        <TodoListItem key={data.id} data={data} />
       ))}
     </ScrollContainer>
   );

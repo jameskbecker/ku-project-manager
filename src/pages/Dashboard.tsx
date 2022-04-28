@@ -4,22 +4,20 @@ import NavBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
 import Panel from '@kupm/common/Panel';
 import ScrollContainer from '@kupm/common/ScrollContainer';
-import Sidebar from '@kupm/features/sidebar/Sidebar';
 import {
   useGetNotificationsQuery,
   useGetProjectsQuery,
-  useGetTodoQuery,
 } from '@kupm/features/api/apiSlice';
 import Content from '@kupm/features/dashboard/Content';
 import NotificationPanel from '@kupm/features/dashboard/NotificationPanel';
-import TodoPanel from '@kupm/features/dashboard/TodoPanel';
+import TodoList from '@kupm/features/dashboard/TodoList';
 import UpcomingPanel from '@kupm/features/dashboard/UpcomingPanel';
+import Sidebar from '@kupm/features/sidebar/Sidebar';
 import { getCookie } from '@kupm/utils/cookie';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import TodoList from '@kupm/features/dashboard/TodoList';
 
 const DataPlaceholder = styled.div`
   flex: 1 1;

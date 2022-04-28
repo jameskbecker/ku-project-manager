@@ -32,7 +32,7 @@ const StyledIcon = styled(FontAwesomeIcon)`
   color: ${({ theme }) => theme.brand};
 `;
 
-const TodoPanel = ({ data }: any) => {
+const TodoListItem = ({ data }: any) => {
   const history = useHistory();
   const theme = useContext(ThemeContext);
 
@@ -70,4 +70,4 @@ const TodoPanel = ({ data }: any) => {
   );
 };
 
-export default TodoPanel;
+export default TodoListItem;
