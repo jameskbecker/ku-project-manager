@@ -2,9 +2,9 @@ import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import { SecondaryButton } from '@kupm/common/Button';
 import NavBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
-import SideBar from '@kupm/common/sidebar/SideBar';
 import Panel from '@kupm/common/Panel';
 import ScrollContainer from '@kupm/common/ScrollContainer';
+import Sidebar from '@kupm/common/sidebar/Sidebar';
 import {
   useGetNotificationsQuery,
   useGetProjectsQuery,
@@ -157,7 +157,7 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <SideBar activePage="dashboard" />
+      <Sidebar activePage="dashboard" />
       {/**@todo replace with context */}
       <NavBar pageName="Dashboard" />
       <Content>

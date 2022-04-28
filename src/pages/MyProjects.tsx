@@ -1,6 +1,6 @@
 import HeaderBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
-import SideBar from '@kupm/common/sidebar/SideBar';
+import Sidebar from '@kupm/common/sidebar/Sidebar';
 import Content from '@kupm/features/projects/Content';
 import ControlBar from '@kupm/features/projects/ControlBar';
 import DeleteAllModal from '@kupm/features/projects/DeleteAllModal';
@@ -30,7 +30,7 @@ const MyProjects = () => {
 
   return (
     <Layout>
-      <SideBar activePage="projects" />
+      <Sidebar activePage="projects" />
       <HeaderBar pageName="My Projects" />
       <ControlBar />
 

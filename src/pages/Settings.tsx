@@ -1,6 +1,6 @@
 import NavBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
-import SideBar from '@kupm/common/sidebar/SideBar';
+import Sidebar from '@kupm/common/sidebar/Sidebar';
 import AccountPanel from '@kupm/features/settings/AccountPanel';
 import AppearancePanel from '@kupm/features/settings/AppearancePanel';
 import Content from '@kupm/features/settings/Content';
@@ -22,7 +22,7 @@ const Settings = () => {
 
   return (
     <Layout>
-      <SideBar activePage="settings" />
+      <Sidebar activePage="settings" />
       <NavBar pageName="Settings" />
       <Content>
         <AccountPanel />
