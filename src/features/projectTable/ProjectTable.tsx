@@ -26,7 +26,7 @@ const DataPlaceholder = styled.div`
 `;
 
 const ProjectTable = (props: any) => {
-  const { filter } = useSelector((state: any) => state.projects);
+  const { filter } = useSelector((state: any) => state.myProjectsControlbar);
   const { data: projects, isLoading } = useGetProjectsQuery(null);
 
   const filteredData = projects?.data.filter(

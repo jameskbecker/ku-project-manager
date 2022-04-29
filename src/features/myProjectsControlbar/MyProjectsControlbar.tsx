@@ -6,15 +6,13 @@ import {
 import Button from '@kupm/common/Button';
 import { FlexRow } from '@kupm/common/Flex';
 import TextInput from '@kupm/common/input/TextInput';
-import {
-  applyFilter,
-  selectProject,
-} from '@kupm/features/projects/projectsSlice';
+import { selectProject } from '@kupm/features/projects/projectsSlice';
 import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled, { ThemeContext } from 'styled-components';
 import { showDeleteProjectsModal } from '../deleteProjectsModal/deleteProjectsModalSlice';
 import { showNewProjectModal } from '../newProjectModal/newProjectModalSlice';
+import { applyFilter } from './myProjectsControlbarSlice';
 
 const ControlBarWrapper = styled.div`
   display: flex;
@@ -50,7 +48,7 @@ const ControlBarWrapper = styled.div`
 
 const MyProjectsControlbar = () => {
   const theme = useContext(ThemeContext);
-  const { filter } = useSelector((state: any) => state.projects);
+  const { filter } = useSelector((state: any) => state.myProjectsControlbar);
   const dispatch = useDispatch();
 
   const handleNewProject = () => {

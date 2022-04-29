@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState: any = {
   selectedProject: '',
-  filter: '',
 };
 
 export const projectsSlice = createSlice({
@@ -12,12 +11,8 @@ export const projectsSlice = createSlice({
     selectProject: (state, { payload }) => {
       state.selectedProject = payload;
     },
-
-    applyFilter: (state, { payload }) => {
-      state.filter = payload.text;
-    },
   },
 });
 
-export const { selectProject, applyFilter } = projectsSlice.actions;
+export const { selectProject } = projectsSlice.actions;
 export default projectsSlice.reducer;
