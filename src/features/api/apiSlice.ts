@@ -1,12 +1,10 @@
-import { getCookie } from '@kupm/utils/cookie';
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
-  RegisterPayload,
-  LoginPayload,
+  CompleteProjectArgs,
   PostProjectArgs,
   UpdateProjectArgs,
-  CompleteProjectArgs,
 } from '@kupm/features/api/types';
+import { getCookie } from '@kupm/utils/cookie';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 declare const BASE_URL: string;
 
 export const apiSlice = createApi({
@@ -19,22 +17,6 @@ export const apiSlice = createApi({
     },
   }),
   endpoints: (builder) => ({
-    register: builder.mutation({
-      query: (args: RegisterPayload) => ({
-        url: '/auth/register',
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: args,
-      }),
-    }),
-    login: builder.mutation({
-      query: (args: LoginPayload) => ({
-        url: '/auth/login',
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: args,
-      }),
-    }),
     getUser: builder.query({
       query: () => {
         const id = getCookie('kupm_user_id');
@@ -139,8 +121,6 @@ export const apiSlice = createApi({
 });
 
 export const {
-  useRegisterMutation,
-  useLoginMutation,
   useGetUserQuery,
   useGetNotificationsQuery,
   useGetTodoQuery,

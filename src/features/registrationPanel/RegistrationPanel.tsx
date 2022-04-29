@@ -3,7 +3,7 @@ import TextInput from '@kupm/common/input/TextInput';
 import { ModalFooter } from '@kupm/common/Modal';
 import Panel from '@kupm/common/Panel';
 import Separator from '@kupm/common/Separator';
-import { useRegisterMutation } from '@kupm/features/api/apiSlice';
+import { useRegisterMutation } from '@kupm/features/api/authApiSlice';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 

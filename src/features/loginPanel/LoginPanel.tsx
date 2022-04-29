@@ -5,7 +5,7 @@ import Logo from '@kupm/common/Logo';
 import { ModalFooter } from '@kupm/common/Modal';
 import Panel from '@kupm/common/Panel';
 import Separator from '@kupm/common/Separator';
-import { useLoginMutation } from '@kupm/features/api/apiSlice';
+import { useLoginMutation } from '@kupm/features/api/authApiSlice';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
