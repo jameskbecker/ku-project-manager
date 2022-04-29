@@ -1,5 +1,4 @@
-import { postInvite } from '@kupm/features/api/invites';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState: any = {
   showNewProject: false,
@@ -8,8 +7,6 @@ const initialState: any = {
   selectedProject: '',
   filter: '',
 };
-
-export const sendInvite = createAsyncThunk('projects/sendInvite', postInvite);
 
 export const projectsSlice = createSlice({
   name: 'projects',
@@ -34,9 +31,6 @@ export const projectsSlice = createSlice({
     applyFilter: (state, { payload }) => {
       state.filter = payload.text;
     },
-  },
-  extraReducers: (builder) => {
-    /** -------------------------------- SEND INVITE ----------------------------------- */
   },
 });
 

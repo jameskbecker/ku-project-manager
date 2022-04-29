@@ -3,13 +3,11 @@ import SelectInput from '@kupm/common/input/SelectInput';
 import TextInput from '@kupm/common/input/TextInput';
 import { ModalBackdrop, ModalContent, ModalFooter } from '@kupm/common/Modal';
 import Separator from '@kupm/common/Separator';
-import {
-  sendInvite,
-  toggleInvite,
-} from '@kupm/features/projects/projectsSlice';
+import { toggleInvite } from '@kupm/features/projects/projectsSlice';
 import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeContext } from 'styled-components';
+import { useSendInviteMutation } from '../api/apiSlice';
 
 const permissionOptions = [
   { label: 'Read', value: 'read' },
@@ -25,6 +23,7 @@ const expiryOptions = [
 const InviteModal = () => {
   const { selectedProject } = useSelector((state: any) => state.projects);
   const theme = useContext(ThemeContext);
+  const [sendInvite] = useSendInviteMutation();
 
   const [email, setEmail] = useState('');
   const [permissionOption, setPermissionOption] = useState(
@@ -44,16 +43,13 @@ const InviteModal = () => {
   };
 
   const handleCancel = () => dispatch(toggleInvite());
-  const handleSave = (e: any) => {
-    e.target.style.background = theme.success;
-    dispatch(
-      sendInvite({
-        projectId: selectedProject,
-        email,
-        permissions: permissionOption.value,
-        expires: expiryOption.value,
-      })
-    );
+  const handleSave = async (e: any) => {
+    await sendInvite({
+      projectId: selectedProject,
+      email,
+      permissions: permissionOption.value,
+      expires: expiryOption.value,
+    });
     dispatch(toggleInvite());
   };
 

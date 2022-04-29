@@ -124,6 +124,17 @@ export const apiSlice = createApi({
         method: 'DELETE',
       }),
     }),
+    sendInvite: builder.mutation({
+      query: (args: any) => {
+        const userId = getCookie('kupm_user_id');
+        return {
+          url: `/invites`,
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: { ...args, userId },
+        };
+      },
+    }),
   }),
 });
 
@@ -144,4 +155,5 @@ export const {
   useAddTaskMutation,
   useUpdateTaskMutation,
   useDeleteTaskMutation,
+  useSendInviteMutation,
 } = apiSlice;
