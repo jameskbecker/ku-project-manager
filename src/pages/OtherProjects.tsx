@@ -48,7 +48,7 @@ const OtherProjects = () => {
 
   return (
     <Layout>
-      <Sidebar activePage="other" />
+      <Sidebar activePage="shared" />
       <HeaderBar pageName="Other Projects" />
       <ControlBar />
 
