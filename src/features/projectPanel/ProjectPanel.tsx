@@ -1,6 +1,6 @@
 import Panel from '@kupm/common/Panel';
-import ProjectList from '@kupm/features/dashboard/ProjectList';
-import ProjectPanelOptions from '@kupm/features/dashboard/ProjectPanelOptions';
+import ProjectList from '@kupm/features/projectPanel/ProjectList';
+import ProjectPanelOptions from '@kupm/features/projectPanel/ProjectPanelOptions';
 import React from 'react';
 import styled from 'styled-components';
 

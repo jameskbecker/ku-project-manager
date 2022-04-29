@@ -1,7 +1,7 @@
 import DataPlaceholder from '@kupm/common/DataPlaceholder';
 import ScrollContainer from '@kupm/common/ScrollContainer';
 import { useGetProjectsQuery } from '@kupm/features/api/apiSlice';
-import ProjectListItem from '@kupm/features/dashboard/ProjectListItem';
+import ProjectListItem from '@kupm/features/projectPanel/ProjectListItem';
 import React from 'react';
 
 const ProjectList = () => {

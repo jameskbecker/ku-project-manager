@@ -1,6 +1,6 @@
 import Panel from '@kupm/common/Panel';
-import TodoList from '@kupm/features/dashboard/TodoList';
-import TodoPanelOptions from '@kupm/features/dashboard/TodoPanelOptions';
+import TodoList from '@kupm/features/todoPanel/TodoList';
+import TodoPanelOptions from '@kupm/features/todoPanel/TodoPanelOptions';
 import React from 'react';
 import styled from 'styled-components';
 

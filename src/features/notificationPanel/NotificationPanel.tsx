@@ -1,6 +1,6 @@
 import Panel from '@kupm/common/Panel';
-import NotificationList from '@kupm/features/dashboard/NotificationList';
-import NotificationPanelOptions from '@kupm/features/dashboard/NotificationPanelOptions';
+import NotificationList from '@kupm/features/notificationPanel/NotificationList';
+import NotificationPanelOptions from '@kupm/features/notificationPanel/NotificationPanelOptions';
 import React from 'react';
 
 const NotificationPanel = () => {

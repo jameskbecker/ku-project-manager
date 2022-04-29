@@ -1,8 +1,8 @@
 import DataPlaceholder from '@kupm/common/DataPlaceholder';
 import ScrollContainer from '@kupm/common/ScrollContainer';
-import NotificationListItem from '@kupm/features/dashboard/NotificationListItem';
-import React from 'react';
 import { useGetNotificationsQuery } from '@kupm/features/api/apiSlice';
+import NotificationListItem from '@kupm/features/notificationPanel/NotificationListItem';
+import React from 'react';
 
 const NotificationList = () => {
   const { data: notifications, isLoading } = useGetNotificationsQuery(null);
