@@ -1,6 +1,6 @@
+import { FlexColumn } from '@kupm/common/Flex';
 import HeaderBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
-import Content from '@kupm/features/projects/Content';
 import ControlBar from '@kupm/features/projects/ControlBar';
 import DeleteAllModal from '@kupm/features/projects/DeleteAllModal';
 import InviteModal from '@kupm/features/projects/InviteModal';
@@ -11,6 +11,25 @@ import { getCookie } from '@kupm/utils/cookie';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+
+/** @todo optimise large scale displays */
+const MyProjectsContent = styled(FlexColumn)`
+  grid-area: content;
+  justify-content: flex-start;
+  align-items: stretch;
+
+  padding: 1rem;
+  /** Tablet  */
+  @media screen and (min-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: auto;
+  }
+
+  /** Desktop  */
+`;
 
 const MyProjects = () => {
   const history = useHistory();
@@ -34,10 +53,10 @@ const MyProjects = () => {
       <HeaderBar pageName="My Projects" />
       <ControlBar />
 
-      <Content>
+      <MyProjectsContent>
         <ProjectTable />
         <ProjectTable complete />
-      </Content>
+      </MyProjectsContent>
 
       {showNewProject && <NewProjectModal />}
       {showDeleteAll && <DeleteAllModal />}
