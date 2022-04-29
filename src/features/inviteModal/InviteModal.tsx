@@ -3,11 +3,11 @@ import SelectInput from '@kupm/common/input/SelectInput';
 import TextInput from '@kupm/common/input/TextInput';
 import { ModalBackdrop, ModalContent, ModalFooter } from '@kupm/common/Modal';
 import Separator from '@kupm/common/Separator';
-import { toggleInvite } from '@kupm/features/projects/projectsSlice';
 import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeContext } from 'styled-components';
 import { useSendInviteMutation } from '../api/apiSlice';
+import { hideInviteModal } from './inviteModalSlice';
 
 const permissionOptions = [
   { label: 'Read', value: 'read' },
@@ -42,7 +42,7 @@ const InviteModal = () => {
     setExpiryOption(value);
   };
 
-  const handleCancel = () => dispatch(toggleInvite());
+  const handleCancel = () => dispatch(hideInviteModal());
   const handleSave = async (e: any) => {
     await sendInvite({
       projectId: selectedProject,
@@ -50,7 +50,7 @@ const InviteModal = () => {
       permissions: permissionOption.value,
       expires: expiryOption.value,
     });
-    dispatch(toggleInvite());
+    dispatch(hideInviteModal());
   };
 
   return (

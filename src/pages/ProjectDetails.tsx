@@ -6,11 +6,11 @@ import HeaderBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
 import AddCommentModal from '@kupm/features/addCommentModal/AddCommentModal';
 import { useGetProjectTasksQuery } from '@kupm/features/api/apiSlice';
+import InviteModal from '@kupm/features/inviteModal/InviteModal';
+import MembersModal from '@kupm/features/membersModal/MembersModal';
+import NewProjectModal from '@kupm/features/newProjectModal/NewProjectModal';
 import NewTaskModal from '@kupm/features/newTaskModal/NewTaskModal';
 import ActivityFeed from '@kupm/features/projectActivityFeed/ActivityFeed';
-import InviteModal from '@kupm/features/projects/InviteModal';
-import MembersModal from '@kupm/features/projects/MembersModal';
-import NewProjectModal from '@kupm/features/projects/NewProjectModal';
 import {
   selectProject,
   toggleNewProject,
@@ -46,8 +46,11 @@ const ProjectDetails = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { id } = useParams<any>();
-  const { showInvite, showNewProject, selectedProject } = useSelector(
+  const { showNewProject, selectedProject } = useSelector(
     (state: any) => state.projects
+  );
+  const { visible: showInvite } = useSelector(
+    (state: any) => state.inviteModal
   );
   const { showNewTask, showMembers, showAddComment } = useSelector(
     (state: any) => state.tasks

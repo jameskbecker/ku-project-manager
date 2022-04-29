@@ -16,7 +16,6 @@ import {
 } from '@kupm/features/api/apiSlice';
 import {
   selectProject,
-  toggleInvite,
   toggleNewProject,
 } from '@kupm/features/projects/projectsSlice';
 import { formatDistance } from 'date-fns';
@@ -24,6 +23,7 @@ import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
+import { showInviteModal } from '../inviteModal/inviteModalSlice';
 
 const Wrapper = styled(Panel)`
   gap: 1rem;
@@ -72,7 +72,7 @@ const ProjectTableRow = ({ project }: any) => {
 
   const handleInvite = (e: any) => {
     e.stopPropagation();
-    dispatch(toggleInvite());
+    dispatch(showInviteModal());
   };
 
   const handleDelete = (e: any) => {

@@ -1,3 +1,8 @@
+import {
+  faPlus,
+  faSearch,
+  faTrashAlt,
+} from '@fortawesome/free-solid-svg-icons';
 import Button from '@kupm/common/Button';
 import { FlexRow } from '@kupm/common/Flex';
 import TextInput from '@kupm/common/input/TextInput';
@@ -7,11 +12,6 @@ import {
   toggleDeleteAll,
   toggleNewProject,
 } from '@kupm/features/projects/projectsSlice';
-import {
-  faPlus,
-  faSearch,
-  faTrashAlt,
-} from '@fortawesome/free-solid-svg-icons';
 import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled, { ThemeContext } from 'styled-components';
@@ -50,7 +50,7 @@ const ControlBarWrapper = styled.div`
   }
 `;
 
-const ControlBar = () => {
+const MyProjectsControlbar = () => {
   const theme = useContext(ThemeContext);
   const { filter } = useSelector((state: any) => state.projects);
   const dispatch = useDispatch();
@@ -101,4 +101,4 @@ const ControlBar = () => {
   );
 };
 
-export default ControlBar;
+export default MyProjectsControlbar;

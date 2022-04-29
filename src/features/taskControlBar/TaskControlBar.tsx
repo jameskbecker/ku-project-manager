@@ -1,16 +1,3 @@
-import Button from '@kupm/common/Button';
-import { FlexRow } from '@kupm/common/Flex';
-import TextInput from '@kupm/common/input/TextInput';
-import {
-  selectProject,
-  toggleInvite,
-} from '@kupm/features/projects/projectsSlice';
-import {
-  applyFilter,
-  selectTask,
-  toggleMembers,
-  toggleNewTask,
-} from '@kupm/features/tasks/tasksSlice';
 import {
   faPlus,
   faSearch,
@@ -18,16 +5,25 @@ import {
   faUserPlus,
   faUsers,
 } from '@fortawesome/free-solid-svg-icons';
+import Button from '@kupm/common/Button';
+import { FlexRow } from '@kupm/common/Flex';
+import TextInput from '@kupm/common/input/TextInput';
+import { selectProject } from '@kupm/features/projects/projectsSlice';
+import {
+  applyFilter,
+  selectTask,
+  toggleMembers,
+  toggleNewTask,
+} from '@kupm/features/tasks/tasksSlice';
 import React, { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
+import { showInviteModal } from '../inviteModal/inviteModalSlice';
 
 const ControlBarWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  /* display: grid;
-  grid-template-columns: 350px 2fr 350px; */
   align-items: center;
   grid-area: control;
   gap: 0.75rem;
@@ -35,7 +31,6 @@ const ControlBarWrapper = styled.div`
   background: ${({ theme }) => theme.control};
   padding: 0.75rem 1rem;
 
-  //border-bottom: 1px solid ${({ theme }) => theme.sidebar};
   border-bottom: 1px solid ${({ theme }) => theme.secondary};
 
   & > :first-child,
@@ -75,7 +70,7 @@ const TaskControlBar = () => {
   };
 
   const handleInvite = () => {
-    dispatch(toggleInvite());
+    dispatch(showInviteModal());
   };
 
   const handleSearch = (e: any) => {

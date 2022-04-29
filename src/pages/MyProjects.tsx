@@ -1,10 +1,10 @@
 import { FlexColumn } from '@kupm/common/Flex';
 import HeaderBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
-import ControlBar from '@kupm/features/projects/ControlBar';
-import DeleteAllModal from '@kupm/features/projects/DeleteAllModal';
-import InviteModal from '@kupm/features/projects/InviteModal';
-import NewProjectModal from '@kupm/features/projects/NewProjectModal';
+import DeleteProjectsModal from '@kupm/features/deleteProjectsModal/DeleteProjectsModal';
+import InviteModal from '@kupm/features/inviteModal/InviteModal';
+import MyProjectsControlBar from '@kupm/features/myProjectsControlbar/MyProjectsControlbar';
+import NewProjectModal from '@kupm/features/newProjectModal/NewProjectModal';
 import ProjectTable from '@kupm/features/projectTable/ProjectTable';
 import Sidebar from '@kupm/features/sidebar/Sidebar';
 import { getCookie } from '@kupm/utils/cookie';
@@ -36,7 +36,9 @@ const MyProjects = () => {
   const { showDeleteAll, showNewProject } = useSelector(
     (state: any) => state.projects
   );
-  const { showInvite } = useSelector((state: any) => state.projects);
+  const { visible: showInvite } = useSelector(
+    (state: any) => state.inviteModal
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -51,7 +53,7 @@ const MyProjects = () => {
     <Layout>
       <Sidebar activePage="projects" />
       <HeaderBar pageName="My Projects" />
-      <ControlBar />
+      <MyProjectsControlBar />
 
       <MyProjectsContent>
         <ProjectTable />
@@ -59,7 +61,7 @@ const MyProjects = () => {
       </MyProjectsContent>
 
       {showNewProject && <NewProjectModal />}
-      {showDeleteAll && <DeleteAllModal />}
+      {showDeleteAll && <DeleteProjectsModal />}
       {showInvite && <InviteModal />}
     </Layout>
   );

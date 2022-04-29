@@ -6,7 +6,7 @@ import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { ThemeContext } from 'styled-components';
 
-const DeleteAllModal = () => {
+const DeleteProjectsModal = () => {
   const dispatch = useDispatch();
   const theme = useContext(ThemeContext);
 
@@ -29,4 +29,4 @@ const DeleteAllModal = () => {
   );
 };
 
-export default DeleteAllModal;
+export default DeleteProjectsModal;
