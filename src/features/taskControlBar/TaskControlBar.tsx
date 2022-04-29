@@ -59,7 +59,7 @@ const ControlBarWrapper = styled.div`
   }
 `;
 
-const ControlBar = () => {
+const TaskControlBar = () => {
   const { id, taskId } = useParams<any>();
   const theme = useContext(ThemeContext);
   const { filter } = useSelector((state: any) => state.tasks);
@@ -140,4 +140,4 @@ const ControlBar = () => {
   );
 };
 
-export default ControlBar;
+export default TaskControlBar;

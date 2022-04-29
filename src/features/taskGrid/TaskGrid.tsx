@@ -1,5 +1,5 @@
 import { FlexColumn } from '@kupm/common/Flex';
-import TaskGridCard from '@kupm/features/tasks/TaskGridCard';
+import TaskGridCard from '@kupm/features/taskGrid/TaskGridCard';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';

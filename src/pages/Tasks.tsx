@@ -1,26 +1,44 @@
 import { faPencilAlt, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import { SecondaryButton } from '@kupm/common/Button';
 import DataPlaceholder from '@kupm/common/DataPlaceholder';
-import { FlexRow } from '@kupm/common/Flex';
+import { FlexColumn, FlexRow } from '@kupm/common/Flex';
 import HeaderBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
-import Sidebar from '@kupm/features/sidebar/Sidebar';
+import AddCommentModal from '@kupm/features/addCommentModal/AddCommentModal';
 import { useGetSubTasksQuery } from '@kupm/features/api/apiSlice';
+import NewTaskModal from '@kupm/features/newTaskModal/NewTaskModal';
+import ActivityFeed from '@kupm/features/projectActivityFeed/ActivityFeed';
 import InviteModal from '@kupm/features/projects/InviteModal';
 import MembersModal from '@kupm/features/projects/MembersModal';
 import NewProjectModal from '@kupm/features/projects/NewProjectModal';
 import { selectProject } from '@kupm/features/projects/projectsSlice';
-import ActivityFeed from '@kupm/features/tasks/ActivityFeed';
-import AddCommentModal from '@kupm/features/tasks/AddComment';
-import Content from '@kupm/features/tasks/Content';
-import ControlBar from '@kupm/features/tasks/ControlBar';
-import NewTaskModal from '@kupm/features/tasks/NewTaskModal';
-import TaskGrid from '@kupm/features/tasks/TaskGrid';
+import Sidebar from '@kupm/features/sidebar/Sidebar';
+import TaskControlBar from '@kupm/features/taskControlBar/TaskControlBar';
+import TaskGrid from '@kupm/features/taskGrid/TaskGrid';
 import { selectTask, toggleNewTask } from '@kupm/features/tasks/tasksSlice';
 import { getCookie } from '@kupm/utils/cookie';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
+import styled from 'styled-components';
+
+/** @todo optimise large scale displays */
+const TasksContent = styled(FlexColumn)`
+  grid-area: content;
+  justify-content: flex-start;
+
+  /* align-items: stretch; */
+
+  /** Tablet  */
+  @media screen and (min-width: 600px) {
+    flex-direction: row;
+    gap: 0;
+    height: auto;
+    overflow: auto;
+  }
+
+  /** Desktop  */
+`;
 
 const Tasks = () => {
   const dispatch = useDispatch();
@@ -81,12 +99,12 @@ const Tasks = () => {
   return (
     <Layout>
       <Sidebar activePage="projects" />
-      <ControlBar />
+      <TaskControlBar />
       <HeaderBar back {...headerData} Options={headerOptions} />
-      <Content>
+      <TasksContent>
         {taskContent}
         <ActivityFeed />
-      </Content>
+      </TasksContent>
 
       {showNewProject && <NewProjectModal />}
       {showInvite && <InviteModal />}
