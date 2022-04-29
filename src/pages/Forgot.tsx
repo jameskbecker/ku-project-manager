@@ -1,23 +1,8 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import Button from '@kupm/common/Button';
 import { FlexColumn } from '@kupm/common/Flex';
-import TextInput from '@kupm/common/input/TextInput';
-import { ModalFooter } from '@kupm/common/Modal';
-import Panel from '@kupm/common/Panel';
-import Separator from '@kupm/common/Separator';
+import PasswordResetPanel from '@kupm/features/passwordResetPanel/PasswordResetPanel';
+import React from 'react';
 
 const Forgot = () => {
-  const history = useHistory();
-
-  const handleReset = () => {
-    history.push('/');
-  };
-
-  const handleBack = () => {
-    history.push('/login');
-  };
-
   return (
     <FlexColumn
       style={{
@@ -26,17 +11,7 @@ const Forgot = () => {
         alignItems: 'center',
       }}
     >
-      <Panel
-        heading="Reset Password"
-        style={{ width: '600px', flex: '0 0 auto' }}
-      >
-        <TextInput label="Email" placeholder="johndoe@kupm.org" />
-        <Separator />
-        <ModalFooter>
-          <Button text="Back" light onClick={handleBack} />
-          <Button text="Reset" round onClick={handleReset} />
-        </ModalFooter>
-      </Panel>
+      <PasswordResetPanel />
     </FlexColumn>
   );
 };
