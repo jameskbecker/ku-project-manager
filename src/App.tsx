@@ -15,7 +15,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 const App = () => {
-  const { theme } = useSelector((state: any) => state.settings);
+  const { theme } = useSelector((state: any) => state.appearancePanel);
   return (
     <ThemeProvider theme={theme === 'dark' ? dark : light}>
       <Global />

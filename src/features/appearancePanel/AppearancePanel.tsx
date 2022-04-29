@@ -1,6 +1,6 @@
 import SelectInput from '@kupm/common/input/SelectInput';
 import Panel from '@kupm/common/Panel';
-import { changeTheme } from '@kupm/features/settings/settingsSlice';
+import { changeTheme } from '@kupm/features/appearancePanel/appearancePanelSlice';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -10,7 +10,7 @@ const themeOptions = [
 ];
 
 const AppearancePanel = () => {
-  const { theme } = useSelector((state: any) => state.settings);
+  const { theme } = useSelector((state: any) => state.appearancePanel);
   const dispatch = useDispatch();
 
   const handleThemeSelect = ({ value: { value } }: any) => {
