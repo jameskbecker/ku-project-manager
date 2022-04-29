@@ -11,10 +11,7 @@ import MembersModal from '@kupm/features/membersModal/MembersModal';
 import NewProjectModal from '@kupm/features/newProjectModal/NewProjectModal';
 import NewTaskModal from '@kupm/features/newTaskModal/NewTaskModal';
 import ActivityFeed from '@kupm/features/projectActivityFeed/ActivityFeed';
-import {
-  selectProject,
-  toggleNewProject,
-} from '@kupm/features/projects/projectsSlice';
+import { selectProject } from '@kupm/features/projects/projectsSlice';
 import Sidebar from '@kupm/features/sidebar/Sidebar';
 import TaskControlBar from '@kupm/features/taskControlBar/TaskControlBar';
 import TaskGrid from '@kupm/features/taskGrid/TaskGrid';
@@ -46,12 +43,14 @@ const ProjectDetails = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { id } = useParams<any>();
-  const { showNewProject, selectedProject } = useSelector(
-    (state: any) => state.projects
-  );
+  const { selectedProject } = useSelector((state: any) => state.projects);
   const { visible: showInvite } = useSelector(
     (state: any) => state.inviteModal
   );
+  const { showNewProjectModal } = useSelector(
+    (state: any) => state.newProjectModal
+  );
+
   const { showNewTask, showMembers, showAddComment } = useSelector(
     (state: any) => state.tasks
   );
@@ -68,7 +67,7 @@ const ProjectDetails = () => {
   }, []);
 
   const handleEdit = () => {
-    toggleNewProject();
+    dispatch(showNewProjectModal());
   };
   const headerOptions = () => (
     <FlexRow>
@@ -102,7 +101,7 @@ const ProjectDetails = () => {
         <ActivityFeed />
       </ProjectDetailsContent>
 
-      {showNewProject && <NewProjectModal />}
+      {showNewProjectModal && <NewProjectModal />}
       {showInvite && <InviteModal />}
       {showNewTask && <NewTaskModal />}
       {showAddComment && <AddCommentModal />}

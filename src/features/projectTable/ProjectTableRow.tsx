@@ -14,16 +14,14 @@ import {
   useGetProjectsQuery,
   useUpdateProjectMutation,
 } from '@kupm/features/api/apiSlice';
-import {
-  selectProject,
-  toggleNewProject,
-} from '@kupm/features/projects/projectsSlice';
+import { selectProject } from '@kupm/features/projects/projectsSlice';
 import { formatDistance } from 'date-fns';
 import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
 import { showInviteModal } from '../inviteModal/inviteModalSlice';
+import { showNewProjectModal } from '../newProjectModal/newProjectModalSlice';
 
 const Wrapper = styled(Panel)`
   gap: 1rem;
@@ -67,7 +65,7 @@ const ProjectTableRow = ({ project }: any) => {
   const handleEdit = (e: any) => {
     e.stopPropagation();
     dispatch(selectProject(project.id));
-    dispatch(toggleNewProject());
+    dispatch(showNewProjectModal());
   };
 
   const handleInvite = (e: any) => {

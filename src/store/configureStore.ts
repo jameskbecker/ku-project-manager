@@ -2,6 +2,7 @@ import accountPanelReducer from '@kupm/features/accountPanel/accountPanelSlice';
 import { apiSlice } from '@kupm/features/api/apiSlice';
 import appearancePanelReducer from '@kupm/features/appearancePanel/appearancePanelSlice';
 import inviteModalReducer from '@kupm/features/inviteModal/inviteModalSlice';
+import newProjectModalReducer from '@kupm/features/newProjectModal/newProjectModalSlice';
 import projectsReducer from '@kupm/features/projects/projectsSlice';
 import sidebarReducer from '@kupm/features/sidebar/sidebarSlice';
 import tasksReducer from '@kupm/features/tasks/tasksSlice';
@@ -12,6 +13,7 @@ export default configureStore({
     sidebar: sidebarReducer,
     projects: projectsReducer,
     inviteModal: inviteModalReducer,
+    newProjectModal: newProjectModalReducer,
     tasks: tasksReducer,
     accountPanel: accountPanelReducer,
     appearancePanel: appearancePanelReducer,

@@ -10,17 +10,15 @@ import {
   applyFilter,
   selectProject,
   toggleDeleteAll,
-  toggleNewProject,
 } from '@kupm/features/projects/projectsSlice';
 import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled, { ThemeContext } from 'styled-components';
+import { showNewProjectModal } from '../newProjectModal/newProjectModalSlice';
 
 const ControlBarWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  /* display: grid;
-  grid-template-columns: 350px 2fr 350px; */
   align-items: center;
   grid-area: control;
   gap: 0.75rem;
@@ -57,7 +55,7 @@ const MyProjectsControlbar = () => {
 
   const handleNewProject = () => {
     dispatch(selectProject(''));
-    dispatch(toggleNewProject());
+    dispatch(showNewProjectModal());
   };
 
   const handleSearch = (e: any) => {

@@ -8,10 +8,10 @@ import {
   useGetProjectsQuery,
   useUpdateProjectMutation,
 } from '@kupm/features/api/apiSlice';
-import { toggleNewProject } from '@kupm/features/projects/projectsSlice';
 import { getCookie } from '@kupm/utils/cookie';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { hideNewProjectModal } from './newProjectModalSlice';
 
 const NewProjectModal = () => {
   const { data: projects } = useGetProjectsQuery(null);
@@ -37,7 +37,7 @@ const NewProjectModal = () => {
   const handleDueAtChange = (e: any) => setDueAt(e.target.value);
   const handleDescriptionChange = (e: any) => setDescription(e.target.value);
 
-  const handleCancel = () => dispatch(toggleNewProject());
+  const handleCancel = () => dispatch(hideNewProjectModal());
   const handleSave = async () => {
     const userId = getCookie('kupm_user_id');
     if (!userId) {
@@ -59,7 +59,7 @@ const NewProjectModal = () => {
         await updateProject(args);
       } else await addProject(args);
 
-      dispatch(toggleNewProject());
+      dispatch(hideNewProjectModal());
     } catch (e) {
       console.error(e);
     }
