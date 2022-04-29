@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getCookie } from '@kupm/utils/cookie';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState: any = {
   theme: getCookie('kupm_theme') || 'light',

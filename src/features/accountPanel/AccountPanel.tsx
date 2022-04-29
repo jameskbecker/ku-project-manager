@@ -1,7 +1,7 @@
 import Button from '@kupm/common/Button';
 import Panel from '@kupm/common/Panel';
-import DetailsForm from '@kupm/features/settings/DetailsForm';
-import PasswordForm from '@kupm/features/settings/PasswordForm';
+import DetailsForm from '@kupm/features/accountPanel/DetailsForm';
+import PasswordForm from '@kupm/features/accountPanel/PasswordForm';
 import {
   showAccountError,
   toggleEditDetails,
