@@ -4,9 +4,11 @@ import Layout from '@kupm/common/layout/Layout';
 import NotificationPanel from '@kupm/features/notificationPanel/NotificationPanel';
 import ProjectPanel from '@kupm/features/projectPanel/ProjectPanel';
 import Sidebar from '@kupm/features/sidebar/Sidebar';
+import { setActivePage } from '@kupm/features/sidebar/sidebarSlice';
 import TodoPanel from '@kupm/features/todoPanel/TodoPanel';
 import { getCookie } from '@kupm/utils/cookie';
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -29,6 +31,7 @@ const DashboardContent = styled(FlexColumn)`
 
 const Dashboard = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!getCookie('kupm_user_id')) {
@@ -36,13 +39,14 @@ const Dashboard = () => {
       return;
     }
     document.title = 'Dashboard | KUPM';
+    dispatch(setActivePage('dashboard'));
   }, []);
 
   /** @todo consider react-window to support large amounts or data */
 
   return (
     <Layout>
-      <Sidebar activePage="dashboard" />
+      <Sidebar />
       {/**@todo replace with context */}
       <NavBar pageName="Dashboard" />
       <DashboardContent>

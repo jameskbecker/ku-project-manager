@@ -9,6 +9,7 @@ import { FlexColumn } from '@kupm/common/Flex';
 import Separator from '@kupm/common/Separator';
 import SidebarButton from '@kupm/features/sidebar/SidebarButton';
 import React, { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import styled, { ThemeContext } from 'styled-components';
 
 const StyledSidebarMenu = styled(FlexColumn)`
@@ -17,8 +18,9 @@ const StyledSidebarMenu = styled(FlexColumn)`
   margin-top: 1rem;
 `;
 
-const SidebarMenu = ({ activePage }: any) => {
+const SidebarMenu = () => {
   const theme = useContext(ThemeContext);
+  const { activePage } = useSelector((state: any) => state.sidebar);
 
   return (
     <StyledSidebarMenu>

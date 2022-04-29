@@ -25,12 +25,7 @@ const StyledSidebar = styled.div`
   }
 `;
 
-type SidebarProps = {
-  activePage: string;
-};
-
-const Sidebar = (props: SidebarProps) => {
-  const theme = useContext(ThemeContext);
+const Sidebar = () => {
   const { isCollapsed } = useSelector((state: any) => state.sidebar);
   const dispatch = useDispatch();
 
@@ -44,7 +39,7 @@ const Sidebar = (props: SidebarProps) => {
   return (
     <StyledSidebar {...otherOptions}>
       <SidebarLogo />
-      <SidebarMenu {...props} />
+      <SidebarMenu />
       <Button
         light
         icon={isCollapsed ? faChevronRight : faChevronLeft}

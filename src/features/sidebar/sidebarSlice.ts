@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState: any = {
   isCollapsed: false,
+  activePage: '',
 };
 
 export const sidebarSlice = createSlice({
@@ -11,8 +12,11 @@ export const sidebarSlice = createSlice({
     toggle: (state) => {
       state.isCollapsed = !state.isCollapsed;
     },
+    setActivePage: (state, { payload }) => {
+      state.activePage = payload;
+    },
   },
 });
 
-export const { toggle } = sidebarSlice.actions;
+export const { toggle, setActivePage } = sidebarSlice.actions;
 export default sidebarSlice.reducer;

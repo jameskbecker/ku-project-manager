@@ -5,8 +5,10 @@ import AccountPanel from '@kupm/features/accountPanel/AccountPanel';
 import AppearancePanel from '@kupm/features/appearancePanel/AppearancePanel';
 import EnrolmentPanel from '@kupm/features/enrolmentPanel/EnrolmentPanel';
 import Sidebar from '@kupm/features/sidebar/Sidebar';
+import { setActivePage } from '@kupm/features/sidebar/sidebarSlice';
 import { getCookie } from '@kupm/utils/cookie';
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -28,6 +30,7 @@ const SettingsContent = styled(FlexColumn)`
 
 const Settings = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!getCookie('kupm_user_id')) {
@@ -35,11 +38,12 @@ const Settings = () => {
       return;
     }
     document.title = 'Settings | KUPM';
+    dispatch(setActivePage('settings'));
   }, []);
 
   return (
     <Layout>
-      <Sidebar activePage="settings" />
+      <Sidebar />
       <NavBar pageName="Settings" />
       <SettingsContent>
         <AccountPanel />

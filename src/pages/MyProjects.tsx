@@ -7,6 +7,7 @@ import MyProjectsControlBar from '@kupm/features/myProjectsControlbar/MyProjects
 import NewProjectModal from '@kupm/features/newProjectModal/NewProjectModal';
 import ProjectTable from '@kupm/features/projectTable/ProjectTable';
 import Sidebar from '@kupm/features/sidebar/Sidebar';
+import { setActivePage } from '@kupm/features/sidebar/sidebarSlice';
 import { getCookie } from '@kupm/utils/cookie';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -50,11 +51,12 @@ const MyProjects = () => {
       return;
     }
     document.title = 'Projects | KUPM';
+    dispatch(setActivePage('projects'));
   }, []);
 
   return (
     <Layout>
-      <Sidebar activePage="projects" />
+      <Sidebar />
       <HeaderBar pageName="My Projects" />
       <MyProjectsControlBar />
 

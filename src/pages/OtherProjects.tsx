@@ -6,6 +6,7 @@ import InviteModal from '@kupm/features/inviteModal/InviteModal';
 import MyProjectsControlBar from '@kupm/features/myProjectsControlbar/MyProjectsControlbar';
 import NewProjectModal from '@kupm/features/newProjectModal/NewProjectModal';
 import Sidebar from '@kupm/features/sidebar/Sidebar';
+import { setActivePage } from '@kupm/features/sidebar/sidebarSlice';
 import { getCookie } from '@kupm/utils/cookie';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -32,6 +33,7 @@ const OtherProjectsContent = styled(FlexColumn)`
 
 const OtherProjects = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const { showDeleteAll, showNewProject } = useSelector(
     (state: any) => state.projects
   );
@@ -45,11 +47,12 @@ const OtherProjects = () => {
       return;
     }
     document.title = 'Other Projects | KUPM';
+    dispatch(setActivePage('shared'));
   }, []);
 
   return (
     <Layout>
-      <Sidebar activePage="shared" />
+      <Sidebar />
       <HeaderBar pageName="Other Projects" />
       <MyProjectsControlBar />
 

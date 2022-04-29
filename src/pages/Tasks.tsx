@@ -13,6 +13,7 @@ import NewTaskModal from '@kupm/features/newTaskModal/NewTaskModal';
 import ActivityFeed from '@kupm/features/projectActivityFeed/ActivityFeed';
 import { selectProject } from '@kupm/features/projects/projectsSlice';
 import Sidebar from '@kupm/features/sidebar/Sidebar';
+import { setActivePage } from '@kupm/features/sidebar/sidebarSlice';
 import TaskControlBar from '@kupm/features/taskControlBar/TaskControlBar';
 import TaskGrid from '@kupm/features/taskGrid/TaskGrid';
 import { selectTask, toggleNewTask } from '@kupm/features/tasks/tasksSlice';
@@ -67,6 +68,7 @@ const Tasks = () => {
       dispatch(selectProject(id));
     }
     dispatch(selectTask(taskId));
+    dispatch(setActivePage('projects'));
   }, [id, taskId]);
 
   const handleEdit = () => {
@@ -98,7 +100,7 @@ const Tasks = () => {
 
   return (
     <Layout>
-      <Sidebar activePage="projects" />
+      <Sidebar />
       <TaskControlBar />
       <HeaderBar back {...headerData} Options={headerOptions} />
       <TasksContent>

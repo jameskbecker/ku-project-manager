@@ -93,7 +93,7 @@ const ProjectDetails = () => {
 
   return (
     <Layout>
-      <Sidebar activePage="projects" />
+      <Sidebar />
       <TaskControlBar />
       <HeaderBar back {...headerData} Options={headerOptions} />
       <ProjectDetailsContent>
