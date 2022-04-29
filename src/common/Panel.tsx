@@ -37,15 +37,15 @@ const StyledPanel = styled(FlexColumn)<PanelProps>`
     `}
 `;
 
-const Panel = (props: PanelProps) => {
+const Panel = ({ Options, ...props }: PanelProps) => {
   return (
     <StyledPanel {...props}>
-      {(props.heading || props.Options) && (
+      {(props.heading || Options) && (
         <FlexRow style={{ flex: '0 0 auto' }}>
           {props.heading && (
             <h3 style={{ flex: '1 0 auto' }}>{props.heading}</h3>
           )}
-          {props.Options && props.Options}
+          {Options && <Options />}
         </FlexRow>
       )}
 
