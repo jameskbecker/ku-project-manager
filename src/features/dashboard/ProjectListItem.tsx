@@ -1,21 +1,21 @@
 import { faSquare } from '@fortawesome/free-regular-svg-icons';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { format } from 'date-fns';
-import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
-import styled, { ThemeContext } from 'styled-components';
-import { Project } from '@kupm/types';
 import { SecondaryButton } from '@kupm/common/Button';
 import ContextMenu from '@kupm/common/ContextMenu';
 import { FlexColumn, FlexRow } from '@kupm/common/Flex';
 import Panel from '@kupm/common/Panel';
+import { Project } from '@kupm/types';
+import { format } from 'date-fns';
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import styled, { ThemeContext } from 'styled-components';
 
 type UpcomingPanelProps = {
   project: Project;
 };
 
-const StyledUpcomingPanel = styled(Panel)`
+const StyledProjectListItem = styled(Panel)`
   flex: 0 0 auto;
   flex-direction: row;
   gap: 0.5rem;
@@ -33,7 +33,7 @@ const StyledIcon = styled(FontAwesomeIcon)`
   color: ${({ theme }) => theme.brand};
 `;
 
-const UpcomingPanel = ({ project }: UpcomingPanelProps) => {
+const ProjectListItem = ({ project }: UpcomingPanelProps) => {
   const theme = useContext(ThemeContext);
   const history = useHistory();
 
@@ -55,7 +55,7 @@ const UpcomingPanel = ({ project }: UpcomingPanelProps) => {
   };
 
   return (
-    <StyledUpcomingPanel key={project.id} secondary onClick={handleClick}>
+    <StyledProjectListItem key={project.id} secondary onClick={handleClick}>
       <FlexColumn style={{ flex: '1 1', gap: '0.5rem' }}>
         <h4>{project.name}</h4>
         <h5>
@@ -68,8 +68,8 @@ const UpcomingPanel = ({ project }: UpcomingPanelProps) => {
         <StyledIcon icon={faSquare} />
         <OptionMenu />
       </FlexRow>
-    </StyledUpcomingPanel>
+    </StyledProjectListItem>
   );
 };
 
-export default UpcomingPanel;
+export default ProjectListItem;

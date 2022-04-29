@@ -4,15 +4,11 @@ import NavBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
 import Panel from '@kupm/common/Panel';
 import ScrollContainer from '@kupm/common/ScrollContainer';
-import {
-  useGetNotificationsQuery,
-  useGetProjectsQuery,
-} from '@kupm/features/api/apiSlice';
+import { useGetNotificationsQuery } from '@kupm/features/api/apiSlice';
 import Content from '@kupm/features/dashboard/Content';
 import NotificationPanel from '@kupm/features/dashboard/NotificationPanel';
-import TodoList from '@kupm/features/dashboard/TodoList';
+import ProjectPanel from '@kupm/features/dashboard/ProjectPanel';
 import TodoPanel from '@kupm/features/dashboard/TodoPanel';
-import UpcomingPanel from '@kupm/features/dashboard/UpcomingPanel';
 import Sidebar from '@kupm/features/sidebar/Sidebar';
 import { getCookie } from '@kupm/utils/cookie';
 import React, { useEffect } from 'react';
@@ -31,10 +27,6 @@ const DataPlaceholder = styled.div`
 const Dashboard = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { filter } = useSelector((state: any) => state.projects);
-
-  const { data: projects, refetch: refetchProjects } =
-    useGetProjectsQuery(null);
 
   const {
     data: notifications,
@@ -88,33 +80,6 @@ const Dashboard = () => {
     );
   };
 
-  const UpcomingProjects = () => {
-    return (
-      <Panel
-        heading="Upcoming Projects"
-        Options={
-          <SecondaryButton
-            secondary
-            icon={faSyncAlt}
-            onClick={refetchProjects}
-            round
-            light
-          />
-        }
-      >
-        {projects?.data.length < 1 ? (
-          <DataPlaceholder>No Upcoming Projects</DataPlaceholder>
-        ) : (
-          <ScrollContainer>
-            {projects?.data.map((p: any, i: number) => (
-              <UpcomingPanel key={i} project={p} />
-            ))}
-          </ScrollContainer>
-        )}
-      </Panel>
-    );
-  };
-
   return (
     <Layout>
       <Sidebar activePage="dashboard" />
@@ -123,9 +88,7 @@ const Dashboard = () => {
       <Content>
         <TodoPanel />
         <Notifications />
-        {/**@todo replace style attribute */}
-
-        <UpcomingProjects />
+        <ProjectPanel />
       </Content>
     </Layout>
   );
