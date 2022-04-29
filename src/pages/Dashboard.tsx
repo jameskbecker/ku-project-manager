@@ -11,14 +11,6 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-const DataPlaceholder = styled.div`
-  flex: 1 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
 const Dashboard = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -31,9 +23,6 @@ const Dashboard = () => {
     document.title = 'Dashboard | KUPM';
   }, []);
 
-  const handleNotificationRefresh = () => {};
-
-  const handleTodoRefresh = () => {};
   /** @todo consider react-window to support large amounts or data */
 
   return (
