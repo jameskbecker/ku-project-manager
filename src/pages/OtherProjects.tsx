@@ -54,7 +54,6 @@ const OtherProjects = () => {
     <Layout>
       <Sidebar />
       <HeaderBar pageName="Other Projects" />
-      <MyProjectsControlBar />
 
       <OtherProjectsContent></OtherProjectsContent>
 
