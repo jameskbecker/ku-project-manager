@@ -6,14 +6,18 @@ import { ModalFooter } from '@kupm/common/Modal';
 import Panel from '@kupm/common/Panel';
 import Separator from '@kupm/common/Separator';
 import { useLoginMutation } from '@kupm/features/api/apiSlice';
-import LoginHeader from '@kupm/features/auth/LoginHeader';
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+
+const LoginHeader = styled(FlexRow)`
+  justify-content: center;
+
+  padding: 1rem 0.75rem;
+`;
 
 const Login = () => {
   const history = useHistory();
-  const dispatch = useDispatch();
   const [errorMessage] = useState('');
   const [login] = useLoginMutation();
   const [email, setEmail] = useState('');
