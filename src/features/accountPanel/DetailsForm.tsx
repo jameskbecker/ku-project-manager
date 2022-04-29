@@ -5,7 +5,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 const DetailsForm = () => {
-  const { editDetails } = useSelector((state: any) => state.settings);
+  const { editDetails } = useSelector((state: any) => state.accountPanel);
   const { data: userResponse, isLoading } = useGetUserQuery(null);
 
   const handleFirstChange = () => {};

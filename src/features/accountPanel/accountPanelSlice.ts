@@ -5,8 +5,8 @@ const initialState: any = {
   accountError: '',
 };
 
-export const settingsSlice = createSlice({
-  name: 'settings',
+export const accountPanelSlice = createSlice({
+  name: 'accountPanel',
   initialState,
   reducers: {
     toggleEditDetails: (state) => {
@@ -18,5 +18,6 @@ export const settingsSlice = createSlice({
   },
 });
 
-export const { toggleEditDetails, showAccountError } = settingsSlice.actions;
-export default settingsSlice.reducer;
+export const { toggleEditDetails, showAccountError } =
+  accountPanelSlice.actions;
+export default accountPanelSlice.reducer;

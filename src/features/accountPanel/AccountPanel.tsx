@@ -1,11 +1,11 @@
 import Button from '@kupm/common/Button';
 import Panel from '@kupm/common/Panel';
-import DetailsForm from '@kupm/features/accountPanel/DetailsForm';
-import PasswordForm from '@kupm/features/accountPanel/PasswordForm';
 import {
   showAccountError,
   toggleEditDetails,
-} from '@kupm/features/settings/settingsSlice';
+} from '@kupm/features/accountPanel/accountPanelSlice';
+import DetailsForm from '@kupm/features/accountPanel/DetailsForm';
+import PasswordForm from '@kupm/features/accountPanel/PasswordForm';
 import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeContext } from 'styled-components';
@@ -14,7 +14,7 @@ const AccountPanel = () => {
   const dispatch = useDispatch();
   const theme = useContext(ThemeContext);
   const { editDetails, accountError } = useSelector(
-    (state: any) => state.settings
+    (state: any) => state.accountPanel
   );
   const [resetPassword, setResetPassword] = useState(false);
 
