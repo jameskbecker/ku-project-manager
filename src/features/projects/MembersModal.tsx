@@ -12,12 +12,12 @@ import { ModalBackdrop, ModalContent, ModalFooter } from '@kupm/common/Modal';
 import Panel from '@kupm/common/Panel';
 import ScrollContainer from '@kupm/common/ScrollContainer';
 import Separator from '@kupm/common/Separator';
+import { useGetProjectMembersQuery } from '@kupm/features/api/apiSlice';
 import { toggleMembers } from '@kupm/features/tasks/tasksSlice';
-import React, { useContext, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { ThemeContext } from 'styled-components';
-import { useGetProjectMembersQuery } from '../api/apiSlice';
 
 const MemberPanel = ({ data }: any) => {
   const theme = useContext(ThemeContext);

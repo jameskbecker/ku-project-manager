@@ -1,13 +1,9 @@
-import DataPlaceholder from '@kupm/common/DataPlaceholder';
 import { FlexColumn } from '@kupm/common/Flex';
 import TaskGridCard from '@kupm/features/tasks/TaskGridCard';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components';
-import { useGetProjectTasksQuery } from '../api/apiSlice';
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
 
 const StyledTaskGrid = styled(FlexColumn)`
   justify-content: flex-start;

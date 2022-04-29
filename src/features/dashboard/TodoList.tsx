@@ -1,8 +1,8 @@
 import DataPlaceholder from '@kupm/common/DataPlaceholder';
 import ScrollContainer from '@kupm/common/ScrollContainer';
+import { useGetTodoQuery } from '@kupm/features/api/apiSlice';
+import TodoListItem from '@kupm/features/dashboard/TodoListItem';
 import React from 'react';
-import { useGetTodoQuery } from '../api/apiSlice';
-import TodoListItem from './TodoListItem';
 
 const TodoList = () => {
   const { data: todo, isLoading } = useGetTodoQuery(null);

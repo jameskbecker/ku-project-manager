@@ -1,8 +1,8 @@
 import { FlexRow } from '@kupm/common/Flex';
 import TextInput from '@kupm/common/input/TextInput';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useGetUserQuery } from '../api/apiSlice';
+import { useGetUserQuery } from '@kupm/features/api/apiSlice';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 const DetailsForm = () => {
   const { editDetails } = useSelector((state: any) => state.settings);

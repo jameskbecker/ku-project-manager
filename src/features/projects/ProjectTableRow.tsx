@@ -10,6 +10,11 @@ import ContextMenu from '@kupm/common/ContextMenu';
 import Panel from '@kupm/common/Panel';
 import { TableCell } from '@kupm/common/Table';
 import {
+  useDeleteProjectMutation,
+  useGetProjectsQuery,
+  useUpdateProjectMutation,
+} from '@kupm/features/api/apiSlice';
+import {
   selectProject,
   toggleInvite,
   toggleNewProject,
@@ -19,11 +24,6 @@ import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
-import {
-  useDeleteProjectMutation,
-  useGetProjectsQuery,
-  useUpdateProjectMutation,
-} from '../api/apiSlice';
 
 const Wrapper = styled(Panel)`
   gap: 1rem;

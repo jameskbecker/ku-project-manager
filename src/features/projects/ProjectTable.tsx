@@ -1,12 +1,12 @@
-import { FlexColumn } from '@kupm/common/Flex';
-import { TableHeader } from '@kupm/common/Table';
-import ProjectTableRow from '@kupm/features/projects/ProjectTableRow';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FlexColumn } from '@kupm/common/Flex';
+import { TableHeader } from '@kupm/common/Table';
+import { useGetProjectsQuery } from '@kupm/features/api/apiSlice';
+import ProjectTableRow from '@kupm/features/projects/ProjectTableRow';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { useGetProjectsQuery } from '../api/apiSlice';
 
 const columns: any[] = [
   { name: '', size: '2.5%' },

@@ -5,6 +5,7 @@ import { SecondaryButton } from '@kupm/common/Button';
 import ContextMenu from '@kupm/common/ContextMenu';
 import { FlexRow } from '@kupm/common/Flex';
 import Panel from '@kupm/common/Panel';
+import { useDeleteTaskMutation } from '@kupm/features/api/apiSlice';
 import {
   selectTask,
   toggleAddComment,
@@ -14,7 +15,6 @@ import React, { MouseEvent, useContext, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
-import { useDeleteTaskMutation } from '../api/apiSlice';
 
 const Wrapper = styled(Panel)<any>`
   /* display: grid;

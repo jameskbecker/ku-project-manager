@@ -3,15 +3,15 @@ import TextArea from '@kupm/common/input/TextArea';
 import TextInput from '@kupm/common/input/TextInput';
 import { ModalBackdrop, ModalContent, ModalFooter } from '@kupm/common/Modal';
 import Separator from '@kupm/common/Separator';
+import {
+  useAddProjectMutation,
+  useGetProjectsQuery,
+  useUpdateProjectMutation,
+} from '@kupm/features/api/apiSlice';
 import { toggleNewProject } from '@kupm/features/projects/projectsSlice';
 import { getCookie } from '@kupm/utils/cookie';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  useGetProjectsQuery,
-  useAddProjectMutation,
-  useUpdateProjectMutation,
-} from '../api/apiSlice';
 
 const NewProjectModal = () => {
   const { data: projects } = useGetProjectsQuery(null);

@@ -3,16 +3,13 @@ import {
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
 import Button from '@kupm/common/Button';
-import Footer from '@kupm/common/layout/Footer';
+import SidebarLogo from '@kupm/features/sidebar/SidebarLogo';
+import SidebarMenu from '@kupm/features/sidebar/SidebarMenu';
+import { toggle } from '@kupm/features/sidebar/sidebarSlice';
+import SidebarUser from '@kupm/features/sidebar/SidebarUser';
 import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled, { ThemeContext } from 'styled-components';
-import Separator from '../../common/Separator';
-import SidebarButton from './SidebarButton';
-import SidebarLogo from './SidebarLogo';
-import SidebarMenu from './SidebarMenu';
-import { toggle } from './sidebarSlice';
-import SidebarUser from './SidebarUser';
 
 const StyledSidebar = styled.div`
   display: none;

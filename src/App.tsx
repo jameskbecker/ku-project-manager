@@ -3,6 +3,7 @@ import Dashboard from '@kupm/pages/Dashboard';
 import Forgot from '@kupm/pages/Forgot';
 import Login from '@kupm/pages/Login';
 import MyProjects from '@kupm/pages/MyProjects';
+import OtherProjects from '@kupm/pages/OtherProjects';
 import ProjectDetails from '@kupm/pages/ProjectDetails';
 import Register from '@kupm/pages/Register';
 import Settings from '@kupm/pages/Settings';
@@ -12,7 +13,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import OtherProjects from './pages/OtherProjects';
 
 const App = () => {
   const { theme } = useSelector((state: any) => state.settings);
