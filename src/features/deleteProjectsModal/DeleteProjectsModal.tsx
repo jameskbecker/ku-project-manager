@@ -1,16 +1,16 @@
 import Button from '@kupm/common/Button';
 import { ModalBackdrop, ModalContent, ModalFooter } from '@kupm/common/Modal';
 import Separator from '@kupm/common/Separator';
-import { toggleDeleteAll } from '@kupm/features/projects/projectsSlice';
 import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { ThemeContext } from 'styled-components';
+import { hideDeleteProjectsModal } from './deleteProjectsModalSlice';
 
 const DeleteProjectsModal = () => {
   const dispatch = useDispatch();
   const theme = useContext(ThemeContext);
 
-  const handleCancel = () => dispatch(toggleDeleteAll());
+  const handleCancel = () => dispatch(hideDeleteProjectsModal());
 
   return (
     <ModalBackdrop onClick={handleCancel}>

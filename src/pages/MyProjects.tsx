@@ -33,8 +33,11 @@ const MyProjectsContent = styled(FlexColumn)`
 
 const MyProjects = () => {
   const history = useHistory();
-  const { showDeleteAll, showNewProject } = useSelector(
-    (state: any) => state.projects
+  const { showNewProjectModal } = useSelector(
+    (state: any) => state.newProjectModal
+  );
+  const { showDeleteProjectsModal } = useSelector(
+    (state: any) => state.deleteProjectsModal
   );
   const { visible: showInvite } = useSelector(
     (state: any) => state.inviteModal
@@ -60,8 +63,8 @@ const MyProjects = () => {
         <ProjectTable complete />
       </MyProjectsContent>
 
-      {showNewProject && <NewProjectModal />}
-      {showDeleteAll && <DeleteProjectsModal />}
+      {showNewProjectModal && <NewProjectModal />}
+      {showDeleteProjectsModal && <DeleteProjectsModal />}
       {showInvite && <InviteModal />}
     </Layout>
   );

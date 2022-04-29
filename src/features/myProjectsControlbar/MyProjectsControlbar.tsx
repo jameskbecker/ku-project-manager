@@ -9,11 +9,11 @@ import TextInput from '@kupm/common/input/TextInput';
 import {
   applyFilter,
   selectProject,
-  toggleDeleteAll,
 } from '@kupm/features/projects/projectsSlice';
 import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled, { ThemeContext } from 'styled-components';
+import { showDeleteProjectsModal } from '../deleteProjectsModal/deleteProjectsModalSlice';
 import { showNewProjectModal } from '../newProjectModal/newProjectModalSlice';
 
 const ControlBarWrapper = styled.div`
@@ -64,7 +64,7 @@ const MyProjectsControlbar = () => {
   };
 
   const handleDeleteAll = (e: any) => {
-    dispatch(toggleDeleteAll());
+    dispatch(showDeleteProjectsModal());
   };
 
   return (
