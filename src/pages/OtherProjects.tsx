@@ -1,12 +1,11 @@
 import HeaderBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
-import Sidebar from '@kupm/features/sidebar/Sidebar';
 import Content from '@kupm/features/projects/Content';
 import ControlBar from '@kupm/features/projects/ControlBar';
 import DeleteAllModal from '@kupm/features/projects/DeleteAllModal';
 import InviteModal from '@kupm/features/projects/InviteModal';
 import NewProjectModal from '@kupm/features/projects/NewProjectModal';
-import ProjectTable from '@kupm/features/projects/ProjectTable';
+import Sidebar from '@kupm/features/sidebar/Sidebar';
 import { getCookie } from '@kupm/utils/cookie';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
