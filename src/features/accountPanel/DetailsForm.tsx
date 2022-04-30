@@ -1,6 +1,6 @@
 import { FlexRow } from '@kupm/common/Flex';
 import TextInput from '@kupm/common/input/TextInput';
-import { useGetUserQuery } from '@kupm/features/api/apiSlice';
+import { useGetUserQuery } from '@kupm/features/api/userApiSlice';
 import React from 'react';
 import { useSelector } from 'react-redux';
 

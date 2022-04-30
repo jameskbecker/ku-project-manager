@@ -1,6 +1,6 @@
 import DataPlaceholder from '@kupm/common/DataPlaceholder';
 import ScrollContainer from '@kupm/common/ScrollContainer';
-import { useGetTodoQuery } from '@kupm/features/api/apiSlice';
+import { useGetTodoQuery } from '@kupm/features/api/userApiSlice';
 import TodoListItem from '@kupm/features/todoPanel/TodoListItem';
 import React from 'react';
 

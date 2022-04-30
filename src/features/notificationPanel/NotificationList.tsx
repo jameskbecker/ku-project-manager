@@ -1,6 +1,6 @@
 import DataPlaceholder from '@kupm/common/DataPlaceholder';
 import ScrollContainer from '@kupm/common/ScrollContainer';
-import { useGetNotificationsQuery } from '@kupm/features/api/apiSlice';
+import { useGetNotificationsQuery } from '@kupm/features/api/userApiSlice';
 import NotificationListItem from '@kupm/features/notificationPanel/NotificationListItem';
 import React from 'react';
 

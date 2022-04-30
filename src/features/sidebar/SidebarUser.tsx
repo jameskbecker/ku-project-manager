@@ -1,4 +1,4 @@
-import { useGetUserQuery } from '@kupm/features/api/apiSlice';
+import { useGetUserQuery } from '@kupm/features/api/userApiSlice';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';

@@ -1,6 +1,6 @@
 import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import { SecondaryButton } from '@kupm/common/Button';
-import { useGetTodoQuery } from '@kupm/features/api/apiSlice';
+import { useGetTodoQuery } from '@kupm/features/api/userApiSlice';
 import React from 'react';
 
 const TodoPanelOptions = () => {

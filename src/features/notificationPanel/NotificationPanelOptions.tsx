@@ -1,6 +1,6 @@
 import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import { SecondaryButton } from '@kupm/common/Button';
-import { useGetNotificationsQuery } from '@kupm/features/api/apiSlice';
+import { useGetNotificationsQuery } from '@kupm/features/api/userApiSlice';
 import React from 'react';
 
 const NotificationPanelOptions = () => {
