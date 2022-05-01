@@ -5,6 +5,7 @@ import DeleteProjectsModal from '@kupm/features/deleteProjectsModal/DeleteProjec
 import InviteModal from '@kupm/features/inviteModal/InviteModal';
 import MyProjectsControlBar from '@kupm/features/myProjectsControlbar/MyProjectsControlbar';
 import NewProjectModal from '@kupm/features/newProjectModal/NewProjectModal';
+import SharedProjectsControlbar from '@kupm/features/sharedProjectsControlbar/SharedProjectsControlbar';
 import Sidebar from '@kupm/features/sidebar/Sidebar';
 import { setActivePage } from '@kupm/features/sidebar/sidebarSlice';
 import { getCookie } from '@kupm/utils/cookie';
@@ -54,7 +55,7 @@ const OtherProjects = () => {
     <Layout>
       <Sidebar />
       <HeaderBar pageName="Other Projects" />
-
+      <SharedProjectsControlbar />
       <OtherProjectsContent></OtherProjectsContent>
 
       {showNewProject && <NewProjectModal />}
