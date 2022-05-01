@@ -46,24 +46,16 @@ export const apiSlice = createApi({
       }),
     }),
     getProjectMembers: builder.query({
-      query: (args) => {
-        return `/projects/${args.id}/members`;
-      },
+      query: (args) => `/projects/${args.id}/members`,
     }),
     getProjectActivity: builder.query({
-      query: (args) => {
-        return `/projects/${args.id}/activity`;
-      },
+      query: (args) => `/projects/${args.id}/activity`,
     }),
     getProjectTasks: builder.query({
-      query: (args) => {
-        return `/projects/${args.id}/tasks`;
-      },
+      query: (args) => `/projects/${args.id}/tasks`,
     }),
     getSubTasks: builder.query({
-      query: (args) => {
-        return `tasks/${args.taskId}/subtasks`;
-      },
+      query: (args) => `/tasks/${args.taskId}/subtasks`,
     }),
     addTask: builder.mutation({
       query: (args: PostProjectArgs) => ({
