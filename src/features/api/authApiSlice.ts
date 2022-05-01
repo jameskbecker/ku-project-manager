@@ -7,7 +7,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
       query: (args: RegisterPayload) => ({
         url: '/auth/register',
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: args,
       }),
     }),
@@ -15,7 +14,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
       query: (args: LoginPayload) => ({
         url: '/auth/login',
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: args,
       }),
     }),

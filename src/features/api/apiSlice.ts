@@ -12,7 +12,9 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: `${BASE_URL}/api`,
     prepareHeaders: (headers, api) => {
-      headers.set('Access-Control-Allow-Origin', location.origin);
+      if (api.endpoint === 'mutation') {
+        headers.set('Content-Type', 'application/json');
+      }
       return headers;
     },
   }),
@@ -27,7 +29,6 @@ export const apiSlice = createApi({
       query: (args: PostProjectArgs) => ({
         url: '/projects',
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: args,
       }),
     }),
@@ -35,7 +36,6 @@ export const apiSlice = createApi({
       query: ({ id, ...body }: UpdateProjectArgs | CompleteProjectArgs) => ({
         url: `/projects/${id}`,
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
         body,
       }),
     }),
@@ -69,7 +69,6 @@ export const apiSlice = createApi({
       query: (args: PostProjectArgs) => ({
         url: `/tasks`,
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: args,
       }),
     }),
@@ -77,7 +76,6 @@ export const apiSlice = createApi({
       query: ({ id, ...body }: UpdateProjectArgs | CompleteProjectArgs) => ({
         url: `/tasks/${id}`,
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
         body,
       }),
     }),
@@ -93,7 +91,6 @@ export const apiSlice = createApi({
         return {
           url: `/invites`,
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
           body: { ...args, userId },
         };
       },
