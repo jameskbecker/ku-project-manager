@@ -5,7 +5,7 @@ import { FlexColumn, FlexRow } from '@kupm/common/Flex';
 import HeaderBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
 import AddCommentModal from '@kupm/features/addCommentModal/AddCommentModal';
-import { useGetSubTasksQuery } from '@kupm/features/api/apiSlice';
+import { useGetSubTasksQuery } from '@kupm/features/api/taskApiSlice';
 import InviteModal from '@kupm/features/inviteModal/InviteModal';
 import MembersModal from '@kupm/features/membersModal/MembersModal';
 import NewProjectModal from '@kupm/features/newProjectModal/NewProjectModal';

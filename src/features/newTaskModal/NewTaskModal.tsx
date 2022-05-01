@@ -5,11 +5,13 @@ import TextInput from '@kupm/common/input/TextInput';
 import { ModalBackdrop, ModalContent, ModalFooter } from '@kupm/common/Modal';
 import Separator from '@kupm/common/Separator';
 import {
-  useAddTaskMutation,
   useGetProjectsQuery,
   useGetProjectTasksQuery,
-  useUpdateTaskMutation,
 } from '@kupm/features/api/apiSlice';
+import {
+  useAddTaskMutation,
+  useUpdateTaskMutation,
+} from '@kupm/features/api/taskApiSlice';
 import { selectTask, toggleNewTask } from '@kupm/features/tasks/tasksSlice';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

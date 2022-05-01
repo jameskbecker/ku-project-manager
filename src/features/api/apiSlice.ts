@@ -54,29 +54,6 @@ export const apiSlice = createApi({
     getProjectTasks: builder.query({
       query: (args) => `/projects/${args.id}/tasks`,
     }),
-    getSubTasks: builder.query({
-      query: (args) => `/tasks/${args.taskId}/subtasks`,
-    }),
-    addTask: builder.mutation({
-      query: (args: PostProjectArgs) => ({
-        url: `/tasks`,
-        method: 'POST',
-        body: args,
-      }),
-    }),
-    updateTask: builder.mutation({
-      query: ({ id, ...body }: UpdateProjectArgs | CompleteProjectArgs) => ({
-        url: `/tasks/${id}`,
-        method: 'PUT',
-        body,
-      }),
-    }),
-    deleteTask: builder.mutation({
-      query: ({ id }) => ({
-        url: `/tasks/${id}`,
-        method: 'DELETE',
-      }),
-    }),
     sendInvite: builder.mutation({
       query: (args: any) => {
         const userId = getCookie('kupm_user_id');
@@ -98,9 +75,5 @@ export const {
   useGetProjectMembersQuery,
   useGetProjectActivityQuery,
   useGetProjectTasksQuery,
-  useGetSubTasksQuery,
-  useAddTaskMutation,
-  useUpdateTaskMutation,
-  useDeleteTaskMutation,
   useSendInviteMutation,
 } = apiSlice;
