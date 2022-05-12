@@ -1,18 +1,16 @@
+import { faSquare } from '@fortawesome/free-regular-svg-icons';
+import { faCheckSquare, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SecondaryButton } from '@kupm/common/Button';
 import ContextMenu from '@kupm/common/ContextMenu';
-import { useDispatch } from 'react-redux';
-import { useDeleteTaskMutation } from '@kupm/features/api/taskApiSlice';
-import {
-  selectTask,
-  toggleAddComment,
-  toggleNewTask,
-} from '../tasks/tasksSlice';
-import React, { useContext } from 'react';
-import styled, { ThemeContext } from 'styled-components';
-import { faCheckSquare, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FlexRow } from '@kupm/common/Flex';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSquare } from '@fortawesome/free-regular-svg-icons';
+import { useDeleteTaskMutation } from '@kupm/features/api/taskApiSlice';
+import React, { useContext } from 'react';
+import { useDispatch } from 'react-redux';
+import styled, { ThemeContext } from 'styled-components';
+import { showAddCommentModal } from '../addCommentModal/addCommentSlice';
+import { showNewTaskModal } from '../newTaskModal/newTaskModalSlice';
+import { selectTask } from '../tasks/tasksSlice';
 
 const StyledTaskGridCardOptions = styled(FlexRow)`
   overflow: visible;
@@ -26,7 +24,7 @@ const TaskGridCardOptions = ({ taskId, isComplete }: any) => {
   const handleEdit = (e: any) => {
     e.stopPropagation();
     dispatch(selectTask(taskId));
-    dispatch(toggleNewTask());
+    dispatch(showNewTaskModal());
   };
 
   const handleDelete = (e: any) => {
@@ -34,7 +32,7 @@ const TaskGridCardOptions = ({ taskId, isComplete }: any) => {
     deleteTask({ id: taskId });
   };
 
-  const handleAddComment = () => dispatch(toggleAddComment());
+  const handleAddComment = () => dispatch(showAddCommentModal());
   const toggleIsDone = (e: any) => e.stopPropagation();
 
   return (

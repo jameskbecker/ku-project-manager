@@ -9,17 +9,14 @@ import Button from '@kupm/common/Button';
 import { FlexRow } from '@kupm/common/Flex';
 import TextInput from '@kupm/common/input/TextInput';
 import { selectProject } from '@kupm/features/projects/projectsSlice';
-import {
-  applyFilter,
-  selectTask,
-  toggleMembers,
-  toggleNewTask,
-} from '@kupm/features/tasks/tasksSlice';
+import { applyFilter, selectTask } from '@kupm/features/tasks/tasksSlice';
 import React, { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
 import { showInviteModal } from '../inviteModal/inviteModalSlice';
+import { showMembersModal } from '../membersModal/membersModalSlice';
+import { showNewTaskModal } from '../newTaskModal/newTaskModalSlice';
 
 const ControlBarWrapper = styled.div`
   display: flex;
@@ -66,7 +63,7 @@ const TaskControlBar = () => {
 
   const handleNewTask = () => {
     dispatch(selectTask(''));
-    dispatch(toggleNewTask());
+    dispatch(showNewTaskModal());
   };
 
   const handleInvite = () => {
@@ -79,7 +76,7 @@ const TaskControlBar = () => {
   };
 
   const handleViewMembers = () => {
-    dispatch(toggleMembers());
+    dispatch(showMembersModal());
   };
 
   return (

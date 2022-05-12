@@ -16,7 +16,7 @@ import Sidebar from '@kupm/features/sidebar/Sidebar';
 import { setActivePage } from '@kupm/features/sidebar/sidebarSlice';
 import TaskControlBar from '@kupm/features/taskControlBar/TaskControlBar';
 import TaskGrid from '@kupm/features/taskGrid/TaskGrid';
-import { selectTask, toggleNewTask } from '@kupm/features/tasks/tasksSlice';
+import { selectTask } from '@kupm/features/tasks/tasksSlice';
 import { getCookie } from '@kupm/utils/cookie';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -48,9 +48,13 @@ const Tasks = () => {
   const { showInvite, showNewProject, selectedProject } = useSelector(
     (state: any) => state.projects
   );
-  const { showNewTask, showMembers, showAddComment } = useSelector(
-    (state: any) => state.tasks
+  const { showMembers } = useSelector((state: any) => state.tasks);
+
+  const { showAddCommentModal } = useSelector(
+    (state: any) => state.addCommentModal
   );
+  const { showNewTaskModal } = useSelector((state: any) => state.newTaskModal);
+
   const {
     data: subtasks,
     isLoading,
@@ -72,7 +76,7 @@ const Tasks = () => {
   }, [id, taskId]);
 
   const handleEdit = () => {
-    dispatch(toggleNewTask());
+    dispatch(showNewTaskModal());
   };
 
   const headerOptions = () => (
@@ -110,8 +114,8 @@ const Tasks = () => {
 
       {showNewProject && <NewProjectModal />}
       {showInvite && <InviteModal />}
-      {showNewTask && <NewTaskModal />}
-      {showAddComment && <AddCommentModal />}
+      {showNewTaskModal && <NewTaskModal />}
+      {showAddCommentModal && <AddCommentModal />}
       {showMembers && <MembersModal />}
     </Layout>
   );

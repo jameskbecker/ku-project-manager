@@ -51,9 +51,11 @@ const ProjectDetails = () => {
     (state: any) => state.newProjectModal
   );
 
-  const { showNewTask, showMembers, showAddComment } = useSelector(
-    (state: any) => state.tasks
+  const { showMembersModal } = useSelector((state: any) => state.membersModal);
+  const { showAddCommentModal } = useSelector(
+    (state: any) => state.addCommentModal
   );
+  const { showNewTaskModal } = useSelector((state: any) => state.newTaskModal);
   const { data: tasks, isLoading, refetch } = useGetProjectTasksQuery({ id });
 
   useEffect(() => {
@@ -103,9 +105,9 @@ const ProjectDetails = () => {
 
       {showNewProjectModal && <NewProjectModal />}
       {showInvite && <InviteModal />}
-      {showNewTask && <NewTaskModal />}
-      {showAddComment && <AddCommentModal />}
-      {showMembers && <MembersModal />}
+      {showNewTaskModal && <NewTaskModal />}
+      {showAddCommentModal && <AddCommentModal />}
+      {showMembersModal && <MembersModal />}
     </Layout>
   );
 };

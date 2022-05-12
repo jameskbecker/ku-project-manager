@@ -12,10 +12,11 @@ import {
   useAddTaskMutation,
   useUpdateTaskMutation,
 } from '@kupm/features/api/taskApiSlice';
-import { selectTask, toggleNewTask } from '@kupm/features/tasks/tasksSlice';
+import { selectTask } from '@kupm/features/tasks/tasksSlice';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { hideNewTaskModal, showNewTaskModal } from './newTaskModalSlice';
 
 const NewTaskModal = () => {
   const { id, taskId } = useParams<any>();
@@ -47,7 +48,9 @@ const NewTaskModal = () => {
   const handleDescriptionChange = (e: any) => setDescription(e.target.value);
   const handlePriorityChange = (e: any) => setPriority(e.target.value);
 
-  const handleCancel = () => dispatch(toggleNewTask());
+  const handleCancel = () => {
+    dispatch(hideNewTaskModal());
+  };
   const handleSave = async () => {
     const payload: any = { projectId, parentId, name, description, priority };
     try {
@@ -57,7 +60,7 @@ const NewTaskModal = () => {
       } else {
         await addTask(payload);
       }
-      dispatch(toggleNewTask());
+      dispatch(showNewTaskModal());
       dispatch(selectTask(''));
     } catch (e) {
       console.error(e);

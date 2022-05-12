@@ -2,9 +2,9 @@ import Button from '@kupm/common/Button';
 import TextArea from '@kupm/common/input/TextArea';
 import { ModalBackdrop, ModalContent, ModalFooter } from '@kupm/common/Modal';
 import Separator from '@kupm/common/Separator';
-import { toggleAddComment } from '@kupm/features/tasks/tasksSlice';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { hideAddCommentModal, showAddCommentModal } from './addCommentSlice';
 
 const AddCommentModal = () => {
   const [message, setMessage] = useState('');
@@ -12,8 +12,10 @@ const AddCommentModal = () => {
 
   const handleMessageChange = (e: any) => setMessage(e.target.value);
 
-  const handleCancel = () => dispatch(toggleAddComment());
-  const handleSave = () => {};
+  const handleCancel = () => dispatch(hideAddCommentModal());
+  const handleSave = () => {
+    dispatch(hideAddCommentModal());
+  };
 
   return (
     <ModalBackdrop onClick={handleCancel}>

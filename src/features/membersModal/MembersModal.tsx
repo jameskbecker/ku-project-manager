@@ -13,11 +13,11 @@ import Panel from '@kupm/common/Panel';
 import ScrollContainer from '@kupm/common/ScrollContainer';
 import Separator from '@kupm/common/Separator';
 import { useGetProjectMembersQuery } from '@kupm/features/api/apiSlice';
-import { toggleMembers } from '@kupm/features/tasks/tasksSlice';
 import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { ThemeContext } from 'styled-components';
+import { hideMembersModal } from './membersModalSlice';
 
 const MemberPanel = ({ data }: any) => {
   const theme = useContext(ThemeContext);
@@ -54,7 +54,7 @@ const MembersModal = () => {
 
   const dispatch = useDispatch();
 
-  const handleCancel = () => dispatch(toggleMembers());
+  const handleCancel = () => dispatch(hideMembersModal());
   let content;
   if (isLoading) {
     content = (
