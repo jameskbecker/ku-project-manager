@@ -1,3 +1,5 @@
+import Accordion from '@kupm/common/accordion/Accordion';
+import AccordionItem from '@kupm/common/accordion/AccordionItem';
 import { FlexColumn } from '@kupm/common/Flex';
 import HeaderBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
@@ -60,8 +62,14 @@ const MyProjects = () => {
       <MyProjectsControlBar />
 
       <MyProjectsContent>
-        <MyProjectsTable />
-        <MyProjectsTable complete />
+        <Accordion>
+          <AccordionItem name="Incomplete" open>
+            <MyProjectsTable />
+          </AccordionItem>
+          <AccordionItem name="Complete">
+            <MyProjectsTable complete />
+          </AccordionItem>
+        </Accordion>
       </MyProjectsContent>
 
       {newProjectModalVisible && <NewProjectModal />}

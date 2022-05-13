@@ -70,7 +70,6 @@ const MyProjectsTable = (props: any) => {
         flex: '1 1',
       }}
     >
-      <h3>{props.complete ? 'Complete' : 'Incomplete'}</h3>
       <TableHeader columns={columns} />
       {content}
     </FlexColumn>
