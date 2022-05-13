@@ -4,7 +4,7 @@ import {
   faChevronLeft,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ContextMenu from '@kupm/common/ContextMenu';
+import ContextMenu from '@kupm/common/contextMenu/ContextMenu';
 import { FlexRow } from '@kupm/common/Flex';
 import { VerticalSeparator } from '@kupm/common/Separator';
 import { useGetUserQuery } from '@kupm/features/api/userApiSlice';

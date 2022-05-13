@@ -1,6 +1,7 @@
 import { FlexColumn, FlexRow } from '@kupm/common/Flex';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import ContextMenuItem from './ContextMenuItem';
 
 const StyledContextMenu = styled.div`
   position: absolute;
@@ -30,34 +31,13 @@ const ToggleWrapper = styled(FlexRow)`
   }
 `;
 
-const Wrapper = styled(FlexColumn)`
+const Container = styled(FlexColumn)`
   flex: 1 1;
   position: relative;
   justify-content: center;
   align-items: center;
 
   overflow: visible;
-`;
-
-const ContextItem = styled(FlexRow)`
-  justify-content: center;
-
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-align: center;
-  color: ${({ color, theme }) => (color ? color : theme.textBody)};
-  background: transparent;
-  padding: 0.5rem 2rem;
-  border-radius: 0.5rem;
-
-  cursor: pointer;
-  white-space: nowrap;
-
-  :hover {
-    color: ${({ theme }) => theme.textBrand};
-    background: ${({ color, theme }) => (color ? color : theme.brand)};
-    transition: 0.5s ease-in-out;
-  }
 `;
 
 const ContextMenu = (props: any) => {
@@ -68,18 +48,18 @@ const ContextMenu = (props: any) => {
   };
 
   return (
-    <Wrapper {...props} onClick={toggle}>
+    <Container {...props} onClick={toggle}>
       <ToggleWrapper>{props.children}</ToggleWrapper>
       {visible && (
         <StyledContextMenu>
-          {props.items.map((item: any, i: number) => (
-            <ContextItem key={i} onClick={item.onClick} color={item.color}>
-              {item.label}
-            </ContextItem>
+          {props.items.map(({ label, ...itemProps }: any, i: number) => (
+            <ContextMenuItem key={i} {...itemProps}>
+              {label}
+            </ContextMenuItem>
           ))}
         </StyledContextMenu>
       )}
-    </Wrapper>
+    </Container>
   );
 };
 

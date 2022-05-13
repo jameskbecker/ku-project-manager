@@ -2,7 +2,7 @@ import { faSquare } from '@fortawesome/free-regular-svg-icons';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SecondaryButton } from '@kupm/common/Button';
-import ContextMenu from '@kupm/common/ContextMenu';
+import ContextMenu from '@kupm/common/contextMenu/ContextMenu';
 import { FlexColumn, FlexRow } from '@kupm/common/Flex';
 import Panel from '@kupm/common/Panel';
 import { Project } from '@kupm/types';

@@ -6,7 +6,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SecondaryButton } from '@kupm/common/Button';
-import ContextMenu from '@kupm/common/ContextMenu';
+import ContextMenu from '@kupm/common/contextMenu/ContextMenu';
 import Panel from '@kupm/common/Panel';
 import { TableCell } from '@kupm/common/Table';
 import {

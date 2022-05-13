@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
 import { Task } from '@kupm/types';
 import { SecondaryButton } from '@kupm/common/Button';
-import ContextMenu from '@kupm/common/ContextMenu';
+import ContextMenu from '@kupm/common/contextMenu/ContextMenu';
 import { FlexColumn, FlexRow } from '@kupm/common/Flex';
 import Panel from '@kupm/common/Panel';
 
