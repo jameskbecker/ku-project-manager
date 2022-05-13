@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  showDeleteProjectsModal: false,
+  deleteProjectsModalVisible: false,
 };
 
 export const newProjectModalSlice = createSlice({
@@ -9,11 +9,11 @@ export const newProjectModalSlice = createSlice({
   initialState,
   reducers: {
     showDeleteProjectsModal: (state) => {
-      state.showDeleteProjectsModal = true;
+      state.deleteProjectsModalVisible = true;
     },
 
     hideDeleteProjectsModal: (state) => {
-      state.showDeleteProjectsModal = false;
+      state.deleteProjectsModalVisible = false;
     },
   },
 });

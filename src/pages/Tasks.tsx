@@ -10,6 +10,7 @@ import InviteModal from '@kupm/features/inviteModal/InviteModal';
 import MembersModal from '@kupm/features/membersModal/MembersModal';
 import NewProjectModal from '@kupm/features/newProjectModal/NewProjectModal';
 import NewTaskModal from '@kupm/features/newTaskModal/NewTaskModal';
+import { showNewTaskModal } from '@kupm/features/newTaskModal/newTaskModalSlice';
 import ActivityFeed from '@kupm/features/projectActivityFeed/ActivityFeed';
 import { selectProject } from '@kupm/features/projects/projectsSlice';
 import Sidebar from '@kupm/features/sidebar/Sidebar';
@@ -45,15 +46,14 @@ const Tasks = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { id, taskId } = useParams<any>();
-  const { showInvite, showNewProject, selectedProject } = useSelector(
-    (state: any) => state.projects
-  );
-  const { showMembers } = useSelector((state: any) => state.tasks);
+  const { selectedProject } = useSelector((state: any) => state.projects);
 
-  const { showAddCommentModal } = useSelector(
+  const { addCommentModalVisible } = useSelector(
     (state: any) => state.addCommentModal
   );
-  const { showNewTaskModal } = useSelector((state: any) => state.newTaskModal);
+  const { newTaskModalVisible } = useSelector(
+    (state: any) => state.newTaskModal
+  );
 
   const {
     data: subtasks,
@@ -112,11 +112,8 @@ const Tasks = () => {
         <ActivityFeed />
       </TasksContent>
 
-      {showNewProject && <NewProjectModal />}
-      {showInvite && <InviteModal />}
-      {showNewTaskModal && <NewTaskModal />}
-      {showAddCommentModal && <AddCommentModal />}
-      {showMembers && <MembersModal />}
+      {newTaskModalVisible && <NewTaskModal />}
+      {addCommentModalVisible && <AddCommentModal />}
     </Layout>
   );
 };

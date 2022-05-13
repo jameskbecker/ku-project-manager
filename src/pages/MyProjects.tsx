@@ -34,16 +34,15 @@ const MyProjectsContent = styled(FlexColumn)`
 
 const MyProjects = () => {
   const history = useHistory();
-  const { showNewProjectModal } = useSelector(
+  const dispatch = useDispatch();
+
+  const { newProjectModalVisible } = useSelector(
     (state: any) => state.newProjectModal
   );
-  const { showDeleteProjectsModal } = useSelector(
+  const { deleteProjectsModalVisible } = useSelector(
     (state: any) => state.deleteProjectsModal
   );
-  const { visible: showInvite } = useSelector(
-    (state: any) => state.inviteModal
-  );
-  const dispatch = useDispatch();
+  const { inviteModalVisible } = useSelector((state: any) => state.inviteModal);
 
   useEffect(() => {
     if (!getCookie('kupm_user_id')) {
@@ -65,9 +64,9 @@ const MyProjects = () => {
         <ProjectTable complete />
       </MyProjectsContent>
 
-      {showNewProjectModal && <NewProjectModal />}
-      {showDeleteProjectsModal && <DeleteProjectsModal />}
-      {showInvite && <InviteModal />}
+      {newProjectModalVisible && <NewProjectModal />}
+      {deleteProjectsModalVisible && <DeleteProjectsModal />}
+      {inviteModalVisible && <InviteModal />}
     </Layout>
   );
 };

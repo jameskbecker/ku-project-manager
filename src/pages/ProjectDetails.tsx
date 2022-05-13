@@ -9,6 +9,7 @@ import { useGetProjectTasksQuery } from '@kupm/features/api/apiSlice';
 import InviteModal from '@kupm/features/inviteModal/InviteModal';
 import MembersModal from '@kupm/features/membersModal/MembersModal';
 import NewProjectModal from '@kupm/features/newProjectModal/NewProjectModal';
+import { showNewProjectModal } from '@kupm/features/newProjectModal/newProjectModalSlice';
 import NewTaskModal from '@kupm/features/newTaskModal/NewTaskModal';
 import ActivityFeed from '@kupm/features/projectActivityFeed/ActivityFeed';
 import { selectProject } from '@kupm/features/projects/projectsSlice';
@@ -44,18 +45,21 @@ const ProjectDetails = () => {
   const history = useHistory();
   const { id } = useParams<any>();
   const { selectedProject } = useSelector((state: any) => state.projects);
-  const { visible: showInvite } = useSelector(
-    (state: any) => state.inviteModal
-  );
-  const { showNewProjectModal } = useSelector(
+
+  const { inviteModalVisible } = useSelector((state: any) => state.inviteModal);
+  const { newProjectModalVisible } = useSelector(
     (state: any) => state.newProjectModal
   );
 
-  const { showMembersModal } = useSelector((state: any) => state.membersModal);
-  const { showAddCommentModal } = useSelector(
+  const { membersModalVisible } = useSelector(
+    (state: any) => state.membersModal
+  );
+  const { addCommentModalVisible } = useSelector(
     (state: any) => state.addCommentModal
   );
-  const { showNewTaskModal } = useSelector((state: any) => state.newTaskModal);
+  const { newTaskModalVisible } = useSelector(
+    (state: any) => state.newTaskModal
+  );
   const { data: tasks, isLoading, refetch } = useGetProjectTasksQuery({ id });
 
   useEffect(() => {
@@ -103,11 +107,11 @@ const ProjectDetails = () => {
         <ActivityFeed />
       </ProjectDetailsContent>
 
-      {showNewProjectModal && <NewProjectModal />}
-      {showInvite && <InviteModal />}
-      {showNewTaskModal && <NewTaskModal />}
-      {showAddCommentModal && <AddCommentModal />}
-      {showMembersModal && <MembersModal />}
+      {newProjectModalVisible && <NewProjectModal />}
+      {inviteModalVisible && <InviteModal />}
+      {newTaskModalVisible && <NewTaskModal />}
+      {addCommentModalVisible && <AddCommentModal />}
+      {membersModalVisible && <MembersModal />}
     </Layout>
   );
 };

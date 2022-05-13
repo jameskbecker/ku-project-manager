@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState: any = {
-  visible: false,
+  inviteModalVisible: false,
 };
 
 export const inviteModalSlice = createSlice({
@@ -9,11 +9,11 @@ export const inviteModalSlice = createSlice({
   initialState,
   reducers: {
     showInviteModal: (state) => {
-      state.visible = true;
+      state.inviteModalVisible = true;
     },
 
     hideInviteModal: (state) => {
-      state.visible = false;
+      state.inviteModalVisible = false;
     },
   },
 });

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  showNewTaskModal: false,
+  newTaskModalVisible: false,
 };
 
 export const newTaskModalSlice = createSlice({
@@ -9,11 +9,11 @@ export const newTaskModalSlice = createSlice({
   initialState,
   reducers: {
     showNewTaskModal: (state) => {
-      state.showNewTaskModal = true;
+      state.newTaskModalVisible = true;
     },
 
     hideNewTaskModal: (state) => {
-      state.showNewTaskModal = false;
+      state.newTaskModalVisible = false;
     },
   },
 });

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  showMembersModal: false,
+  membersModalVisible: false,
 };
 
 export const membersModalSlice = createSlice({
@@ -9,11 +9,11 @@ export const membersModalSlice = createSlice({
   initialState,
   reducers: {
     showMembersModal: (state) => {
-      state.showMembersModal = true;
+      state.membersModalVisible = true;
     },
 
     hideMembersModal: (state) => {
-      state.showMembersModal = false;
+      state.membersModalVisible = false;
     },
   },
 });

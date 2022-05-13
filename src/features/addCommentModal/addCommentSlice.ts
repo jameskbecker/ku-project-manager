@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  showAddCommentModal: false,
+  addCommentModalVisible: false,
 };
 
 export const addCommentModalSlice = createSlice({
@@ -9,11 +9,11 @@ export const addCommentModalSlice = createSlice({
   initialState,
   reducers: {
     showAddCommentModal: (state) => {
-      state.showAddCommentModal = true;
+      state.addCommentModalVisible = true;
     },
 
     hideAddCommentModal: (state) => {
-      state.showAddCommentModal = false;
+      state.addCommentModalVisible = false;
     },
   },
 });
