@@ -43,7 +43,7 @@ const Wrapper = styled(Panel)`
   }
 `;
 
-const ProjectTableRow = ({ project }: any) => {
+const MyProjectsTableRow = ({ project }: any) => {
   const theme = useContext(ThemeContext);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -123,4 +123,4 @@ const ProjectTableRow = ({ project }: any) => {
     </Wrapper>
   );
 };
-export default ProjectTableRow;
+export default MyProjectsTableRow;

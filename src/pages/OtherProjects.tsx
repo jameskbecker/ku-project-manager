@@ -3,9 +3,8 @@ import HeaderBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
 import DeleteProjectsModal from '@kupm/features/deleteProjectsModal/DeleteProjectsModal';
 import InviteModal from '@kupm/features/inviteModal/InviteModal';
-import MyProjectsControlBar from '@kupm/features/myProjectsControlbar/MyProjectsControlbar';
+import MyProjectsTable from '@kupm/features/myProjectsTable/MyProjectsTable';
 import NewProjectModal from '@kupm/features/newProjectModal/NewProjectModal';
-import ProjectTable from '@kupm/features/projectTable/ProjectTable';
 import SharedProjectsControlbar from '@kupm/features/sharedProjectsControlbar/SharedProjectsControlbar';
 import Sidebar from '@kupm/features/sidebar/Sidebar';
 import { setActivePage } from '@kupm/features/sidebar/sidebarSlice';
@@ -59,8 +58,8 @@ const OtherProjects = () => {
       <HeaderBar pageName="Other Projects" />
       <SharedProjectsControlbar />
       <OtherProjectsContent>
-        <ProjectTable />
-        <ProjectTable complete />
+        <MyProjectsTable />
+        <MyProjectsTable complete />
       </OtherProjectsContent>
 
       {newProjectModalVisible && <NewProjectModal />}
