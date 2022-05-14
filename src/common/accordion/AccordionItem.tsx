@@ -8,7 +8,7 @@ import Separator from '../Separator';
 const StyledAccordionItem = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0rem;
   padding: 0.5rem 0;
 
   h3 {
@@ -18,6 +18,11 @@ const StyledAccordionItem = styled.div`
   }
 `;
 
+const StyledAccordionContainer = styled(FlexRow)`
+  padding: 0.5rem 0;
+  border-bottom: 0.5px solid ${({ theme }) => theme.highlight};
+`;
+
 const AccordionItem = ({ name, open, children }: any) => {
   const [isOpen, setIsOpen] = useState(open || false);
 
@@ -25,14 +30,16 @@ const AccordionItem = ({ name, open, children }: any) => {
     setIsOpen(!isOpen);
   };
 
+  const AccordionContainer = () => (
+    <StyledAccordionContainer>
+      <h3 onClick={toggleOpen}>{name}</h3>
+      <FontAwesomeIcon icon={isOpen ? faChevronUp : faChevronDown} />
+    </StyledAccordionContainer>
+  );
+
   return (
     <StyledAccordionItem>
-      <FlexRow>
-        <h3 onClick={toggleOpen}>{name}</h3>
-        <FontAwesomeIcon icon={isOpen ? faChevronUp : faChevronDown} />
-      </FlexRow>
-      <Separator />
-
+      <AccordionContainer />
       {isOpen && children}
     </StyledAccordionItem>
   );
