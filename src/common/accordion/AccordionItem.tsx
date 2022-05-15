@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FlexRow } from '../Flex';
-import Separator from '../Separator';
 
 const StyledAccordionItem = styled.div`
   display: flex;
