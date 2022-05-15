@@ -8,6 +8,7 @@ import InviteModal from '@kupm/features/inviteModal/InviteModal';
 import MyProjectsTable from '@kupm/features/myProjectsTable/MyProjectsTable';
 import NewProjectModal from '@kupm/features/newProjectModal/NewProjectModal';
 import SharedProjectsControlbar from '@kupm/features/sharedProjectsControlbar/SharedProjectsControlbar';
+import SharedProjectsTable from '@kupm/features/sharedProjectsTable/SharedProjectsTable';
 import Sidebar from '@kupm/features/sidebar/Sidebar';
 import { setActivePage } from '@kupm/features/sidebar/sidebarSlice';
 import { getCookie } from '@kupm/utils/cookie';
@@ -62,10 +63,10 @@ const OtherProjects = () => {
       <OtherProjectsContent>
         <Accordion>
           <AccordionItem name="Incomplete" open>
-            <MyProjectsTable />
+            <SharedProjectsTable />
           </AccordionItem>
           <AccordionItem name="Complete">
-            <MyProjectsTable complete />
+            <SharedProjectsTable complete />
           </AccordionItem>
         </Accordion>
       </OtherProjectsContent>

@@ -1,12 +1,7 @@
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
-import {
-  faCheckCircle,
-  faEllipsisV,
-  faPencilAlt,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SecondaryButton } from '@kupm/common/Button';
-import ContextMenu from '@kupm/common/contextMenu/ContextMenu';
 import Panel from '@kupm/common/Panel';
 import { TableCell } from '@kupm/common/Table';
 import {
@@ -14,14 +9,11 @@ import {
   useGetProjectsQuery,
   useUpdateProjectMutation,
 } from '@kupm/features/api/apiSlice';
-import { selectProject } from '@kupm/features/projects/projectsSlice';
 import { formatDistance } from 'date-fns';
 import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
-import { showInviteModal } from '../inviteModal/inviteModalSlice';
-import { showNewProjectModal } from '../newProjectModal/newProjectModalSlice';
 
 const Wrapper = styled(Panel)`
   gap: 1rem;
@@ -43,7 +35,7 @@ const Wrapper = styled(Panel)`
   }
 `;
 
-const MyProjectsTableRow = ({ project }: any) => {
+const SharedProjectsTableRow = ({ project }: any) => {
   const theme = useContext(ThemeContext);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -62,39 +54,6 @@ const MyProjectsTableRow = ({ project }: any) => {
     refetchProjects();
   };
 
-  const handleEdit = (e: any) => {
-    e.stopPropagation();
-    dispatch(selectProject(project.id));
-    dispatch(showNewProjectModal());
-  };
-
-  const handleInvite = (e: any) => {
-    e.stopPropagation();
-    dispatch(showInviteModal());
-  };
-
-  const handleDelete = (e: any) => {
-    e.stopPropagation();
-    dispatch(deleteProject({ id: project.id }));
-  };
-
-  const OptionMenu = () => {
-    return (
-      <ContextMenu
-        items={[
-          { label: 'Invite Member', onClick: handleInvite },
-          {
-            label: 'Delete Project',
-            onClick: handleDelete,
-            color: theme.error,
-          },
-        ]}
-      >
-        <SecondaryButton secondary icon={faEllipsisV} onClick={null} />
-      </ContextMenu>
-    );
-  };
-
   return (
     <Wrapper onClick={handleSelect}>
       <TableCell size={2.5}>
@@ -105,10 +64,11 @@ const MyProjectsTableRow = ({ project }: any) => {
           onClick={handleComplete}
         />
       </TableCell>
-      {/* <div>{project.priority}</div> */}
+
       <TableCell size={20}>{project.name}</TableCell>
-      <TableCell size={40}>{project.description}</TableCell>
-      <TableCell size={10}>
+      <TableCell size={30}>{project.description}</TableCell>
+      <TableCell size={20}>
+        {project.owner}{' '}
         {formatDistance(new Date(project.createdAt), Date.now(), {
           addSuffix: true,
         })}
@@ -116,10 +76,14 @@ const MyProjectsTableRow = ({ project }: any) => {
       <TableCell size={15}>{project.dueAt}</TableCell>
 
       <TableCell size={5} style={{ overflow: 'visible', gap: '0.5rem' }}>
-        <SecondaryButton secondary icon={faPencilAlt} onClick={handleEdit} />
-        <OptionMenu />
+        <SecondaryButton
+          secondary
+          icon={faSignOutAlt}
+          color={theme.error}
+          onClick={null}
+        />
       </TableCell>
     </Wrapper>
   );
 };
-export default MyProjectsTableRow;
+export default SharedProjectsTableRow;

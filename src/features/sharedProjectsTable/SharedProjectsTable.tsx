@@ -3,16 +3,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FlexColumn } from '@kupm/common/Flex';
 import { TableHeader } from '@kupm/common/Table';
 import { useGetProjectsQuery } from '@kupm/features/api/apiSlice';
-import MyProjectsTableRow from '@kupm/features/myProjectsTable/MyProjectsTableRow';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import projects from './mockdata';
+import SharedProjectsTableRow from './SharedProjectsTableRow';
 
 const columns: any[] = [
   { name: '', size: '2.5%' },
   { name: 'Name', size: '20%' },
-  { name: 'Description', size: '40%' },
-  { name: 'Created', size: '10%' },
+  { name: 'Description', size: '30%' },
+  { name: 'Created by', size: '20%' },
   { name: 'Due Date', size: '15%' },
   { name: 'Actions', size: '5%' },
 ];
@@ -25,9 +26,9 @@ const DataPlaceholder = styled.div`
   align-items: center;
 `;
 
-const MyProjectsTable = (props: any) => {
+const SharedProjectsTable = (props: any) => {
   const { filter } = useSelector((state: any) => state.myProjectsControlbar);
-  const { data: projects, isLoading } = useGetProjectsQuery(null);
+  const { isLoading } = useGetProjectsQuery(null);
 
   const filteredData = projects?.data.filter(
     (t: any) =>
@@ -49,7 +50,7 @@ const MyProjectsTable = (props: any) => {
     content = <DataPlaceholder>No Projects Yet</DataPlaceholder>;
   } else {
     const getProjects = filteredData.map((p: any, i: number) => (
-      <MyProjectsTableRow key={i} project={p} />
+      <SharedProjectsTableRow key={i} project={p} />
     ));
     content = (
       <FlexColumn
@@ -76,4 +77,4 @@ const MyProjectsTable = (props: any) => {
   );
 };
 
-export default MyProjectsTable;
+export default SharedProjectsTable;
