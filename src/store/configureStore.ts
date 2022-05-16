@@ -8,6 +8,7 @@ import membersModalReducer from '@kupm/features/membersModal/membersModalSlice';
 import myProjectsControlbarReducer from '@kupm/features/myProjectsControlbar/myProjectsControlbarSlice';
 import newProjectModalReducer from '@kupm/features/newProjectModal/newProjectModalSlice';
 import newTaskModalReducer from '@kupm/features/newTaskModal/newTaskModalSlice';
+import passwordResetModalReducer from '@kupm/features/passwordResetModal/passwordResetModalSlice';
 import projectsReducer from '@kupm/features/projects/projectsSlice';
 import SharedProjectsControlbarReducer from '@kupm/features/sharedProjectsControlbar/SharedProjectsControlbarSlice';
 import sidebarReducer from '@kupm/features/sidebar/sidebarSlice';
@@ -26,6 +27,7 @@ export default configureStore({
     addCommentModal: addCommentModalReducer,
     membersModal: membersModalReducer,
     deleteProjectsModal: deleteProjectsModalReducer,
+    passwordResetModal: passwordResetModalReducer,
 
     myProjectsControlbar: myProjectsControlbarReducer,
     sharedProjectsControlbar: SharedProjectsControlbarReducer,

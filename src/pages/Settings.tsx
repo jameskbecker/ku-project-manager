@@ -4,11 +4,12 @@ import Layout from '@kupm/common/layout/Layout';
 import AccountPanel from '@kupm/features/accountPanel/AccountPanel';
 import AppearancePanel from '@kupm/features/appearancePanel/AppearancePanel';
 import EnrolmentPanel from '@kupm/features/enrolmentPanel/EnrolmentPanel';
+import PasswordResetModal from '@kupm/features/passwordResetModal/PasswordResetModal';
 import Sidebar from '@kupm/features/sidebar/Sidebar';
 import { setActivePage } from '@kupm/features/sidebar/sidebarSlice';
 import { getCookie } from '@kupm/utils/cookie';
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -31,6 +32,9 @@ const SettingsContent = styled(FlexColumn)`
 const Settings = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const { passwordResetModalVisible } = useSelector(
+    (state: any) => state.passwordResetModal
+  );
 
   useEffect(() => {
     if (!getCookie('kupm_user_id')) {
@@ -50,6 +54,8 @@ const Settings = () => {
         <EnrolmentPanel />
         <AppearancePanel />
       </SettingsContent>
+
+      {passwordResetModalVisible && <PasswordResetModal />}
     </Layout>
   );
 };

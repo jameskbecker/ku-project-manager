@@ -1,14 +1,11 @@
 import Button from '@kupm/common/Button';
 import Panel from '@kupm/common/Panel';
-import {
-  showAccountError,
-  toggleEditDetails,
-} from '@kupm/features/accountPanel/accountPanelSlice';
+import { toggleEditDetails } from '@kupm/features/accountPanel/accountPanelSlice';
 import DetailsForm from '@kupm/features/accountPanel/DetailsForm';
-import PasswordForm from '@kupm/features/accountPanel/PasswordForm';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThemeContext } from 'styled-components';
+import { showPasswordResetModal } from '../passwordResetModal/passwordResetModalSlice';
 
 const AccountPanel = () => {
   const dispatch = useDispatch();
@@ -16,17 +13,13 @@ const AccountPanel = () => {
   const { editDetails, accountError } = useSelector(
     (state: any) => state.accountPanel
   );
-  const [resetPassword, setResetPassword] = useState(false);
 
   const toggleEditMode = () => {
     dispatch(toggleEditDetails());
   };
 
   const handleReset = () => {
-    setResetPassword(!resetPassword);
-    if (resetPassword) {
-      dispatch(showAccountError('Passwords do not match.'));
-    }
+    dispatch(showPasswordResetModal());
   };
 
   return (
@@ -37,13 +30,8 @@ const AccountPanel = () => {
         text={editDetails ? 'Save' : 'Update Details'}
         onClick={toggleEditMode}
       />
-      {resetPassword && <PasswordForm />}
 
-      <Button
-        light={!resetPassword}
-        text={resetPassword ? 'Save' : 'Reset Password'}
-        onClick={handleReset}
-      />
+      <Button light text="Reset Password" onClick={handleReset} />
     </Panel>
   );
 };
