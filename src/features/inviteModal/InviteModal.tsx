@@ -1,7 +1,9 @@
 import Button from '@kupm/common/Button';
 import SelectInput from '@kupm/common/input/SelectInput';
 import TextInput from '@kupm/common/input/TextInput';
-import { ModalBackdrop, ModalContent, ModalFooter } from '@kupm/common/Modal';
+import ModalBackdrop from '@kupm/common/modal/ModalBackdrop';
+import ModalContent from '@kupm/common/modal/ModalContent';
+import ModalFooter from '@kupm/common/modal/ModalFooter';
 import Separator from '@kupm/common/Separator';
 import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

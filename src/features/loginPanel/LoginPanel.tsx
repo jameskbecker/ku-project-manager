@@ -2,7 +2,7 @@ import Button from '@kupm/common/Button';
 import { FlexRow } from '@kupm/common/Flex';
 import TextInput from '@kupm/common/input/TextInput';
 import Logo from '@kupm/common/Logo';
-import { ModalFooter } from '@kupm/common/Modal';
+import ModalFooter from '@kupm/common/modal/ModalFooter';
 import Panel from '@kupm/common/Panel';
 import Separator from '@kupm/common/Separator';
 import { useLoginMutation } from '@kupm/features/api/authApiSlice';

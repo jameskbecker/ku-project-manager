@@ -1,6 +1,6 @@
 import Button from '@kupm/common/Button';
 import TextInput from '@kupm/common/input/TextInput';
-import { ModalFooter } from '@kupm/common/Modal';
+import ModalFooter from '@kupm/common/modal/ModalFooter';
 import Panel from '@kupm/common/Panel';
 import Separator from '@kupm/common/Separator';
 import React from 'react';

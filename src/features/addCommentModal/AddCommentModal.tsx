@@ -1,10 +1,12 @@
 import Button from '@kupm/common/Button';
 import TextArea from '@kupm/common/input/TextArea';
-import { ModalBackdrop, ModalContent, ModalFooter } from '@kupm/common/Modal';
+import ModalBackdrop from '@kupm/common/modal/ModalBackdrop';
+import ModalContent from '@kupm/common/modal/ModalContent';
+import ModalFooter from '@kupm/common/modal/ModalFooter';
 import Separator from '@kupm/common/Separator';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { hideAddCommentModal, showAddCommentModal } from './addCommentSlice';
+import { hideAddCommentModal } from './addCommentSlice';
 
 const AddCommentModal = () => {
   const [message, setMessage] = useState('');
