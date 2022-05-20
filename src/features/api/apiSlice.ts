@@ -40,7 +40,7 @@ export const apiSlice = createApi({
       }),
     }),
     deleteProject: builder.mutation({
-      query: ({ id, ...body }) => ({
+      query: ({ id }) => ({
         url: `/projects/${id}`,
         method: 'DELETE',
       }),
