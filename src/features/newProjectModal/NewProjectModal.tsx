@@ -1,4 +1,4 @@
-import Button from '@kupm/common/Button';
+import Button from '@kupm/common/button';
 import TextArea from '@kupm/common/input/TextArea';
 import TextInput from '@kupm/common/input/TextInput';
 import ModalBackdrop from '@kupm/common/modal/ModalBackdrop';

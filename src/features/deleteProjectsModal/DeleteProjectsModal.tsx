@@ -1,4 +1,4 @@
-import Button from '@kupm/common/Button';
+import Button from '@kupm/common/button';
 import ModalBackdrop from '@kupm/common/modal/ModalBackdrop';
 import ModalContent from '@kupm/common/modal/ModalContent';
 import ModalFooter from '@kupm/common/modal/ModalFooter';

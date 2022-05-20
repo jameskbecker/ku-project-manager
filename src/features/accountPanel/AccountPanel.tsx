@@ -1,4 +1,4 @@
-import Button from '@kupm/common/Button';
+import Button from '@kupm/common/button';
 import Panel from '@kupm/common/Panel';
 import { toggleEditDetails } from '@kupm/features/accountPanel/accountPanelSlice';
 import DetailsForm from '@kupm/features/accountPanel/DetailsForm';

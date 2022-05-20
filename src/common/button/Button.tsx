@@ -1,18 +1,7 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import styled, { css, CSSProperties } from 'styled-components';
-
-type ButtonProps = {
-  color?: string;
-  text?: string;
-  light?: boolean;
-  highlightColor?: string;
-  icon?: IconProp;
-  onClick?: any;
-  round?: boolean;
-  style?: CSSProperties;
-};
+import styled, { css } from 'styled-components';
+import { ButtonProps } from './types';
 
 const StyledButton = styled.button<ButtonProps>`
   display: flex;
@@ -72,9 +61,7 @@ const StyledButton = styled.button<ButtonProps>`
     `}
 `;
 
-const ButtonIcon = styled(FontAwesomeIcon)``;
-
-const ButtonText = styled.span`
+export const ButtonText = styled.span`
   flex: 1 1;
   font-family: -apple-system, Inter, sans-serif;
   font-weight: 500;
@@ -92,54 +79,9 @@ const ButtonText = styled.span`
 const Button = (props: ButtonProps) => {
   return (
     <StyledButton {...props}>
-      {props.icon && <ButtonIcon icon={props.icon} />}
+      {props.icon && <FontAwesomeIcon icon={props.icon} />}
       {props.text && <ButtonText>{props.text}</ButtonText>}
     </StyledButton>
-  );
-};
-
-const StyledSecondaryButton = styled.button<any>`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  min-width: 1.125rem;
-  height: 1.625rem;
-
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: ${({ theme }) => theme.textBody};
-  background: transparent;
-  padding: 0 0.25rem;
-
-  border: 0;
-  box-sizing: content-box;
-  border-radius: 0.25rem;
-
-  cursor: pointer;
-  -webkit-appearance: none;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  user-select: none;
-
-  :hover {
-    background: ${({ theme, secondary }) =>
-      secondary ? theme.secondary : theme.primary};
-    transition: 0.25s ease-in-out;
-  }
-
-  :focus-visible {
-    outline: 3px solid ${({ theme }) => theme.brand};
-  }
-`;
-
-export const SecondaryButton = (props: any) => {
-  return (
-    <StyledSecondaryButton {...props}>
-      {props.icon && <ButtonIcon icon={props.icon} />}
-      {props.text && <ButtonText>{props.text}</ButtonText>}
-    </StyledSecondaryButton>
   );
 };
 

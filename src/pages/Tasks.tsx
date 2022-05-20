@@ -1,14 +1,11 @@
 import { faPencilAlt, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
-import { SecondaryButton } from '@kupm/common/Button';
+import { SecondaryButton } from '@kupm/common/button';
 import DataPlaceholder from '@kupm/common/DataPlaceholder';
 import { FlexColumn, FlexRow } from '@kupm/common/Flex';
 import HeaderBar from '@kupm/common/layout/HeaderBar';
 import Layout from '@kupm/common/layout/Layout';
 import AddCommentModal from '@kupm/features/addCommentModal/AddCommentModal';
 import { useGetSubTasksQuery } from '@kupm/features/api/taskApiSlice';
-import InviteModal from '@kupm/features/inviteModal/InviteModal';
-import MembersModal from '@kupm/features/membersModal/MembersModal';
-import NewProjectModal from '@kupm/features/newProjectModal/NewProjectModal';
 import NewTaskModal from '@kupm/features/newTaskModal/NewTaskModal';
 import { showNewTaskModal } from '@kupm/features/newTaskModal/newTaskModalSlice';
 import ActivityFeed from '@kupm/features/projectActivityFeed/ActivityFeed';
@@ -81,8 +78,8 @@ const Tasks = () => {
 
   const headerOptions = () => (
     <FlexRow>
-      <SecondaryButton icon={faPencilAlt} onClick={handleEdit} round light />
-      <SecondaryButton icon={faSyncAlt} onClick={refetch} round light />
+      <SecondaryButton icon={faPencilAlt} onClick={handleEdit} />
+      <SecondaryButton icon={faSyncAlt} onClick={refetch} />
     </FlexRow>
   );
 

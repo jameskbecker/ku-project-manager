@@ -1,12 +1,12 @@
 import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
-import { SecondaryButton } from '@kupm/common/Button';
+import { SecondaryButton } from '@kupm/common/button';
 import DataPlaceholder from '@kupm/common/DataPlaceholder';
 import { FlexColumn, FlexRow } from '@kupm/common/Flex';
 import Panel from '@kupm/common/Panel';
 import ScrollContainer from '@kupm/common/ScrollContainer';
 import { useGetProjectActivityQuery } from '@kupm/features/api/apiSlice';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 

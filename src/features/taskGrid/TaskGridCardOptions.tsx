@@ -1,7 +1,7 @@
 import { faSquare } from '@fortawesome/free-regular-svg-icons';
 import { faCheckSquare, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { SecondaryButton } from '@kupm/common/Button';
+import { SecondaryButton } from '@kupm/common/button';
 import ContextMenu from '@kupm/common/contextMenu/ContextMenu';
 import { FlexRow } from '@kupm/common/Flex';
 import { useDeleteTaskMutation } from '@kupm/features/api/taskApiSlice';

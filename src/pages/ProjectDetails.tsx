@@ -1,5 +1,5 @@
 import { faPencilAlt, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
-import { SecondaryButton } from '@kupm/common/Button';
+import { SecondaryButton } from '@kupm/common/button';
 import DataPlaceholder from '@kupm/common/DataPlaceholder';
 import { FlexColumn, FlexRow } from '@kupm/common/Flex';
 import HeaderBar from '@kupm/common/layout/HeaderBar';
@@ -77,8 +77,8 @@ const ProjectDetails = () => {
   };
   const headerOptions = () => (
     <FlexRow>
-      <SecondaryButton icon={faPencilAlt} onClick={handleEdit} round light />
-      <SecondaryButton icon={faSyncAlt} onClick={refetch} round light />
+      <SecondaryButton icon={faPencilAlt} onClick={handleEdit} />
+      <SecondaryButton icon={faSyncAlt} onClick={refetch} />
     </FlexRow>
   );
   let headerData;

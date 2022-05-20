@@ -5,7 +5,7 @@ import {
   faUserPlus,
   faUsers,
 } from '@fortawesome/free-solid-svg-icons';
-import Button from '@kupm/common/Button';
+import Button from '@kupm/common/button';
 import { FlexRow } from '@kupm/common/Flex';
 import TextInput from '@kupm/common/input/TextInput';
 import { selectProject } from '@kupm/features/projects/projectsSlice';

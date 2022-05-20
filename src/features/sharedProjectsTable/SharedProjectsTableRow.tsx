@@ -1,7 +1,7 @@
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import { faCheckCircle, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { SecondaryButton } from '@kupm/common/Button';
+import { SecondaryButton } from '@kupm/common/button';
 import Panel from '@kupm/common/Panel';
 import { TableCell } from '@kupm/common/Table';
 import {

@@ -5,7 +5,7 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
 import { Task } from '@kupm/types';
-import { SecondaryButton } from '@kupm/common/Button';
+import { SecondaryButton } from '@kupm/common/button';
 import ContextMenu from '@kupm/common/contextMenu/ContextMenu';
 import { FlexColumn, FlexRow } from '@kupm/common/Flex';
 import Panel from '@kupm/common/Panel';

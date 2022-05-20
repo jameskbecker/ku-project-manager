@@ -2,7 +2,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
-import Button from '@kupm/common/Button';
+import Button from '@kupm/common/button';
 import SidebarLogo from '@kupm/features/sidebar/SidebarLogo';
 import SidebarMenu from '@kupm/features/sidebar/SidebarMenu';
 import { toggle } from '@kupm/features/sidebar/sidebarSlice';

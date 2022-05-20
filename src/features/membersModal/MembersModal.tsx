@@ -5,7 +5,7 @@ import {
   faUserMinus,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button, { SecondaryButton } from '@kupm/common/Button';
+import Button, { SecondaryButton } from '@kupm/common/button';
 import DataPlaceholder from '@kupm/common/DataPlaceholder';
 import { FlexColumn, FlexRow } from '@kupm/common/Flex';
 import ModalBackdrop from '@kupm/common/modal/ModalBackdrop';
