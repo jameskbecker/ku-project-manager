@@ -9,4 +9,4 @@ Navigate to the project folder in terminal/command prompt and run the following 
 Or
 > yarn start
 
-### Note: make sure you have NodeJS installed
+#### Note: make sure you have NodeJS installed
